@@ -25,8 +25,8 @@
             theme: {
                 extend: {
                     colors: {
-                        imperial: '#3B020B',
-                        maroonDark: '#280107',
+                        imperial: '#7A280E',
+                        maroonDark: '#521A07',
                         gold: '#D4AF37',
                         goldLight: '#F3E5AB',
                         goldDark: '#996515',
@@ -78,13 +78,13 @@
         }
 
         .gold-text-gradient {
-            background: linear-gradient(135deg, #FFE082 0%, #D4AF37 50%, #B8860B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #F4D03F;
+            text-shadow: 0 1px 2px rgba(20, 2, 4, 0.85);
         }
 
         .gold-text-glow {
-            text-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
+            color: #F3E5AB;
+            text-shadow: 0 2px 5px rgba(28, 1, 7, 0.95), 0 0 15px rgba(212, 175, 55, 0.5);
         }
 
         /* Halo Animation behind Divine Frame */
@@ -98,10 +98,10 @@
             background: radial-gradient(circle, rgba(255, 183, 77, 0.4) 0%, rgba(212, 175, 55, 0.15) 50%, rgba(0,0,0,0) 70%);
         }
 
-        /* Royal Pattern Overlay */
+        /* Royal Pattern Overlay - Warm Orangish Tone with Clearly Visible Dots */
         .royal-pattern {
-            background-color: #3B020B;
-            background-image: radial-gradient(#D4AF37 0.65px, transparent 0.65px), radial-gradient(#D4AF37 0.65px, #3B020B 0.65px);
+            background-color: #7A280E;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.30) 0.9px, transparent 0.9px), radial-gradient(rgba(212, 175, 55, 0.30) 0.9px, #7A280E 0.9px);
             background-size: 26px 26px;
             background-position: 0 0, 13px 13px;
         }
@@ -187,7 +187,7 @@
                 <p id="hero-couplet-1" class="flex-1 text-center md:text-left font-hindiBody text-goldLight text-base sm:text-lg md:text-xl font-medium tracking-wide leading-relaxed">पुरी कुल को अगर है शान कोई । <br> पुरी कुल का अगर है मान कोई ।</p>
 
                 <!-- OM Symbol (Middle) -->
-                <div class="flex-shrink-0 text-5xl sm:text-6xl md:text-7xl text-gold font-bold mx-4 drop-shadow-[0_0_15px_rgba(212,175,55,0.6)]">
+                <div class="flex-shrink-0 text-5xl sm:text-6xl md:text-7xl gold-text-gradient font-bold mx-4">
                     ॐ
                 </div>
 
@@ -199,305 +199,301 @@
             </div>
 
             <!-- Main Grand Title -->
-            <h1 id="hero-title" class="font-heroTitle text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gold font-bold tracking-wide drop-shadow-md gold-text-gradient mt-2 mb-4 pb-3 leading-normal">वंशावली कौम पूरीयां</h1>
+            <h1 id="hero-title" class="font-heroTitle text-4xl sm:text-5xl md:text-6xl lg:text-7xl gold-text-gradient font-bold tracking-wide mt-2 mb-4 pb-3 leading-normal">वंशावली कौम पूरीयां</h1>
 
             <p id="hero-subtitle" class="text-saffron font-medium text-sm sm:text-lg md:text-xl tracking-wider uppercase">लाडी सत्योति ट्रस्ट (बटाला) - पावन ऐतिहासिक संरक्षण</p>
 
         </div>
     </section>
 
-    <!-- STREAMING_CHUNK:Rendering core layout (STRICTLY LINEAR on mobile/tablet <1024px, 3 columns on desktop >=1024px)... -->
-    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
         
-        <!--
-            RESPONSIVE LAYOUT SPECIFICATION:
-            - Mobile & Tablet (< 1024px): 1 Column vertical stack flow (History -> Portrait -> Genealogy). No tabs!
-            - Desktop (>= 1024px): 3 Columns layout (3 : 6 : 3 grid span ratio).
-        -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Top Row: 3 Columns (Left & Right equal 25% width, Center 50% width, matched bottom bounds with ZERO white gaps) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
 
-            <!-- ================= SECTION 1: HISTORY & DEVOTION ================= -->
-            <section class="lg:col-span-3 bg-creamCard border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative">
-                
-                <!-- Section Header -->
-                <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-4">
-                    <div class="w-9 h-9 rounded-lg bg-imperial flex items-center justify-center text-gold text-lg shadow">
-                        <i class="fa-solid fa-scroll"></i>
+            <!-- ================= CELL 1 (25%): HISTORY & FAITH ================= -->
+            <div class="lg:col-span-3 flex flex-col">
+                <div class="bg-creamCard border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative flex flex-col justify-between h-full">
+                    
+                    <!-- Header -->
+                    <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-4 flex-shrink-0">
+                        <div class="w-9 h-9 rounded-lg bg-imperial flex items-center justify-center text-gold text-lg shadow">
+                            <i class="fa-solid fa-scroll"></i>
+                        </div>
+                        <div>
+                            <h2 id="hist-title" class="font-hindiTitle text-lg sm:text-xl text-imperial font-bold">इतिहास एवं आस्था</h2>
+                            <span id="hist-badge" class="text-xs text-saffronDark font-semibold uppercase tracking-wider">1932 ई. स्थापित ट्रस्ट</span>
+                        </div>
                     </div>
-                    <div>
-                        <h2 id="hist-title" class="font-hindiTitle text-xl text-imperial font-bold">
-                            इतिहास एवं आस्था
-                        </h2>
-                        <span id="hist-badge" class="text-xs text-saffronDark font-semibold uppercase tracking-wider">
-                            1932 ई. स्थापित ट्रस्ट
-                        </span>
-                    </div>
-                </div>
 
-                <!-- Text Content with preserved original text -->
-                <div class="space-y-4 text-base text-gray-800 leading-relaxed font-hindiBody">
-                    <p id="hist-p1">
-                        पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिस की सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई हुई थी ।
-                    </p>
+                    <!-- Content distributed across full card height to eliminate bottom gap -->
+                    <div class="flex flex-col justify-between flex-grow space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed font-hindiBody">
+                        <p id="hist-p1">
+                            पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिनकी सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई थी ।
+                        </p>
 
-                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark text-base shadow-sm space-y-2">
-                        <p id="hist-p2" class="text-base leading-relaxed">
-                            देवी लाडी का मंगेतर स्वर्गवास हो गया । देवी लाडी उसकी पगड़ी गोद में लेकर सती हो गई थी । पूरी इस सती को बड़ी श्रद्धा से पूजते हैं । इसके स्थान पर आ कर अपने बच्चों के मुण्डन संस्कार करते हैं ।
+                        <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark text-sm sm:text-base shadow-sm">
+                            <p id="hist-p2">
+                                देवी लाडी के मंगेतर का स्वर्गवास हो गया था । देवी लाडी उनकी पगड़ी गोद में लेकर सती हो गई थीं । पूरी परिवार इस सती को बड़ी श्रद्धा से पूजता है । इसके स्थान पर आकर अपने बच्चों के मुण्डन संस्कार करते हैं ।
+                            </p>
+                        </div>
+
+                        <div class="p-3.5 bg-maroonDark text-goldLight rounded-xl text-xs sm:text-sm font-bold text-center border-2 border-gold shadow-lg">
+                            <i class="fa-solid fa-monument text-saffron mr-1.5 text-base"></i>
+                            <span id="hist-p2-highlight">इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।</span>
+                        </div>
+
+                        <p id="hist-p3" class="mt-auto">
+                            पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब में आबादी के विस्थापन के कारण दूर-दराज भिन्न-भिन्न शहरों में आबाद हो गई है । जिसकी वजह से आपस में मेल-मिलाप और जान-पहचान खत्म होती जा रही है ।
                         </p>
                     </div>
-
-                    <!-- Preserved Highlight Badge -->
-                    <div class="p-3 bg-imperial text-gold rounded-xl text-base font-semibold text-center border border-gold/40 shadow">
-                        <i class="fa-solid fa-monument text-saffron mr-1"></i>
-                        <span id="hist-p2-highlight">इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।</span>
-                    </div>
-
-                    <p id="hist-p3">
-                        पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब की आबादी की तबादला की वजह से दुर-दराज भिन्न-भिन्न शहरों में आबाद हो गये हैं । जिस की वजह से आपस में मेल मिलाप और जान पहचान खतम होती जा रही है ।
-                    </p>
                 </div>
+            </div>
 
-                <!-- Subtle Decorative Emblem -->
-                <div class="mt-6 pt-4 border-t border-gold/20 flex items-center justify-between text-xs text-goldDark font-semibold">
-                    <span id="hist-foot-label"><i class="fa-solid fa-om mr-1"></i> पावन परंपरा</span>
-                    <span id="hist-location">बटाला धाम</span>
-                </div>
-            </section>
-
-            <!-- ================= SECTION 2: DIVINE PORTRAIT FRAME ================= -->
-            <section class="lg:col-span-6 flex flex-col items-center w-full">
-                
-                <div class="w-full bg-gradient-to-b from-imperial via-maroonDark to-imperial border-4 border-gold rounded-3xl p-4 sm:p-8 shadow-gold-deep text-center relative overflow-hidden">
+            <!-- ================= CELL 2 (50%): DEVI PORTRAIT + MERGED ONLINE DONATION ================= -->
+            <div class="lg:col-span-6 flex flex-col">
+                <div class="w-full bg-gradient-to-b from-imperial via-maroonDark to-imperial border-4 border-gold rounded-3xl p-5 sm:p-7 shadow-gold-deep text-center relative flex flex-col justify-between h-full overflow-hidden">
                     
                     <!-- Halo Glowing Background -->
                     <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                         <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full halo-glow"></div>
                     </div>
 
-                    <!-- Top Decorative Title Badge -->
-                    <div class="relative z-10 inline-block bg-maroonDark/90 border-2 border-gold px-4 py-1.5 rounded-full text-gold text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 shadow">
-                        <i class="fa-solid fa-crown text-saffron mr-1.5"></i>
-                        <span id="portrait-top-badge">देवी लाडी सत्योति की जय</span>
-                    </div>
+                    <div>
+                        <!-- Top Decorative Title Badge -->
+                        <div class="relative z-10 inline-block bg-maroonDark/90 border-2 border-gold px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 shadow">
+                            <i class="fa-solid fa-crown text-saffron mr-1.5"></i>
+                            <span id="portrait-top-badge" class="gold-text-gradient">देवी लाडी सत्योति की जय</span>
+                        </div>
 
-                    <!-- Gold Arched Image Container -->
-                    <div class="relative z-10 my-2 mx-auto max-w-sm sm:max-w-md group">
-                        <div class="p-2 sm:p-3 bg-gradient-to-b from-gold via-goldLight to-goldDark rounded-t-full rounded-b-2xl shadow-2xl">
-                            
-                            <div class="relative overflow-hidden rounded-t-full rounded-b-xl border-4 border-imperial bg-maroonDark cursor-pointer" onclick="openLightbox()">
-                                
-                                <!-- Primary Image (resource/image.png) with Graceful Fallback -->
-                                <img 
-                                    id="main-portrait" 
-                                    src="resource/image.png" 
-                                    alt="देवी लाडी सत्योति - बटाला" 
-                                    onerror="handleImageError(this)" 
-                                    class="w-full h-auto max-h-[480px] object-cover object-center transform transition duration-500 group-hover:scale-105"
-                                />
-
-                                <!-- Hover Overlay Hint -->
-                                <div class="absolute inset-0 bg-imperial/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-medium text-sm gap-2">
-                                    <i class="fa-solid fa-magnifying-glass-plus text-xl text-gold"></i>
-                                    <span id="hover-zoom-text">बड़ा करके देखें</span>
+                        <!-- Gold Arched Image Container -->
+                        <div class="relative z-10 my-2 mx-auto max-w-xs sm:max-w-sm group">
+                            <div class="p-2 sm:p-2.5 bg-gradient-to-b from-gold via-goldLight to-goldDark rounded-t-full rounded-b-2xl shadow-2xl">
+                                <div class="relative overflow-hidden rounded-t-full rounded-b-xl border-4 border-imperial bg-maroonDark cursor-pointer" onclick="openLightbox()">
+                                    <img 
+                                        id="main-portrait" 
+                                        src="resource/image.png" 
+                                        alt="देवी लाडी सत्योति - बटाला" 
+                                        onerror="handleImageError(this)" 
+                                        class="w-full h-auto max-h-[380px] object-cover object-center transform transition duration-500 group-hover:scale-105"
+                                    />
+                                    <div class="absolute inset-0 bg-imperial/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center text-white font-medium text-sm gap-2">
+                                        <i class="fa-solid fa-magnifying-glass-plus text-xl text-gold"></i>
+                                        <span id="hover-zoom-text">बड़ा करके देखें</span>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <!-- Portrait Caption Box -->
+                        <div class="relative z-10 mt-4 space-y-2">
+                            <h3 id="portrait-caption" class="font-hindiTitle text-2xl sm:text-3xl gold-text-gradient font-bold tracking-wide">
+                                ॥ श्री लाडी सत्योति देवी जी ॥
+                            </h3>
+                            <p id="portrait-subcaption" class="text-sm sm:text-base text-goldLight font-semibold italic font-hindiBody drop-shadow-[0_1.5px_3px_rgba(0,0,0,0.9)]">
+                                बटाला स्थित पावन मुख्य मंदिर स्वरूप
+                            </p>
+
+                            <!-- Action Buttons Row -->
+                            <div class="pt-3 flex flex-wrap justify-center gap-2.5">
+                                <button onclick="openLightbox()" class="flex items-center gap-2 bg-gradient-to-r from-gold via-goldLight to-gold text-maroonDark hover:text-white hover:bg-saffronDark font-extrabold px-4 py-2 rounded-xl text-xs sm:text-sm transition duration-200 shadow-lg active:scale-95 border border-goldLight">
+                                    <i class="fa-solid fa-expand text-maroonDark"></i>
+                                    <span id="btn-zoom-text">पूर्ण चित्र देखें</span>
+                                </button>
+
+                                <button onclick="playTempleBell()" class="flex items-center gap-2 bg-maroonDark hover:bg-gold/20 border border-gold text-goldLight px-4 py-2 rounded-xl text-xs sm:text-sm transition duration-200 active:scale-95">
+                                    <i class="fa-solid fa-bell text-saffron"></i>
+                                    <span id="btn-bell-text">जयकारा एवं घंटी</span>
+                                </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Portrait Caption Box -->
-                    <div class="relative z-10 mt-5 space-y-2">
-                        <h3 id="portrait-caption" class="font-hindiTitle text-xl sm:text-2xl text-gold font-bold tracking-wide">
-                            ॥ श्री लाडी सत्योति देवी जी ॥
-                        </h3>
-                        <p id="portrait-subcaption" class="text-xs sm:text-sm text-goldLight/90 italic font-hindiBody">
-                            बटाला स्थित पावन मुख्य मंदिर स्वरूप
+                    <!-- Merged Online Donation Section at the Bottom of Devi Card -->
+                    <div class="relative z-10 mt-6 pt-5 border-t border-gold/30 text-left space-y-3.5 bg-maroonDark/80 p-4 sm:p-5 rounded-2xl border border-gold/30">
+                        <div class="flex items-center justify-between border-b border-gold/20 pb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg bg-maroonDark border border-gold/40 flex items-center justify-center text-gold text-sm shadow">
+                                    <i class="fa-solid fa-hand-holding-heart text-saffron"></i>
+                                </div>
+                                <div>
+                                    <h3 id="seva-title" class="font-hindiTitle text-base sm:text-lg text-goldLight font-bold">Online Donation</h3>
+                                    <span id="seva-badge" class="text-[10px] text-saffron font-semibold uppercase tracking-wider">Sacred Trust Seva</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p id="seva-p1" class="text-xs sm:text-sm text-goldLight font-hindiBody leading-relaxed">
+                            Contribute voluntarily towards temple upkeep and genealogy preservation. Direct bank transfer to registered trust account.
                         </p>
 
-                        <!-- Action Buttons Row -->
-                        <div class="pt-4 flex flex-wrap justify-center gap-3">
-                            <button onclick="openLightbox()" class="flex items-center gap-2 bg-gradient-to-r from-gold to-goldDark hover:from-saffron hover:to-saffronDark text-imperial font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition duration-200 shadow-lg active:scale-95">
-                                <i class="fa-solid fa-expand"></i>
-                                <span id="btn-zoom-text">पूर्ण चित्र देखें</span>
-                            </button>
+                        <!-- QR & Action Buttons Combined Row -->
+                        <div class="bg-creamCard p-3.5 rounded-xl border border-gold/40 shadow-inner flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <img src="resource/QR.png" alt="Trust QR Code" class="w-24 h-24 object-contain rounded-lg bg-white p-1 border border-gold/30 shadow-sm flex-shrink-0" />
+                                <div class="space-y-1">
+                                    <span id="qr-top-text" class="text-xs font-bold text-imperial block">Scan QR Code to Pay</span>
+                                    <span class="text-xs font-mono font-bold text-imperial bg-gold/20 px-2 py-1 rounded inline-block border border-gold/40">9815573473@ucobank</span>
+                                    <p class="text-[11px] text-gray-700 font-semibold">Registered Trust Account</p>
+                                </div>
+                            </div>
 
-                            <button onclick="playTempleBell()" class="flex items-center gap-2 bg-maroonDark hover:bg-gold/20 border border-gold text-goldLight px-4 py-2 rounded-xl text-xs sm:text-sm transition duration-200 active:scale-95">
-                                <i class="fa-solid fa-bell text-saffron"></i>
-                                <span id="btn-bell-text">जयकारा एवं घंटी</span>
-                            </button>
+                            <div class="flex flex-col gap-2 w-full sm:w-48">
+                                <button onclick="shareUpiDetails()" class="w-full flex items-center justify-center gap-1.5 bg-gradient-to-r from-saffron to-saffronDark text-white font-bold py-2 px-2.5 rounded-xl text-xs shadow active:scale-95 text-center">
+                                    <i class="fa-solid fa-share-nodes flex-shrink-0"></i>
+                                    <span id="btn-share-upi">Share Details</span>
+                                </button>
+                                <button onclick="copyUpiId()" class="w-full flex items-center justify-center gap-1.5 bg-maroonDark hover:bg-saffronDark focus:bg-maroonDark text-goldLight hover:text-white focus:text-gold border border-gold/50 focus:border-gold px-2.5 py-2 rounded-xl text-xs font-semibold active:scale-95 outline-none focus:ring-2 focus:ring-gold text-center" title="Copy UPI ID">
+                                    <i class="fa-solid fa-copy text-gold flex-shrink-0"></i>
+                                    <span id="btn-copy-upi">Copy UPI ID</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Safe Direct Transfer Note -->
+                        <div class="p-2.5 bg-maroonDark border-l-4 border-saffron rounded-r-lg space-y-0.5 text-xs">
+                            <div class="flex items-center gap-1 text-gold font-bold">
+                                <i class="fa-solid fa-shield-halved text-saffron"></i>
+                                <span id="seva-trust-note-title">100% Direct & Secure Donation</span>
+                            </div>
+                            <p id="seva-trust-note-body" class="text-goldLight text-[11px]">
+                                Registered Trust Bank Account | Direct contribution with zero middleman
+                            </p>
                         </div>
                     </div>
 
                 </div>
-            </section>
+            </div>
 
-            <!-- ================= SECTION 3: GENEALOGY PRESERVATION ================= -->
-            <section class="lg:col-span-3 bg-creamCard border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative">
-                
-                <!-- Section Header -->
-                <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-4">
-                    <div class="w-9 h-9 rounded-lg bg-imperial flex items-center justify-center text-gold text-lg shadow">
-                        <i class="fa-solid fa-sitemap"></i>
+            <!-- ================= CELL 3 (25%): TEMPLE LOCATION ================= -->
+            <div class="lg:col-span-3 flex flex-col">
+                <div class="bg-creamCard border-2 border-gold/50 rounded-2xl p-5 sm:p-6 shadow-card-soft hover:shadow-gold-glow transition duration-300 flex flex-col justify-between h-full">
+                    
+                    <div class="flex flex-col flex-grow space-y-3.5">
+                        <div class="flex items-center gap-2.5 border-b border-gold/30 pb-3 flex-shrink-0">
+                            <div class="w-8 h-8 rounded-lg bg-imperial flex items-center justify-center text-gold text-sm shadow">
+                                <i class="fa-solid fa-map-location-dot text-saffron"></i>
+                            </div>
+                            <div>
+                                <h3 id="map-title" class="font-hindiTitle text-base sm:text-lg text-imperial font-bold">Temple Location</h3>
+                                <span id="map-badge" class="text-[11px] text-saffronDark font-semibold uppercase">Batala Shrine</span>
+                            </div>
+                        </div>
+
+                        <!-- Full Address & Phone Numbers -->
+                        <div class="p-3.5 bg-maroonDark text-goldLight rounded-xl border-l-4 border-gold text-sm sm:text-base space-y-2.5 flex-shrink-0">
+                            <div class="flex items-center gap-1.5 text-saffron font-bold text-sm sm:text-base">
+                                <i class="fa-solid fa-gopuram"></i>
+                                <span id="map-temple-name">Shri Ladi Satyoti Mandir - Batala</span>
+                            </div>
+                            <p id="map-full-address" class="leading-relaxed font-hindiBody text-cream/95 text-sm sm:text-base">
+                                Ladi Satyoti Trust (Regd), Ladi Satyoti Mandir, Jalandhar Road, Batala-143505, District: Gurdaspur, Punjab (India).
+                            </p>
+                            <div class="pt-2 border-t border-gold/20 flex flex-wrap items-center gap-3 text-saffron font-bold text-xs sm:text-sm">
+                                <a href="tel:+919815573473" class="hover:text-gold flex items-center gap-1">
+                                    <i class="fa-solid fa-phone"></i> +91 98155-73473
+                                </a>
+                                <a href="tel:+919814171212" class="hover:text-gold flex items-center gap-1">
+                                    <i class="fa-solid fa-phone"></i> +91 98141-71212
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Map Embed (Expands to fill all remaining height) -->
+                        <div class="w-full flex-grow min-h-[180px] rounded-xl overflow-hidden border border-gold/40 shadow-inner relative flex">
+                            <iframe 
+                                title="Ladi Satyoti Mandir Map Location Pin"
+                                src="https://maps.google.com/maps?q=31.8152,75.2035+(Ladi+Satwati+mandir+Batala)&z=16&output=embed" 
+                                class="w-full h-full border-0 rounded-xl flex-grow" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+
+                        <!-- Visitor Landmark Note -->
+                        <div class="p-2.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial text-xs font-semibold flex items-center gap-2 flex-shrink-0">
+                            <i class="fa-solid fa-location-arrow text-saffronDark"></i>
+                            <span id="map-landmark-text">जालंधर रोड पर उमरपुरा क्षेत्र के निकट स्थित पावन मुख्य मंदिर धाम।</span>
+                        </div>
                     </div>
-                    <div>
-                        <h2 id="gen-title" class="font-hindiTitle text-xl text-imperial font-bold">
-                            वंशावली संरक्षण
-                        </h2>
-                        <span id="gen-badge" class="text-xs text-saffronDark font-semibold uppercase tracking-wider">
-                            प्रामाणिक शोध रिकॉर्ड
-                        </span>
+
+                    <!-- Bottom Buttons -->
+                    <div class="flex gap-2 pt-3 mt-auto flex-shrink-0">
+                        <a href="https://maps.app.goo.gl/5yMch3hhHddu91mt8" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-saffron to-saffronDark text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow hover:opacity-90 transition">
+                            <i class="fa-solid fa-diamond-turn-right"></i>
+                            <span id="btn-open-maps">Get Directions</span>
+                        </a>
+                        <button onclick="copyTempleAddress()" class="bg-maroonDark hover:bg-gold/20 border border-gold/40 text-gold px-3 py-2.5 rounded-xl text-xs font-semibold" title="Copy Address">
+                            <i class="fa-solid fa-copy"></i>
+                        </button>
                     </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- ================= HORIZONTALLY ELONGATED GENEALOGY PRESERVATION SECTION ================= -->
+        <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative">
+            <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-imperial flex items-center justify-center text-gold text-xl shadow">
+                    <i class="fa-solid fa-sitemap"></i>
+                </div>
+                <div>
+                    <h2 id="gen-title" class="font-hindiTitle text-xl sm:text-2xl text-imperial font-bold">वंशावली संरक्षण</h2>
+                    <span id="gen-badge" class="text-xs text-saffronDark font-semibold uppercase tracking-wider">प्रामाणिक शोध रिकॉर्ड</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                <!-- Left: Detailed Paragraph -->
+                <div class="lg:col-span-7 space-y-4 text-base sm:text-lg text-gray-800 leading-relaxed font-hindiBody">
+                    <p id="gen-p1">
+                        इस जान-पहचान को कायम रखने के लिए बड़ी कोशिश और मेहनत से यह वंशावली हरिद्वार के पुरोहित पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल), पुरोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पंडित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहियों से और महकमा माल के कागजों से दरयाफत करके तैयार की गई है ।
+                    </p>
                 </div>
 
-               <!-- Text Content with preserved original text -->
-                <div class="space-y-4 text-base text-gray-800 leading-relaxed font-hindiBody">
-                    <p id="gen-p1">
-                        इस जान पहचान को कायम रखने के लिए बड़ी कोशिश और मेहनत से यह वंशावली हरिद्वार के परोहित पण्डित जोगिन्दर पाल दोहता पण्डित मखन लाल, परोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पण्डित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहीयों से और महकमा माल के कागजों से दरयाफत करके तैयार किया गया है ।
-                    </p>
-
+                <!-- Right: Info Boxes -->
+                <div class="lg:col-span-5 space-y-3">
                     <!-- Seva Badge Box 1 -->
-                    <div class="p-3.5 bg-maroonDark text-goldLight border-l-4 border-gold rounded-r-lg space-y-1 shadow-sm">
-                        <div class="flex items-center gap-2 text-base text-saffron font-bold">
+                    <div class="p-3.5 bg-maroonDark text-goldLight border-l-4 border-gold rounded-r-xl space-y-1 shadow-sm text-sm">
+                        <div class="flex items-center gap-1.5 text-saffron font-bold text-base">
                             <i class="fa-solid fa-user-check"></i>
                             <span id="gen-box1-head">सेवादार कौम पूरीयां</span>
                         </div>
-                        <p id="gen-box1-body" class="text-base leading-relaxed">
+                        <p id="gen-box1-body" class="leading-snug">
                             हकीम कर्म चन्द पूरी (बटाला 28-9-1954)
                         </p>
                     </div>
 
-                    <!-- Contact Box 2 -->
-                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial space-y-1">
-                        <div class="flex items-center gap-2 text-base text-maroonDark font-bold">
+                    <!-- Obtaining Records Box 2 -->
+                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-imperial space-y-1 text-sm">
+                        <div class="flex items-center gap-1.5 text-maroonDark font-bold text-base">
                             <i class="fa-solid fa-file-signature"></i>
                             <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
                         </div>
-                        <p id="gen-box2-body" class="text-base leading-relaxed">
+                        <p id="gen-box2-body" class="leading-snug">
                             जिस किसी को वंशावली की जरूरत हो । वो श्री रघुबीर चन्द पूरी सैक्रेटरी ट्रस्ट से प्राप्त कर सकते हैं ।
                         </p>
                     </div>
                 </div>
+            </div>
 
-                <!-- Contact & Notice Card -->
-                <div class="mt-6 p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/40 text-cream space-y-2">
-                    <div class="flex items-center gap-2 text-base text-gold font-bold">
+            <!-- Registration & Contact Banner at Bottom -->
+            <div class="mt-6 p-4 bg-gradient-to-r from-maroonDark via-imperial to-maroonDark rounded-2xl border border-gold/40 text-cream flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg bg-maroonDark border border-gold/40 flex items-center justify-center text-gold text-lg shadow flex-shrink-0">
                         <i class="fa-solid fa-address-book"></i>
-                        <span id="contact-head">पंजीकरण एवं सूचना</span>
                     </div>
-                    <p id="contact-body" class="text-base text-goldLight/90 leading-relaxed">
-                        पूरी परिवार के सदस्य अपनी वंशावली प्रविष्टियों एवं विवरण हेतु ट्रस्ट कार्यालय बटाला से संपर्क कर सकते हैं।
-                    </p>
-                </div>
-            </section>
-        </div>
-        <!-- ================= SECTION 4: DEVOTIONAL SEVA & DONATIONS ================= -->
-        <section class="mt-12 bg-gradient-to-br from-imperial via-maroonDark to-imperial border-2 border-gold rounded-3xl p-6 sm:p-10 shadow-gold-deep text-cream relative overflow-hidden">
-            <!-- Subtle Gold Glow Backdrop -->
-            <div class="absolute -right-16 -top-16 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute -left-16 -bottom-16 w-72 h-72 bg-saffron/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="relative z-10 w-full flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 justify-between">
-                
-                <!-- Left Details & Instructions (Full Width Balanced) -->
-                <div class="flex-1 text-center lg:text-left space-y-5 flex flex-col justify-between">
-                    <div class="space-y-4">
-                        <div class="inline-flex items-center gap-2 bg-maroonDark/80 border border-gold/40 px-3.5 py-1.5 rounded-full text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase shadow">
-                            <i class="fa-solid fa-hands-praying text-saffron"></i>
-                            <span id="seva-badge">पावन दान एवं सहयोग सेवा</span>
-                        </div>
-
-                        <h2 id="seva-title" class="font-hindiTitle text-2xl sm:text-3xl lg:text-4xl text-gold font-bold leading-tight">
-                            लाडी सत्योति ट्रस्ट (रजिस्टर्ड) सेवा कोष
-                        </h2>
-
-                        <p id="seva-p1" class="text-base sm:text-lg text-goldLight/95 font-hindiBody leading-relaxed">
-                            ट्रस्ट के पावन मंदिर के रखरखाव, ऐतिहासिक वंशावली संरक्षण एवं धार्मिक कार्यों में स्वेच्छा से अपना योगदान दें। आपका दान सीधे ट्रस्ट के अधिकृत बैंक खाते में प्राप्त होता है।
+                    <div>
+                        <h4 id="contact-head" class="text-gold font-bold text-base">पंजीकरण एवं सूचना</h4>
+                        <p id="contact-body" class="text-goldLight/90 leading-snug font-hindiBody text-xs sm:text-sm">
+                            पूरी परिवार के सदस्य अपनी वंशावली प्रविष्टियों एवं विवरण हेतु ट्रस्ट कार्यालय बटाला से संपर्क कर सकते हैं।
                         </p>
-                    </div>
-
-                    <!-- Trust Credentials & Security Cards Grid -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2">
-                        <!-- Credentials Box -->
-                        <div class="p-4 bg-maroonDark/90 border-l-4 border-gold rounded-r-xl space-y-1.5 text-xs sm:text-sm text-left">
-                            <div class="flex items-center gap-2 text-saffron font-bold text-sm">
-                                <i class="fa-solid fa-building-columns"></i>
-                                <span id="seva-bank-title">यूको बैंक (UCO Bank)</span>
-                            </div>
-                            <p class="text-goldLight font-mono font-medium text-sm">
-                                <span id="seva-upi-label">UPI ID:</span> <strong class="text-white selection:bg-saffron">9815573473@ucobank</strong>
-                            </p>
-                        </div>
-
-                        <!-- Trust Transparency Badge Box -->
-                        <div class="p-4 bg-maroonDark/90 border-l-4 border-saffron rounded-r-xl space-y-1 text-xs sm:text-sm text-left">
-                            <div class="flex items-center gap-2 text-gold font-bold text-sm">
-                                <i class="fa-solid fa-shield-halved text-saffron"></i>
-                                <span id="seva-trust-note-title">100% सुरक्षित एवं प्रत्यक्ष दान</span>
-                            </div>
-                            <p id="seva-trust-note-body" class="text-goldLight/90 text-xs sm:text-sm leading-snug">
-                                रजिस्टर्ड ट्रस्ट बैंक खाता | बिना किसी बिचौलिए के सीधे ट्रस्ट को दान
-                            </p>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons for Mobile, Share & Copy -->
-                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
-                        <!-- Direct Mobile App Trigger (Visible on Mobile/Tablet screens < 768px) -->
-                        <a href="upi://pay?pa=9815573473@ucobank&pn=LADI%20SATWATI%20TRUST%20REGD&cu=INR" class="md:hidden flex items-center gap-2 bg-gradient-to-r from-saffron to-saffronDark hover:from-saffronDark hover:to-saffron text-white font-bold px-6 py-3 rounded-xl text-sm transition duration-200 shadow-lg active:scale-95">
-                            <i class="fa-solid fa-mobile-screen-button text-lg"></i>
-                            <span id="btn-pay-app">पेमेंट ऐप से दान करें (GPay/PhonePe)</span>
-                        </a>
-
-                        <!-- Share UPI Details Button (Visible on Desktop >= 768px) -->
-                        <button onclick="shareUpiDetails()" class="hidden md:flex items-center gap-2 bg-gradient-to-r from-saffron to-saffronDark hover:from-saffronDark hover:to-saffron text-white font-bold px-6 py-3 rounded-xl text-sm transition duration-200 shadow-lg active:scale-95">
-                            <i class="fa-solid fa-share-nodes text-lg"></i>
-                            <span id="btn-share-upi">दान विवरण शेयर करें (WhatsApp/अन्य)</span>
-                        </button>
-
-                        <!-- Copy UPI ID Button -->
-                        <button onclick="copyUpiId()" class="flex items-center gap-2 bg-maroonDark hover:bg-gold/20 border border-gold/50 text-goldLight px-5 py-3 rounded-xl text-sm transition duration-200 active:scale-95">
-                            <i class="fa-solid fa-copy text-gold text-base"></i>
-                            <span id="btn-copy-upi">UPI ID कॉपी करें</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Right Elegant QR Code Card -->
-                <div class="flex-shrink-0 flex flex-col items-center justify-center bg-creamCard p-6 rounded-2xl border-2 border-gold/60 shadow-2xl text-charcoal w-full lg:w-80">
-                    <span id="qr-top-text" class="text-base font-bold text-imperial text-center mb-3 tracking-wide font-hindiTitle">
-                        क्यूआर कोड स्कैन करके भुगतान करें
-                    </span>
-
-                    <!-- Local QR Image Frame -->
-                    <div class="p-3 bg-white border-2 border-gold/40 rounded-xl shadow-inner flex flex-col items-center">
-                        <img 
-                            src="resource/QR.png" 
-                            alt="Ladi Satyoti Trust UPI QR Code" 
-                            class="w-52 h-52 sm:w-56 sm:h-56 object-contain rounded-lg"
-                        />
-                    </div>
-
-                    <!-- Trust Identification Text -->
-                    <div class="mt-3 text-center w-full border-b border-gold/20 pb-2.5">
-                        <span id="qr-trust-name" class="block text-sm font-bold text-imperial uppercase tracking-tight">
-                            LADI SATWATI TRUST REGD.
-                        </span>
-                        <span class="block text-xs sm:text-sm font-mono font-bold text-goldDark mt-1">
-                            9815573473@ucobank
-                        </span>
-                    </div>
-
-                    <!-- UPI & Payment Apps Image Badge (Enlarged) -->
-                    <div class="mt-3 text-center">
-                        <span id="qr-scan-badge-text" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
-                            Scan using any UPI QR App
-                        </span>
-                        <div class="p-2 bg-white border border-gold/40 rounded-xl shadow-inner inline-block cursor-pointer hover:scale-105 transition" onclick="handleUpiImageClick()" title="Click to Pay or Share">
-                            <img src="resource/UPI.png" alt="UPI & Payment Apps" class="h-12 sm:h-14 w-auto object-contain mx-auto" />
-                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+
     </main>
 
     <!-- Lightbox Modal for Full Image Zoom -->
@@ -587,10 +583,10 @@
                 
                 hist_title: "इतिहास एवं आस्था",
                 hist_badge: "1932 ई. स्थापित ट्रस्ट",
-                hist_p1: "पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिस की सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई हुई थी ।",
-                hist_p2: "देवी लाडी का मंगेतर स्वर्गवास हो गया । देवी लाडी उसकी पगड़ी गोद में लेकर सती हो गई थी । पूरी इस सती को बड़ी श्रद्धा से पूजते हैं । इसके स्थान पर आ कर अपने बच्चों के मुण्डन संस्कार करते हैं ।",
+                hist_p1: "पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिनकी सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई थी ।",
+                hist_p2: "देवी लाडी के मंगेतर का स्वर्गवास हो गया था । देवी लाडी उनकी पगड़ी गोद में लेकर सती हो गई थीं । पूरी परिवार इस सती को बड़ी श्रद्धा से पूजता है । इसके स्थान पर आकर अपने बच्चों के मुण्डन संस्कार करते हैं ।",
                 hist_p2_highlight: "इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।",
-                hist_p3: "पूरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब की आबादी की तबादला की वजह से दुर-दराज भिन्न-भिन्न शहरों में आबाद हो गये हैं । जिस की वजह से आपस में मेल मिलाप और जान पहचान खतम होती जा रही है ।",
+                hist_p3: "पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब में आबादी के विस्थापन के कारण दूर-दराज भिन्न-भिन्न शहरों में आबाद हो गई है । जिसकी वजह से आपस में मेल-मिलाप और जान-पहचान खत्म होती जा रही है ।",
                 hist_foot: `<i class="fa-solid fa-om mr-1"></i> पावन परंपरा`,
                 hist_location: "बटाला धाम",
 
@@ -603,7 +599,7 @@
 
                 gen_title: "वंशावली संरक्षण",
                 gen_badge: "प्रामाणिक शोध रिकॉर्ड",
-                gen_p1: "इस जान पहचान को कायम रखने के लिए बड़ी कोशिश और मेहनत से यह वंशावली हरिद्वार के परोहित पण्डित जोगिन्दर पाल दोहता पण्डित मखन लाल, परोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पण्डित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहीयों से और महकमा माल के कागजों से दरयाफत करके तैयार किया गया है ।",
+                gen_p1: "इस जान-पहचान को कायम रखने के लिए बड़ी कोशिश और मेहनत से यह वंशावली हरिद्वार के पुरोहित पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल), पुरोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पंडित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहियों से और महकमा माल के कागजों से दरयाफत करके तैयार की गई है ।",
                 gen_box1_head: "सेवादार कौम पूरीयां",
                 gen_box1_body: "हकीम कर्म चन्द पूरी (बटाला 28-9-1954)",
                 gen_box2_head: "वंशावली प्राप्ति हेतु",
@@ -619,21 +615,38 @@
                 seva_badge: "पावन दान एवं सहयोग सेवा",
                 seva_title: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) सेवा कोष",
                 seva_p1: "ट्रस्ट के पावन मंदिर के रखरखाव, ऐतिहासिक वंशावली संरक्षण एवं धार्मिक कार्यों में स्वेच्छा से अपना योगदान दें। आपका दान सीधे ट्रस्ट के अधिकृत बैंक खाते में प्राप्त होता है।",
-                seva_bank_title: "यूको बैंक (UCO Bank) - रजिस्टर्ड ट्रस्ट खाता",
+                seva_bank_title: "रजिस्टर्ड ट्रस्ट खाता",
                 seva_upi_label: "UPI ID:",
                 btn_pay_app: "पेमेंट ऐप से दान करें (GPay/PhonePe)",
                 btn_copy_upi: "UPI ID कॉपी करें",
                 qr_top_text: "क्यूआर कोड स्कैन करके भुगतान करें",
                 qr_trust_name: "लाडी सत्योति ट्रस्ट रजिस्टर्ड",
                 toast_upi_copied: "📋 UPI ID (9815573473@ucobank) कॉपी हो गई है!",
-                btn_share_upi: "दान विवरण शेयर करें (WhatsApp/अन्य)",
+                btn_share_upi: "दान विवरण शेयर करें",
                 page_title: "लाडी सत्योति ट्रस्ट - बटाला | Ladi Satyoti Trust",
                 modal_share_title: "श्री लाडी सत्योति ट्रस्ट - सेवा सहयोग शेयर करें",
                 modal_share_sub: "व्हाट्सएप, टेलीग्राम या अन्य माध्यम से QR और UPI विवरण शेयर करें",
                 modal_copy_btn: "UPI कॉपी करें",
                 nudge_msg: "भाषा बदलें / Switch Language",
                 seva_trust_note_title: "100% सुरक्षित एवं प्रत्यक्ष दान",
-                seva_trust_note_body: "रजिस्टर्ड ट्रस्ट बैंक खाता | बिना किसी बिचौलिए के सीधे ट्रस्ट को दान"
+                seva_trust_note_body: "रजिस्टर्ड ट्रस्ट बैंक खाता | बिना किसी बिचौलिए के सीधे ट्रस्ट को दान",
+                map_title: "पावन धाम स्थान एवं गूगल मैप्स",
+                map_badge: "मुख्य मंदिर दर्शनाभिलाषी",
+                map_temple_name: "श्री लाडी सत्योति मंदिर - बटाला",
+                map_full_address: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड), लाडी सत्योति मंदिर, जालंधर रोड, बटाला-143505, जिला: गुरदासपुर, पंजाब (भारत)।",
+                map_landmark_text: "जालंधर रोड पर उमरपुरा क्षेत्र के निकट स्थित पावन मुख्य मंदिर धाम।",
+                btn_open_maps: "गूगल मैप्स पर रास्ता देखें (Navigate)",
+                btn_copy_address: "पता कॉपी करें",
+                toast_address_copied: "📍 मंदिर का पूरा पता कॉपी हो गया है!",
+                seva_title: "ऑनलाइन दान (Online Donation)",
+                seva_badge: "पावन सेवा कोष",
+                seva_p1: "मंदिर रखरखाव व संरक्षण कार्यों में स्वेच्छा से योगदान दें। आपका दान सीधे अधिकृत बैंक खाते में जाता है।",
+                map_title: "पावन मंदिर स्थान",
+                map_badge: "बटाला धाम",
+                map_full_address: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड), लाडी सत्योति मंदिर, जालंधर रोड, बटाला-143505, जिला: गुरदासपुर, पंजाब (भारत)।",
+                btn_open_maps: "गूगल मैप्स पर मार्ग देखें",
+                btn_copy_address: "पता कॉपी करें",
+                toast_address_copied: "📍 मंदिर का पता एवं फोन नंबर कॉपी हो गया है!"
             },
             en: {
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
@@ -678,21 +691,38 @@
                 seva_badge: "Sacred Voluntary Offering & Seva",
                 seva_title: "Ladi Satyoti Trust (Regd.) Donation Fund",
                 seva_p1: "Contribute voluntarily towards temple upkeep, historical genealogy preservation, and sacred trust activities. All donations go directly to the registered Trust bank account.",
-                seva_bank_title: "UCO Bank - Registered Trust Account",
+                seva_bank_title: "Registered Trust Account",
                 seva_upi_label: "UPI ID:",
                 btn_pay_app: "Pay via UPI App (GPay / PhonePe)",
                 btn_copy_upi: "Copy UPI ID",
                 qr_top_text: "Scan QR Code to Pay",
                 qr_trust_name: "LADI SATWATI TRUST REGD.",
                 toast_upi_copied: "📋 UPI ID (9815573473@ucobank) copied to clipboard!",
-                btn_share_upi: "Share Donation Details (WhatsApp)",
+                btn_share_upi: "Share Donation Details",
                 page_title: "Ladi Satyoti Trust - Batala | Sacred Heritage",
                 modal_share_title: "Shri Ladi Satyoti Trust Seva QR Code",
                 modal_share_sub: "Share QR and UPI details via WhatsApp, Telegram, or other apps",
                 modal_copy_btn: "Copy UPI ID",
                 nudge_msg: "Switch Language / भाषा बदलें",
                 seva_trust_note_title: "100% Direct & Secure Donation",
-                seva_trust_note_body: "Registered Trust Bank Account | Direct contribution with zero middleman"
+                seva_trust_note_body: "Registered Trust Bank Account | Direct contribution with zero middleman",
+                map_title: "Sacred Temple Location & Google Maps",
+                map_badge: "Visitor & Devotee Navigation",
+                map_temple_name: "Shri Ladi Satyoti Mandir - Batala",
+                map_full_address: "Ladi Satyoti Trust (Regd), Ladi Satyoti Mandir, Jalandhar Road, Batala-143505, District: Gurdaspur, Punjab (India).",
+                map_landmark_text: "Sacred shrine located on Jalandhar Road near Umarpura, Batala.",
+                btn_open_maps: "Get Directions on Google Maps",
+                btn_copy_address: "Copy Address",
+                toast_address_copied: "📍 Temple address copied to clipboard!",
+                seva_title: "Online Donation",
+                seva_badge: "Sacred Trust Seva",
+                seva_p1: "Contribute voluntarily towards temple upkeep and genealogy preservation. Direct bank transfer to registered trust account.",
+                map_title: "Temple Location",
+                map_badge: "Batala Shrine",
+                map_full_address: "Ladi Satyoti Trust (Regd), Ladi Satyoti Mandir, Jalandhar Road, Batala-143505, District: Gurdaspur, Punjab (India).",
+                btn_open_maps: "Get Directions",
+                btn_copy_address: "Copy Address",
+                toast_address_copied: "📍 Temple address & contact details copied to clipboard!"
             }
         };
 
@@ -794,6 +824,14 @@
             setElText('nudge-text', dict.nudge_msg);
             setElText('seva-trust-note-title', dict.seva_trust_note_title);
             setElText('seva-trust-note-body', dict.seva_trust_note_body);
+
+            setElText('map-title', dict.map_title);
+            setElText('map-badge', dict.map_badge);
+            setElText('map-temple-name', dict.map_temple_name);
+            setElText('map-full-address', dict.map_full_address);
+            setElText('map-landmark-text', dict.map_landmark_text);
+            setElText('btn-open-maps', dict.btn_open_maps);
+            setElText('btn-copy-address', dict.btn_copy_address);
         }
 
         function setElText(id, text) {
@@ -998,6 +1036,13 @@
         function copyUpiIdFromModal() {
             copyUpiId();
             closeShareModal();
+        }
+
+        function copyTempleAddress() {
+            const addressText = translations[currentLang].map_full_address + 
+                "\nPhone: +91 98155-73473, +91 98141-71212" + 
+                "\nLocation: https://maps.app.goo.gl/5yMch3hhHddu91mt8";
+            copyTextToClipboard(addressText, translations[currentLang].toast_address_copied);
         }
     </script>
 </body>
