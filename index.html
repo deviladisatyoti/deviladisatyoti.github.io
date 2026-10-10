@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="hi" class="scroll-smooth" translate="no">
+<html lang="en" class="scroll-smooth" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
-    <title>लाडी सत्योति ट्रस्ट - बटाला | Ladi Satyoti Trust</title>
+    <title id="page-title">लाडी सत्योति ट्रस्ट - बटाला | Ladi Satyoti Trust</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +37,8 @@
                         charcoal: '#1A1A1A'
                     },
                     fontFamily: {
-                        hindiTitle: ['"Rozha One"', 'serif'],
+                        hindiTitle: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
+                        heroTitle: ['"Rozha One"', 'serif'],
                         hindiBody: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
                         englishTitle: ['"Roboto"', 'sans-serif'],
                         sans: ['"Roboto"', '"Mukta"', 'sans-serif']
@@ -155,14 +156,22 @@
                     <i class="fa-solid fa-share-nodes text-xs sm:text-sm"></i>
                 </button>
 
-                <!-- Modern Dual Language Switcher Badge -->
-                <div class="flex items-center bg-maroonDark p-1 rounded-full border border-gold/40 text-xs font-semibold shadow-inner">
-                    <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-2.5 py-1 rounded-full transition-all duration-200 flex items-center gap-1">
-                        <span>हिंदी</span>
-                    </button>
-                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full transition-all duration-200 flex items-center gap-1">
-                        <span>English</span>
-                    </button>
+                <!-- Modern Dual Language Switcher Badge with One-Time Nudge -->
+                <div class="relative">
+                    <!-- Subtle Nudge Tooltip -->
+                    <div id="lang-nudge" class="absolute -bottom-10 right-0 bg-gold text-imperial font-bold text-[11px] px-2.5 py-1 rounded-lg shadow-lg hidden items-center gap-2 animate-bounce z-50 whitespace-nowrap border border-imperial/20">
+                        <span id="nudge-text">भाषा बदलें / Switch Language</span>
+                        <button onclick="dismissNudge(event)" class="text-imperial hover:text-maroonDark font-black text-sm leading-none ml-1">×</button>
+                    </div>
+
+                    <div class="flex items-center bg-maroonDark p-1 rounded-full border border-gold/40 text-xs font-semibold shadow-inner">
+                        <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-2.5 py-1 rounded-full transition-all duration-200 flex items-center gap-1">
+                            <span>हिंदी</span>
+                        </button>
+                        <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full transition-all duration-200 flex items-center gap-1">
+                            <span>English</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,7 +199,7 @@
             </div>
 
             <!-- Main Grand Title -->
-            <h1 id="hero-title" class="font-hindiTitle text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gold font-bold tracking-wide drop-shadow-md gold-text-gradient mt-2 mb-4 pb-3 leading-normal">वंशावली कौम पूरीयां</h1>
+            <h1 id="hero-title" class="font-heroTitle text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-gold font-bold tracking-wide drop-shadow-md gold-text-gradient mt-2 mb-4 pb-3 leading-normal">वंशावली कौम पूरीयां</h1>
 
             <p id="hero-subtitle" class="text-saffron font-medium text-sm sm:text-lg md:text-xl tracking-wider uppercase">लाडी सत्योति ट्रस्ट (बटाला) - पावन ऐतिहासिक संरक्षण</p>
 
@@ -232,13 +241,13 @@
                     </p>
 
                     <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark text-base shadow-sm space-y-2">
-                        <p id="hist-p2">
+                        <p id="hist-p2" class="text-base leading-relaxed">
                             देवी लाडी का मंगेतर स्वर्गवास हो गया । देवी लाडी उसकी पगड़ी गोद में लेकर सती हो गई थी । पूरी इस सती को बड़ी श्रद्धा से पूजते हैं । इसके स्थान पर आ कर अपने बच्चों के मुण्डन संस्कार करते हैं ।
                         </p>
                     </div>
 
                     <!-- Preserved Highlight Badge -->
-                    <div class="p-3 bg-imperial text-gold rounded-xl text-sm font-semibold text-center border border-gold/40 shadow">
+                    <div class="p-3 bg-imperial text-gold rounded-xl text-base font-semibold text-center border border-gold/40 shadow">
                         <i class="fa-solid fa-monument text-saffron mr-1"></i>
                         <span id="hist-p2-highlight">इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।</span>
                     </div>
@@ -346,41 +355,149 @@
                     </p>
 
                     <!-- Seva Badge Box 1 -->
-                    <div class="p-3 bg-maroonDark text-goldLight border-l-4 border-gold rounded-r-lg space-y-1 shadow-sm">
-                        <div class="flex items-center gap-1.5 text-sm text-saffron font-bold">
+                    <div class="p-3.5 bg-maroonDark text-goldLight border-l-4 border-gold rounded-r-lg space-y-1 shadow-sm">
+                        <div class="flex items-center gap-2 text-base text-saffron font-bold">
                             <i class="fa-solid fa-user-check"></i>
                             <span id="gen-box1-head">सेवादार कौम पूरीयां</span>
                         </div>
-                        <p id="gen-box1-body" class="text-sm leading-snug">
+                        <p id="gen-box1-body" class="text-base leading-relaxed">
                             हकीम कर्म चन्द पूरी (बटाला 28-9-1954)
                         </p>
                     </div>
 
                     <!-- Contact Box 2 -->
-                    <div class="p-3 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial space-y-1">
-                        <div class="flex items-center gap-1.5 text-sm text-maroonDark font-bold">
+                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial space-y-1">
+                        <div class="flex items-center gap-2 text-base text-maroonDark font-bold">
                             <i class="fa-solid fa-file-signature"></i>
                             <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
                         </div>
-                        <p id="gen-box2-body" class="text-sm leading-snug">
+                        <p id="gen-box2-body" class="text-base leading-relaxed">
                             जिस किसी को वंशावली की जरूरत हो । वो श्री रघुबीर चन्द पूरी सैक्रेटरी ट्रस्ट से प्राप्त कर सकते हैं ।
                         </p>
                     </div>
                 </div>
 
                 <!-- Contact & Notice Card -->
-                <div class="mt-6 p-3.5 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/40 text-cream space-y-2 text-xs">
-                    <div class="flex items-center gap-1.5 text-gold font-bold">
+                <div class="mt-6 p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/40 text-cream space-y-2">
+                    <div class="flex items-center gap-2 text-base text-gold font-bold">
                         <i class="fa-solid fa-address-book"></i>
                         <span id="contact-head">पंजीकरण एवं सूचना</span>
                     </div>
-                    <p id="contact-body" class="text-goldLight/90 leading-snug">
+                    <p id="contact-body" class="text-base text-goldLight/90 leading-relaxed">
                         पूरी परिवार के सदस्य अपनी वंशावली प्रविष्टियों एवं विवरण हेतु ट्रस्ट कार्यालय बटाला से संपर्क कर सकते हैं।
                     </p>
                 </div>
             </section>
-
         </div>
+        <!-- ================= SECTION 4: DEVOTIONAL SEVA & DONATIONS ================= -->
+        <section class="mt-12 bg-gradient-to-br from-imperial via-maroonDark to-imperial border-2 border-gold rounded-3xl p-6 sm:p-10 shadow-gold-deep text-cream relative overflow-hidden">
+            <!-- Subtle Gold Glow Backdrop -->
+            <div class="absolute -right-16 -top-16 w-72 h-72 bg-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-16 -bottom-16 w-72 h-72 bg-saffron/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 w-full flex flex-col lg:flex-row items-stretch gap-8 lg:gap-12 justify-between">
+                
+                <!-- Left Details & Instructions (Full Width Balanced) -->
+                <div class="flex-1 text-center lg:text-left space-y-5 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center gap-2 bg-maroonDark/80 border border-gold/40 px-3.5 py-1.5 rounded-full text-gold text-xs sm:text-sm font-semibold tracking-wider uppercase shadow">
+                            <i class="fa-solid fa-hands-praying text-saffron"></i>
+                            <span id="seva-badge">पावन दान एवं सहयोग सेवा</span>
+                        </div>
+
+                        <h2 id="seva-title" class="font-hindiTitle text-2xl sm:text-3xl lg:text-4xl text-gold font-bold leading-tight">
+                            लाडी सत्योति ट्रस्ट (रजिस्टर्ड) सेवा कोष
+                        </h2>
+
+                        <p id="seva-p1" class="text-base sm:text-lg text-goldLight/95 font-hindiBody leading-relaxed">
+                            ट्रस्ट के पावन मंदिर के रखरखाव, ऐतिहासिक वंशावली संरक्षण एवं धार्मिक कार्यों में स्वेच्छा से अपना योगदान दें। आपका दान सीधे ट्रस्ट के अधिकृत बैंक खाते में प्राप्त होता है।
+                        </p>
+                    </div>
+
+                    <!-- Trust Credentials & Security Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2">
+                        <!-- Credentials Box -->
+                        <div class="p-4 bg-maroonDark/90 border-l-4 border-gold rounded-r-xl space-y-1.5 text-xs sm:text-sm text-left">
+                            <div class="flex items-center gap-2 text-saffron font-bold text-sm">
+                                <i class="fa-solid fa-building-columns"></i>
+                                <span id="seva-bank-title">यूको बैंक (UCO Bank)</span>
+                            </div>
+                            <p class="text-goldLight font-mono font-medium text-sm">
+                                <span id="seva-upi-label">UPI ID:</span> <strong class="text-white selection:bg-saffron">9815573473@ucobank</strong>
+                            </p>
+                        </div>
+
+                        <!-- Trust Transparency Badge Box -->
+                        <div class="p-4 bg-maroonDark/90 border-l-4 border-saffron rounded-r-xl space-y-1 text-xs sm:text-sm text-left">
+                            <div class="flex items-center gap-2 text-gold font-bold text-sm">
+                                <i class="fa-solid fa-shield-halved text-saffron"></i>
+                                <span id="seva-trust-note-title">100% सुरक्षित एवं प्रत्यक्ष दान</span>
+                            </div>
+                            <p id="seva-trust-note-body" class="text-goldLight/90 text-xs sm:text-sm leading-snug">
+                                रजिस्टर्ड ट्रस्ट बैंक खाता | बिना किसी बिचौलिए के सीधे ट्रस्ट को दान
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons for Mobile, Share & Copy -->
+                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                        <!-- Direct Mobile App Trigger (Visible on Mobile/Tablet screens < 768px) -->
+                        <a href="upi://pay?pa=9815573473@ucobank&pn=LADI%20SATWATI%20TRUST%20REGD&cu=INR" class="md:hidden flex items-center gap-2 bg-gradient-to-r from-saffron to-saffronDark hover:from-saffronDark hover:to-saffron text-white font-bold px-6 py-3 rounded-xl text-sm transition duration-200 shadow-lg active:scale-95">
+                            <i class="fa-solid fa-mobile-screen-button text-lg"></i>
+                            <span id="btn-pay-app">पेमेंट ऐप से दान करें (GPay/PhonePe)</span>
+                        </a>
+
+                        <!-- Share UPI Details Button (Visible on Desktop >= 768px) -->
+                        <button onclick="shareUpiDetails()" class="hidden md:flex items-center gap-2 bg-gradient-to-r from-saffron to-saffronDark hover:from-saffronDark hover:to-saffron text-white font-bold px-6 py-3 rounded-xl text-sm transition duration-200 shadow-lg active:scale-95">
+                            <i class="fa-solid fa-share-nodes text-lg"></i>
+                            <span id="btn-share-upi">दान विवरण शेयर करें (WhatsApp/अन्य)</span>
+                        </button>
+
+                        <!-- Copy UPI ID Button -->
+                        <button onclick="copyUpiId()" class="flex items-center gap-2 bg-maroonDark hover:bg-gold/20 border border-gold/50 text-goldLight px-5 py-3 rounded-xl text-sm transition duration-200 active:scale-95">
+                            <i class="fa-solid fa-copy text-gold text-base"></i>
+                            <span id="btn-copy-upi">UPI ID कॉपी करें</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Elegant QR Code Card -->
+                <div class="flex-shrink-0 flex flex-col items-center justify-center bg-creamCard p-6 rounded-2xl border-2 border-gold/60 shadow-2xl text-charcoal w-full lg:w-80">
+                    <span id="qr-top-text" class="text-base font-bold text-imperial text-center mb-3 tracking-wide font-hindiTitle">
+                        क्यूआर कोड स्कैन करके भुगतान करें
+                    </span>
+
+                    <!-- Local QR Image Frame -->
+                    <div class="p-3 bg-white border-2 border-gold/40 rounded-xl shadow-inner flex flex-col items-center">
+                        <img 
+                            src="resource/QR.png" 
+                            alt="Ladi Satyoti Trust UPI QR Code" 
+                            class="w-52 h-52 sm:w-56 sm:h-56 object-contain rounded-lg"
+                        />
+                    </div>
+
+                    <!-- Trust Identification Text -->
+                    <div class="mt-3 text-center w-full border-b border-gold/20 pb-2.5">
+                        <span id="qr-trust-name" class="block text-sm font-bold text-imperial uppercase tracking-tight">
+                            LADI SATWATI TRUST REGD.
+                        </span>
+                        <span class="block text-xs sm:text-sm font-mono font-bold text-goldDark mt-1">
+                            9815573473@ucobank
+                        </span>
+                    </div>
+
+                    <!-- UPI & Payment Apps Image Badge (Enlarged) -->
+                    <div class="mt-3 text-center">
+                        <span id="qr-scan-badge-text" class="block text-xs sm:text-sm font-semibold text-gray-700 mb-2">
+                            Scan using any UPI QR App
+                        </span>
+                        <div class="p-2 bg-white border border-gold/40 rounded-xl shadow-inner inline-block cursor-pointer hover:scale-105 transition" onclick="handleUpiImageClick()" title="Click to Pay or Share">
+                            <img src="resource/UPI.png" alt="UPI & Payment Apps" class="h-12 sm:h-14 w-auto object-contain mx-auto" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Lightbox Modal for Full Image Zoom -->
@@ -407,6 +524,40 @@
     <div id="toast-msg" class="fixed bottom-6 right-6 z-50 bg-maroonDark text-gold border-2 border-gold px-5 py-3 rounded-2xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 text-xs sm:text-sm">
         <i class="fa-solid fa-circle-check text-saffron text-base"></i>
         <span id="toast-text">सफलतापूर्वक निष्पादित</span>
+    </div>
+
+    <!-- Share & QR Modal Dialog -->
+    <div id="share-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-creamCard border-2 border-gold rounded-3xl max-w-md w-full p-6 shadow-2xl text-charcoal relative space-y-4">
+            <button onclick="closeShareModal()" class="absolute top-4 right-4 text-gray-500 hover:text-imperial text-2xl font-bold p-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="text-center space-y-1">
+                <h3 id="modal-share-title" class="font-hindiTitle text-xl text-imperial font-bold">ट्रस्ट सेवा एवं QR शेयर करें</h3>
+                <p id="modal-share-sub" class="text-xs text-gray-600">व्हाट्सएप, टेलीग्राम या अन्य ऐप्स पर शेयर करें</p>
+            </div>
+            <!-- QR Preview in Modal -->
+            <div class="flex justify-center">
+                <div class="p-2 bg-white border border-gold/30 rounded-xl shadow">
+                    <img src="resource/QR.png" alt="Trust QR" class="w-36 h-36 object-contain" />
+                </div>
+            </div>
+            <!-- Share App Buttons Grid -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button onclick="shareVia('whatsapp')" class="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow">
+                    <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp
+                </button>
+                <button onclick="shareVia('telegram')" class="flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow">
+                    <i class="fa-brands fa-telegram text-base"></i> Telegram
+                </button>
+                <button onclick="shareVia('email')" class="flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs transition shadow">
+                    <i class="fa-solid fa-envelope text-base"></i> Email
+                </button>
+                <button onclick="copyUpiIdFromModal()" class="flex items-center justify-center gap-2 bg-maroonDark hover:bg-saffronDark text-goldLight font-bold py-2.5 px-4 rounded-xl text-xs transition shadow border border-gold/40">
+                    <i class="fa-solid fa-copy text-gold"></i> <span id="modal-copy-btn">UPI कॉपी करें</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-8 px-4 mt-auto">
@@ -464,7 +615,25 @@
                 footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
                 footer_sub: "संरक्षण एवं संकलन: पूरी क्षत्रिय वंश धरोहर समिति (बटाला)",
                 toast_bell: "🔔 पावन मंदिर की घंटी बज रही है...",
-                toast_share: "🔗 वेबसाइट लिंक क्लिपबोर्ड पर कॉपी हो गया!"
+                toast_share: "🔗 वेबसाइट लिंक क्लिपबोर्ड पर कॉपी हो गया!",
+                seva_badge: "पावन दान एवं सहयोग सेवा",
+                seva_title: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) सेवा कोष",
+                seva_p1: "ट्रस्ट के पावन मंदिर के रखरखाव, ऐतिहासिक वंशावली संरक्षण एवं धार्मिक कार्यों में स्वेच्छा से अपना योगदान दें। आपका दान सीधे ट्रस्ट के अधिकृत बैंक खाते में प्राप्त होता है।",
+                seva_bank_title: "यूको बैंक (UCO Bank) - रजिस्टर्ड ट्रस्ट खाता",
+                seva_upi_label: "UPI ID:",
+                btn_pay_app: "पेमेंट ऐप से दान करें (GPay/PhonePe)",
+                btn_copy_upi: "UPI ID कॉपी करें",
+                qr_top_text: "क्यूआर कोड स्कैन करके भुगतान करें",
+                qr_trust_name: "लाडी सत्योति ट्रस्ट रजिस्टर्ड",
+                toast_upi_copied: "📋 UPI ID (9815573473@ucobank) कॉपी हो गई है!",
+                btn_share_upi: "दान विवरण शेयर करें (WhatsApp/अन्य)",
+                page_title: "लाडी सत्योति ट्रस्ट - बटाला | Ladi Satyoti Trust",
+                modal_share_title: "श्री लाडी सत्योति ट्रस्ट - सेवा सहयोग शेयर करें",
+                modal_share_sub: "व्हाट्सएप, टेलीग्राम या अन्य माध्यम से QR और UPI विवरण शेयर करें",
+                modal_copy_btn: "UPI कॉपी करें",
+                nudge_msg: "भाषा बदलें / Switch Language",
+                seva_trust_note_title: "100% सुरक्षित एवं प्रत्यक्ष दान",
+                seva_trust_note_body: "रजिस्टर्ड ट्रस्ट बैंक खाता | बिना किसी बिचौलिए के सीधे ट्रस्ट को दान"
             },
             en: {
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
@@ -505,15 +674,33 @@
                 footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
                 footer_sub: "Preservation & Compilation: Puri Kshatriya Heritage Board (Batala)",
                 toast_bell: "🔔 Sacred Temple Bell is Chiming...",
-                toast_share: "🔗 Website URL copied to clipboard!"
+                toast_share: "🔗 Website URL copied to clipboard!",
+                seva_badge: "Sacred Voluntary Offering & Seva",
+                seva_title: "Ladi Satyoti Trust (Regd.) Donation Fund",
+                seva_p1: "Contribute voluntarily towards temple upkeep, historical genealogy preservation, and sacred trust activities. All donations go directly to the registered Trust bank account.",
+                seva_bank_title: "UCO Bank - Registered Trust Account",
+                seva_upi_label: "UPI ID:",
+                btn_pay_app: "Pay via UPI App (GPay / PhonePe)",
+                btn_copy_upi: "Copy UPI ID",
+                qr_top_text: "Scan QR Code to Pay",
+                qr_trust_name: "LADI SATWATI TRUST REGD.",
+                toast_upi_copied: "📋 UPI ID (9815573473@ucobank) copied to clipboard!",
+                btn_share_upi: "Share Donation Details (WhatsApp)",
+                page_title: "Ladi Satyoti Trust - Batala | Sacred Heritage",
+                modal_share_title: "Shri Ladi Satyoti Trust Seva QR Code",
+                modal_share_sub: "Share QR and UPI details via WhatsApp, Telegram, or other apps",
+                modal_copy_btn: "Copy UPI ID",
+                nudge_msg: "Switch Language / भाषा बदलें",
+                seva_trust_note_title: "100% Direct & Secure Donation",
+                seva_trust_note_body: "Registered Trust Bank Account | Direct contribution with zero middleman"
             }
         };
 
         // Key required for persistence state
         const LANG_STORAGE_KEY = 'trust_site_lang';
         
-        // Retrieve initial state with fallback
-        let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || localStorage.getItem('puri_trust_lang') || 'hi';
+        // Retrieve initial state with default fallback set to English ('en')
+        let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || localStorage.getItem('puri_trust_lang') || 'en';
         let currentFontSize = 16;
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -587,6 +774,26 @@
             setElText('footer-copy', dict.footer_copy);
             setElText('footer-sub', dict.footer_sub);
             setElText('modal-caption-text', dict.portrait_subcaption);
+
+            setElText('seva-badge', dict.seva_badge);
+            setElText('seva-title', dict.seva_title);
+            setElText('seva-p1', dict.seva_p1);
+            setElText('seva-bank-title', dict.seva_bank_title);
+            setElText('seva-upi-label', dict.seva_upi_label);
+            setElText('btn-pay-app', dict.btn_pay_app);
+            setElText('btn-copy-upi', dict.btn_copy_upi);
+            setElText('btn-share-upi', dict.btn_share_upi);
+            setElText('qr-top-text', dict.qr_top_text);
+            setElText('qr-trust-name', dict.qr_trust_name);
+
+            setElText('page-title', dict.page_title);
+            document.title = dict.page_title;
+            setElText('modal-share-title', dict.modal_share_title);
+            setElText('modal-share-sub', dict.modal_share_sub);
+            setElText('modal-copy-btn', dict.modal_copy_btn);
+            setElText('nudge-text', dict.nudge_msg);
+            setElText('seva-trust-note-title', dict.seva_trust_note_title);
+            setElText('seva-trust-note-body', dict.seva_trust_note_body);
         }
 
         function setElText(id, text) {
@@ -654,13 +861,58 @@
         }
 
         function shareWebsite() {
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href;
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            showToast(translations[currentLang].toast_share);
+            copyTextToClipboard(window.location.href, translations[currentLang].toast_share);
+        }
+        
+        function copyUpiId() {
+            copyTextToClipboard('9815573473@ucobank', translations[currentLang].toast_upi_copied);
+        }
+
+        function copyTextToClipboard(textToCopy, toastMsg) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    showToast(toastMsg);
+                }).catch(() => {
+                    fallbackCopyText(textToCopy, toastMsg);
+                });
+            } else {
+                fallbackCopyText(textToCopy, toastMsg);
+            }
+        }
+
+        function fallbackCopyText(textToCopy, toastMsg) {
+            const textArea = document.createElement("textarea");
+            textArea.value = textToCopy;
+            textArea.style.position = "fixed";
+            textArea.style.top = "-9999px";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(toastMsg);
+            } catch (err) {
+                console.error('Fallback copy failed:', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function shareUpiDetails() {
+            const shareText = 'लाडी सत्योति ट्रस्ट (बटाला) सेवा कोष में सहयोग हेतु UCO Bank UPI ID: 9815573473@ucobank पर दान करें। ' + window.location.href;
+            
+            // Use native share only on mobile devices to prevent desktop browser crashes
+            if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
+                navigator.share({
+                    title: 'Ladi Satyoti Trust - Seva & Donation',
+                    text: shareText,
+                    url: window.location.href
+                }).catch(err => console.log('Share dismissed:', err));
+            } else {
+                // Safe desktop fallback opening WhatsApp directly
+                const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+                window.open(whatsappUrl, '_blank');
+            }
         }
 
         function showToast(msg) {
@@ -675,6 +927,77 @@
                     toast.classList.remove('translate-y-0', 'opacity-100');
                 }, 3000);
             }
+        }
+
+        // Nudge handling on load
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+            if (!localStorage.getItem('trust_nudge_seen')) {
+                const nudge = document.getElementById('lang-nudge');
+                if (nudge) {
+                    nudge.classList.remove('hidden');
+                    nudge.classList.add('flex');
+                    // Auto hide after 15 seconds if ignored
+                    setTimeout(() => dismissNudge(), 15000);
+                }
+            }
+        });
+
+        function dismissNudge(e) {
+            if (e) e.stopPropagation();
+            const nudge = document.getElementById('lang-nudge');
+            if (nudge) {
+                nudge.classList.add('hidden');
+                nudge.classList.remove('flex');
+            }
+            localStorage.setItem('trust_nudge_seen', 'true');
+        }
+
+        function handleUpiImageClick() {
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                window.location.href = "upi://pay?pa=9815573473@ucobank&pn=LADI%20SATWATI%20TRUST%20REGD&cu=INR";
+            } else {
+                openShareModal();
+            }
+        }
+
+        function shareUpiDetails() {
+            if (/Mobi|Android/i.test(navigator.userAgent)) {
+                window.location.href = "upi://pay?pa=9815573473@ucobank&pn=LADI%20SATWATI%20TRUST%20REGD&cu=INR";
+            } else {
+                openShareModal();
+            }
+        }
+
+        function openShareModal() {
+            const modal = document.getElementById('share-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            const modal = document.getElementById('share-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function shareVia(platform) {
+            const text = (currentLang === 'hi') 
+                ? `श्री लाडी सत्योति ट्रस्ट (रजिस्टर्ड, बटाला) के पावन सेवा कोष में सहयोग हेतु UCO Bank UPI ID: 9815573473@ucobank पर दान करें। अधिक जानकारी हेतु देखें: ${window.location.href}`
+                : `Contribute to the Sacred Seva Fund of Shri Ladi Satyoti Trust (Regd., Batala) via UCO Bank UPI ID: 9815573473@ucobank. Visit: ${window.location.href}`;
+            
+            let url = '';
+            if (platform === 'whatsapp') {
+                url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+            } else if (platform === 'telegram') {
+                url = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(text)}`;
+            } else if (platform === 'email') {
+                url = `mailto:?subject=${encodeURIComponent('Ladi Satyoti Trust Donation & Seva')}&body=${encodeURIComponent(text)}`;
+            }
+            if (url) window.open(url, '_blank');
+        }
+
+        function copyUpiIdFromModal() {
+            copyUpiId();
+            closeShareModal();
         }
     </script>
 </body>
