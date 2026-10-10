@@ -54,6 +54,48 @@
     </script>
 
     <style>
+        /* Reusable class for all card titles (Clean, Bold, Sans-serif) */
+        .card-title {
+            font-family: 'Roboto', 'Mukta', sans-serif !important;
+            font-weight: 700;
+        }
+
+        /* Reusable class for personality list item cards */
+        .personality-card {
+            padding: 0.875rem;
+            background: linear-gradient(to right, rgba(212, 175, 55, 0.15), #FFFDF9 50%, rgba(212, 175, 55, 0.05));
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: #111827;
+        }
+
+        .personality-card:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Text size increase for text shown in attached screenshots */
+        .landmark-note {
+            font-size: 0.95rem !important; /* ~15px (increased from text-xs ~12px) */
+            line-height: 1.5;
+        }
+
+        .btn-direction-text {
+            font-size: 0.95rem !important; /* ~15px (increased from text-xs ~12px) */
+            font-weight: 700;
+        }
+
+        .body-card-text {
+            font-size: 1.05rem !important; /* ~17px (increased from text-sm ~14px) */
+            line-height: 1.65;
+        }
+    </style>
+
+    <style>
         :root {
             --base-font-size: 16px;
         }
@@ -64,7 +106,7 @@
         }
         /* English Font Overrides */
         html[lang="en"] .font-hindiTitle {
-            font-family: "Playfair Display", serif !important;
+            font-family: "Rozha One;", serif !important;
             letter-spacing: 0.02em; /* Adds a very slight, elegant spacing for titles */
         }
 
@@ -121,6 +163,28 @@
         .lang-pill-inactive:hover {
             opacity: 1;
             color: #FFFFFF;
+        }
+    </style>
+
+    <style>
+        /* Uniform Card Headings */
+        .card-heading {
+            font-family: 'Roboto', 'Mukta', sans-serif !important;
+            font-size: 1.15rem !important;
+            font-weight: 700;
+        }
+        @media (min-width: 640px) {
+            .card-heading {
+                font-size: 1.25rem !important;
+            }
+        }
+
+        /* Uniform Card Sub-labels & Badges */
+        .card-sub {
+            font-size: 0.75rem !important;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
     </style>
 </head>
@@ -221,29 +285,24 @@
                             <i class="fa-solid fa-scroll"></i>
                         </div>
                         <div>
-                            <h2 id="hist-title" class="font-hindiTitle text-lg sm:text-xl text-imperial font-bold">इतिहास एवं आस्था</h2>
-                            <span id="hist-badge" class="text-xs text-saffronDark font-semibold uppercase tracking-wider">1932 ई. स्थापित ट्रस्ट</span>
+                            <h2 id="hist-title" class="card-heading text-imperial">इतिहास एवं आस्था</h2>
+                            <span id="hist-badge" class="card-sub text-saffronDark">1932 ई. स्थापित ट्रस्ट</span>
                         </div>
                     </div>
 
                     <!-- Content distributed across full card height to eliminate bottom gap -->
-                    <div class="flex flex-col justify-between flex-grow space-y-4 text-sm sm:text-base text-gray-800 leading-relaxed font-hindiBody">
-                        <p id="hist-p1">
+                    <div class="flex flex-col justify-between flex-grow space-y-4 text-gray-800 leading-relaxed font-hindiBody">
+                        <p id="hist-p1" class="body-card-text font-medium">
                             पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिनकी सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई थी ।
                         </p>
 
-                        <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark text-sm sm:text-base shadow-sm">
-                            <p id="hist-p2">
+                        <div class="p-4 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark shadow-sm">
+                            <p id="hist-p2" class="body-card-text font-medium">
                                 देवी लाडी के मंगेतर का स्वर्गवास हो गया था । देवी लाडी उनकी पगड़ी गोद में लेकर सती हो गई थीं । पूरी परिवार इस सती को बड़ी श्रद्धा से पूजता है । इसके स्थान पर आकर अपने बच्चों के मुण्डन संस्कार करते हैं ।
                             </p>
                         </div>
 
-                        <div class="p-3.5 bg-maroonDark text-goldLight rounded-xl text-xs sm:text-sm font-bold text-center border-2 border-gold shadow-lg">
-                            <i class="fa-solid fa-monument text-saffron mr-1.5 text-base"></i>
-                            <span id="hist-p2-highlight">इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।</span>
-                        </div>
-
-                        <p id="hist-p3" class="mt-auto">
+                        <p id="hist-p3" class="body-card-text font-medium mt-auto">
                             पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब में आबादी के विस्थापन के कारण दूर-दराज भिन्न-भिन्न शहरों में आबाद हो गई है । जिसकी वजह से आपस में मेल-मिलाप और जान-पहचान खत्म होती जा रही है ।
                         </p>
                     </div>
@@ -317,8 +376,8 @@
                                     <i class="fa-solid fa-hand-holding-heart text-saffron"></i>
                                 </div>
                                 <div>
-                                    <h3 id="seva-title" class="font-hindiTitle text-base sm:text-lg text-goldLight font-bold">Online Donation</h3>
-                                    <span id="seva-badge" class="text-[10px] text-saffron font-semibold uppercase tracking-wider">Sacred Trust Seva</span>
+                                    <h3 id="seva-title" class="card-heading text-goldLight">Online Donation</h3>
+                                    <span id="seva-badge" class="card-sub text-saffron">Sacred Trust Seva</span>    
                                 </div>
                             </div>
                         </div>
@@ -375,8 +434,8 @@
                                 <i class="fa-solid fa-map-location-dot text-saffron"></i>
                             </div>
                             <div>
-                                <h3 id="map-title" class="font-hindiTitle text-base sm:text-lg text-imperial font-bold">Temple Location</h3>
-                                <span id="map-badge" class="text-[11px] text-saffronDark font-semibold uppercase">Batala Shrine</span>
+                                <h3 id="map-title" class="card-heading text-imperial">Temple Location</h3>
+                                <span id="map-badge" class="card-sub text-saffronDark">Batala Shrine</span>
                             </div>
                         </div>
 
@@ -411,17 +470,17 @@
                         </div>
 
                         <!-- Visitor Landmark Note -->
-                        <div class="p-2.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial text-xs font-semibold flex items-center gap-2 flex-shrink-0">
-                            <i class="fa-solid fa-location-arrow text-saffronDark"></i>
-                            <span id="map-landmark-text">जालंधर रोड पर उमरपुरा क्षेत्र के निकट स्थित पावन मुख्य मंदिर धाम।</span>
+                        <div class="p-3 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial font-semibold flex items-center gap-2.5 flex-shrink-0">
+                            <i class="fa-solid fa-location-arrow text-saffronDark text-base"></i>
+                            <span id="map-landmark-text" class="landmark-note font-semibold">जालंधर रोड पर उमरपुरा क्षेत्र के निकट स्थित पावन मुख्य मंदिर धाम।</span>
                         </div>
                     </div>
 
                     <!-- Bottom Buttons -->
                     <div class="flex gap-2 pt-3 mt-auto flex-shrink-0">
-                        <a href="https://maps.app.goo.gl/5yMch3hhHddu91mt8" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-1.5 bg-gradient-to-r from-saffron to-saffronDark text-white font-bold py-2.5 px-3 rounded-xl text-xs shadow hover:opacity-90 transition">
-                            <i class="fa-solid fa-diamond-turn-right"></i>
-                            <span id="btn-open-maps">Get Directions</span>
+                        <a href="https://maps.app.goo.gl/5yMch3hhHddu91mt8" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-saffron to-saffronDark text-white font-bold py-2.5 px-3 rounded-xl shadow hover:opacity-90 transition">
+                            <i class="fa-solid fa-diamond-turn-right text-base"></i>
+                            <span id="btn-open-maps" class="btn-direction-text">Get Directions</span>
                         </a>
                         <button onclick="copyTempleAddress()" class="bg-maroonDark hover:bg-gold/20 border border-gold/40 text-gold px-3 py-2.5 rounded-xl text-xs font-semibold" title="Copy Address">
                             <i class="fa-solid fa-copy"></i>
@@ -431,7 +490,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- ================= HORIZONTALLY ELONGATED GENEALOGY PRESERVATION SECTION ================= -->
         <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative">
             <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-6">
@@ -439,8 +498,8 @@
                     <i class="fa-solid fa-sitemap"></i>
                 </div>
                 <div>
-                    <h2 id="gen-title" class="font-hindiTitle text-xl sm:text-2xl text-imperial font-bold">वंशावली संरक्षण</h2>
-                    <span id="gen-badge" class="text-xs text-saffronDark font-semibold uppercase tracking-wider">प्रामाणिक शोध रिकॉर्ड</span>
+                    <h2 id="gen-title" class="card-heading text-imperial">वंशावली संरक्षण</h2>
+                    <span id="gen-badge" class="card-sub text-saffronDark">प्रामाणिक शोध रिकॉर्ड</span>
                 </div>
             </div>
 
@@ -494,6 +553,177 @@
             </div>
         </div>
 
+        <!-- ================= SECTION: BHOOMIKA & PROMINENT PERSONALITIES ================= -->
+        <div class="space-y-8">
+            
+            <!-- 1. Bhoomika / Foreword Narrative Card -->
+            <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300">
+                <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl bg-imperial flex items-center justify-center text-gold text-xl shadow">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <div>
+                        <h2 id="bhoomika-title" class="card-heading text-imperial">ऐतिहासिक भूमिका</h2>
+                        <span id="bhoomika-badge" class="card-sub text-saffronDark">ऐतिहासिक पृष्ठभूमि एवं आशीर्वाद</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4 text-base sm:text-lg text-gray-800 leading-relaxed font-hindiBody">
+                    <p id="bhoomika-p1" class="font-medium">
+                        बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। पूरी कौम लोधी हुकूमत के वक्त बटाला में आबाद हुई। मुगलीय हुकूमत के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए।
+                    </p>
+                    <div class="p-4 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-maroonDark text-base sm:text-lg font-semibold shadow-sm">
+                        <p id="bhoomika-p2">
+                            चुनांचे मशहूर हैं कि जब श्री गुरू नानक देव जी महाराज बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। श्री गुरू नानक देव जी महाराज ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Prominent Personalities (Puri Vansha Renowned Figures) -->
+            <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300">
+                <div class="flex items-center justify-between border-b-2 border-gold/30 pb-4 mb-6 flex-wrap gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-imperial flex items-center justify-center text-gold text-xl shadow">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <h2 id="figures-title" class="card-heading text-imperial">पूरी वंश को मान्यवर और प्रसिद्ध हस्तियां</h2>
+                            <p id="figures-subtitle" class="text-xs sm:text-sm text-saffronDark font-semibold">
+                                (जिन पर कौम को बजा तौर पर फखर है)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 28 Renowned Personalities List Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-base sm:text-lg font-hindiBody">
+                    
+                    <!-- Left Column (1 to 13) -->
+                    <div class="space-y-3">
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">1</span>
+                            <span id="fig-1" class="font-semibold leading-relaxed">श्रीमान 1008 महाराज मुयं प्रकाश जी दरबार आपो आप छीटांवाला (श्री राम रतन पुरी पटियाला)</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">2</span>
+                            <span id="fig-2" class="font-semibold leading-relaxed">श्रीमान 1008 महाराज सत्य प्रकाश जी दरबार आपो आप छीटांवाला (श्री राम नाथ जी पुरी पटियाला वाले)</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">3</span>
+                            <span id="fig-3" class="font-semibold leading-relaxed">राय बहादुर लाला कर्म चन्द धर्म चन्द आनरेरी मैजिस्ट्रेट लाहौर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">4</span>
+                            <span id="fig-4" class="font-semibold leading-relaxed">राय साहब लाला मधुरा दास पुरी आनरेरी मैजिस्ट्रेट व म्यूनिसपल कमिशनर लाहौर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">5</span>
+                            <span id="fig-5" class="font-semibold leading-relaxed">कैप्टन डाक्टर जमना दास दिल्ली।</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">6</span>
+                            <span id="fig-6" class="font-semibold leading-relaxed">लाला मुकन्द लाल पुरी म्यूनिसपल कमिशनर बटाला</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">7</span>
+                            <span id="fig-7" class="font-semibold leading-relaxed">लाला हरदयाल पुरी म्यूनिसपल कमिशनर बटाला</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">8</span>
+                            <span id="fig-8" class="font-semibold leading-relaxed">लाला गोपाल दास पूरी म्यूनिसपल कमिशनर बटाला</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">9</span>
+                            <span id="fig-9" class="font-semibold leading-relaxed">लाला रघुबीर चन्द पूरी प्रधान नगर पालिका बटाला व मैंबर सिनेट (कुरुक्षेत्र यूनीवर्सिटी)</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">10</span>
+                            <span id="fig-10" class="font-semibold leading-relaxed">रायसाहब लाला नत्थू मल पुरी अफसर माल अमृतसर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">11</span>
+                            <span id="fig-11" class="font-semibold leading-relaxed">लाला हंस राज पुरी म्यूनिसपल कमिशनर सुजानपुर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">12</span>
+                            <span id="fig-12" class="font-semibold leading-relaxed">लाला दीना नाथ पुरी असिसटेंट कमिशनर लाहौर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">13</span>
+                            <span id="fig-13" class="font-semibold leading-relaxed">लाला देवी दास पुरी मिल ओनर मोगा।</span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (14 to 28) -->
+                    <div class="space-y-3">
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">14</span>
+                            <span id="fig-14" class="font-semibold leading-relaxed">श्री मदन लाल पुरी फिल्म स्टार बम्बई।</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">15</span>
+                            <span id="fig-15" class="font-semibold leading-relaxed">श्री नवल किशोर पुरी सरपंच पंचायत काहनूवान</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">16</span>
+                            <span id="fig-16" class="font-semibold leading-relaxed">श्री सुरिन्दर कुमार पूरी सरपंच पंचायत कोट सन्तोष राय</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">17</span>
+                            <span id="fig-17" class="font-semibold leading-relaxed">श्री रघुनाथ सहाय पूरी एम.एल.ए. सुजानपुर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">18</span>
+                            <span id="fig-18" class="font-semibold leading-relaxed">लाला जगन नाथ पुरी पठानकोट</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">19</span>
+                            <span id="fig-19" class="font-semibold leading-relaxed">लाला नानक चन्द अमर नाथ पूरी बहरामपुर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">20</span>
+                            <span id="fig-20" class="font-semibold leading-relaxed">राय साहब लाला हरचरण दास पुरी</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">21</span>
+                            <span id="fig-21" class="font-semibold leading-relaxed">चौधरी लाला महाराज दास पुरी</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">22</span>
+                            <span id="fig-22" class="font-semibold leading-relaxed">लाला किशन चन्द पुरी एम एल ए मैनेजिंग डायरेक्टर हिन्दुस्तान कमिशियल बैंक कानपुर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">23</span>
+                            <span id="fig-23" class="font-semibold leading-relaxed">लाला भवानी दास पूरी सब जज लाहौर।</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">24</span>
+                            <span id="fig-24" class="font-semibold leading-relaxed">लाला मूलराज शाह पूरी कामलपुर</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">25</span>
+                            <span id="fig-25" class="font-semibold leading-relaxed">लाला आज्ञा राम पुरी कपूरथला</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">26</span>
+                            <span id="fig-26" class="font-semibold leading-relaxed">लाला भवानी सिंह पूरी सब जज रियासत टेढ़ी गढ़वाल</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">27</span>
+                            <span id="fig-27" class="font-semibold leading-relaxed">श्री इन्द्र कुमार पूरी डी पो डायरेक्टर रेलवे।</span>
+                        </div>
+                        <div class="personality-card">
+                            <span class="w-6 h-6 rounded-full bg-imperial text-gold font-bold flex items-center justify-center text-xs flex-shrink-0 shadow mt-0.5">28</span>
+                            <span id="fig-28" class="font-semibold leading-relaxed">श्री कृष्ण कुमार पुरी डायरेक्टर सी बी आई दिल्ली</span>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <!-- Lightbox Modal for Full Image Zoom -->
@@ -646,7 +876,42 @@
                 map_full_address: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड), लाडी सत्योति मंदिर, जालंधर रोड, बटाला-143505, जिला: गुरदासपुर, पंजाब (भारत)।",
                 btn_open_maps: "गूगल मैप्स पर मार्ग देखें",
                 btn_copy_address: "पता कॉपी करें",
-                toast_address_copied: "📍 मंदिर का पता एवं फोन नंबर कॉपी हो गया है!"
+                toast_address_copied: "📍 मंदिर का पता एवं फोन नंबर कॉपी हो गया है!",
+
+                bhoomika_title: "ऐतिहासिक भूमिका",
+                bhoomika_badge: "ऐतिहासिक पृष्ठभूमि एवं आशीर्वाद",
+                bhoomika_p1: "बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>पुरी कौम लोधी हुकूमत के वक्त बटाला में आबाद हुई।</span> मुगलीय हुकूमत के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए。",
+                bhoomika_p2: "चुनांचे मशहूर हैं कि जब <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>श्री गुरू नानक देव जी महाराज</span> बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। श्री गुरू नानक देव जी महाराज ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।",
+                figures_title: "पूरी वंश को मान्यवर और प्रसिद्ध हस्तियां",
+                figures_subtitle: "(जिन पर कौम को बजा तौर पर फखर है)",
+                fig_1: "श्रीमान 1008 महाराज मुयं प्रकाश जी दरबार आपो आप छीटांवाला (श्री राम रतन पुरी पटियाला)",
+                fig_2: "श्रीमान 1008 महाराज सत्य प्रकाश जी दरबार आपो आप छीटांवाला (श्री राम नाथ जी पुरी पटियाला वाले)",
+                fig_3: "राय बहादुर लाला कर्म चन्द धर्म चन्द आनरेरी मैजिस्ट्रेट लाहौर",
+                fig_4: "राय साहब लाला मधुरा दास पुरी आनरेरी मैजिस्ट्रेट व म्यूनिसपल कमिशनर लाहौर",
+                fig_5: "कैप्टन डाक्टर जमना दास दिल्ली।",
+                fig_6: "लाला मुकन्द लाल पुरी म्यूनिसपल कमिशनर बटाला",
+                fig_7: "लाला हरदयाल पुरी म्यूनिसपल कमिशनर बटाला",
+                fig_8: "लाला गोपाल दास पूरी म्यूनिसपल कमिशनर बटाला",
+                fig_9: "लाला रघुबीर चन्द पूरी प्रधान नगर पालिका बटाला व मैंबर सिनेट (कुरुक्षेत्र यूनीवर्सिटी)",
+                fig_10: "रायसाहब लाला नत्थू मल पुरी अफसर माल अमृतसर",
+                fig_11: "लाला हंस राज पुरी म्यूनिसपल कमिशनर सुजानपुर",
+                fig_12: "लाला दीना नाथ पुरी असिसटेंट कमिशनर लाहौर",
+                fig_13: "लाला देवी दास पुरी मिल ओनर मोगा।",
+                fig_14: "श्री मदन लाल पुरी फिल्म स्टार बम्बई।",
+                fig_15: "श्री नवल किशोर पुरी सरपंच पंचायत काहनूवान",
+                fig_16: "श्री सुरिन्दर कुमार पूरी सरपंच पंचायत कोट सन्तोष राय",
+                fig_17: "श्री रघुनाथ सहाय पूरी एम.एल.ए. सुजानपुर",
+                fig_18: "लाला जगन नाथ पुरी पठानकोट",
+                fig_19: "लाला नानक चन्द अमर नाथ पूरी बहरामपुर",
+                fig_20: "राय साहब लाला हरचरण दास पुरी",
+                fig_21: "चौधरी लाला महाराज दास पुरी",
+                fig_22: "लाला किशन चन्द पुरी एम एल ए मैनेजिंग डायरेक्टर हिन्दुस्तान कमशियल बैंक कानपुर",
+                fig_23: "लाला भवानी दास पूरी सब जज लाहौर।",
+                fig_24: "लाला मूलराज शाह पूरी कामलपुर",
+                fig_25: "लाला आज्ञा राम पुरी कपूरथला",
+                fig_26: "लाला भवानी सिंह पूरी सब जज रियासत टेढ़ी गढ़वाल",
+                fig_27: "श्री इन्द्र कुमार पूरी डी पो डायरेक्टर रेलवे।",
+                fig_28: "श्री कृष्ण कुमार पुरी डायरेक्टर सी बी आई दिल्ली"
             },
             en: {
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
@@ -722,7 +987,42 @@
                 map_full_address: "Ladi Satyoti Trust (Regd), Ladi Satyoti Mandir, Jalandhar Road, Batala-143505, District: Gurdaspur, Punjab (India).",
                 btn_open_maps: "Get Directions",
                 btn_copy_address: "Copy Address",
-                toast_address_copied: "📍 Temple address & contact details copied to clipboard!"
+                toast_address_copied: "📍 Temple address & contact details copied to clipboard!",
+
+                bhoomika_title: "Ancestral Roots & Foreword",
+                bhoomika_badge: "Historical Background & Divine Blessings",
+                bhoomika_p1: "The city of Batala was founded by Ram Dev Bhatti Rajput. <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>The Puri community settled in Batala during the Lodhi dynasty rule.</span> During the Mughal rule, many Puri brothers held distinguished government positions.",
+                bhoomika_p2: "It is well-known that when <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>Shri Guru Nanak Dev Ji Maharaj</span> visited Batala for his wedding, the Puri community welcomed him with grand hospitality. Pleased by their grand reception, Shri Guru Nanak Dev Ji Maharaj blessed the Puri clan that they would always remain fulfilled ('Pur'). From that day to this, the Puri family has remained prosperous and deeply respected.",
+                figures_title: "Eminent & Renowned Personalities of the Puri Lineage",
+                figures_subtitle: "(Of whom the community is immensely proud)",
+                fig_1: "Shriman 1008 Maharaj Muyan Prakash Ji Darbar Apo Aap Chhitawala (Shri Ram Ratan Puri, Patiala)",
+                fig_2: "Shriman 1008 Maharaj Satya Prakash Ji Darbar Apo Aap Chhitawala (Shri Ram Nath Ji Puri, Patiala)",
+                fig_3: "Rai Bahadur Lala Karam Chand Dharam Chand, Honorary Magistrate, Lahore",
+                fig_4: "Rai Sahib Lala Mathura Das Puri, Honorary Magistrate & Municipal Commissioner, Lahore",
+                fig_5: "Captain Doctor Jamna Das, Delhi",
+                fig_6: "Lala Mukand Lal Puri, Municipal Commissioner, Batala",
+                fig_7: "Lala Hardayal Puri, Municipal Commissioner, Batala",
+                fig_8: "Lala Gopal Das Puri, Municipal Commissioner, Batala",
+                fig_9: "Lala Raghubeer Chand Puri, President Municipal Corporation Batala & Senate Member (Kurukshetra University)",
+                fig_10: "Rai Sahib Lala Nathu Mal Puri, Revenue Officer, Amritsar",
+                fig_11: "Lala Hans Raj Puri, Municipal Commissioner, Sujanpur",
+                fig_12: "Lala Dina Nath Puri, Assistant Commissioner, Lahore",
+                fig_13: "Lala Devi Das Puri, Mill Owner, Moga",
+                fig_14: "Shri Madan Lal Puri, Film Star, Bombay",
+                fig_15: "Shri Nawal Kishore Puri, Sarpanch Panchayat, Kahnuwan",
+                fig_16: "Shri Surinder Kumar Puri, Sarpanch Panchayat, Kot Santokh Rai",
+                fig_17: "Shri Raghunath Sahai Puri, M.L.A., Sujanpur",
+                fig_18: "Lala Jagan Nath Puri, Pathankot",
+                fig_19: "Lala Nanak Chand Amar Nath Puri, Behrampur",
+                fig_20: "Rai Sahib Lala Harcharan Das Puri",
+                fig_21: "Chaudhary Lala Maharaj Das Puri",
+                fig_22: "Lala Kishan Chand Puri, M.L.A., Managing Director Hindustan Commercial Bank, Kanpur",
+                fig_23: "Lala Bhawani Das Puri, Sub-Judge, Lahore",
+                fig_24: "Lala Moolraj Shah Puri, Kamalpur",
+                fig_25: "Lala Agya Ram Puri, Kapurthala",
+                fig_26: "Lala Bhawani Singh Puri, Sub-Judge, Princely State Tehri Garhwal",
+                fig_27: "Shri Indra Kumar Puri, Depot Director, Railways",
+                fig_28: "Shri Krishan Kumar Puri, Director, C.B.I., Delhi"
             }
         };
 
@@ -832,6 +1132,18 @@
             setElText('map-landmark-text', dict.map_landmark_text);
             setElText('btn-open-maps', dict.btn_open_maps);
             setElText('btn-copy-address', dict.btn_copy_address);
+
+            setElText('bhoomika-title', dict.bhoomika_title);
+            setElText('bhoomika-badge', dict.bhoomika_badge);
+            setElHtml('bhoomika-p1', dict.bhoomika_p1);
+            setElHtml('bhoomika-p2', dict.bhoomika_p2);
+            setElText('figures-title', dict.figures_title);
+            setElText('figures-subtitle', dict.figures_subtitle);
+
+
+            for (let i = 1; i <= 28; i++) {
+                setElText(`fig-${i}`, dict[`fig_${i}`]);
+            }
         }
 
         function setElText(id, text) {
