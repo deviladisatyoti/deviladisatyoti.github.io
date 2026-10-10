@@ -132,7 +132,7 @@
             <button onclick="playTempleBell()" class="flex items-center gap-2 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border border-gold/40 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition duration-200 shadow-md active:scale-95" title="Ring Temple Bell">
                 <i class="fa-solid fa-bell text-saffron animate-bounce"></i>
                 <span id="nav-bell-text" class="hidden sm:inline">पावन घंटी बजाएं</span>
-                <span class="sm:hidden">घंटी</span>
+                <span id="nav-bell-text-mobile" class="sm:hidden">घंटी</span>
             </button>
 
             <!-- Center: Sacred Title Badge -->
@@ -226,32 +226,32 @@
                 </div>
 
                 <!-- Text Content with preserved original text -->
-                <div class="space-y-4 text-xs sm:text-sm text-gray-800 leading-relaxed font-hindiBody">
+                <div class="space-y-4 text-base text-gray-800 leading-relaxed font-hindiBody">
                     <p id="hist-p1">
                         पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिस की सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई हुई थी ।
                     </p>
 
-                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark text-xs sm:text-sm shadow-sm space-y-2">
+                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-maroonDark text-base shadow-sm space-y-2">
                         <p id="hist-p2">
                             देवी लाडी का मंगेतर स्वर्गवास हो गया । देवी लाडी उसकी पगड़ी गोद में लेकर सती हो गई थी । पूरी इस सती को बड़ी श्रद्धा से पूजते हैं । इसके स्थान पर आ कर अपने बच्चों के मुण्डन संस्कार करते हैं ।
                         </p>
                     </div>
 
                     <!-- Preserved Highlight Badge -->
-                    <div class="p-3 bg-imperial text-gold rounded-xl text-xs font-semibold text-center border border-gold/40 shadow">
+                    <div class="p-3 bg-imperial text-gold rounded-xl text-sm font-semibold text-center border border-gold/40 shadow">
                         <i class="fa-solid fa-monument text-saffron mr-1"></i>
                         <span id="hist-p2-highlight">इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।</span>
                     </div>
 
                     <p id="hist-p3">
-                        पूरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब की आबादी की तबादला की वजह से दुर-दराज भिन्न-भिन्न शहरों में आबाद हो गये हैं । जिस की वजह से आपस में मेल मिलाप और जान पहचान खतम होती जा रही है ।
+                        पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब की आबादी की तबादला की वजह से दुर-दराज भिन्न-भिन्न शहरों में आबाद हो गये हैं । जिस की वजह से आपस में मेल मिलाप और जान पहचान खतम होती जा रही है ।
                     </p>
                 </div>
 
                 <!-- Subtle Decorative Emblem -->
                 <div class="mt-6 pt-4 border-t border-gold/20 flex items-center justify-between text-xs text-goldDark font-semibold">
                     <span id="hist-foot-label"><i class="fa-solid fa-om mr-1"></i> पावन परंपरा</span>
-                    <span>बटाला धाम</span>
+                    <span id="hist-location">बटाला धाम</span>
                 </div>
             </section>
 
@@ -339,30 +339,30 @@
                     </div>
                 </div>
 
-                <!-- Text Content with preserved original text -->
-                <div class="space-y-4 text-xs sm:text-sm text-gray-800 leading-relaxed font-hindiBody">
+               <!-- Text Content with preserved original text -->
+                <div class="space-y-4 text-base text-gray-800 leading-relaxed font-hindiBody">
                     <p id="gen-p1">
                         इस जान पहचान को कायम रखने के लिए बड़ी कोशिश और मेहनत से यह वंशावली हरिद्वार के परोहित पण्डित जोगिन्दर पाल दोहता पण्डित मखन लाल, परोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पण्डित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहीयों से और महकमा माल के कागजों से दरयाफत करके तैयार किया गया है ।
                     </p>
 
                     <!-- Seva Badge Box 1 -->
                     <div class="p-3 bg-maroonDark text-goldLight border-l-4 border-gold rounded-r-lg space-y-1 shadow-sm">
-                        <div class="flex items-center gap-1.5 text-xs text-saffron font-bold">
+                        <div class="flex items-center gap-1.5 text-sm text-saffron font-bold">
                             <i class="fa-solid fa-user-check"></i>
                             <span id="gen-box1-head">सेवादार कौम पूरीयां</span>
                         </div>
-                        <p id="gen-box1-body" class="text-xs leading-snug">
+                        <p id="gen-box1-body" class="text-sm leading-snug">
                             हकीम कर्म चन्द पूरी (बटाला 28-9-1954)
                         </p>
                     </div>
 
                     <!-- Contact Box 2 -->
                     <div class="p-3 bg-saffron/10 border-l-4 border-saffron rounded-r-lg text-imperial space-y-1">
-                        <div class="flex items-center gap-1.5 text-xs text-maroonDark font-bold">
+                        <div class="flex items-center gap-1.5 text-sm text-maroonDark font-bold">
                             <i class="fa-solid fa-file-signature"></i>
                             <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
                         </div>
-                        <p id="gen-box2-body" class="text-xs leading-snug">
+                        <p id="gen-box2-body" class="text-sm leading-snug">
                             जिस किसी को वंशावली की जरूरत हो । वो श्री रघुबीर चन्द पूरी सैक्रेटरी ट्रस्ट से प्राप्त कर सकते हैं ।
                         </p>
                     </div>
@@ -417,10 +417,7 @@
                 <span>ॐ</span>
             </div>
             <p id="footer-copy">
-                © लाडी सत्योति ट्रस्ट | पूरी परिवार डिजिटल अभिलेखागार
-            </p>
-            <p id="footer-sub" class="text-gold/60 text-xs">
-                संरक्षण एवं संकलन: पूरी क्षत्रिय वंश धरोहर समिति (बटाला)
+                लाडी सत्योति ट्रस्ट रजिस्टर्ड | पूरी परिवार डिजिटल अभिलेखागार
             </p>
         </div>
     </footer>
@@ -431,6 +428,7 @@
             hi: {
                 sacred_motto: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
                 bell_btn: "पावन घंटी बजाएं",
+                bell_btn_mobile: "घंटी",
                 hero_title: "वंशावली कौम पूरीयां",
                 hero_subtitle: "लाडी सत्योति ट्रस्ट (बटाला) - पावन ऐतिहासिक संरक्षण",
                 couplet_1: `पुरी कुल को अगर है शान कोई । <br> पुरी कुल का अगर है मान कोई ।`,
@@ -443,6 +441,7 @@
                 hist_p2_highlight: "इस सती के नाम पर लाडी सत्योति ट्रस्ट 1932 से कायम है ।",
                 hist_p3: "पूरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब की आबादी की तबादला की वजह से दुर-दराज भिन्न-भिन्न शहरों में आबाद हो गये हैं । जिस की वजह से आपस में मेल मिलाप और जान पहचान खतम होती जा रही है ।",
                 hist_foot: `<i class="fa-solid fa-om mr-1"></i> पावन परंपरा`,
+                hist_location: "बटाला धाम",
 
                 portrait_badge: "देवी लाडी सत्योति की जय 🙏",
                 portrait_caption: "॥ श्री लाडी सत्योति देवी जी ॥",
@@ -461,8 +460,8 @@
                 contact_head: "पंजीकरण एवं सूचना",
                 contact_body: "पूरी परिवार के सदस्य अपनी वंशावली प्रविष्टियों एवं विवरण हेतु ट्रस्ट कार्यालय बटाला से संपर्क कर सकते हैं।",
 
-                footer_motto: "देवी लाडी सत्योति की जय 🙏",
-                footer_copy: "© लाडी सत्योति ट्रस्ट | पूरी परिवार डिजिटल अभिलेखागार",
+                footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
+                footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
                 footer_sub: "संरक्षण एवं संकलन: पूरी क्षत्रिय वंश धरोहर समिति (बटाला)",
                 toast_bell: "🔔 पावन मंदिर की घंटी बज रही है...",
                 toast_share: "🔗 वेबसाइट लिंक क्लिपबोर्ड पर कॉपी हो गया!"
@@ -470,6 +469,7 @@
             en: {
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
                 bell_btn: "Ring Temple Bell",
+                bell_btn_mobile: "Bell",
                 hero_title: "Genealogy of the Puri Lineage",
                 hero_subtitle: "Ladi Satyoti Trust (Batala) - Sacred Historical Heritage",
                 couplet_1: `If the Puri clan holds any pride and glory, <br> If the Puri clan holds any honor and majesty...`,
@@ -482,6 +482,7 @@
                 hist_p2_highlight: "In honor of this revered Sati, the Ladi Satyoti Trust has been operating since 1932.",
                 hist_p3: "Today, members of the Puri community have settled across various far-off cities in pursuit of livelihoods and following historical population shifts in Punjab. Because of this, social connection and familiarity among families is fading away.",
                 hist_foot: `<i class="fa-solid fa-om mr-1"></i> Sacred Heritage`,
+                hist_location: "Batala Dham",
 
                 portrait_badge: "Devi Ladi Satyoti Ki Jai 🙏",
                 portrait_caption: "॥ Shri Ladi Satyoti Devi Ji ॥",
@@ -500,8 +501,8 @@
                 contact_head: "Registration & Contact",
                 contact_body: "Members of the Puri family may contact the Trust Office at Batala for lineage additions and record verification.",
 
-                footer_motto: "Devi Ladi Satyoti Ki Jai 🙏",
-                footer_copy: "© Ladi Satyoti Trust | Puri Family Digital Archive",
+                footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
+                footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
                 footer_sub: "Preservation & Compilation: Puri Kshatriya Heritage Board (Batala)",
                 toast_bell: "🔔 Sacred Temple Bell is Chiming...",
                 toast_share: "🔗 Website URL copied to clipboard!"
@@ -550,6 +551,7 @@
             // Update Text Content across the DOM
             setElText('nav-sacred-motto', dict.sacred_motto);
             setElText('nav-bell-text', dict.bell_btn);
+            setElText('nav-bell-text-mobile', dict.bell_btn_mobile);
             setElText('hero-title', dict.hero_title);
             setElText('hero-subtitle', dict.hero_subtitle);
             setElHtml('hero-couplet-1', dict.couplet_1);
@@ -562,6 +564,7 @@
             setElText('hist-p2-highlight', dict.hist_p2_highlight);
             setElText('hist-p3', dict.hist_p3);
             setElHtml('hist-foot-label', dict.hist_foot);
+            setElText('hist-location', dict.hist_location);
 
             setElText('portrait-top-badge', dict.portrait_badge);
             setElText('portrait-caption', dict.portrait_caption);
