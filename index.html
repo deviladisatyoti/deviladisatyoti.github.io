@@ -491,94 +491,248 @@
             </div>
         </div>
 
-        <!-- ================= HORIZONTALLY ELONGATED GENEALOGY PRESERVATION SECTION ================= -->
-        <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative">
+        <!-- ================= UNIFIED GENEALOGY PRESERVATION, INDEX & VAKT KI PUKAR ================= -->
+        <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300 space-y-6">
+            
+            <!-- Section Header -->
             <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-6">
                 <div class="w-10 h-10 rounded-xl bg-imperial flex items-center justify-center text-gold text-xl shadow">
                     <i class="fa-solid fa-sitemap"></i>
                 </div>
                 <div>
-                    <h2 id="gen-title" class="card-heading text-imperial">वंशावली संरक्षण</h2>
-                    <span id="gen-badge" class="card-sub text-saffronDark">प्रामाणिक शोध रिकॉर्ड</span>
+                    <h2 id="merged-sec-title" class="card-heading text-imperial">वंशावली संरक्षण, इंडेक्स एवं वक्त की पुकार</h2>
+                    <span id="merged-sec-sub" class="card-sub text-saffronDark">प्रामाणिक शोध रिकॉर्ड, मूल अभिलेख और सूचकांक</span>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                <!-- Left: Detailed Paragraph -->
-                <div class="lg:col-span-7 space-y-4 text-base sm:text-lg text-gray-800 leading-relaxed font-hindiBody">
-                    <p id="gen-p1">
-                        इस जान-पहचान को कायम रखने के लिए बड़ी कोशिश और मेहनत से यह वंशावली हरिद्वार के पुरोहित पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल), पुरोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पंडित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहियों से और महकमा माल के कागजों से दरयाफत करके तैयार की गई है ।
-                    </p>
-                </div>
-
-                <!-- Right: Info Boxes -->
-                <div class="lg:col-span-5 space-y-3">
-                    <!-- Seva Badge Box 1 -->
-                    <div class="p-3.5 bg-maroonDark text-goldLight border-l-4 border-gold rounded-r-xl space-y-1 shadow-sm text-sm">
-                        <div class="flex items-center gap-1.5 text-saffron font-bold text-base">
-                            <i class="fa-solid fa-user-check"></i>
-                            <span id="gen-box1-head">सेवादार कौम पूरीयां</span>
+            <!-- Full-Width Grid Layout with Equal Heights -->
+            <div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-stretch">
+                
+                <!-- Left Column (5 Cols on XL): Ancestral Roots, Vakt Ki Pukar & Trust Bearers -->
+                <div class="xl:col-span-5 flex flex-col justify-between space-y-6">
+                    
+                    <!-- Ancestral Roots & Foreword Card -->
+                    <div class="bg-white/70 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4">
+                        <div class="flex items-center gap-2.5 text-imperial font-bold text-base sm:text-lg">
+                            <i class="fa-solid fa-book-open text-saffron"></i>
+                            <h3 id="bhoomika-title">ऐतिहासिक भूमिका</h3>
                         </div>
-                        <p id="gen-box1-body" class="leading-snug">
-                            हकीम कर्म चन्द पूरी (बटाला 28-9-1954)
-                        </p>
-                    </div>
-
-                    <!-- Obtaining Records Box 2 -->
-                    <div class="p-3.5 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-imperial space-y-1 text-sm">
-                        <div class="flex items-center gap-1.5 text-maroonDark font-bold text-base">
-                            <i class="fa-solid fa-file-signature"></i>
-                            <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
+                        <div class="space-y-4 text-gray-800 font-hindiBody">
+                            <p id="bhoomika-p1" class="body-card-text font-medium leading-relaxed">
+                                बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। पुरी कौम <strong class='font-bold text-imperial'>लोधी हुकूमत</strong> के वक्त बटाला में आबाद हुई। <strong class='font-bold text-imperial'>मुगलीय हुकूमत</strong> के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए।
+                            </p>
+                            <div class="p-4 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-maroonDark shadow-sm">
+                                <p id="bhoomika-p2" class="body-card-text font-medium leading-relaxed">
+                                    चुनांचे मशहूर हैं कि जब <strong class='font-bold text-imperial'>श्री गुरू नानक देव जी महाराज</strong> बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। <strong class='font-bold text-imperial'>श्री गुरू नानक देव जी महाराज</strong> ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।
+                                </p>
+                            </div>
                         </div>
-                        <p id="gen-box2-body" class="leading-snug">
-                            जिस किसी को वंशावली की जरूरत हो । वो श्री रघुबीर चन्द पूरी सैक्रेटरी ट्रस्ट से प्राप्त कर सकते हैं ।
-                        </p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Registration & Contact Banner at Bottom -->
-            <div class="mt-6 p-4 bg-gradient-to-r from-maroonDark via-imperial to-maroonDark rounded-2xl border border-gold/40 text-cream flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
-                <div class="flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg bg-maroonDark border border-gold/40 flex items-center justify-center text-gold text-lg shadow flex-shrink-0">
-                        <i class="fa-solid fa-address-book"></i>
-                    </div>
-                    <div>
-                        <h4 id="contact-head" class="text-gold font-bold text-base">पंजीकरण एवं सूचना</h4>
-                        <p id="contact-body" class="text-goldLight/90 leading-snug font-hindiBody text-xs sm:text-sm">
-                            पूरी परिवार के सदस्य अपनी वंशावली प्रविष्टियों एवं विवरण हेतु ट्रस्ट कार्यालय बटाला से संपर्क कर सकते हैं।
+                    <!-- Vakt Ki Pukar & Historical Compilation Card -->
+                    <div class="bg-white/70 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3">
+                        <div class="flex items-center gap-2.5 text-imperial font-bold text-base sm:text-lg">
+                            <i class="fa-solid fa-bullhorn text-saffron"></i>
+                            <h3 id="vakt-title">वक्त की पुकार एवं ऐतिहासिक शोध</h3>
+                        </div>
+                        <p id="vakt-text" class="body-card-text font-medium font-hindiBody text-gray-800 leading-relaxed">
+                            वंशावली कौम पूरीयां बटाला जिसको स्वर्गीय हकीम कर्म चन्द पुरी (28-9-1954) ने बड़ी मेहनत व कोशिश से तैयार किया था, जो उर्दू भाषा में है। चूंकि उर्दू भाषा पंजाब से खत्म हो रही है और नई पीढ़ी इससे ना वाकिफ है, इसलिए इस जान-पहचान को कायम रखने के लिए यह वंशावली हरिद्वार के पुरोहित पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल), पुरोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पंडित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहियों से और महकमा माल के कागजों से दरयाफत करके हिन्दी भाषा में तैयार की गई है ताकि आने वाली पीढ़ी इससे फायदे उठा सकें।
                         </p>
                     </div>
+
+                    <!-- Trust Office Bearers & Acquisition Note (Flex-grow container) -->
+                    <div class="bg-white/70 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-sm space-y-4 flex-grow flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-2.5 text-imperial font-bold text-base sm:text-lg">
+                                <i class="fa-solid fa-users-rectangle text-saffron"></i>
+                                <h3 id="trust-officers-title">लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी</h3>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 font-hindiBody">
+                                <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
+                                    <span id="lbl-gen-sec" class="block text-xs sm:text-sm text-saffron font-bold uppercase tracking-wider mb-1">जनरल सेक्रेटरी</span>
+                                    <span id="val-gen-sec" class="font-bold text-base sm:text-lg text-goldLight drop-shadow-sm">रघबीर चन्द पुरी</span>
+                                </div>
+                                <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
+                                    <span id="lbl-pres" class="block text-xs sm:text-sm text-saffron font-bold uppercase tracking-wider mb-1">प्रधान</span>
+                                    <span id="val-pres" class="font-bold text-base sm:text-lg text-goldLight drop-shadow-sm">बुद्ध देव पुरी</span>
+                                </div>
+                                <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
+                                    <span id="lbl-fin-sec" class="block text-xs sm:text-sm text-saffron font-bold uppercase tracking-wider mb-1">फाईनेंस सेक्रेटरी</span>
+                                    <span id="val-fin-sec" class="font-bold text-base sm:text-lg text-goldLight drop-shadow-sm">दलीप राज पुरी</span>
+                                </div>
+                                <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
+                                    <span id="lbl-auditor" class="block text-xs sm:text-sm text-saffron font-bold uppercase tracking-wider mb-1">आडीटर</span>
+                                    <span id="val-auditor" class="font-bold text-base sm:text-lg text-goldLight drop-shadow-sm">कुलभूषण पुरी</span>
+                                </div>
+                                <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
+                                    <span id="lbl-trustee-1" class="block text-xs sm:text-sm text-saffron font-bold uppercase tracking-wider mb-1">मैंबर ट्रस्ट</span>
+                                    <span id="val-trustee-1" class="font-bold text-base sm:text-lg text-goldLight drop-shadow-sm">जुगल किशोर पुरी</span>
+                                </div>
+                                <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
+                                    <span id="lbl-trustee-2" class="block text-xs sm:text-sm text-saffron font-bold uppercase tracking-wider mb-1">मैंबर ट्रस्ट</span>
+                                    <span id="val-trustee-2" class="font-bold text-base sm:text-lg text-goldLight drop-shadow-sm">हंस राज पुरी</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Record Acquisition Note -->
+                        <div class="p-3 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-imperial space-y-1 text-sm sm:text-base font-hindiBody mt-4">
+                            <div class="flex items-center gap-1.5 text-maroonDark font-bold">
+                                <i class="fa-solid fa-file-signature"></i>
+                                <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
+                            </div>
+                            <p id="gen-box2-body" class="leading-relaxed">
+                                जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
+
+                <!-- Right Column (7 Cols on XL): Three Pillars Visual Tree FIRST, followed by Index Table -->
+                <div class="xl:col-span-7 flex flex-col justify-between space-y-6">
+                    
+                    <!-- Three Pillars Visual Tree (Faithful to Original Book Record) -->
+                    <div class="bg-white/80 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-md space-y-4">
+                        <h4 class="font-bold text-imperial text-lg sm:text-xl flex items-center gap-2 border-b border-gold/30 pb-3">
+                            <i class="fa-solid fa-sitemap text-saffron"></i> <span id="three-pillars-title-text">पूरी कौम के तीन थम्मे</span>
+                        </h4>
+
+                        <div class="p-4 sm:p-6 bg-cream/80 border border-gold/30 rounded-2xl space-y-4 font-hindiBody">
+                            
+                            <!-- Main Lineage Vertical Chain -->
+                            <div class="flex flex-col items-center font-bold text-imperial text-base sm:text-lg">
+                                <span id="node-ishar" class="px-4 py-2 bg-white rounded-xl shadow border-2 border-gold/40 text-imperial">ईशर राय</span>
+                                <div class="w-0.5 h-4 bg-goldDark my-1"></div>
+                                <span id="node-siddh" class="px-4 py-2 bg-white rounded-xl shadow border-2 border-gold/40 text-imperial">सिद्ध गढ़ी</span>
+                                <div class="w-0.5 h-4 bg-goldDark my-1"></div>
+                                <span id="node-kamal" class="px-4 py-2 bg-white rounded-xl shadow border-2 border-gold/40 text-imperial">कमल नारायण</span>
+                                <div class="w-0.5 h-4 bg-goldDark my-1"></div>
+                                <span id="node-khil" class="px-4 py-2 bg-white rounded-xl shadow border-2 border-gold/40 text-imperial">खील नारायण</span>
+                                <div class="w-0.5 h-4 bg-goldDark my-1"></div>
+                                <span id="node-dayal" class="px-4 py-2 bg-white rounded-xl shadow border-2 border-gold/40 text-imperial">दयाल चन्द</span>
+                                <div class="w-0.5 h-4 bg-goldDark my-1"></div>
+                                <span id="node-devi" class="px-5 py-2.5 bg-gradient-to-r from-maroonDark via-imperial to-maroonDark text-goldLight rounded-xl shadow-md border-2 border-gold text-lg font-black tracking-wide">देवी दिता</span>
+                                
+                                <!-- Sacred Parallel Line Indicator (matching || in book) -->
+                                <div class="flex gap-1.5 my-2">
+                                    <div class="w-0.5 h-5 bg-goldDark"></div>
+                                    <div class="w-0.5 h-5 bg-goldDark"></div>
+                                </div>
+                            </div>
+
+                            <!-- Horizontal Branch Connector -->
+                            <div class="relative w-full border-t-2 border-goldDark pt-4">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    
+                                    <!-- Pillar 1: Thamma Malkana -->
+                                    <div class="p-4 bg-white rounded-2xl border-2 border-gold/40 shadow-sm flex flex-col items-center space-y-2">
+                                        <span id="pillar-1" class="font-extrabold text-imperial text-base uppercase tracking-wider bg-saffron/20 px-3 py-1 rounded-lg border border-saffron/30">थम्मा मलकाना</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        <span id="p1-node1" class="text-base font-bold text-maroonDark px-3 py-1 bg-cream rounded-lg border border-gold/30">मलक कपूर</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        <span id="p1-node2" class="text-base font-bold text-maroonDark px-3 py-1 bg-cream rounded-lg border border-gold/30">गोविंद चंद</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        
+                                        <!-- Individual Nodes Breakdown matching Book Layout -->
+                                        <div class="w-full pt-1 border-t border-gold/30 flex flex-wrap justify-center gap-1.5">
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2.5 py-1 rounded-md border border-saffron/30">राजकौर</span>
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2.5 py-1 rounded-md border border-saffron/30">चतरबिहारी</span>
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2.5 py-1 rounded-md border border-saffron/30">अर्जुन मल</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Pillar 2: Thamma Rai -->
+                                    <div class="p-4 bg-white rounded-2xl border-2 border-gold/40 shadow-sm flex flex-col items-center space-y-2">
+                                        <span id="pillar-2" class="font-extrabold text-imperial text-base uppercase tracking-wider bg-saffron/20 px-3 py-1 rounded-lg border border-saffron/30">थम्मा राय</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        <span id="p2-node1" class="text-base font-bold text-maroonDark px-3 py-1 bg-cream rounded-lg border border-gold/30">राय बुखार चन्द</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        
+                                        <!-- Individual Nodes Breakdown matching Book Layout -->
+                                        <div class="w-full pt-1 border-t border-gold/30 flex flex-wrap justify-center gap-1.5">
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2 py-1 rounded-md border border-saffron/30">बाबा गंगा राम</span>
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2 py-1 rounded-md border border-saffron/30">राय महेश दास</span>
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2 py-1 rounded-md border border-saffron/30">अंचल दास</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Pillar 3: Thamma Mahatka -->
+                                    <div class="p-4 bg-white rounded-2xl border-2 border-gold/40 shadow-sm flex flex-col items-center space-y-2">
+                                        <span id="pillar-3" class="font-extrabold text-imperial text-base uppercase tracking-wider bg-saffron/20 px-3 py-1 rounded-lg border border-saffron/30">थम्मा महतका</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        <span id="p3-node1" class="text-base font-bold text-maroonDark px-3 py-1 bg-cream rounded-lg border border-gold/30">महता दनी चन्द</span>
+                                        <div class="w-0.5 h-3 bg-goldDark"></div>
+                                        
+                                        <!-- Individual Nodes Breakdown matching Book Layout -->
+                                        <div class="w-full pt-1 border-t border-gold/30 flex flex-wrap justify-center gap-1.5">
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2.5 py-1 rounded-md border border-saffron/30">केसरी दास</span>
+                                            <span class="text-xs sm:text-sm font-bold text-imperial bg-saffron/15 px-2.5 py-1 rounded-md border border-saffron/30">बटठूमल</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Book Index Table (1 to 23) with Balanced Scroll Height -->
+                    <div class="bg-white border border-gold/30 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3 flex-grow flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-gold/20 pb-2 mb-3">
+                                <h3 id="index-table-title" class="font-bold text-imperial text-base sm:text-lg flex items-center gap-2">
+                                    <i class="fa-solid fa-list-ol text-saffron"></i> इंडेक्स वंशावली (पृष्ठ 1 से 23)
+                                </h3>
+                                <span id="index-table-sub" class="text-xs sm:text-sm text-saffronDark font-semibold">नाम खानदान व पता</span>
+                            </div>
+
+                            <div class="overflow-x-auto max-h-[580px] xl:max-h-[620px] overflow-y-auto border border-gold/20 rounded-xl shadow-inner bg-creamCard">
+                                <table class="w-full text-left border-collapse font-hindiBody text-sm sm:text-base">
+                                    <thead class="bg-imperial text-gold sticky top-0">
+                                        <tr>
+                                            <th id="col-page" class="p-3 border-b border-gold/30 w-16 text-center font-bold">पृष्ठ</th>
+                                            <th id="col-name" class="p-3 border-b border-gold/30 font-bold">नाम खानदान व पता</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">1</td><td id="idx-row-1" class="p-3 font-semibold">पुरी खानदान के तीन थम्मे</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">2</td><td id="idx-row-2" class="p-3">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">3</td><td id="idx-row-3" class="p-3">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">4</td><td id="idx-row-4" class="p-3">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">5</td><td id="idx-row-5" class="p-3">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">6</td><td id="idx-row-6" class="p-3">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">7</td><td id="idx-row-7" class="p-3">थम्मा मलकाना चोनियां मोरी</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">8</td><td id="idx-row-8" class="p-3">थम्मा मलकाना चोनियां मोरी</td></tr>
+                                        <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3 text-center font-bold text-imperial">9</td><td id="idx-row-9" class="p-3 font-semibold text-maroonDark">थम्मा मलकाना खानदान बाबा मदन पुरो फिल्म स्टार बम्बई।</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">10</td><td id="idx-row-10" class="p-3">थम्मा मलकाना बहरामपुर वाले पुरी</td></tr>
+                                        <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3 text-center font-bold text-imperial">11</td><td id="idx-row-11" class="p-3 font-semibold text-maroonDark">थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी</td></tr>
+                                        <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3 text-center font-bold text-imperial">12</td><td id="idx-row-12" class="p-3 font-semibold text-maroonDark">थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">13</td><td id="idx-row-13" class="p-3">थम्मा महतका खानदान लाला जयराम दास मुरली घर</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">14</td><td id="idx-row-14" class="p-3">थम्मा महतका खानदान लाला दीना नाथ पुरी</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">15</td><td id="idx-row-15" class="p-3">थम्मा महतका खानदान बाबा वेहड़ा</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">16</td><td id="idx-row-16" class="p-3">थम्मा राय मुह्ल्ला पुरीयां बाबा वेहड़ा खानदान हकीम कर्म चन्द पुरी</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">17</td><td id="idx-row-17" class="p-3">थम्मा राय मुह्ल्ला पुरीयां खान: ला: किशन चन्द पुरी लखनऊ वाले</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">18</td><td id="idx-row-18" class="p-3">थम्मा राय सुजानपुर तथा मोगा वाले</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">19</td><td id="idx-row-19" class="p-3">थम्मा राय सुजानपुर तथा पठानकोट वाले</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">20</td><td id="idx-row-20" class="p-3">थम्मा राय कामलपुर वाले पुरी पूरी शेख गली शेखां मुह्ल्ला पुरीयां</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">21</td><td id="idx-row-21" class="p-3">थम्मा राय पठानकोट वाले</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">22</td><td id="idx-row-22" class="p-3">थम्मा राय वोडिंग वाले पुरी अमृतसर पटियाला।</td></tr>
+                                        <tr class="hover:bg-saffron/10"><td class="p-3 text-center font-bold text-imperial">23</td><td id="idx-row-23" class="p-3">थम्मा राय अमृतसर कपूरथला वाले</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
         <!-- ================= SECTION: BHOOMIKA & PROMINENT PERSONALITIES ================= -->
         <div class="space-y-8">
-            
-            <!-- 1. Bhoomika / Foreword Narrative Card -->
-            <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300">
-                <div class="flex items-center gap-3 border-b-2 border-gold/30 pb-3 mb-6">
-                    <div class="w-10 h-10 rounded-xl bg-imperial flex items-center justify-center text-gold text-xl shadow">
-                        <i class="fa-solid fa-book-open"></i>
-                    </div>
-                    <div>
-                        <h2 id="bhoomika-title" class="card-heading text-imperial">ऐतिहासिक भूमिका</h2>
-                        <span id="bhoomika-badge" class="card-sub text-saffronDark">ऐतिहासिक पृष्ठभूमि एवं आशीर्वाद</span>
-                    </div>
-                </div>
-
-                <div class="space-y-4 text-base sm:text-lg text-gray-800 leading-relaxed font-hindiBody">
-                    <p id="bhoomika-p1" class="font-medium">
-                        बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। पूरी कौम लोधी हुकूमत के वक्त बटाला में आबाद हुई। मुगलीय हुकूमत के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए।
-                    </p>
-                    <div class="p-4 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-maroonDark text-base sm:text-lg font-semibold shadow-sm">
-                        <p id="bhoomika-p2">
-                            चुनांचे मशहूर हैं कि जब श्री गुरू नानक देव जी महाराज बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। श्री गुरू नानक देव जी महाराज ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।
-                        </p>
-                    </div>
-                </div>
-            </div>
 
             <!-- 2. Prominent Personalities (Puri Vansha Renowned Figures) -->
             <div class="bg-creamCard border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300">
@@ -880,8 +1034,8 @@
 
                 bhoomika_title: "ऐतिहासिक भूमिका",
                 bhoomika_badge: "ऐतिहासिक पृष्ठभूमि एवं आशीर्वाद",
-                bhoomika_p1: "बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>पुरी कौम लोधी हुकूमत के वक्त बटाला में आबाद हुई।</span> मुगलीय हुकूमत के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए。",
-                bhoomika_p2: "चुनांचे मशहूर हैं कि जब <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>श्री गुरू नानक देव जी महाराज</span> बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। श्री गुरू नानक देव जी महाराज ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।",
+                bhoomika_p1: "बटाला शहर <strong class='font-bold text-imperial'>राम देव भट्टी राजपूत</strong> का बसाया हुआ है। पुरी कौम <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>लोधी हुकूमत</span> के वक्त बटाला में आबाद हुई। <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>मुगलीय हुकूमत</span> के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए।",
+                bhoomika_p2: "चुनांचे मशहूर हैं कि जब <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded border border-gold/40 font-bold'>श्री गुरू नानक देव जी महाराज</span> बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded border border-gold/40 font-bold'>श्री गुरू नानक देव जी महाराज</span> ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा <span class='bg-gold/25 text-imperial px-1.5 py-0.5 rounded border border-gold/50 font-bold'>पुर रहेंगे</span>। उस समय से आज तक पूरी खानदान बहुत <span class='font-bold text-imperial'>अमीर और बाइज्जत</span> है।",
                 figures_title: "पूरी वंश को मान्यवर और प्रसिद्ध हस्तियां",
                 figures_subtitle: "(जिन पर कौम को बजा तौर पर फखर है)",
                 fig_1: "श्रीमान 1008 महाराज मुयं प्रकाश जी दरबार आपो आप छीटांवाला (श्री राम रतन पुरी पटियाला)",
@@ -911,7 +1065,85 @@
                 fig_25: "लाला आज्ञा राम पुरी कपूरथला",
                 fig_26: "लाला भवानी सिंह पूरी सब जज रियासत टेढ़ी गढ़वाल",
                 fig_27: "श्री इन्द्र कुमार पूरी डी पो डायरेक्टर रेलवे।",
-                fig_28: "श्री कृष्ण कुमार पुरी डायरेक्टर सी बी आई दिल्ली"
+                fig_28: "श्री कृष्ण कुमार पुरी डायरेक्टर सी बी आई दिल्ली",
+
+                // Book Page 1 & Index Section Translations (Hindi)
+                index_sec_title: "इंडेक्स वंशावली एवं वक्त की पुकार",
+                index_sec_sub: "मूल अभिलेख और सूचकांक",
+                vakt_title: "वक्त की पुकार",
+                vakt_text: "वंशावली कौम पूरीयां बटाला जिसको स्वर्गीय <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded border border-gold/40 font-bold'>हकीम कर्म चन्द पुरी (28-9-1954)</span> ने बड़ी मेहनत व कोशिश से तैयार किया था, जो उर्दू भाषा में है। चूंकि उर्दू भाषा पंजाब से खत्म हो रही है और नई पीढ़ी इससे ना वाकिफ है, इसलिए इस जान-पहचान को कायम रखने के लिए यह वंशावली हरिद्वार के पुरोहित <strong class='font-bold text-imperial'>पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल)</strong>, पुरोहित <strong class='font-bold text-imperial'>कांगड़ा राम</strong> मोहल्ला चक्रवर्ती कुरुक्षेत्र व <strong class='font-bold text-imperial'>पंडित रखा राम शास्त्री</strong> पेहवा और साहसी कौम पूरीया की <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>बहियों (Bahis)</span> से और <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>महकमा माल के कागजों</span> से दरयाफत करके <span class='bg-gold/25 text-imperial px-1.5 py-0.5 rounded border border-gold/50 font-bold'>हिन्दी भाषा</span> में तैयार की गई है ताकि आने वाली पीढ़ी इससे फायदे उठा सकें।",
+                trust_officers_title: "लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी",
+                three_pillars_title: "पुरी कौम के तीन थम्मे:",
+                three_pillars_path: "ईशर राय → सिद्ध गढ़ी → कमल नारायण → खील नारायण → दयाल चन्द → देवी दिता",
+                pillar_1: "1. थम्मा मलकाना",
+                pillar_2: "2. थम्मा राय",
+                pillar_3: "3. थम्मा महतका",
+                index_table_title: "इंडेक्स वंशावली (पृष्ठ 1 से 23)",
+                index_table_sub: "नाम खानदान व पता",
+                col_page: "पृष्ठ",
+                col_name: "नाम खानदान व पता",
+
+                lbl_gen_sec: "जनरल सेक्रेटरी",
+                val_gen_sec: "रघबीर चन्द पुरी",
+                lbl_pres: "प्रधान",
+                val_pres: "बुद्ध देव पुरी",
+                lbl_fin_sec: "फाईनेंस सेक्रेटरी",
+                val_fin_sec: "दलीप राज पुरी",
+                lbl_auditor: "आडीटर",
+                val_auditor: "कुलभूषण पुरी",
+                lbl_trustee_1: "मैंबर ट्रस्ट",
+                val_trustee_1: "जुगल किशोर पुरी",
+                lbl_trustee_2: "मैंबर ट्रस्ट",
+                val_trustee_2: "हंस राज पुरी",
+
+                idx_row_1: "पुरी खानदान के तीन थम्मे",
+                idx_row_2: "थम्मा मलकाना कटाड़ा पुरीयां",
+                idx_row_3: "थम्मा मलकाना कटाड़ा पुरीयां",
+                idx_row_4: "थम्मा मलकाना कटाड़ा पुरीयां",
+                idx_row_5: "थम्मा मलकाना कटाड़ा पुरीयां",
+                idx_row_6: "थम्मा मलकाना कटाड़ा पुरीयां",
+                idx_row_7: "थम्मा मलकाना चोनियां मोरी",
+                idx_row_8: "थम्मा मलकाना चोनियां मोरी",
+                idx_row_9: "थम्मा मलकाना खानदान बाबा मदन पुरो फिल्म स्टार बम्बई।",
+                idx_row_10: "थम्मा मलकाना बहरामपुर वाले पूरी",
+                idx_row_11: "थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी",
+                idx_row_12: "थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी",
+                idx_row_13: "थम्मा महतका खानदान लाला जयराम दास मुरली घर",
+                idx_row_14: "थम्मा महतका खानदान लाला दीना नाथ पुरी",
+                idx_row_15: "थम्मा महतका खानदान बाबा वेहड़ा",
+                idx_row_16: "थम्मा राय मुह्ल्ला पुरीयां बाबा वेहड़ा खानदान हकीम कर्म चन्द पुरी",
+                idx_row_17: "थम्मा राय मुह्ल्ला पुरीयां खान: ला: किशन चन्द पुरी लखनऊ वाले",
+                idx_row_18: "थम्मा राय सुजानपुर तथा मोगा वाले",
+                idx_row_19: "थम्मा राय सुजानपुर तथा पठानकोट वाले",
+                idx_row_20: "थम्मा राय कामलपुर वाले पुरी पूरी शेख गली शेखां मुह्ल्ला पुरीयां",
+                idx_row_21: "थम्मा राय पठानकोट वाले",
+                idx_row_22: "थम्मा राय वोडिंग वाले पुरी अमृतसर पटियाला।",
+                idx_row_23: "थम्मा राय अमृतसर कपूरथला वाले",
+
+                // Lineage Tree Nodes (Hindi)
+                node_ishar: "ईशर राय",
+                node_siddh: "सिद्ध गढ़ी",
+                node_kamal: "कमल नारायण",
+                node_khil: "खील नारायण",
+                node_dayal: "दयाल चन्द",
+                node_devi: "देवी दिता",
+                pillar_1: "थम्मा मलकाना",
+                pillar_2: "थम्मा राय",
+                pillar_3: "थम्मा महतका",
+                p1_node1: "मलक कपूर",
+                p1_node2: "गोविंद चंद",
+                p1_subnodes: "राजकौर • चतरबिहारी • अर्जुन मल",
+                p2_node1: "राय बुखार चन्द",
+                p2_subnodes: "बाबा गंगा राम • राय महेश दास • अंचल दास",
+                p3_node1: "महता दनी चन्द",
+                p3_subnodes: "केसरी दास • बटठूमल",
+
+                merged_sec_title: "वंशावली संरक्षण, इंडेक्स एवं वक्त की पुकार",
+                merged_sec_sub: "प्रामाणिक शोध रिकॉर्ड, मूल अभिलेख और सूचकांक",
+                vakt_title: "वक्त की पुकार एवं ऐतिहासिक शोध",
+                gen_box2_head: "वंशावली प्राप्ति हेतु",
+                gen_box2_body: "जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।",
+                bhoomika_title: "ऐतिहासिक भूमिका",
             },
             en: {
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
@@ -991,8 +1223,8 @@
 
                 bhoomika_title: "Ancestral Roots & Foreword",
                 bhoomika_badge: "Historical Background & Divine Blessings",
-                bhoomika_p1: "The city of Batala was founded by Ram Dev Bhatti Rajput. <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>The Puri community settled in Batala during the Lodhi dynasty rule.</span> During the Mughal rule, many Puri brothers held distinguished government positions.",
-                bhoomika_p2: "It is well-known that when <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded font-bold border border-gold/30'>Shri Guru Nanak Dev Ji Maharaj</span> visited Batala for his wedding, the Puri community welcomed him with grand hospitality. Pleased by their grand reception, Shri Guru Nanak Dev Ji Maharaj blessed the Puri clan that they would always remain fulfilled ('Pur'). From that day to this, the Puri family has remained prosperous and deeply respected.",
+                bhoomika_p1: "The city of Batala was founded by <strong class='font-bold text-imperial'>Ram Dev Bhatti Rajput</strong>. The Puri community settled in Batala during the <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>Lodhi dynasty rule</span>. During the <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>Mughal rule</span>, many Puri brothers held distinguished government positions.",
+                bhoomika_p2: "It is well-known that when <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded border border-gold/40 font-bold'>Shri Guru Nanak Dev Ji Maharaj</span> visited Batala for his wedding, the Puri community welcomed him with grand hospitality. Pleased by their grand reception, <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded border border-gold/40 font-bold'>Shri Guru Nanak Dev Ji Maharaj</span> blessed the Puri clan that they would always remain <span class='bg-gold/25 text-imperial px-1.5 py-0.5 rounded border border-gold/50 font-bold'>fulfilled ('Pur')</span>. From that day to this, the Puri family has remained <span class='font-bold text-imperial'>prosperous and deeply respected</span>.",
                 figures_title: "Eminent & Renowned Personalities of the Puri Lineage",
                 figures_subtitle: "(Of whom the community is immensely proud)",
                 fig_1: "Shriman 1008 Maharaj Muyan Prakash Ji Darbar Apo Aap Chhitawala (Shri Ram Ratan Puri, Patiala)",
@@ -1022,7 +1254,104 @@
                 fig_25: "Lala Agya Ram Puri, Kapurthala",
                 fig_26: "Lala Bhawani Singh Puri, Sub-Judge, Princely State Tehri Garhwal",
                 fig_27: "Shri Indra Kumar Puri, Depot Director, Railways",
-                fig_28: "Shri Krishan Kumar Puri, Director, C.B.I., Delhi"
+                fig_28: "Shri Krishan Kumar Puri, Director, C.B.I., Delhi",
+
+                // Book Page 1 & Index Section Translations (English)
+                index_sec_title: "Genealogy Index & Call of the Times",
+                index_sec_sub: "Original Records and Index",
+                vakt_title: "Call of the Times (Vakt Ki Pukar)",
+                vakt_text: "The genealogy of the Puri community of Batala was compiled with great dedication and effort by the late <span class='bg-gold/20 text-maroonDark px-1.5 py-0.5 rounded border border-gold/40 font-bold'>Hakim Karam Chand Puri (28-09-1954)</span> in Urdu. Since Urdu is fading from Punjab and the new generation is unfamiliar with it, to preserve this family acquaintance, this genealogy was compiled through <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>traditional records (Bahis)</span> of Pilgrimage Priests—<strong class='font-bold text-imperial'>Pandit Joginder Pal (grandson of Pandit Makhan Lal)</strong> at Haridwar, <strong class='font-bold text-imperial'>Pandit Kangra Ram</strong> of Mohalla Chakravarti at Kurukshetra, <strong class='font-bold text-imperial'>Pandit Rakha Ram Shastri</strong> at Pehowa, and the Puri community—as well as <span class='bg-saffron/15 text-maroonDark px-1.5 py-0.5 rounded border border-saffron/30 font-bold'>revenue department archives</span>, and prepared in <span class='bg-gold/25 text-imperial px-1.5 py-0.5 rounded border border-gold/50 font-bold'>Hindi for future generations</span>.",
+                trust_officers_title: "Ladi Satyoti Trust (Regd.) Batala - Office Bearers",
+                three_pillars_title: "Three Pillars of the Puri Clan:",
+                three_pillars_path: "Ishar Rai → Siddh Garhi → Kamal Narayan → Khil Narayan → Dayal Chand → Devi Dita",
+                pillar_1: "1. Thamma Malkana",
+                pillar_2: "2. Thamma Rai",
+                pillar_3: "3. Thamma Mahatka",
+                index_table_title: "Genealogy Index (Pages 1 to 23)",
+                index_table_sub: "Family Name & Address",
+                col_page: "Page",
+                col_name: "Family Name & Address",
+
+                lbl_gen_sec: "General Secretary",
+                val_gen_sec: "Raghubeer Chand Puri",
+                lbl_pres: "President",
+                val_pres: "Buddh Dev Puri",
+                lbl_fin_sec: "Finance Secretary",
+                val_fin_sec: "Dalip Raj Puri",
+                lbl_auditor: "Auditor",
+                val_auditor: "Kulbhushan Puri",
+                lbl_trustee_1: "Trustee Member",
+                val_trustee_1: "Jugal Kishore Puri",
+                lbl_trustee_2: "Trustee Member",
+                val_trustee_2: "Hans Raj Puri",
+
+                idx_row_1: "Three Pillars of the Puri Clan",
+                idx_row_2: "Thamma Malkana Katra Purian",
+                idx_row_3: "Thamma Malkana Katra Purian",
+                idx_row_4: "Thamma Malkana Katra Purian",
+                idx_row_5: "Thamma Malkana Katra Purian",
+                idx_row_6: "Thamma Malkana Katra Purian",
+                idx_row_7: "Thamma Malkana Chonian Mori",
+                idx_row_8: "Thamma Malkana Chonian Mori",
+                idx_row_9: "Thamma Malkana Lineage: Baba Madan Puri (Film Star, Bombay)",
+                idx_row_10: "Thamma Malkana: Behrampur Puri Family",
+                idx_row_11: "Thamma Malkana Lineage: Rai Bahadur Lala Karam Chand Puri",
+                idx_row_12: "Thamma Malkana Lineage: Rai Bahadur Lala Karam Chand Puri",
+                idx_row_13: "Thamma Mahatka Lineage: Lala Jairam Das Murli Dhar",
+                idx_row_14: "Thamma Mahatka Lineage: Lala Dina Nath Puri",
+                idx_row_15: "Thamma Mahatka Lineage: Baba Vehra",
+                idx_row_16: "Thamma Rai Mohalla Purian Baba Vehra Lineage: Hakim Karam Chand Puri",
+                idx_row_17: "Thamma Rai Mohalla Purian Lineage: Lala Kishan Chand Puri (Lucknow)",
+                idx_row_18: "Thamma Rai: Sujanpur and Moga Branch",
+                idx_row_19: "Thamma Rai: Sujanpur and Pathankot Branch",
+                idx_row_20: "Thamma Rai: Kamalpur Puri, Gali Shekhan Mohalla Purian",
+                idx_row_21: "Thamma Rai: Pathankot Branch",
+                idx_row_22: "Thamma Rai: Wading Puri (Amritsar & Patiala)",
+                idx_row_23: "Thamma Rai: Amritsar & Kapurthala Branch",
+
+                // Lineage Tree Nodes (English)
+                node_ishar: "Ishar Rai",
+                node_siddh: "Siddh Garhi",
+                node_kamal: "Kamal Narayan",
+                node_khil: "Khil Narayan",
+                node_dayal: "Dayal Chand",
+                node_devi: "Devi Dita",
+                pillar_1: "Thamma Malkana",
+                pillar_2: "Thamma Rai",
+                pillar_3: "Thamma Mahatka",
+                p1_node1: "Malak Kapoor",
+                p1_node2: "Govind Chand",
+                p1_subnodes: "Raj Kaur • Chatar Bihari • Arjun Mal",
+                p2_node1: "Rai Bukhar Chand",
+                p2_subnodes: "Baba Ganga Ram • Rai Mahesh Das • Anchal Das",
+                p3_node1: "Mehta Dani Chand",
+                p3_subnodes: "Kesari Das • Batthumal",
+
+                merged_sec_title: "Genealogy Preservation, Index & Call of the Times",
+                merged_sec_sub: "Authentic Research Records, Original Records and Index",
+                vakt_title: "Call of the Times & Historical Research",
+                gen_box2_head: "Obtaining Genealogy Records",
+                gen_box2_body: "Anyone in need of genealogy records may obtain them from Shri Raghubeer Chand Puri (Secretary, Trust).",
+                bhoomika_title: "Ancestral Roots & Foreword",
+
+                // Lineage Tree Nodes & Titles (English)
+                node_ishar: "Ishar Rai",
+                node_siddh: "Siddh Garhi",
+                node_kamal: "Kamal Narayan",
+                node_khil: "Khil Narayan",
+                node_dayal: "Dayal Chand",
+                node_devi: "Devi Dita",
+                pillar_1: "Thamma Malkana",
+                pillar_2: "Thamma Rai",
+                pillar_3: "Thamma Mahatka",
+                p1_node1: "Malak Kapoor",
+                p1_node2: "Govind Chand",
+                p1_subnodes: "Raj Kaur • Chatar Bihari • Arjun Mal",
+                p2_node1: "Rai Bukhar Chand",
+                p2_subnodes: "Baba Ganga Ram • Rai Mahesh Das • Anchal Das",
+                p3_node1: "Mehta Dani Chand",
+                p3_subnodes: "Kesari Das • Batthumal",
+                three_pillars_title: "Three Pillars of the Puri Clan",
             }
         };
 
@@ -1144,6 +1473,59 @@
             for (let i = 1; i <= 28; i++) {
                 setElText(`fig-${i}`, dict[`fig_${i}`]);
             }
+
+            setElText('index-sec-title', dict.index_sec_title);
+            setElText('index-sec-sub', dict.index_sec_sub);
+            setElText('vakt-title', dict.vakt_title);
+            setElHtml('vakt-text', dict.vakt_text);
+            setElText('trust-officers-title', dict.trust_officers_title);
+            setElText('three-pillars-title', dict.three_pillars_title);
+            setElText('three-pillars-path', dict.three_pillars_path);
+            setElText('pillar-1', dict.pillar_1);
+            setElText('pillar-2', dict.pillar_2);
+            setElText('pillar-3', dict.pillar_3);
+            setElText('index-table-title', dict.index_table_title);
+            setElText('index-table-sub', dict.index_table_sub);
+            setElText('col-page', dict.col_page);
+            setElText('col-name', dict.col_name);
+
+            setElText('lbl-gen-sec', dict.lbl_gen_sec);
+            setElText('val-gen-sec', dict.val_gen_sec);
+            setElText('lbl-pres', dict.lbl_pres);
+            setElText('val-pres', dict.val_pres);
+            setElText('lbl-fin-sec', dict.lbl_fin_sec);
+            setElText('val-fin-sec', dict.val_fin_sec);
+            setElText('lbl-auditor', dict.lbl_auditor);
+            setElText('val-auditor', dict.val_auditor);
+            setElText('lbl-trustee-1', dict.lbl_trustee_1);
+            setElText('val-trustee-1', dict.val_trustee_1);
+            setElText('lbl-trustee-2', dict.lbl_trustee_2);
+            setElText('val-trustee-2', dict.val_trustee_2);
+
+            for (let i = 1; i <= 23; i++) {
+                setElText(`idx-row-${i}`, dict[`idx_row_${i}`]);
+            }
+
+            setElText('merged-sec-title', dict.merged_sec_title);
+            setElText('merged-sec-sub', dict.merged_sec_sub);
+
+            setElText('node-ishar', dict.node_ishar);
+            setElText('node-siddh', dict.node_siddh);
+            setElText('node-kamal', dict.node_kamal);
+            setElText('node-khil', dict.node_khil);
+            setElText('node-dayal', dict.node_dayal);
+            setElText('node-devi', dict.node_devi);
+            setElText('pillar-1', dict.pillar_1);
+            setElText('pillar-2', dict.pillar_2);
+            setElText('pillar-3', dict.pillar_3);
+            setElText('p1-node1', dict.p1_node1);
+            setElText('p1-node2', dict.p1_node2);
+            setElText('p1-subnodes', dict.p1_subnodes);
+            setElText('p2-node1', dict.p2_node1);
+            setElText('p2-subnodes', dict.p2_subnodes);
+            setElText('p3-node1', dict.p3_node1);
+            setElText('p3-subnodes', dict.p3_subnodes);
+            setElText('three-pillars-title-text', dict.three_pillars_title);
         }
 
         function setElText(id, text) {
