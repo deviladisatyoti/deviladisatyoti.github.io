@@ -17,10 +17,17 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Quick mobile detector script -->
+    <script>
+        if (window.screen.width < 768) {
+            document.documentElement.classList.add('is-mobile');
+        }
+    </script>
 
     <script>
         tailwind.config = {
@@ -59,21 +66,40 @@
         :root {
             --base-font-size: 16px;
         }
+
         html {
             font-size: var(--base-font-size);
             background-color: #FAF7F2;
-            zoom: 0.85;
         }
+
+        /* Apply the 0.85 zoom ONLY on non-mobile (desktop/tablet) screens */
+        html:not(.is-mobile) {
+            zoom: 0.85; 
+        }
+        /* Fallback for browsers that do not support zoom */
         @supports not (zoom: 1) {
-            html {
+            html:not(.is-mobile) {
                 transform: scale(0.85);
                 transform-origin: top center;
                 width: 117.65%;
             }
         }
+
+        /* English Font Overrides Matching index.html */
+        html[lang="en"] .font-hindiTitle {
+            font-family: "Rozha One;", serif !important;
+            letter-spacing: 0.02em;
+        }
+
         html[lang="en"] .font-hindiBody {
             font-family: "Roboto", sans-serif !important;
         }
+
+        .gold-text-gradient {
+            color: #F4D03F;
+            text-shadow: 0 1px 2px rgba(20, 2, 4, 0.85);
+        }
+
         .lang-pill-active {
             background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%) !important;
             color: #3B020B !important;
@@ -81,11 +107,16 @@
             box-shadow: 0 0 12px rgba(212, 175, 55, 0.9), inset 0 0 2px #521A07 !important;
             border: 2px solid #F3E5AB !important;
         }
+
         .lang-pill-inactive {
             color: #F3E5AB !important;
             opacity: 1 !important;
             font-weight: 800 !important;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+        }
+        .lang-pill-inactive:hover {
+            color: #FFD700 !important;
+            background-color: rgba(212, 175, 55, 0.25) !important;
         }
     </style>
 </head>
@@ -93,51 +124,78 @@
 
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-imperial/95 backdrop-blur-md border-b-2 border-gold/40 text-cream shadow-xl">
-        <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
-            
-            <!-- Back to Home Button -->
-            <a href="index.html" class="flex items-center gap-2.5 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 py-2 rounded-full text-base font-black transition duration-200 shadow-lg">
-                <i class="fa-solid fa-arrow-left text-saffron"></i>
-                <span id="nav-back-home">मुख्य पृष्ठ पर जाएं</span>
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 flex items-center justify-between gap-4">
+
+            <!-- Left: Back Button -->
+            <a href="index.html" class="flex items-center gap-2.5 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 sm:px-5 py-2 rounded-full text-base sm:text-lg font-black transition duration-200 shadow-lg active:scale-95">
+                <i class="fa-solid fa-house text-saffron text-lg sm:text-xl"></i>
+                <span id="nav-back-home" class="hidden sm:inline">मुख्य पृष्ठ पर जाएं</span>
+                <span class="sm:hidden">मुख्य</span>
             </a>
 
-            <!-- Center Sacred Title -->
-            <div class="hidden lg:flex items-center gap-3 text-gold text-2xl font-hindiTitle font-black tracking-widest">
-                <span class="text-saffron text-3xl">ॐ</span>
-                <span id="nav-sacred-motto" class="text-xl font-black tracking-normal text-goldLight">॥ श्री लाडी सत्योति देव्यै नमः ॥</span>
+           <!-- Center: Sacred Title Badge (Enlarged Text) -->
+            <div class="hidden lg:flex items-center gap-3 text-gold text-2xl sm:text-3xl font-hindiTitle font-black tracking-widest">
+                <span class="text-saffron text-3xl sm:text-4xl">ॐ</span>
+                <span id="nav-sacred-motto" class="text-xl sm:text-2xl font-black tracking-normal text-goldLight">॥ श्री लाडी सत्योति देव्यै नमः ॥</span>
             </div>
 
-            <!-- Language Switcher -->
-            <div class="flex items-center bg-[#280802] p-1.5 rounded-full border-2 border-[#FFD700] text-base font-black shadow-2xl">
-                <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-4 py-1.5 rounded-full transition-all duration-200">हिंदी</button>
-                <button id="btn-lang-en" onclick="setLanguage('en')" class="px-4 py-1.5 rounded-full transition-all duration-200">English</button>
+            <!-- Right: Accessibility Controls & Language Switcher -->
+            <div class="flex items-center gap-3">
+                <!-- Zoom Controls -->
+                <div class="hidden md:flex items-center bg-[#280802] border-2 border-[#FFD700] rounded-full px-2 py-1 text-goldLight shadow-2xl gap-2">
+                    <button onclick="adjustFontSize(-1)" class="w-11 h-11 hover:bg-gold/30 rounded-full transition duration-150 flex items-center justify-center text-xl text-goldLight active:scale-95" title="Zoom Out">
+                        <i class="fa-solid fa-magnifying-glass-minus"></i>
+                    </button>
+                    <button onclick="resetFontSize()" class="w-10 h-10 hover:bg-gold/30 rounded-full transition duration-150 flex items-center justify-center text-lg text-goldLight active:scale-95" title="Reset Size">
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                    <button onclick="adjustFontSize(1)" class="w-11 h-11 hover:bg-gold/30 rounded-full transition duration-150 flex items-center justify-center text-xl text-goldLight active:scale-95" title="Zoom In">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Share Button -->
+                <button onclick="shareWebsite()" class="w-12 h-12 bg-[#280802] hover:bg-gold/30 text-gold rounded-full border-2 border-[#FFD700] transition duration-200 shadow-2xl flex items-center justify-center active:scale-95" title="Share Page">
+                    <i class="fa-solid fa-share-nodes text-xl"></i>
+                </button>
+
+                <!-- Language Switcher -->
+                <div class="flex items-center bg-[#280802] p-1.5 rounded-full border-2 border-[#FFD700] text-base font-black shadow-2xl">
+                    <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-4 py-1.5 rounded-full transition-all duration-200 flex items-center justify-center gap-1">
+                        <span>हिंदी</span>
+                    </button>
+                    <button id="btn-lang-en" onclick="setLanguage('en')" class="px-4 py-1.5 rounded-full transition-all duration-200 flex items-center justify-center gap-1">
+                        <span>English</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+    <main class="flex-grow w-full px-2 sm:px-4 lg:px-6 py-10 space-y-8">
         
-        <!-- Breadcrumb / Page Indicator -->
-        <div class="flex items-center justify-between bg-creamCard border-2 border-gold/50 px-6 py-4 rounded-2xl shadow-sm">
-            <span class="text-imperial font-extrabold text-lg sm:text-xl flex items-center gap-2">
-                <i class="fa-solid fa-book-open text-saffron"></i> <span id="page-indicator">पृष्ठ 1 - वंशावली रिकॉर्ड</span>
+        <!-- Breadcrumb / Page Indicator Bar with Navigation Options -->
+        <div class="flex flex-col md:flex-row items-center justify-between bg-creamCard border-2 border-gold/50 px-6 sm:px-8 py-5 rounded-2xl shadow-md gap-4">
+            <span class="text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-3">
+                <i class="fa-solid fa-book-open text-saffronDark text-2xl sm:text-3xl"></i> <span id="page-indicator">पृष्ठ 1 - Three Thammas of the Puri Clan</span>
             </span>
-            <a href="thamma-malkana-katra.html" class="bg-imperial hover:bg-maroonDark text-goldLight font-bold px-4 py-2 rounded-xl border border-gold/60 text-sm sm:text-base transition flex items-center gap-2 shadow">
-                <span id="next-page-btn">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें</span> <i class="fa-solid fa-arrow-right text-saffron"></i>
-            </a>
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+                <a href="index.html" class="bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-5 py-3 rounded-xl border-2 border-gold/70 text-base sm:text-lg transition flex items-center gap-2.5 shadow-md active:scale-95">
+                    <i class="fa-solid fa-house text-saffron text-lg sm:text-xl"></i> <span id="top-nav-home">मुख्य पृष्ठ</span>
+                </a>
+                <a href="thamma-malkana-katra.html" class="bg-[#D84315] hover:bg-[#B71C1C] text-white font-black px-5 py-3 rounded-xl border-2 border-gold/70 text-base sm:text-lg transition flex items-center gap-2.5 shadow-md active:scale-95">
+                    <span id="top-nav-next">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ) देखें</span> <i class="fa-solid fa-arrow-right text-lg sm:text-xl"></i>
+                </a>
+            </div>
         </div>
 
         <!-- Three Thammas Family Tree Graph Section -->
         <div class="bg-white/90 border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft space-y-6 w-full">
-            <h4 class="font-extrabold text-imperial text-2xl sm:text-3xl flex items-center gap-2 border-b-2 border-gold/30 pb-4">
-                <i class="fa-solid fa-sitemap text-saffron"></i> 
-                <span id="three-pillars-title-text">पूरी कौम के तीन थम्मे</span>
-            </h4>
 
             <!-- Family Tree Diagram -->
             <div class="relative w-full max-w-full overflow-x-auto p-4 sm:p-8 bg-[#FAF7F2] border-2 border-gold/60 rounded-3xl shadow-md font-hindiBody select-none">
-                <div class="w-full min-w-[700px] max-w-6xl mx-auto flex flex-col items-center relative z-10 py-2">
+                <div class="w-full min-w-[700px] flex flex-col items-center relative z-10 py-2">
                     
                     <!-- ANCESTRAL ROOT TRUNK -->
                     <div class="flex flex-col items-center space-y-3 w-full max-w-md">
@@ -261,26 +319,28 @@
         </div>
 
         <!-- Bottom Navigation Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
-            <a href="index.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-maroonDark hover:bg-imperial text-goldLight font-bold px-6 py-3 rounded-2xl border border-gold/60 shadow transition text-base">
-                <i class="fa-solid fa-house text-saffron"></i> <span id="btn-back-home">मुख्य पृष्ठ (Home) पर वापस जाएं</span>
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 pt-6 border-t-2 border-gold/40">
+            <a href="index.html" class="w-full lg:w-auto flex items-center justify-center gap-3 bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-lg transition text-lg sm:text-xl active:scale-95">
+                <i class="fa-solid fa-house text-saffron text-xl sm:text-2xl"></i> <span id="btn-back-home">मुख्य पृष्ठ (Home) पर वापस जाएं</span>
             </a>
-            <a href="thamma-malkana-katra.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-saffron to-saffronDark text-white font-black px-6 py-3 rounded-2xl shadow-lg hover:opacity-95 transition text-base">
-                <span id="btn-next-page">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें</span> <i class="fa-solid fa-arrow-right"></i>
-            </a>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+                <a href="thamma-malkana-katra.html" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#D84315] hover:bg-[#B71C1C] text-white font-black px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-xl transition text-lg sm:text-xl active:scale-95">
+                    <span id="btn-next-page">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ) देखें</span> <i class="fa-solid fa-arrow-right text-xl sm:text-2xl"></i>
+                </a>
+            </div>
         </div>
 
     </main>
 
     <!-- Footer -->
-    <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-8 px-6 mt-12">
-        <div class="w-full text-center space-y-2 font-hindiBody">
-            <div class="flex items-center justify-center gap-2 text-saffron text-xl font-bold">
+    <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-10 sm:py-12 px-6 mt-auto">
+        <div class="w-full text-center space-y-4 font-hindiBody">
+            <div class="flex items-center justify-center gap-3 text-saffron text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-wide">
                 <span>ॐ</span>
                 <span id="footer-motto">देवी लाडी सत्योति की जय</span>
                 <span>ॐ</span>
             </div>
-            <p id="footer-copy" class="text-base font-bold text-goldLight">
+            <p id="footer-copy" class="text-lg sm:text-xl md:text-2xl font-bold text-goldLight tracking-wide">
                 लाडी सत्योति ट्रस्ट रजिस्टर्ड | पूरी परिवार डिजिटल अभिलेखागार
             </p>
         </div>
@@ -292,8 +352,9 @@
                 sacred_motto: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
                 page_title: "पूरी कौम के तीन थम्मे - पृष्ठ 1 | लाडी सत्योति ट्रस्ट",
                 nav_back_home: "मुख्य पृष्ठ पर जाएं",
-                page_indicator: "पृष्ठ 1 - वंशावली रिकॉर्ड (Three Thammas of the Puri Clan)",
-                next_page_btn: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें",
+                page_indicator: "पृष्ठ 1 - Three Thammas of the Puri Clan",
+                top_nav_home: "मुख्य पृष्ठ",
+                top_nav_next: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ)",
                 three_pillars_title: "पूरी कौम के तीन थम्मे",
                 node_ishar: "ईशर राय",
                 node_siddh: "सिद्ध गढ़ी",
@@ -317,7 +378,7 @@
                 p3_leaf_1: "केसरी दास",
                 p3_leaf_2: "बटठूमल",
                 btn_back_home: "मुख्य पृष्ठ (Home) पर वापस जाएं",
-                btn_next_page: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें",
+                btn_next_page: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ) देखें",
                 footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
                 footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार"
             },
@@ -325,8 +386,9 @@
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
                 page_title: "Three Thammas of the Puri Clan - Page 1 | Ladi Satyoti Trust",
                 nav_back_home: "Back to Home",
-                page_indicator: "Page 1 - Genealogy Record (Three Thammas of the Puri Clan)",
-                next_page_btn: "View Next Page (Page 2 - Thamma Malkana)",
+                page_indicator: "Page 1 - Three Thammas of the Puri Clan",
+                top_nav_home: "Home",
+                top_nav_next: "View Next Page (Page 2 - Thamma Malkana Katra Purian)",
                 three_pillars_title: "Three Thammas of the Puri Clan",
                 node_ishar: "Ishar Rai",
                 node_siddh: "Siddh Garhi",
@@ -350,7 +412,7 @@
                 p3_leaf_1: "Kesari Das",
                 p3_leaf_2: "Batthumal",
                 btn_back_home: "Back to Home Page",
-                btn_next_page: "View Next Page (Page 2 - Thamma Malkana)",
+                btn_next_page: "View Next Page (Page 2 - Thamma Malkana Katra Purian)",
                 footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
                 footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive"
             }
@@ -424,12 +486,39 @@
             setElText('btn-next-page', dict.btn_next_page);
             setElText('footer-motto', dict.footer_motto);
             setElText('footer-copy', dict.footer_copy);
+
+            setElText('top-nav-home', dict.top_nav_home);
+            setElText('top-nav-next', dict.top_nav_next);
+        }
+
+        let currentFontSize = 16;
+
+        function adjustFontSize(delta) {
+            currentFontSize = Math.min(22, Math.max(13, currentFontSize + delta));
+            document.documentElement.style.setProperty('--base-font-size', currentFontSize + 'px');
+        }
+
+        function resetFontSize() {
+            currentFontSize = 16;
+            document.documentElement.style.setProperty('--base-font-size', '16px');
+        }
+
+        function shareWebsite() {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(window.location.href);
+            }
         }
 
         function setElText(id, text) {
             const el = document.getElementById(id);
             if (el && text !== undefined) el.textContent = text;
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (window.screen.width < 768) {
+                document.documentElement.style.setProperty('--base-font-size', '22px');
+            }
+        });
     </script>
 </body>
 </html>
