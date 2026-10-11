@@ -150,13 +150,16 @@
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-saffron selection:text-white">
 
+	<!-- Add this wrapper around your main content body -->
+	<div style="width: 1200px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch;">
+
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-imperial/95 backdrop-blur-md border-b-2 border-gold/40 text-cream shadow-xl">
         <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
             
             <!-- Back Button -->
-            <a href="thamma-three-pillars.html" class="flex items-center gap-2.5 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 py-2 rounded-full text-base font-black transition duration-200 shadow-lg">
-                <i class="fa-solid fa-arrow-left text-saffron"></i>
+            <a href="index.html" class="flex items-center gap-2.5 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 py-2 rounded-full text-base font-black transition duration-200 shadow-lg">
+                <i class="fa-solid fa-house text-saffron"></i>
                 <span id="nav-back-home">पिछला पृष्ठ (पृष्ठ 1)</span>
             </a>
 
@@ -174,6 +177,7 @@
         </div>
     </header>
 
+    
     <!-- Main Content Container -->
     <main class="flex-grow w-full px-2 sm:px-4 lg:px-6 py-10 space-y-8">
         
@@ -303,6 +307,7 @@
             </div>
         </div>
     </main>
+	
 
     <!-- Footer -->
     <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-8 px-6 mt-auto">
@@ -317,6 +322,8 @@
             </p>
         </div>
     </footer>
+
+    </div>
 
     <script>
         const translations = {

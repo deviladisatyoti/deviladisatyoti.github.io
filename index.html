@@ -48,6 +48,13 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Quick mobile detector script -->
+    <script>
+        if (window.screen.width < 768) {
+            document.documentElement.classList.add('is-mobile');
+        }
+    </script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -131,11 +138,15 @@
         html {
             font-size: var(--base-font-size);
             background-color: #FAF7F2;
-            zoom: 0.85; /* Permanently scales down the entire website layout, images, and text to 85% */
+        }
+
+        /* Apply the 0.85 zoom ONLY on non-mobile (desktop/tablet) screens */
+        html:not(.is-mobile) {
+            zoom: 0.85; 
         }
         /* Fallback for browsers that do not support zoom */
         @supports not (zoom: 1) {
-            html {
+            html:not(.is-mobile) {
                 transform: scale(0.85);
                 transform-origin: top center;
                 width: 117.65%;
@@ -494,75 +505,75 @@
             </div>
 
             <!-- Equal 2 Columns: Call of the Times (Left) & Trust Office Bearers (Right) -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch w-full">
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 items-stretch w-full">
                 
                 <!-- Left Column: Call of the Times & Historical Research (Including Obtaining Records Note) -->
-                <div class="bg-white/90 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between h-full space-y-4">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5">
-                            <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
-                                <i class="fa-solid fa-bullhorn text-saffron text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 id="vakt-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">वक्त की पुकार एवं ऐतिहासिक शोध</h3>
-                                <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Call of the Times</span>
-                            </div>
+                <div class="bg-white/90 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between h-full">
+                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5 flex-shrink-0">
+                        <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
+                            <i class="fa-solid fa-bullhorn text-saffron text-2xl"></i>
                         </div>
+                        <div>
+                            <h3 id="vakt-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">वक्त की पुकार एवं ऐतिहासिक शोध</h3>
+                            <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Call of the Times</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex-grow flex items-center py-3">
                         <p id="vakt-text" class="text-lg sm:text-xl font-medium font-hindiBody text-gray-800 leading-relaxed">
                             वंशावली कौम पूरीयां बटाला जिसको स्वर्गीय हकीम कर्म चन्द पुरी (28-9-1954) ने बड़ी मेहनत व कोशिश से तैयार किया था, जो उर्दू भाषा में है। चूंकि उर्दू भाषा पंजाब से खत्म हो रही है और नई पीढ़ी इससे ना वाकिफ है, इसलिए इस जान-पहचान को कायम रखने के लिए यह वंशावली हरिद्वार के पुरोहित पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल), पुरोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पंडित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहियों से और महकमा माल के कागजों से दरयाफत करके हिन्दी भाषा में तैयार की गई है ताकि आने वाली पीढ़ी इससे फायदे उठा सकें।
                         </p>
+                    </div>
 
-                        <!-- Embedded Obtaining Records Note Box -->
-                        <div class="p-4 sm:p-5 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-imperial space-y-1.5 font-hindiBody shadow-sm mt-4">
-                            <div class="flex items-center gap-2.5 text-maroonDark font-black text-lg sm:text-xl">
-                                <i class="fa-solid fa-file-signature text-saffron text-xl"></i>
-                                <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
-                            </div>
-                            <p id="gen-box2-body" class="text-lg sm:text-xl font-bold leading-relaxed">
-                                जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।
-                            </p>
+                    <!-- Embedded Obtaining Records Note Box -->
+                    <div class="p-4 sm:p-5 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-imperial space-y-1.5 font-hindiBody shadow-sm flex-shrink-0">
+                        <div class="flex items-center gap-2.5 text-maroonDark font-black text-lg sm:text-xl">
+                            <i class="fa-solid fa-file-signature text-saffron text-xl"></i>
+                            <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
                         </div>
+                        <p id="gen-box2-body" class="text-lg sm:text-xl font-bold leading-relaxed">
+                            जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।
+                        </p>
                     </div>
                 </div>
 
                 <!-- Right Column: Trust Office Bearers -->
-                <div class="bg-white/90 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between h-full space-y-4">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5">
-                            <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
-                                <i class="fa-solid fa-users-rectangle text-saffron text-2xl"></i>
-                            </div>
-                            <div>
-                                <h3 id="trust-officers-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी</h3>
-                                <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Trust Office Bearers</span>
-                            </div>
+                <div class="bg-white/90 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col h-full">
+                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5 flex-shrink-0">
+                        <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
+                            <i class="fa-solid fa-users-rectangle text-saffron text-2xl"></i>
                         </div>
+                        <div>
+                            <h3 id="trust-officers-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी</h3>
+                            <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Trust Office Bearers</span>
+                        </div>
+                    </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-hindiBody pt-1">
-                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
-                                <span id="lbl-gen-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">जनरल सेक्रेटरी</span>
-                                <span id="val-gen-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">रघबीर चन्द पुरी</span>
-                            </div>
-                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
-                                <span id="lbl-pres" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">प्रधान</span>
-                                <span id="val-pres" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">बुद्ध देव पुरी</span>
-                            </div>
-                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
-                                <span id="lbl-fin-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">फाईनेंस सेक्रेटरी</span>
-                                <span id="val-fin-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">दलीप राज पुरी</span>
-                            </div>
-                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
-                                <span id="lbl-auditor" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">आडीटर</span>
-                                <span id="val-auditor" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">कुलभूषण पुरी</span>
-                            </div>
-                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
-                                <span id="lbl-trustee-1" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
-                                <span id="val-trustee-1" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">जुगल किशोर पुरी</span>
-                            </div>
-                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
-                                <span id="lbl-trustee-2" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
-                                <span id="val-trustee-2" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">हंस राज पुरी</span>
-                            </div>
+                    <!-- Perfectly Equi-distant Layout Container using Grid and align-content: space-evenly -->
+                    <div class="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 [align-content:space-evenly] font-hindiBody">
+                        <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
+                            <span id="lbl-gen-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">जनरल सेक्रेटरी</span>
+                            <span id="val-gen-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">रघबीर चन्द पुरी</span>
+                        </div>
+                        <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
+                            <span id="lbl-pres" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">प्रधान</span>
+                            <span id="val-pres" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">बुद्ध देव पुरी</span>
+                        </div>
+                        <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
+                            <span id="lbl-fin-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">फाईनेंस सेक्रेटरी</span>
+                            <span id="val-fin-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">दलीप राज पुरी</span>
+                        </div>
+                        <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
+                            <span id="lbl-auditor" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">आडीटर</span>
+                            <span id="val-auditor" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">कुलभूषण पुरी</span>
+                        </div>
+                        <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
+                            <span id="lbl-trustee-1" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
+                            <span id="val-trustee-1" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">जुगल किशोर पुरी</span>
+                        </div>
+                        <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
+                            <span id="lbl-trustee-2" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
+                            <span id="val-trustue-2" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">हंस राज पुरी</span>
                         </div>
                     </div>
                 </div>
@@ -1767,6 +1778,15 @@
                 "\nLocation: https://maps.app.goo.gl/5yMch3hhHddu91mt8";
             copyTextToClipboard(addressText, translations[currentLang].toast_address_copied);
         }
+
+        // Automatically increase font size on mobile viewports based on real device screen width
+        document.addEventListener("DOMContentLoaded", () => {
+            // Check if the actual device screen width is smaller than a tablet/desktop (e.g., < 768px)
+            if (window.screen.width < 768) {
+                // Increase base font size from 16px to 22px (or any multiplier you prefer)
+                document.documentElement.style.setProperty('--base-font-size', '22px');
+            }
+        });
 
     </script>
 </body>
