@@ -337,16 +337,15 @@
 
     <main class="flex-grow w-full px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
         
-        <!-- Top Row: 3 Columns with Flexible Fractional Widths for Easy Tweak & Experimentation -->
-        <!-- TIP: Change '1.5fr' below to test different central column widths (e.g., 1.4fr, 1.6fr, 1.8fr) -->
-        <div class="grid grid-cols-1 min-[1420px]:grid-cols-[1fr_1.5fr_1fr] gap-6 items-stretch">
+        <!-- Top Row: 3 Columns with Dynamic Fluid Scaling To Fill Total Height -->
+        <div class="grid grid-cols-1 min-[1420px]:grid-cols-[1fr_1.6fr_1fr] gap-6 items-stretch">
 
-            <!-- ================= CELL 1: HISTORY, FAITH & ANCESTRAL ROOTS (ANCHORED BOTTOM SUBSECTION) ================= -->
-            <div class="flex flex-col">
-                <div class="bg-creamCard border-2 border-gold/50 rounded-2xl p-6 sm:p-7 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative flex flex-col justify-start h-full">
+            <!-- ================= CELL 1: HISTORY, FAITH & ANCESTRAL ROOTS ================= -->
+            <div class="flex flex-col h-full">
+                <div class="bg-creamCard border-2 border-gold/50 rounded-2xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative flex flex-col justify-between h-full">
                     
                     <!-- Header -->
-                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-2.5 mb-4 flex-shrink-0">
+                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3 mb-3 flex-shrink-0">
                         <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow">
                             <i class="fa-solid fa-scroll"></i>
                         </div>
@@ -356,46 +355,34 @@
                         </div>
                     </div>
 
-                    <!-- History & Faith Content (Top Sub-section) -->
-                    <div class="flex flex-col space-y-4 text-gray-900 leading-relaxed font-hindiBody mb-6">
-                        <p id="hist-p1" class="text-lg sm:text-xl font-medium mt-0 pt-0">
-                            पुरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिनकी सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई थी ।
-                        </p>
-
-                        <div class="p-4 sm:p-5 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-maroonDark shadow-sm">
-                            <p id="hist-p2" class="text-lg sm:text-xl font-medium">
-                                देवी लाडी के मंगेतर का स्वर्गवास हो गया था । देवी लाडी उनकी पगड़ी गोद में लेकर सती हो गई थीं । पूरी परिवार इस सती को बड़ी श्रद्धा से पूजता है । इसके स्थान पर आकर अपने बच्चों के मुण्डन संस्कार करते हैं ।
+                    <!-- History Content (Fluid Text & Dynamic Flex Box To Fill Top, Middle, & Bottom Space) -->
+                    <div class="flex flex-col justify-between flex-grow text-gray-900 font-hindiBody space-y-4 py-2">
+                        <div class="flex-grow flex items-center">
+                            <p id="hist-p1" class="text-[clamp(1.15rem,1.35vw,1.6rem)] font-medium leading-[1.8] tracking-normal">
+                                पूरी खानदान की कुंवारी लड़की लाडी सपुत्री श्री ईशर राय पूरी जिनकी सगाई चिमयारी जिला अमृतसर के भण्डारी खानदान के लड़के श्री जसवन्त राय से हुई थी ।
                             </p>
                         </div>
 
-                        <p id="hist-p3" class="text-lg sm:text-xl font-medium">
-                            पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब में आबादी के विस्थापन के कारण दूर-दराज भिन्न-भिन्न शहरों में आबाद हो गई है । जिसकी वजह से आपस में मेल-मिलाप और जान-पहचान खत्म होती जा रही है ।
-                        </p>
-                    </div>
-
-                    <!-- Ancestral Roots & Foreword Section (Anchored to the Bottom with mt-auto) -->
-                    <div class="bg-white/80 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-sm space-y-3.5 border-t-2 border-gold/40 mt-auto">
-                        <div class="flex items-center gap-2.5 text-imperial font-bold text-xl sm:text-2xl">
-                            <i class="fa-solid fa-book-open text-saffron text-2xl"></i>
-                            <h3 id="bhoomika-title" class="font-extrabold tracking-wide">ऐतिहासिक भूमिका</h3>
-                        </div>
-                        <div class="space-y-3.5 text-gray-900 font-hindiBody mt-1">
-                            <p id="bhoomika-p1" class="text-lg sm:text-xl font-medium leading-relaxed">
-                                बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। पुरी कौम <strong class='font-bold text-imperial'>लोधी हुकूमत</strong> के वक्त बटाला में आबाद हुई। <strong class='font-bold text-imperial'>मुगलीय हुकूमत</strong> के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए।
-                            </p>
-                            <div class="p-4 sm:p-5 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-maroonDark shadow-sm">
-                                <p id="bhoomika-p2" class="text-lg sm:text-xl font-medium leading-relaxed">
-                                    चुनांचे मशहूर हैं कि जब <strong class='font-bold text-imperial'>श्री गुरू नानक देव जी महाराज</strong> बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। <strong class='font-bold text-imperial'>श्री गुरू नानक देव जी महाराज</strong> ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।
+                        <div class="flex-grow flex items-center w-full">
+                            <div class="p-5 sm:p-6 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-maroonDark shadow-sm w-full">
+                                <p id="hist-p2" class="text-[clamp(1.15rem,1.35vw,1.6rem)] font-medium leading-[1.8] tracking-normal">
+                                    देवी लाडी के मंगेतर का स्वर्गवास हो गया था । देवी लाडी उनकी पगड़ी गोद में लेकर सती हो गई थीं । पूरी परिवार इस सती को बड़ी श्रद्धा से पूजता है । इसके स्थान पर आकर अपने बच्चों के मुण्डन संस्कार करते हैं ।
                                 </p>
                             </div>
+                        </div>
+
+                        <div class="flex-grow flex items-center">
+                            <p id="hist-p3" class="text-[clamp(1.15rem,1.35vw,1.6rem)] font-medium leading-[1.8] tracking-normal">
+                                पुरी बिरादरी इन दिनों रोजगार की तलाश में और पंजाब में आबादी के विस्थापन के कारण दूर-दराज भिन्न-भिन्न शहरों में आबाद हो गई है । जिसकी वजह से आपस में मेल-मिलाप और जान-पहचान खत्म होती जा रही है ।
+                            </p>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- ================= CELL 2: DEVI PORTRAIT + MERGED ONLINE DONATION ================= -->
-            <div class="flex flex-col">
+            <!-- ================= CELL 2: DEVI PORTRAIT ================= -->
+            <div class="flex flex-col h-full">
                 <div class="w-full bg-gradient-to-b from-imperial via-maroonDark to-imperial border-4 border-gold rounded-3xl p-5 sm:p-7 shadow-gold-deep text-center relative flex flex-col justify-between h-full overflow-hidden">
                     
                     <!-- Halo Glowing Background -->
@@ -403,15 +390,15 @@
                         <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full halo-glow"></div>
                     </div>
 
-                    <div>
+                    <div class="flex flex-col justify-between h-full">
                         <!-- Top Decorative Title Badge -->
-                        <div class="relative z-10 inline-block bg-maroonDark/90 border-2 border-gold px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl sm:rounded-full text-2xl sm:text-3xl font-extrabold tracking-wide uppercase mb-4 shadow-lg">
+                        <div class="relative z-10 inline-block bg-maroonDark/90 border-2 border-gold px-6 sm:px-8 py-3 sm:py-3.5 rounded-2xl sm:rounded-full text-2xl sm:text-3xl font-extrabold tracking-wide uppercase mb-2 shadow-lg">
                             <i class="fa-solid fa-crown text-saffron mr-2"></i>
                             <span id="portrait-top-badge" class="gold-text-gradient">देवी लाडी सत्योति की जय</span>
                         </div>
 
                         <!-- Enlarged Gold Arched Image Container -->
-                        <div class="relative z-10 my-3 mx-auto max-w-md sm:max-w-lg group">
+                        <div class="relative z-10 my-auto mx-auto max-w-md sm:max-w-lg group w-full">
                             <div class="p-3 sm:p-4 bg-gradient-to-b from-gold via-goldLight to-goldDark rounded-t-full rounded-b-3xl shadow-2xl border-2 border-goldLight">
                                 <div class="relative overflow-hidden rounded-t-full rounded-b-2xl border-4 border-imperial bg-maroonDark cursor-pointer" onclick="openLightbox()">
                                     <img 
@@ -429,8 +416,8 @@
                             </div>
                         </div>
 
-                        <!-- Portrait Caption Box & Larger Text -->
-                        <div class="relative z-10 mt-5 space-y-2.5">
+                        <!-- Portrait Caption Box & Text -->
+                        <div class="relative z-10 mt-3 space-y-2.5">
                             <h3 id="portrait-caption" class="font-hindiTitle text-3xl sm:text-4xl gold-text-gradient font-black tracking-wide">
                                 ॥ श्री लाडी सत्योति देवी जी ॥
                             </h3>
@@ -438,8 +425,8 @@
                                 बटाला स्थित पावन मुख्य मंदिर स्वरूप
                             </p>
 
-                            <!-- Larger Action Buttons Row -->
-                            <div class="pt-4 flex flex-wrap justify-center gap-3">
+                            <!-- Action Buttons Row -->
+                            <div class="pt-3 flex flex-wrap justify-center gap-3">
                                 <button onclick="openLightbox()" class="flex items-center gap-2.5 bg-gradient-to-r from-gold via-goldLight to-gold text-maroonDark hover:text-white hover:bg-saffronDark font-black px-5 py-3 rounded-2xl text-sm sm:text-base transition duration-200 shadow-xl active:scale-95 border-2 border-goldLight">
                                     <i class="fa-solid fa-expand text-maroonDark text-base"></i>
                                     <span id="btn-zoom-text">पूर्ण चित्र देखें</span>
@@ -453,153 +440,39 @@
                         </div>
                     </div>
 
-                    <!-- Merged Online Donation Section at the Bottom of Devi Card -->
-                    <div class="relative z-10 mt-6 pt-5 border-t border-gold/30 text-left space-y-4 bg-maroonDark/90 p-5 sm:p-6 rounded-3xl border-2 border-gold/50 shadow-xl">
-                        <div class="flex items-center justify-between border-b-2 border-gold/30 pb-3">
-                            <div class="flex items-center gap-3.5">
-                                <div class="w-12 h-12 rounded-2xl bg-maroonDark border-2 border-gold/60 flex items-center justify-center text-gold text-2xl shadow-md">
-                                    <i class="fa-solid fa-hand-holding-heart text-saffron"></i>
-                                </div>
-                                <div>
-                                    <h3 id="seva-title" class="text-2xl sm:text-3xl font-black text-goldLight tracking-wide">Online Donation</h3>
-                                    <span id="seva-badge" class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffron">Sacred Trust Seva</span>    
-                                </div>
-                            </div>
-                        </div>
-
-                        <p id="seva-p1" class="text-base sm:text-xl text-goldLight font-hindiBody font-medium leading-relaxed">
-                            Contribute voluntarily towards temple upkeep and genealogy preservation. Direct bank transfer to registered trust account.
-                        </p>
-
-                        <!-- Extra Large Senior-Friendly Responsive QR & Action Card Box (2-Column Table Layout) -->
-                        <div class="bg-creamCard p-4 sm:p-6 rounded-2xl border-4 border-gold/60 shadow-2xl w-full max-w-full overflow-hidden">
-                            <table class="w-full border-collapse">
-                                <tbody>
-                                    <tr>
-                                        <!-- Column 1: QR Code spanning across all 4 rows -->
-                                        <td rowspan="4" class="align-middle pr-3 sm:pr-5 w-auto text-center">
-                                            <img src="resource/QR.png" alt="Trust QR Code" class="w-36 h-36 sm:w-44 sm:h-44 object-contain rounded-2xl bg-white p-2.5 border-4 border-gold/50 shadow-lg mx-auto" />
-                                        </td>
-                                        <!-- Column 2, Row 1: Scan QR Code to Pay -->
-                                        <td class="align-bottom pb-2 pt-1 text-left">
-                                            <span id="qr-top-text" class="text-lg sm:text-xl md:text-2xl font-black text-imperial block tracking-wide">
-                                                Scan QR Code to Pay
-                                            </span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!-- Column 2, Row 2: UPI Code -->
-                                        <td class="align-middle py-2 text-left">
-                                            <div class="w-full flex justify-start">
-                                                <span class="text-sm sm:text-base md:text-lg font-mono font-black text-imperial bg-gold/30 px-3 py-2 rounded-xl border-2 border-gold/60 shadow-md inline-block max-w-full break-all">
-                                                    9815573473@ucobank
-                                                </span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!-- Column 2, Row 3: Registered Trust Account text -->
-                                        <td class="align-middle py-2 text-left">
-                                            <p class="text-sm sm:text-base md:text-lg text-gray-900 font-extrabold block">
-                                                Registered Trust Account
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <!-- Column 2, Row 4: 2 Buttons -->
-                                        <td class="align-top pt-2 pb-1 text-left">
-                                            <div class="flex flex-col sm:flex-row gap-2.5 w-full">
-                                                <button onclick="shareUpiDetails()" class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-saffron to-saffronDark text-white font-black py-2.5 px-4 rounded-xl text-xs sm:text-sm shadow-lg hover:opacity-95 active:scale-95 text-center whitespace-nowrap">
-                                                    <i class="fa-solid fa-share-nodes text-base flex-shrink-0"></i>
-                                                    <span id="btn-share-upi">Share Details</span>
-                                                </button>
-                                                <button onclick="copyUpiId()" class="flex-1 flex items-center justify-center gap-2 bg-maroonDark hover:bg-saffronDark focus:bg-maroonDark text-goldLight hover:text-white focus:text-gold border-2 border-gold/70 focus:border-gold px-4 py-2.5 rounded-xl text-xs sm:text-sm font-black active:scale-95 outline-none focus:ring-4 focus:ring-gold text-center whitespace-nowrap shadow-md" title="Copy UPI ID">
-                                                    <i class="fa-solid fa-copy text-gold text-base flex-shrink-0"></i>
-                                                    <span id="btn-copy-upi">Copy UPI ID</span>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- Safe Direct Transfer Note -->
-                        <!-- <div class="p-4 bg-maroonDark border-l-8 border-saffron rounded-r-2xl space-y-1.5 shadow">
-                            <div class="flex items-center gap-2 text-gold font-black text-base sm:text-xl">
-                                <i class="fa-solid fa-shield-halved text-saffron text-xl"></i>
-                                <span id="seva-trust-note-title">100% Direct & Secure Donation</span>
-                            </div>
-                            <p id="seva-trust-note-body" class="text-goldLight text-base sm:text-lg font-semibold">
-                                Registered Trust Bank Account | Direct contribution with zero middleman
-                            </p>
-                        </div> -->
-                    </div>
                 </div>
             </div>
 
-            <!-- ================= CELL 3: TEMPLE LOCATION (ENLARGED TYPOGRAPHY) ================= -->
-            <div class="flex flex-col">
-                <div class="bg-creamCard border-2 border-gold/50 rounded-2xl p-6 sm:p-7 shadow-card-soft hover:shadow-gold-glow transition duration-300 flex flex-col justify-between h-full">
+            <!-- ================= CELL 3: ANCESTRAL ROOTS & FOREWORD ================= -->
+            <div class="flex flex-col h-full">
+                <div class="bg-creamCard border-2 border-gold/50 rounded-2xl p-6 sm:p-8 shadow-card-soft hover:shadow-gold-glow transition duration-300 relative flex flex-col justify-between h-full">
                     
-                    <div class="flex flex-col flex-grow space-y-4">
-                        <!-- Header -->
-                        <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5 flex-shrink-0">
-                            <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow">
-                                <i class="fa-solid fa-map-location-dot text-saffron"></i>
-                            </div>
-                            <div>
-                                <h3 id="map-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">Temple Location</h3>
-                                <span id="map-badge" class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Batala Shrine</span>
-                            </div>
+                    <!-- Header -->
+                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3 mb-3 flex-shrink-0">
+                        <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
+                            <i class="fa-solid fa-book-open text-saffron text-2xl"></i>
                         </div>
-
-                        <!-- Full Address & Phone Numbers (Larger Font Size & High Weight) -->
-                        <div class="p-5 bg-maroonDark text-goldLight rounded-2xl border-l-4 border-gold space-y-3.5 flex-shrink-0 shadow-md">
-                            <div class="flex items-center gap-2.5 text-saffron font-black text-lg sm:text-xl">
-                                <i class="fa-solid fa-gopuram text-xl"></i>
-                                <span id="map-temple-name">Shri Ladi Satyoti Mandir - Batala</span>
-                            </div>
-                            <p id="map-full-address" class="leading-relaxed font-hindiBody text-goldLight text-lg sm:text-xl font-bold">
-                                Ladi Satyoti Trust (Regd), Ladi Satyoti Mandir, Jalandhar Road, Batala-143505, District: Gurdaspur, Punjab (India).
-                            </p>
-                            <div class="pt-3 border-t border-gold/30 flex flex-wrap items-center gap-x-6 gap-y-2 text-saffron font-black text-base sm:text-lg">
-                                <a href="tel:+919815573473" class="hover:text-gold flex items-center gap-2 transition">
-                                    <i class="fa-solid fa-phone text-lg"></i> +91 9815573473
-                                </a>
-                                <a href="tel:+919814171212" class="hover:text-gold flex items-center gap-2 transition">
-                                    <i class="fa-solid fa-phone text-lg"></i> +91 9814171212
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Dynamic Map Embed -->
-                        <div class="w-full flex-grow min-h-[200px] rounded-xl overflow-hidden border-2 border-gold/40 shadow-inner relative flex">
-                            <iframe 
-                                title="Ladi Satyoti Mandir Map Location Pin"
-                                src="https://maps.google.com/maps?q=31.8152,75.2035+(Ladi+Satwati+mandir+Batala)&z=16&output=embed" 
-                                class="w-full h-full border-0 rounded-xl flex-grow" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-
-                        <!-- Visitor Landmark Note (Larger Font Size) -->
-                        <div class="p-4 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-imperial flex items-center gap-3.5 flex-shrink-0 shadow-sm">
-                            <i class="fa-solid fa-location-arrow text-saffronDark text-xl flex-shrink-0"></i>
-                            <span id="map-landmark-text" class="text-lg sm:text-xl font-bold leading-normal">जालंधर रोड पर उमरपुरा क्षेत्र के निकट स्थित पावन मुख्य मंदिर धाम।</span>
+                        <div>
+                            <h3 id="bhoomika-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">ऐतिहासिक भूमिका</h3>
+                            <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Ancestral Roots & Foreword</span>
                         </div>
                     </div>
 
-                    <!-- Bottom Action Buttons (Larger Font Size) -->
-                    <div class="flex gap-3 pt-4 mt-auto flex-shrink-0">
-                        <a href="https://maps.app.goo.gl/5yMch3hhHddu91mt8" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2.5 bg-gradient-to-r from-saffron to-saffronDark text-white font-black py-3.5 px-5 rounded-2xl shadow-md hover:opacity-95 transition text-lg sm:text-xl">
-                            <i class="fa-solid fa-diamond-turn-right text-xl"></i>
-                            <span id="btn-open-maps">Get Directions</span>
-                        </a>
-                        <button onclick="copyTempleAddress()" class="bg-maroonDark hover:bg-saffronDark border border-gold/60 text-gold hover:text-white px-5 py-3.5 rounded-2xl text-base sm:text-lg font-bold transition shadow-md" title="Copy Address">
-                            <i class="fa-solid fa-copy text-xl"></i>
-                        </button>
+                    <!-- Foreword Content (Fluid Text & Dynamic Flex Box To Fill Top, Middle, & Bottom Space) -->
+                    <div class="flex flex-col justify-between flex-grow text-gray-900 font-hindiBody space-y-4 py-2">
+                        <div class="flex-grow flex items-center">
+                            <p id="bhoomika-p1" class="text-[clamp(1.2rem,1.45vw,1.75rem)] font-medium leading-[1.85] tracking-normal">
+                                बटाला शहर राम देव भट्टी राजपूत का बसाया हुआ है। पुरी कौम <strong class='font-bold text-imperial'>लोधी हुकूमत</strong> के वक्त बटाला में आबाद हुई। <strong class='font-bold text-imperial'>मुगलीय हुकूमत</strong> के वक्त बहुत से पूरी भाइयों ने बहुत से सरकारी पद प्राप्त किए।
+                            </p>
+                        </div>
+
+                        <div class="flex-grow flex items-center w-full">
+                            <div class="p-6 sm:p-7 bg-saffron/10 border-l-4 border-saffron rounded-r-xl text-maroonDark shadow-sm w-full">
+                                <p id="bhoomika-p2" class="text-[clamp(1.2rem,1.45vw,1.75rem)] font-medium leading-[1.85] tracking-normal">
+                                    चुनांचे मशहूर हैं कि जब <strong class='font-bold text-imperial'>श्री गुरू नानक देव जी महाराज</strong> बटाला में अपनी शादी पर आए, तो पूरी बिरादरी ने उन का शानदार स्वागत किया। दूसरी खत्री बिरादरियों ने कम तवजो दी। <strong class='font-bold text-imperial'>श्री गुरू नानक देव जी महाराज</strong> ने इनके इस स्वागत से खुश होकर आशीर्वाद दी कि पूरी हमेशा पुर रहेंगे। उस समय से आज तक पूरी खानदान बहुत अमीर और बाइज्जत है।
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -615,58 +488,79 @@
                     <i class="fa-solid fa-sitemap"></i>
                 </div>
                 <div>
-                    <h2 id="merged-sec-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">वंशावली संरक्षण, इंडेक्स एवं वक्त की पुकार</h2>
+                    <h2 id="merged-sec-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">वंशावली संरक्षण</h2>
                     <span id="merged-sec-sub" class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">प्रामाणिक शोध रिकॉर्ड, मूल अभिलेख और सूचकांक</span>
                 </div>
             </div>
 
-            <!-- Row 1: Side-by-Side Equal Height Columns for Vakt Ki Pukar & Trust Office Bearers -->
+            <!-- Equal 2 Columns: Call of the Times (Left) & Trust Office Bearers (Right) -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch w-full">
                 
-                <!-- Column 1: Vakt Ki Pukar & Historical Compilation Card -->
-                <div class="bg-white/70 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex items-center gap-2.5 text-imperial font-bold text-xl sm:text-2xl mb-3.5">
-                            <i class="fa-solid fa-bullhorn text-saffron text-2xl"></i>
-                            <h3 id="vakt-title" class="font-black">वक्त की पुकार एवं ऐतिहासिक शोध</h3>
+                <!-- Left Column: Call of the Times & Historical Research (Including Obtaining Records Note) -->
+                <div class="bg-white/90 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between h-full space-y-4">
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5">
+                            <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
+                                <i class="fa-solid fa-bullhorn text-saffron text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 id="vakt-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">वक्त की पुकार एवं ऐतिहासिक शोध</h3>
+                                <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Call of the Times</span>
+                            </div>
                         </div>
                         <p id="vakt-text" class="text-lg sm:text-xl font-medium font-hindiBody text-gray-800 leading-relaxed">
                             वंशावली कौम पूरीयां बटाला जिसको स्वर्गीय हकीम कर्म चन्द पुरी (28-9-1954) ने बड़ी मेहनत व कोशिश से तैयार किया था, जो उर्दू भाषा में है। चूंकि उर्दू भाषा पंजाब से खत्म हो रही है और नई पीढ़ी इससे ना वाकिफ है, इसलिए इस जान-पहचान को कायम रखने के लिए यह वंशावली हरिद्वार के पुरोहित पंडित जोगिन्दर पाल (दौहित्र पंडित मखन लाल), पुरोहित कांगड़ा राम मोहल्ला चक्रवर्ती कुरुक्षेत्र व पंडित रखा राम शास्त्री पेहवा और साहसी कौम पूरीया की बहियों से और महकमा माल के कागजों से दरयाफत करके हिन्दी भाषा में तैयार की गई है ताकि आने वाली पीढ़ी इससे फायदे उठा सकें।
                         </p>
+
+                        <!-- Embedded Obtaining Records Note Box -->
+                        <div class="p-4 sm:p-5 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-imperial space-y-1.5 font-hindiBody shadow-sm mt-4">
+                            <div class="flex items-center gap-2.5 text-maroonDark font-black text-lg sm:text-xl">
+                                <i class="fa-solid fa-file-signature text-saffron text-xl"></i>
+                                <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
+                            </div>
+                            <p id="gen-box2-body" class="text-lg sm:text-xl font-bold leading-relaxed">
+                                जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Column 2: Trust Office Bearers -->
-                <div class="bg-white/70 border border-gold/30 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between space-y-4">
+                <!-- Right Column: Trust Office Bearers -->
+                <div class="bg-white/90 border-2 border-gold/40 rounded-2xl p-5 sm:p-6 shadow-sm flex flex-col justify-between h-full space-y-4">
                     <div class="space-y-4">
-                        <div class="flex items-center gap-2.5 text-imperial font-bold text-xl sm:text-2xl">
-                            <i class="fa-solid fa-users-rectangle text-saffron text-2xl"></i>
-                            <h3 id="trust-officers-title" class="font-black">लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी</h3>
+                        <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5">
+                            <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow flex-shrink-0 self-center">
+                                <i class="fa-solid fa-users-rectangle text-saffron text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 id="trust-officers-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी</h3>
+                                <span class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Trust Office Bearers</span>
+                            </div>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 font-hindiBody">
-                            <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
-                                <span id="lbl-gen-sec" class="block text-sm sm:text-base text-saffron font-black uppercase tracking-wider mb-1">जनरल सेक्रेटरी</span>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 font-hindiBody pt-1">
+                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
+                                <span id="lbl-gen-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">जनरल सेक्रेटरी</span>
                                 <span id="val-gen-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">रघबीर चन्द पुरी</span>
                             </div>
-                            <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
-                                <span id="lbl-pres" class="block text-sm sm:text-base text-saffron font-black uppercase tracking-wider mb-1">प्रधान</span>
+                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
+                                <span id="lbl-pres" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">प्रधान</span>
                                 <span id="val-pres" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">बुद्ध देव पुरी</span>
                             </div>
-                            <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
-                                <span id="lbl-fin-sec" class="block text-sm sm:text-base text-saffron font-black uppercase tracking-wider mb-1">फाईनेंस सेक्रेटरी</span>
+                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
+                                <span id="lbl-fin-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">फाईनेंस सेक्रेटरी</span>
                                 <span id="val-fin-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">दलीप राज पुरी</span>
                             </div>
-                            <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
-                                <span id="lbl-auditor" class="block text-sm sm:text-base text-saffron font-black uppercase tracking-wider mb-1">आडीटर</span>
+                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
+                                <span id="lbl-auditor" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">आडीटर</span>
                                 <span id="val-auditor" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">कुलभूषण पुरी</span>
                             </div>
-                            <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
-                                <span id="lbl-trustee-1" class="block text-sm sm:text-base text-saffron font-black uppercase tracking-wider mb-1">मैंबर ट्रस्ट</span>
+                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
+                                <span id="lbl-trustee-1" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
                                 <span id="val-trustee-1" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">जुगल किशोर पुरी</span>
                             </div>
-                            <div class="p-4 bg-gradient-to-br from-maroonDark to-imperial rounded-2xl border-2 border-gold/50 shadow-md hover:border-gold hover:shadow-gold-glow transition duration-200">
-                                <span id="lbl-trustee-2" class="block text-sm sm:text-base text-saffron font-black uppercase tracking-wider mb-1">मैंबर ट्रस्ट</span>
+                            <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md">
+                                <span id="lbl-trustee-2" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
                                 <span id="val-trustee-2" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">हंस राज पुरी</span>
                             </div>
                         </div>
@@ -675,174 +569,12 @@
 
             </div>
 
-            <!-- Full Width Record Acquisition Note (Light orange background with solid orange left line matching screenshot) -->
-            <div class="p-4 sm:p-5 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-imperial space-y-1.5 font-hindiBody shadow-sm w-full">
-                <div class="flex items-center gap-2.5 text-maroonDark font-black text-xl sm:text-2xl">
-                    <i class="fa-solid fa-file-signature text-saffron text-2xl"></i>
-                    <span id="gen-box2-head">वंशावली प्राप्ति हेतु</span>
-                </div>
-                <p id="gen-box2-body" class="text-lg sm:text-xl font-bold leading-relaxed">
-                    जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।
-                </p>
-            </div>
-
-            <!-- Row 2: Full Width Modern Interactive Family Tree Graph (Three Pillars of the Puri Clan) -->
-            <div class="bg-white/90 border-2 border-gold/40 rounded-3xl p-5 sm:p-7 shadow-card-soft space-y-6 w-full">
-                <!-- Section Header -->
-                <h4 class="font-extrabold text-imperial text-2xl sm:text-3xl flex items-center gap-2">
-                    <i class="fa-solid fa-sitemap text-saffron"></i> 
-                    <span id="three-pillars-title-text">पूरी कौम के तीन थम्मे</span>
-                </h4>
-
-                <!-- High-Contrast, Senior-Friendly Family Tree Diagram (Expanded Dynamic Width & Larger Text) -->
-                <div class="relative w-full max-w-full overflow-x-auto p-4 sm:p-8 bg-[#FAF7F2] border-2 border-gold/60 rounded-3xl shadow-md font-hindiBody select-none">
-                    
-                    <div class="w-full min-w-[700px] max-w-6xl mx-auto flex flex-col items-center relative z-10 py-2">
-                        
-                        <!-- SECTION 1: ANCESTRAL ROOT TRUNK -->
-                        <div class="flex flex-col items-center space-y-3 w-full max-w-md">
-                            
-                            <!-- Root 1: Ishar Rai -->
-                            <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                                <span id="node-ishar">ईशर राय</span>
-                            </div>
-                            <div class="w-1.5 h-5 bg-goldDark"></div>
-
-                            <!-- Root 2: Siddh Garhi -->
-                            <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                                <span id="node-siddh">सिद्ध गढ़ी</span>
-                            </div>
-                            <div class="w-1.5 h-5 bg-goldDark"></div>
-
-                            <!-- Root 3: Kamal Narayan -->
-                            <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                                <span id="node-kamal">कमल नारायण</span>
-                            </div>
-                            <div class="w-1.5 h-5 bg-goldDark"></div>
-
-                            <!-- Root 4: Khil Narayan -->
-                            <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                                <span id="node-khil">खील नारायण</span>
-                            </div>
-                            <div class="w-1.5 h-5 bg-goldDark"></div>
-
-                            <!-- Root 5: Dayal Chand -->
-                            <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                                <span id="node-dayal">दयाल चन्द</span>
-                            </div>
-                            <div class="w-1.5 h-5 bg-goldDark"></div>
-
-                            <!-- Root Peak: Devi Dita -->
-                            <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                                <span id="node-devi">देवी दिता</span>
-                            </div>
-                        </div>
-
-                        <!-- UNIFIED THICK GOLD SVG CONNECTOR -->
-                        <div class="w-full h-14 relative my-2">
-                            <svg class="w-full h-full" viewBox="0 0 600 40" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M300 0 V15" stroke="#996515" stroke-width="3" stroke-linecap="round"/>
-                                <path d="M300 15 C300 30, 100 15, 100 40" stroke="#996515" stroke-width="3" fill="none"/>
-                                <path d="M300 15 V40" stroke="#996515" stroke-width="3" fill="none"/>
-                                <path d="M300 15 C300 30, 500 15, 500 40" stroke="#996515" stroke-width="3" fill="none"/>
-                                <circle cx="300" cy="15" r="5" fill="#996515" />
-                                <circle cx="100" cy="38" r="4" fill="#996515" />
-                                <circle cx="300" cy="38" r="4" fill="#996515" />
-                                <circle cx="500" cy="38" r="4" fill="#996515" />
-                            </svg>
-                        </div>
-
-                        <!-- SECTION 2: THREE EXPANDED EQUAL THAMMA PILLARS (LARGE SENIOR-FRIENDLY TEXT) -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full pt-2">
-                            
-                            <!-- PILLAR 1: THAMMA MALKANA -->
-                            <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
-                                <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
-                                    <span id="pillar-1" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा मलकाना</span>
-                                </div>
-                                <div class="w-1.5 h-4 bg-goldDark"></div>
-
-                                <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                    <span id="p1-node1">मलक कपूर</span>
-                                </div>
-                                <div class="w-1.5 h-4 bg-goldDark"></div>
-
-                                <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                    <span id="p1-node2">गोविंद चंद</span>
-                                </div>
-
-                                <div class="w-full h-4 my-1">
-                                    <svg class="w-full h-full" viewBox="0 0 150 12" fill="none" preserveAspectRatio="none">
-                                        <path d="M75 0 V6 M25 6 H125 M25 6 V12 M75 6 V12 M125 6 V12" stroke="#996515" stroke-width="2.5" />
-                                    </svg>
-                                </div>
-
-                                <div class="grid grid-cols-3 gap-2 w-full min-w-0">
-                                    <span id="p1-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">राजकौर</span>
-                                    <span id="p1-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">चतरबिहारी</span>
-                                    <span id="p1-leaf-3" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">अर्जुन मल</span>
-                                </div>
-                            </div>
-
-                            <!-- PILLAR 2: THAMMA RAI -->
-                            <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
-                                <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
-                                    <span id="pillar-2" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा राय</span>
-                                </div>
-                                <div class="w-1.5 h-4 bg-goldDark"></div>
-
-                                <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                    <span id="p2-node1">राय बुखार चन्द</span>
-                                </div>
-
-                                <div class="w-full h-4 my-1">
-                                    <svg class="w-full h-full" viewBox="0 0 150 12" fill="none" preserveAspectRatio="none">
-                                        <path d="M75 0 V6 M25 6 H125 M25 6 V12 M75 6 V12 M125 6 V12" stroke="#996515" stroke-width="2.5" />
-                                    </svg>
-                                </div>
-
-                                <div class="grid grid-cols-3 gap-2 w-full min-w-0">
-                                    <span id="p2-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">बाबा गंगा राम</span>
-                                    <span id="p2-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">राय महेश दास</span>
-                                    <span id="p2-leaf-3" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">अंचल दास</span>
-                                </div>
-                            </div>
-
-                            <!-- PILLAR 3: THAMMA MAHATKA -->
-                            <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
-                                <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
-                                    <span id="pillar-3" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा महतका</span>
-                                </div>
-                                <div class="w-1.5 h-4 bg-goldDark"></div>
-
-                                <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                    <span id="p3-node1">महता दनी चन्द</span>
-                                </div>
-
-                                <div class="w-full h-4 my-1">
-                                    <svg class="w-full h-full" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
-                                        <path d="M50 0 V6 M25 6 H75 M25 6 V12 M75 6 V12" stroke="#996515" stroke-width="2.5" />
-                                    </svg>
-                                </div>
-
-                                <div class="grid grid-cols-2 gap-2 w-full min-w-0">
-                                    <span id="p3-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">केसरी दास</span>
-                                    <span id="p3-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] sm:min-h-[56px] shadow-gold-glow break-words leading-tight min-w-0">बटठूमल</span>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
             <!-- Row 3: Full Width Book Index Table (1 to 23) -->
             <div class="bg-white border border-gold/30 rounded-2xl p-4 sm:p-5 shadow-sm space-y-3 w-full">
                 <div>
                     <div class="flex items-center justify-between border-b border-gold/20 pb-2 mb-3">
                         <h3 id="index-table-title" class="font-extrabold text-imperial text-2xl sm:text-3xl flex items-center gap-2">
-                            <i class="fa-solid fa-list-ol text-saffron"></i> इंडेक्स वंशावली (पृष्ठ 1 से 23)
+                            <i class="fa-solid fa-list-ol text-saffron"></i> इंडेक्स वंशावली
                         </h3>
                         <span id="index-table-sub" class="text-base sm:text-lg text-saffronDark font-black">नाम खानदान व पता</span>
                     </div>
@@ -851,34 +583,34 @@
                         <table class="w-full text-left border-collapse font-hindiBody text-lg sm:text-xl font-medium">
                             <thead class="bg-imperial text-goldLight sticky top-0">
                                 <tr>
-                                    <th id="col-page" class="p-3.5 border-b border-gold/40 w-20 text-center font-black text-goldLight">पृष्ठ</th>
-                                    <th id="col-name" class="p-3.5 border-b border-gold/40 font-black text-goldLight">नाम खानदान व पता</th>
+                                    <th id="col-page" class="p-3.5 sm:p-4 border-b border-gold/40 w-20 text-center font-black text-goldLight text-lg sm:text-xl">पृष्ठ</th>
+                                    <th id="col-name" class="p-3.5 sm:p-4 border-b border-gold/40 font-black text-goldLight text-lg sm:text-xl">नाम खानदान व पता</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">1</td><td id="idx-row-1" class="p-3.5 font-bold">पुरी खानदान के तीन थम्मे</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">2</td><td id="idx-row-2" class="p-3.5 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">3</td><td id="idx-row-3" class="p-3.5 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">4</td><td id="idx-row-4" class="p-3.5 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">5</td><td id="idx-row-5" class="p-3.5 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">6</td><td id="idx-row-6" class="p-3.5 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">7</td><td id="idx-row-7" class="p-3.5 font-semibold">थम्मा मलकाना चोनियां मोरी</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">8</td><td id="idx-row-8" class="p-3.5 font-semibold">थम्मा मलकाना चोनियां मोरी</td></tr>
-                                <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3.5 text-center font-black text-imperial">9</td><td id="idx-row-9" class="p-3.5 font-bold text-maroonDark">थम्मा मलकाना खानदान बाबा मदन पुरो फिल्म स्टार बम्बई।</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">10</td><td id="idx-row-10" class="p-3.5 font-semibold">थम्मा मलकाना बहरामपुर वाले पुरी</td></tr>
-                                <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3.5 text-center font-black text-imperial">11</td><td id="idx-row-11" class="p-3.5 font-bold text-maroonDark">थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी</td></tr>
-                                <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3.5 text-center font-black text-imperial">12</td><td id="idx-row-12" class="p-3.5 font-bold text-maroonDark">थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">13</td><td id="idx-row-13" class="p-3.5 font-semibold">थम्मा महतका खानदान लाला जयराम दास मुरली घर</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">14</td><td id="idx-row-14" class="p-3.5 font-semibold">थम्मा महतका खानदान लाला दीना नाथ पुरी</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">15</td><td id="idx-row-15" class="p-3.5 font-semibold">थम्मा महतका खानदान बाबा वेहड़ा</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">16</td><td id="idx-row-16" class="p-3.5 font-semibold">थम्मा राय मुह्ल्ला पुरीयां बाबा वेहड़ा खानदान हकीम कर्म चन्द पुरी</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">17</td><td id="idx-row-17" class="p-3.5 font-semibold">थम्मा राय मुह्ल्ला पुरीयां खान: ला: किशन चन्द पुरी लखनऊ वाले</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">18</td><td id="idx-row-18" class="p-3.5 font-semibold">थम्मा राय सुजानपुर तथा मोगा वाले</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">19</td><td id="idx-row-19" class="p-3.5 font-semibold">थम्मा राय सुजानपुर तथा पठानकोट वाले</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">20</td><td id="idx-row-20" class="p-3.5 font-semibold">थम्मा राय कामलपुर वाले पुरी पुरी शेख गली शेखां मुह्ल्ला पुरीयां</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">21</td><td id="idx-row-21" class="p-3.5 font-semibold">थम्मा राय पठानकोट वाले</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">22</td><td id="idx-row-22" class="p-3.5 font-semibold">थम्मा राय वोडिंग वाले पुरी अमृतसर पटियाला।</td></tr>
-                                <tr class="hover:bg-saffron/10"><td class="p-3.5 text-center font-black text-imperial">23</td><td id="idx-row-23" class="p-3.5 font-semibold">थम्मा राय अमृतसर कपूरथला वाले</td></tr>
+                                <tr class="hover:bg-gold/25 cursor-pointer transition" onclick="window.location.href='thamma-three-pillars.html'"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">1</td><td id="idx-row-1" class="p-3.5 sm:p-4 font-bold text-imperial underline decoration-saffron">पुरी खानदान के तीन थम्मे</td></tr>
+                                <tr class="hover:bg-gold/25 cursor-pointer transition" onclick="window.location.href='thamma-malkana-katra.html'"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">2</td><td id="idx-row-2" class="p-3.5 sm:p-4 font-bold text-imperial underline decoration-saffron">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">3</td><td id="idx-row-3" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">4</td><td id="idx-row-4" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">5</td><td id="idx-row-5" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">6</td><td id="idx-row-6" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना कटाड़ा पुरीयां</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">7</td><td id="idx-row-7" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना चोनियां मोरी</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">8</td><td id="idx-row-8" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना चोनियां मोरी</td></tr>
+                                <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">9</td><td id="idx-row-9" class="p-3.5 sm:p-4 font-bold text-maroonDark">थम्मा मलकाना खानदान बाबा मदन पुरो फिल्म स्टार बम्बई।</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">10</td><td id="idx-row-10" class="p-3.5 sm:p-4 font-semibold">थम्मा मलकाना बहरामपुर वाले पुरी</td></tr>
+                                <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">11</td><td id="idx-row-11" class="p-3.5 sm:p-4 font-bold text-maroonDark">थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी</td></tr>
+                                <tr class="hover:bg-saffron/10 bg-gold/15"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">12</td><td id="idx-row-12" class="p-3.5 sm:p-4 font-bold text-maroonDark">थम्मा मलकाना खानदान राय बहादुर लाला कर्म चन्द पुरी</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">13</td><td id="idx-row-13" class="p-3.5 sm:p-4 font-semibold">थम्मा महतका खानदान लाला जयराम दास मुरली घर</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">14</td><td id="idx-row-14" class="p-3.5 sm:p-4 font-semibold">थम्मा महतका खानदान लाला दीना नाथ पुरी</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">15</td><td id="idx-row-15" class="p-3.5 sm:p-4 font-semibold">थम्मा महतका खानदान बाबा वेहड़ा</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">16</td><td id="idx-row-16" class="p-3.5 sm:p-4 font-semibold">थम्मा राय मुह्ल्ला पुरीयां बाबा वेहड़ा खानदान हकीम कर्म चन्द पुरी</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">17</td><td id="idx-row-17" class="p-3.5 sm:p-4 font-semibold">थम्मा राय मुह्ल्ला पुरीयां खान: ला: किशन चन्द पुरी लखनऊ वाले</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">18</td><td id="idx-row-18" class="p-3.5 sm:p-4 font-semibold">थम्मा राय सुजानपुर तथा मोगा वाले</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">19</td><td id="idx-row-19" class="p-3.5 sm:p-4 font-semibold">थम्मा राय सुजानपुर तथा पठानकोट वाले</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">20</td><td id="idx-row-20" class="p-3.5 sm:p-4 font-semibold">थम्मा राय कामलपुर वाले पुरी पुरी शेख गली शेखां मुह्ल्ला पुरीयां</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">21</td><td id="idx-row-21" class="p-3.5 sm:p-4 font-semibold">थम्मा राय पठानकोट वाले</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">22</td><td id="idx-row-22" class="p-3.5 sm:p-4 font-semibold">थम्मा राय वोडिंग वाले पुरी अमृतसर पटियाला।</td></tr>
+                                <tr class="hover:bg-saffron/10"><td class="p-3.5 sm:p-4 text-center font-black text-imperial">23</td><td id="idx-row-23" class="p-3.5 sm:p-4 font-semibold">थम्मा राय अमृतसर कपूरथला वाले</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -1034,6 +766,159 @@
             </div>
 
         </div>
+
+        <!-- ================= BOTTOM ROW: QR CODE DONATION & TEMPLE LOCATION (2 EQUAL COLUMNS) ================= -->
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 items-stretch w-full pt-4">
+            
+            <!-- Column 1: QR Code / Online Donation Subsection -->
+            <div class="bg-creamCard border-2 border-gold/50 rounded-3xl p-6 sm:p-7 shadow-card-soft flex flex-col justify-between h-full">
+                <div class="flex flex-col flex-grow space-y-4">
+                    <!-- Header -->
+                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5 flex-shrink-0">
+                        <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow">
+                            <i class="fa-solid fa-hand-holding-heart text-saffron"></i>
+                        </div>
+                        <div>
+                            <h3 id="seva-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">Online Donation</h3>
+                            <span id="seva-badge" class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Sacred Trust Seva</span>
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+                    <p id="seva-p1" class="text-base sm:text-lg text-gray-800 font-hindiBody font-medium leading-relaxed flex-shrink-0">
+                        Contribute voluntarily towards temple upkeep and genealogy preservation.
+                    </p>
+
+                    <!-- Direct & Secure Trust Note Box (Matching Right Column Theme & Height) -->
+                    <div class="p-4 bg-maroonDark text-goldLight rounded-2xl border-l-4 border-gold space-y-1.5 flex-shrink-0 shadow-md font-hindiBody">
+                        <div class="flex items-center gap-2.5 text-saffron font-black text-base sm:text-lg">
+                            <i class="fa-solid fa-shield-halved text-lg"></i>
+                            <span id="seva-trust-note-title">100% Direct & Secure Donation</span>
+                        </div>
+                        <p id="seva-trust-note-body" class="text-sm sm:text-base font-bold text-goldLight leading-normal">
+                            Registered Trust Bank Account | Direct contribution with zero middleman
+                        </p>
+                    </div>
+
+                    <!-- QR & Action Card Box with Enlarged QR Image -->
+                    <div class="bg-white p-4 sm:p-6 rounded-2xl border-2 border-gold/50 shadow-inner w-full max-w-full overflow-hidden flex-grow flex items-center mt-auto">
+                        <table class="w-full border-collapse">
+                            <tbody>
+                                <tr>
+                                    <!-- Column 1: Even Larger QR Code -->
+                                    <td rowspan="4" class="align-middle pr-4 sm:pr-6 w-auto text-center">
+                                        <img src="resource/QR.png" alt="Trust QR Code" class="w-52 h-52 sm:w-60 sm:h-60 object-contain rounded-2xl bg-white p-3 border-2 border-gold/40 shadow-md mx-auto" />
+                                    </td>
+                                    <!-- Column 2, Row 1: Scan QR Code to Pay (Slightly Smaller Text) -->
+                                    <td class="align-bottom pb-1.5 text-left">
+                                        <span id="qr-top-text" class="text-lg sm:text-xl md:text-2xl font-black text-imperial block tracking-wide">
+                                            Scan QR Code to Pay
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Column 2, Row 2: UPI Code -->
+                                    <td class="align-middle py-2 text-left">
+                                        <div class="w-full flex justify-start">
+                                            <span class="text-base sm:text-lg md:text-xl font-mono font-black text-imperial bg-gold/30 px-3.5 py-2 rounded-xl border-2 border-gold/60 shadow-sm inline-block max-w-full break-all">
+                                                9815573473@ucobank
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Column 2, Row 3: Registered Trust Account text -->
+                                    <td class="align-middle py-1.5 text-left">
+                                        <p class="text-sm sm:text-base md:text-lg text-gray-900 font-extrabold block">
+                                            Registered Trust Account
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <!-- Column 2, Row 4: Buttons -->
+                                    <td class="align-top pt-2.5 pb-1 text-left">
+                                        <div class="flex flex-col sm:flex-row gap-2.5 w-full">
+                                            <button onclick="shareUpiDetails()" class="flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-saffron to-saffronDark text-white font-black py-3.5 px-4 rounded-xl text-sm sm:text-base md:text-lg shadow-md hover:opacity-95 active:scale-95 text-center whitespace-nowrap">
+                                                <i class="fa-solid fa-share-nodes text-base sm:text-lg flex-shrink-0"></i>
+                                                <span id="btn-share-upi">Share Details</span>
+                                            </button>
+                                            <button onclick="copyUpiId()" class="flex-1 flex items-center justify-center gap-2 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 py-3.5 rounded-xl text-sm sm:text-base md:text-lg font-black active:scale-95 text-center whitespace-nowrap shadow-md" title="Copy UPI ID">
+                                                <i class="fa-solid fa-copy text-gold text-base sm:text-lg flex-shrink-0"></i>
+                                                <span id="btn-copy-upi">Copy UPI ID</span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column 2: Temple Location Section -->
+            <div class="bg-creamCard border-2 border-gold/50 rounded-3xl p-6 sm:p-7 shadow-card-soft flex flex-col justify-between h-full">
+                <div class="flex flex-col flex-grow space-y-4">
+                    <!-- Header -->
+                    <div class="flex items-center gap-3.5 border-b-2 border-gold/30 pb-3.5 flex-shrink-0">
+                        <div class="w-12 h-12 rounded-xl bg-imperial flex items-center justify-center text-gold text-2xl shadow">
+                            <i class="fa-solid fa-map-location-dot text-saffron"></i>
+                        </div>
+                        <div>
+                            <h3 id="map-title" class="text-2xl sm:text-3xl font-extrabold text-imperial tracking-wide">Temple Location</h3>
+                            <span id="map-badge" class="text-sm sm:text-base font-bold uppercase tracking-widest text-saffronDark block mt-0.5">Batala Shrine</span>
+                        </div>
+                    </div>
+
+                    <!-- Full Address & Phone Numbers -->
+                    <div class="p-5 bg-maroonDark text-goldLight rounded-2xl border-l-4 border-gold space-y-3.5 flex-shrink-0 shadow-md">
+                        <div class="flex items-center gap-2.5 text-saffron font-black text-lg sm:text-xl">
+                            <i class="fa-solid fa-gopuram text-xl"></i>
+                            <span id="map-temple-name">Shri Ladi Satyoti Mandir - Batala</span>
+                        </div>
+                        <p id="map-full-address" class="leading-relaxed font-hindiBody text-goldLight text-lg sm:text-xl font-bold">
+                            Ladi Satyoti Trust (Regd), Ladi Satyoti Mandir, Jalandhar Road, Batala-143505, District: Gurdaspur, Punjab (India).
+                        </p>
+                        <div class="pt-3 border-t border-gold/30 flex flex-wrap items-center gap-x-6 gap-y-2 text-saffron font-black text-base sm:text-lg">
+                            <a href="tel:+919815573473" class="hover:text-gold flex items-center gap-2 transition">
+                                <i class="fa-solid fa-phone text-lg"></i> +91 9815573473
+                            </a>
+                            <a href="tel:+919814171212" class="hover:text-gold flex items-center gap-2 transition">
+                                <i class="fa-solid fa-phone text-lg"></i> +91 9814171212
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Map Embed -->
+                    <div class="w-full flex-grow min-h-[200px] rounded-xl overflow-hidden border-2 border-gold/40 shadow-inner relative flex">
+                        <iframe 
+                            title="Ladi Satyoti Mandir Map Location Pin"
+                            src="https://maps.google.com/maps?q=31.8152,75.2035+(Ladi+Satwati+mandir+Batala)&z=16&output=embed" 
+                            class="w-full h-full border-0 rounded-xl flex-grow" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+
+                    <!-- Visitor Landmark Note -->
+                    <div class="p-4 bg-saffron/10 border-l-4 border-saffron rounded-r-2xl text-imperial flex items-center gap-3.5 flex-shrink-0 shadow-sm">
+                        <i class="fa-solid fa-location-arrow text-saffronDark text-xl flex-shrink-0"></i>
+                        <span id="map-landmark-text" class="text-lg sm:text-xl font-bold leading-normal">जालंधर रोड पर उमरपुरा क्षेत्र के निकट स्थित पावन मुख्य मंदिर धाम।</span>
+                    </div>
+                </div>
+
+                <!-- Bottom Action Buttons -->
+                <div class="flex gap-3 pt-4 mt-auto flex-shrink-0">
+                    <a href="https://maps.app.goo.gl/5yMch3hhHddu91mt8" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2.5 bg-gradient-to-r from-saffron to-saffronDark text-white font-black py-3.5 px-5 rounded-2xl shadow-md hover:opacity-95 transition text-lg sm:text-xl">
+                        <i class="fa-solid fa-diamond-turn-right text-xl"></i>
+                        <span id="btn-open-maps">Get Directions</span>
+                    </a>
+                    <button onclick="copyTempleAddress()" class="bg-maroonDark hover:bg-saffronDark border border-gold/60 text-gold hover:text-white px-5 py-3.5 rounded-2xl text-base sm:text-lg font-bold transition shadow-md" title="Copy Address">
+                        <i class="fa-solid fa-copy text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <!-- Lightbox Modal for Full Image Zoom -->
@@ -1154,7 +1039,7 @@
                 toast_share: "🔗 वेबसाइट लिंक क्लिपबोर्ड पर कॉपी हो गया!",
                 seva_badge: "पावन दान एवं सहयोग सेवा",
                 seva_title: "ऑनलाइन दान एवं सहयोग",
-                seva_p1: "ट्रस्ट के पावन मंदिर के रखरखाव, ऐतिहासिक वंशावली संरक्षण एवं धार्मिक कार्यों में स्वेच्छा से अपना योगदान दें। आपका दान सीधे ट्रस्ट के अधिकृत बैंक खाते में प्राप्त होता है।",
+                seva_p1: "ट्रस्ट के पावन मंदिर के रखरखाव, ऐतिहासिक वंशावली संरक्षण एवं धार्मिक कार्यों में स्वेच्छा से अपना योगदान दें।",
                 seva_bank_title: "रजिस्टर्ड ट्रस्ट खाता",
                 seva_upi_label: "UPI ID:",
                 btn_pay_app: "पेमेंट ऐप से दान करें (GPay/PhonePe)",
@@ -1221,7 +1106,7 @@
                 trust_officers_title: "लाडी सतवती ट्रस्ट (रजि.) बटाला - पदाधिकारी",
                 three_pillars_title: "पुरी कौम के तीन थम्मे",
                 tree_subtitle_badge: "मूल पुस्तक पृष्ठ 1 अभिलेख",
-                index_table_title: "इंडेक्स वंशावली (पृष्ठ 1 से 23)",
+                index_table_title: "इंडेक्स वंशावली",
                 index_table_sub: "नाम खानदान व पता",
                 col_page: "पृष्ठ",
                 col_name: "नाम खानदान व पता",
@@ -1285,7 +1170,7 @@
                 p3_leaf_1: "केसरी दास",
                 p3_leaf_2: "बटठूमल",
 
-                merged_sec_title: "वंशावली संरक्षण, इंडेक्स एवं वक्त की पुकार",
+                merged_sec_title: "वंशावली संरक्षण",
                 merged_sec_sub: "प्रामाणिक शोध रिकॉर्ड, मूल अभिलेख और सूचकांक",
                 vakt_title: "वक्त की पुकार एवं ऐतिहासिक शोध",
                 gen_box2_head: "वंशावली प्राप्ति हेतु",
@@ -1333,7 +1218,7 @@
                 toast_share: "🔗 Website URL copied to clipboard!",
                 seva_badge: "Sacred Voluntary Offering & Seva",
                 seva_title: "Online Donation",
-                seva_p1: "Contribute voluntarily towards temple upkeep, historical genealogy preservation, and sacred trust activities. All donations go directly to the registered Trust bank account.",
+                seva_p1: "Contribute voluntarily towards temple upkeep, historical genealogy preservation, and sacred trust activities.",
                 seva_bank_title: "Registered Trust Account",
                 seva_upi_label: "UPI ID:",
                 btn_pay_app: "Pay via UPI App (GPay / PhonePe)",
@@ -1400,7 +1285,7 @@
                 trust_officers_title: "Ladi Satyoti Trust (Regd.) Batala - Office Bearers",
                 three_pillars_title: "Three Thammas of the Puri Clan",
                 three_pillars_path: "Ishar Rai → Siddh Garhi → Kamal Narayan → Khil Narayan → Dayal Chand → Devi Dita",
-                index_table_title: "Genealogy Index (Pages 1 to 23)",
+                index_table_title: "Genealogy Index",
                 index_table_sub: "Family Name & Address",
                 col_page: "Page",
                 col_name: "Family Name & Address",
@@ -1464,7 +1349,7 @@
                 p3_leaf_1: "Kesari Das",
                 p3_leaf_2: "Batthumal",
 
-                merged_sec_title: "Genealogy Preservation, Index & Call of the Times",
+                merged_sec_title: "Genealogy Preservation",
                 merged_sec_sub: "Authentic Research Records, Original Records and Index",
                 vakt_title: "Call of the Times & Historical Research",
                 gen_box2_head: "Obtaining Genealogy Records",

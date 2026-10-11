@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google" content="notranslate">
+
+    <link rel="icon" type="image/jpeg" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
+    <link rel="apple-touch-icon" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
+
+    <title id="page-title">थम्मा मलकाना कटड़ा पूरीयाँ | Ladi Satyoti Trust</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&family=Mukta:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        imperial: '#7A280E',
+                        maroonDark: '#521A07',
+                        gold: '#D4AF37',
+                        goldLight: '#F3E5AB',
+                        goldDark: '#996515',
+                        saffron: '#FF9933',
+                        saffronDark: '#D84315',
+                        cream: '#FAF7F2',
+                        creamCard: '#FFFDF9',
+                        charcoal: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        hindiTitle: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
+                        heroTitle: ['"Rozha One"', 'serif'],
+                        hindiBody: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
+                        sans: ['"Roboto"', '"Mukta"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 25px rgba(212, 175, 55, 0.4)',
+                        'gold-deep': '0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.3)',
+                        'card-soft': '0 4px 20px -2px rgba(59, 2, 11, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --base-font-size: 16px;
+            --bg: #F9F7F2;
+            --ink: #4A1203;
+            --line: #3b2a22;
+            --box: #FFF8E6;
+            --box-edge: #C9A63C;
+        }
+
+        html {
+            font-size: var(--base-font-size);
+            background-color: #FAF7F2;
+        }
+        html[lang="en"] .font-hindiTitle {
+            font-family: "Rozha One", serif !important;
+            letter-spacing: 0.02em;
+        }
+        html[lang="en"] .font-hindiBody {
+            font-family: "Roboto", sans-serif !important;
+        }
+
+        .gold-text-gradient {
+            color: #F4D03F;
+            text-shadow: 0 1px 2px rgba(20, 2, 4, 0.85);
+        }
+
+        .royal-pattern {
+            background-color: #7A280E;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.30) 0.9px, transparent 0.9px), radial-gradient(rgba(212, 175, 55, 0.30) 0.9px, #7A280E 0.9px);
+            background-size: 26px 26px;
+            background-position: 0 0, 13px 13px;
+        }
+
+        .lang-pill-active {
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%) !important;
+            color: #3B020B !important;
+            font-weight: 900 !important;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.9), inset 0 0 2px #521A07 !important;
+            border: 2px solid #F3E5AB !important;
+        }
+
+        .lang-pill-inactive {
+            color: #F3E5AB !important;
+            opacity: 1 !important;
+            font-weight: 800 !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+        }
+        .lang-pill-inactive:hover {
+            color: #FFD700 !important;
+            background-color: rgba(212, 175, 55, 0.25) !important;
+        }
+
+        /* Canvas Lineage Tree Styles */
+        .stage {
+            display: flex;
+            width: 100%;
+            overflow: auto;
+            background: var(--bg);
+            border-radius: 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            padding: 20px 0;
+        }
+        .canvas-wrap { position: relative; flex: 0 0 auto; margin: 0 auto; visibility: hidden; }
+        .canvas-wrap.is-ready { visibility: visible; }
+        .canvas {
+            position: absolute; left: 0; top: 0;
+            width: 2231px; height: 1132px;
+            transform-origin: 0 0;
+            background: var(--bg);
+            font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
+            color: var(--ink);
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(74,18,3,.06), 0 14px 40px rgba(74,18,3,.10);
+        }
+        @keyframes fadein { from { opacity:0; } to { opacity:1; } }
+        .canvas { animation: fadein .7s ease both; }
+        @media (prefers-reduced-motion: reduce) { .canvas { animation:none; } }
+        svg.lines { position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; overflow:visible; }
+        svg.lines line { stroke:var(--line); stroke-width:1.6; stroke-linecap:round; }
+        .t, .n {
+            position:absolute; transform:translate(-50%,-50%); white-space:nowrap; line-height:1;
+            color:var(--ink); user-select:none;
+        }
+        .n {
+            height:34px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;
+            padding:0 13px; border:1.5px solid var(--box-edge); border-radius:9px;
+            background:var(--box); font-size:18px; font-weight:600;
+            box-shadow:0 4px 12px rgba(201,166,60,.38), 0 1px 3px rgba(74,18,3,.16);
+            transition:box-shadow .18s ease, background .18s ease;
+        }
+        .n:hover { background:#FFF2CC; box-shadow:0 6px 16px rgba(201,166,60,.5), 0 2px 5px rgba(74,18,3,.22); }
+        .t { font-size:34px; font-weight:700; }
+    </style>
+</head>
+<body class="bg-cream text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-saffron selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-imperial/95 backdrop-blur-md border-b-2 border-gold/40 text-cream shadow-xl">
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
+            
+            <!-- Back Button -->
+            <a href="thamma-three-pillars.html" class="flex items-center gap-2.5 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 py-2 rounded-full text-base font-black transition duration-200 shadow-lg">
+                <i class="fa-solid fa-arrow-left text-saffron"></i>
+                <span id="nav-back-home">पिछला पृष्ठ (पृष्ठ 1)</span>
+            </a>
+
+            <!-- Center Sacred Title -->
+            <div class="hidden lg:flex items-center gap-3 text-gold text-2xl font-hindiTitle font-black tracking-widest">
+                <span class="text-saffron text-3xl">ॐ</span>
+                <span id="nav-sacred-motto" class="text-xl font-black tracking-normal text-goldLight">॥ श्री लाडी सत्योति देव्यै नमः ॥</span>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center bg-[#280802] p-1.5 rounded-full border-2 border-[#FFD700] text-base font-black shadow-2xl">
+                <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-4 py-1.5 rounded-full transition-all duration-200">हिंदी</button>
+                <button id="btn-lang-en" onclick="setLanguage('en')" class="px-4 py-1.5 rounded-full transition-all duration-200">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow w-full px-2 sm:px-4 lg:px-6 py-10 space-y-8">
+        
+        <!-- Breadcrumb / Page Indicator Bar with 3 Navigation Options -->
+        <div class="flex flex-col md:flex-row items-center justify-between bg-creamCard border-2 border-gold/50 px-6 py-4 rounded-2xl shadow-sm gap-4">
+            <span class="text-imperial font-extrabold text-lg sm:text-xl flex items-center gap-2">
+                <i class="fa-solid fa-book-open text-saffron"></i> <span id="page-indicator">पृष्ठ 2 - थम्मा मलकाना (कटड़ा पूरीयाँ)</span>
+            </span>
+            <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+                <a href="index.html" class="bg-maroonDark hover:bg-imperial text-goldLight font-bold px-3.5 py-2 rounded-xl border border-gold/60 text-sm sm:text-base transition flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-house text-saffron"></i> <span id="top-nav-home">मुख्य पृष्ठ</span>
+                </a>
+                <a href="thamma-three-pillars.html" class="bg-imperial hover:bg-maroonDark text-goldLight font-bold px-3.5 py-2 rounded-xl border border-gold/60 text-sm sm:text-base transition flex items-center gap-2 shadow">
+                    <i class="fa-solid fa-arrow-left text-saffron"></i> <span id="top-nav-prev">पिछला पृष्ठ (पृष्ठ 1)</span>
+                </a>
+                <a href="#" onclick="event.preventDefault();" class="bg-saffron hover:bg-saffronDark text-white font-bold px-3.5 py-2 rounded-xl border border-gold/60 text-sm sm:text-base transition flex items-center gap-2 shadow">
+                    <span id="top-nav-next">अगला पृष्ठ (थम्मा मलकाना - जारी)</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scrollable Lineage Canvas Diagram (fits the screen, positions set per language) -->
+        <div class="stage">
+            <div class="canvas-wrap" id="canvas-wrap">
+                <div class="canvas" id="canvas">
+                    <svg class="lines" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+                    <span id="c-katra-purian" class="t" style="left:1032.8px;top:61.8px;letter-spacing:1.49px">कटड़ा पुरीयाँ</span>
+                    <span id="c-thamma-malkana" class="t" style="left:1705.1px;top:61.8px;letter-spacing:2.67px">थम्मा मलकाना</span>
+                    <span id="n-purnchand-1" class="n" style="left:267.0px;top:112.8px;letter-spacing:1.80px">पूर्ण चन्द</span>
+                    <span id="n-bharudamal" class="n" style="left:114.0px;top:176.4px;letter-spacing:1.80px">भरूड़ा मल</span>
+                    <span id="n-gulabchand-1" class="n" style="left:282.0px;top:175.2px;letter-spacing:1.80px">गुलाब चन्द</span>
+                    <span id="n-meghraj-1" class="n" style="left:448.5px;top:176.4px;letter-spacing:1.80px">मेघ राज</span>
+                    <span id="n-jeetmal-1" class="n" style="left:103.5px;top:226.8px;letter-spacing:1.80px">जीत मल</span>
+                    <span id="n-fatehchand-1" class="n" style="left:110.3px;top:271.0px;letter-spacing:1.80px">फतेह चन्द</span>
+                    <span id="n-bhagwandas-1" class="n" style="left:115.3px;top:315.2px;letter-spacing:1.80px">भगवान दास</span>
+                    <span id="n-deviditta" class="n" style="left:1369.9px;top:54.0px;letter-spacing:1.80px">देवी दित्ता</span>
+                    <span id="n-malakkapoor" class="n" style="left:1384.9px;top:105.6px;letter-spacing:1.80px">मलक कपूर</span>
+                    <span id="n-gobindchand" class="n" style="left:1387.9px;top:158.4px;letter-spacing:1.80px">गोबिद चन्द</span>
+                    <span id="n-dharjanmal" class="n" style="left:1194.4px;top:238.8px;letter-spacing:1.80px">भरजन मल</span>
+                    <span id="n-rajkour" class="n" style="left:1401.4px;top:238.8px;letter-spacing:1.80px">राज कौर</span>
+                    <span id="n-chatarbihari" class="n" style="left:1655.6px;top:237.6px;letter-spacing:1.80px">चतर बिहारी</span>
+                    <span id="n-bankarai" class="n" style="left:1188.4px;top:328.4px;letter-spacing:1.80px">बांका राय</span>
+                    <span id="n-dhamirsingh" class="n" style="left:1104.4px;top:408.8px;letter-spacing:1.80px">भ्रमीर सिंह</span>
+                    <span id="n-todarmal" class="n" style="left:1272.4px;top:407.6px;letter-spacing:1.80px">टोडर मल</span>
+                    <span id="n-govardhanlal" class="n" style="left:573.0px;top:491.6px;letter-spacing:1.80px">गोवर्धन लाल</span>
+                    <span id="n-baghelmal" class="n" style="left:492.0px;top:560.0px;letter-spacing:1.80px">बघेल मल</span>
+                    <span id="n-paharmal" class="n" style="left:733.5px;top:562.4px;letter-spacing:1.80px">पहाड़ मल</span>
+                    <span id="n-jatmal" class="n" style="left:480.0px;top:606.8px;letter-spacing:1.80px">जट मल</span>
+                    <span id="n-kahansingh" class="n" style="left:727.5px;top:608.0px;letter-spacing:1.80px">काहन सिंह</span>
+                    <span id="n-heerasingh" class="n" style="left:495.0px;top:652.4px;letter-spacing:1.80px">हीरा सिंह</span>
+                    <span id="n-nihalsingh" class="n" style="left:739.5px;top:653.6px;letter-spacing:1.80px">निहाल सिंह</span>
+                    <span id="n-ratta" class="n" style="left:462.0px;top:699.2px;letter-spacing:1.80px">रत्ता</span>
+                    <span id="n-palamal" class="n" style="left:688.5px;top:726.8px;letter-spacing:1.80px">पाला मल</span>
+                    <span id="n-polomal" class="n" style="left:892.5px;top:728.0px;letter-spacing:1.80px">पोलो मल</span>
+                    <span id="n-basawamal" class="n" style="left:885.0px;top:777.2px;letter-spacing:1.80px">वसावा मल</span>
+                    <span id="n-gujarmal" class="n" style="left:891.0px;top:831.2px;letter-spacing:1.80px">गुजर मल</span>
+                    <span id="n-gobindyash" class="n" style="left:206.2px;top:802.4px;letter-spacing:1.80px">गोबिद यश</span>
+                    <span id="n-kirparam" class="n" style="left:432.0px;top:802.4px;letter-spacing:1.80px">किरपा राम</span>
+                    <span id="n-shankardas" class="n" style="left:613.5px;top:794.3px;letter-spacing:1.80px">शंकर दास</span>
+                    <span id="n-dropadideva" class="n" style="left:741.0px;top:794.3px;letter-spacing:1.80px">द्रोपदी देवा</span>
+                    <span id="n-mohanlal-sub" class="n" style="left:457.5px;top:875.6px;letter-spacing:1.80px">मोहन लाल</span>
+                    <span id="n-shivdas" class="n" style="left:597.0px;top:876.8px;letter-spacing:1.80px">शिव दास</span>
+                    <span id="n-bugradas" class="n" style="left:720.0px;top:873.6px;letter-spacing:1.80px">बग्रा दास</span>
+                    <span id="n-takhatram" class="n" style="left:649.5px;top:930.8px;letter-spacing:1.80px">तख्त राम</span>
+                    <span id="n-khushiram" class="n" style="left:873.0px;top:933.2px;letter-spacing:1.80px">खुशी राम</span>
+                    <span id="n-jagannath" class="n" style="left:1126.9px;top:930.8px;letter-spacing:1.80px">जगननाथ</span>
+                    <span id="n-harkishanlal" class="n" style="left:1054.5px;top:846.8px;letter-spacing:1.80px">हरकिशन लाल</span>
+                    <span id="n-thanduram" class="n" style="left:519.0px;top:1002.8px;letter-spacing:1.80px">ठंडू राम</span>
+                    <span id="n-gyanchand" class="n" style="left:642.0px;top:1004.0px;letter-spacing:1.80px">ज्ञान चन्द</span>
+                    <span id="n-jagdishlal1" class="n" style="left:516.0px;top:1047.2px;letter-spacing:1.80px">जगदीश लाल</span>
+                    <span id="n-bhromprakash" class="n" style="left:825.0px;top:1005.2px;letter-spacing:1.80px">भ्रोमप्रकाश</span>
+                    <span id="n-dhamvir" class="n" style="left:925.5px;top:1005.2px;letter-spacing:1.80px">धर्मवीर</span>
+                    <span id="n-nandalal" class="n" style="left:1014.0px;top:1004.0px;letter-spacing:1.80px">नंदलाल</span>
+                    <span id="n-devraj" class="n" style="left:1105.9px;top:1002.8px;letter-spacing:1.80px">देवराज</span>
+                    <span id="n-vipanchand" class="n" style="left:1198.9px;top:1002.8px;letter-spacing:1.80px">विपनचंद</span>
+                    <span id="n-vijay" class="n" style="left:1048.5px;top:1072.4px;letter-spacing:1.80px">विजय</span>
+                    <span id="n-mohanlal-main" class="n" style="left:1555.1px;top:488.0px;letter-spacing:1.80px">मोहन लाल</span>
+                    <span id="n-kalyanchand" class="n" style="left:1567.1px;top:533.6px;letter-spacing:1.80px">कल्याण चन्द</span>
+                    <span id="n-purnchand-main" class="n" style="left:1565.6px;top:579.2px;letter-spacing:1.80px">पूर्ण चन्द</span>
+                    <span id="n-rudamal" class="n" style="left:1480.9px;top:652.4px;letter-spacing:1.80px">रुड़ा मल</span>
+                    <span id="n-gulabchand" class="n" style="left:1827.1px;top:650.0px;letter-spacing:1.80px">गुलाब चन्द</span>
+                    <span id="n-meghraj" class="n" style="left:2119.6px;top:653.6px;letter-spacing:1.80px">मेघ राज</span>
+                    <span id="n-jeetmal" class="n" style="left:1422.4px;top:725.6px;letter-spacing:1.80px">जीत मल</span>
+                    <span id="n-fatehchand" class="n" style="left:1825.6px;top:725.6px;letter-spacing:1.80px">फतेहचंद</span>
+                    <span id="n-bhagwandas" class="n" style="left:2101.6px;top:726.8px;letter-spacing:1.80px">भगवान दास</span>
+                    <span id="n-patarsingh" class="n" style="left:1420.9px;top:776.0px;letter-spacing:1.80px">पतर सिंह</span>
+                    <span id="n-kotumal" class="n" style="left:1362.4px;top:844.4px;letter-spacing:1.80px">कोटू मल</span>
+                    <span id="n-mathradas" class="n" style="left:1315.9px;top:930.8px;letter-spacing:1.80px">मथरा दास</span>
+                    <span id="n-jamnadas" class="n" style="left:1660.1px;top:933.2px;letter-spacing:1.80px">जमनादास</span>
+                    <span id="n-chunilal" class="n" style="left:1309.9px;top:1002.8px;letter-spacing:1.80px">चुनी लाल</span>
+                    <span id="n-somdat" class="n" style="left:1417.9px;top:1004.0px;letter-spacing:1.80px">सोमदत</span>
+                    <span id="n-vedvyas" class="n" style="left:1512.4px;top:1005.2px;letter-spacing:1.80px">वेदव्यास</span>
+                    <span id="n-krishnakumar" class="n" style="left:1640.6px;top:1006.4px;letter-spacing:0.00px">कृष्ण कुमार</span>
+                    <span id="n-charanjit" class="n" style="left:1767.1px;top:1007.6px;letter-spacing:0.40px">चरणजीत</span>
+                    <span id="n-jagdishchand" class="n" style="left:1911.1px;top:1008.8px;letter-spacing:1.80px">जगदीश चंद</span>
+                    <span id="n-mohanlal-bottom" class="n" style="left:1492.9px;top:1054.4px;letter-spacing:1.80px">मोहन लाल</span>
+                    <span id="n-deepak" class="n" style="left:1591.1px;top:1080.8px;letter-spacing:1.80px">दीपक</span>
+                    <span id="n-surya" class="n" style="left:1696.1px;top:1082.0px;letter-spacing:1.80px">सुर्यं कुमार</span>
+                    <span id="n-kuldeep" class="n" style="left:1813.6px;top:1058.0px;letter-spacing:0.20px">कुलदीप कुमार</span>
+                    <span id="n-rajiv" class="n" style="left:1957.6px;top:1059.2px;letter-spacing:0.80px">राजीव</span>
+                    <span id="n-moolraj" class="n" style="left:1845.1px;top:795.2px;letter-spacing:1.80px">मूलराज</span>
+                    <span id="n-gokulchand" class="n" style="left:1978.6px;top:795.2px;letter-spacing:1.80px">गोकुल चंद</span>
+                    <span id="n-mushtakrai" class="n" style="left:2131.6px;top:798.8px;letter-spacing:1.80px">मुश्ताक राय</span>
+                    <span id="n-shankardas2" class="n" style="left:1899.1px;top:878.0px;letter-spacing:1.80px">शंकरदास</span>
+                    <span id="n-chetram" class="n" style="left:2023.6px;top:879.2px;letter-spacing:1.80px">चेत राम</span>
+                    <span id="n-gangaram" class="n" style="left:2152.6px;top:881.6px;letter-spacing:1.80px">गंगा राम</span>
+                    <span id="n-kesardas" class="n" style="left:1903.6px;top:933.2px;letter-spacing:1.80px">केसरदास</span>
+                    <span id="n-hardarilal" class="n" style="left:671.4px;top:1073.6px;letter-spacing:1.80px">हरद्वारी लाल</span>
+                    <span id="n-rajinderkumar" class="n" style="left:826.7px;top:1073.6px;letter-spacing:1.80px">राजिन्द्र कुमार</span>
+                    <span id="n-balvidr" class="n" style="left:954.8px;top:1073.6px;letter-spacing:1.80px">बलविद्र</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Buttons with 3 Options -->
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-4 pt-4 border-t border-gold/30">
+            <a href="index.html" class="w-full lg:w-auto flex items-center justify-center gap-2 bg-maroonDark hover:bg-imperial text-goldLight font-bold px-6 py-3 rounded-2xl border border-gold/60 shadow transition text-base">
+                <i class="fa-solid fa-house text-saffron"></i> <span id="btn-back-home">मुख्य पृष्ठ (Home) पर वापस जाएं</span>
+            </a>
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+                <a href="thamma-three-pillars.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-imperial hover:bg-maroonDark text-goldLight font-extrabold px-6 py-3 rounded-2xl border border-gold/60 shadow transition text-base">
+                    <i class="fa-solid fa-arrow-left text-saffron"></i> <span id="btn-prev-page">पिछला पृष्ठ (पृष्ठ 1 - तीन थम्मे) देखें</span>
+                </a>
+                <a href="#" onclick="event.preventDefault();" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-saffron to-saffronDark text-white font-black px-6 py-3 rounded-2xl shadow-lg hover:opacity-95 transition text-base">
+                    <span id="btn-next-page">अगला पृष्ठ (थम्मा मलकाना - जारी) देखें</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-8 px-6 mt-auto">
+        <div class="w-full text-center space-y-3 font-hindiBody">
+            <div class="flex items-center justify-center gap-3 text-saffron text-2xl font-extrabold">
+                <span>ॐ</span>
+                <span id="footer-motto">देवी लाडी सत्योति की जय</span>
+                <span>ॐ</span>
+            </div>
+            <p id="footer-copy" class="text-base sm:text-lg font-bold text-goldLight">
+                लाडी सत्योति ट्रस्ट रजिस्टर्ड | पूरी परिवार डिजिटल अभिलेखागार
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            hi: {
+                page_title: "थम्मा मलकाना कटड़ा पूरीयाँ | Ladi Satyoti Trust",
+                nav_back_home: "मुख्य पृष्ठ पर जाएं",
+                nav_sacred: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
+                page_indicator: "पृष्ठ 2 - थम्मा मलकाना (कटड़ा पूरीयाँ)",
+                top_nav_home: "मुख्य पृष्ठ",
+                top_nav_prev: "पिछला पृष्ठ (पृष्ठ 1)",
+                top_nav_next: "अगला पृष्ठ (थम्मा मलकाना - जारी)",
+                btn_back_home: "मुख्य पृष्ठ (Home) पर वापस जाएं",
+                btn_prev_page: "पिछला पृष्ठ (पृष्ठ 1 - तीन थम्मे) देखें",
+                btn_next_page: "अगला पृष्ठ (थम्मा मलकाना - जारी) देखें",
+                footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
+                footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
+
+                c_katra_purian: "कटड़ा पुरीयाँ",
+                c_thamma_malkana: "थम्मा मलकाना",
+                n_purnchand_1: "पूर्ण चन्द",
+                n_bharudamal: "भरूड़ा मल",
+                n_gulabchand_1: "गुलाब चन्द",
+                n_meghraj_1: "मेघ राज",
+                n_jeetmal_1: "जीत मल",
+                n_fatehchand_1: "फतेह चन्द",
+                n_bhagwandas_1: "भगवान दास",
+                n_deviditta: "देवी दित्ता",
+                n_malakkapoor: "मलक कपूर",
+                n_gobindchand: "गोबिद चन्द",
+                n_dharjanmal: "भरजन मल",
+                n_rajkour: "राज कौर",
+                n_chatarbihari: "चतर बिहारी",
+                n_bankarai: "बांका राय",
+                n_dhamirsingh: "भ्रमीर सिंह",
+                n_todarmal: "टोडर मल",
+                n_govardhanlal: "गोवर्धन लाल",
+                n_baghelmal: "बघेल मल",
+                n_paharmal: "पहाड़ मल",
+                n_jatmal: "जट मल",
+                n_kahansingh: "काहन सिंह",
+                n_heerasingh: "हीरा सिंह",
+                n_nihalsingh: "निहाल सिंह",
+                n_ratta: "रत्ता",
+                n_palamal: "पाला मल",
+                n_polomal: "पोलो मल",
+                n_basawamal: "वसावा मल",
+                n_gujarmal: "गुजर मल",
+                n_gobindyash: "गोबिद यश",
+                n_kirparam: "किरपा राम",
+                n_shankardas: "शंकर दास",
+                n_dropadideva: "द्रोपदी देवा",
+                "n_mohanlal-sub": "मोहन लाल",
+                n_shivdas: "शिव दास",
+                n_bugradas: "बग्रा दास",
+                n_takhatram: "तख्त राम",
+                n_khushiram: "खुशी राम",
+                n_jagannath: "जगननाथ",
+                n_harkishanlal: "हरकिशन लाल",
+                n_thanduram: "ठंडू राम",
+                n_gyanchand: "ज्ञान चन्द",
+                n_jagdishlal1: "जगदीश लाल",
+                n_bhromprakash: "भ्रोमप्रकाश",
+                n_dhamvir: "धर्मवीर",
+                n_nandalal: "नंदलाल",
+                n_devraj: "देवराज",
+                n_vipanchand: "विपनचंद",
+                n_vijay: "विजय",
+                "n_mohanlal-main": "मोहन लाल",
+                n_kalyanchand: "कल्याण चन्द",
+                "n_purnchand-main": "पूर्ण चन्द",
+                n_rudamal: "रुड़ा मल",
+                n_gulabchand: "गुलाब चन्द",
+                n_meghraj: "मेघ राज",
+                n_jeetmal: "जीत मल",
+                n_fatehchand: "फतेहचंद",
+                n_bhagwandas: "भगवान दास",
+                n_patarsingh: "पतर सिंह",
+                n_kotumal: "कोटू मल",
+                n_mathradas: "मथरा दास",
+                n_jamnadas: "जमनादास",
+                n_chunilal: "चुनी लाल",
+                n_somdat: "सोमदत",
+                n_vedvyas: "वेदव्यास",
+                n_krishnakumar: "कृष्ण कुमार",
+                n_charanjit: "चरणजीत",
+                n_jagdishchand: "जगदीश चंद",
+                "n_mohanlal-bottom": "मोहन लाल",
+                n_deepak: "दीपक",
+                n_surya: "सुर्यं कुमार",
+                n_kuldeep: "कुलदीप कुमार",
+                n_rajiv: "राजीव",
+                n_moolraj: "मूलराज",
+                n_gokulchand: "गोकुल चंद",
+                n_mushtakrai: "मुश्ताक राय",
+                n_shankardas2: "शंकरदास",
+                n_chetram: "चेत राम",
+                n_gangaram: "गंगा राम",
+                n_kesardas: "केसरदास",
+                n_hardarilal: "हरद्वारी लाल",
+                n_rajinderkumar: "राजिन्द्र कुमार",
+                n_balvidr: "बलविद्र"
+            },
+            en: {
+                page_title: "Thamma Malkana Katra Purian | Ladi Satyoti Trust",
+                nav_back_home: "Back to Home",
+                nav_sacred: "॥ Shri Ladi Satyoti Devyai Namah ॥",
+                page_indicator: "Page 2 - Thamma Malkana (Katra Purian)",
+                top_nav_home: "Home",
+                top_nav_prev: "Previous Page (Page 1)",
+                top_nav_next: "Next Page (Thamma Malkana - Continued)",
+                btn_back_home: "Back to Home Page",
+                btn_prev_page: "View Previous Page (Page 1 - Three Thammas)",
+                btn_next_page: "View Next Page (Thamma Malkana - Continued)",
+                footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
+                footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
+
+                c_katra_purian: "Katra Purian",
+                c_thamma_malkana: "Thamma Malkana",
+                n_purnchand_1: "Purn Chand",
+                n_bharudamal: "Bharuda Mal",
+                n_gulabchand_1: "Gulab Chand",
+                n_meghraj_1: "Megh Raj",
+                n_jeetmal_1: "Jeet Mal",
+                n_fatehchand_1: "Fateh Chand",
+                n_bhagwandas_1: "Bhagwan Das",
+                n_deviditta: "Devi Ditta",
+                n_malakkapoor: "Malak Kapoor",
+                n_gobindchand: "Gobind Chand",
+                n_dharjanmal: "Dharjan Mal",
+                n_rajkour: "Raj Kaur",
+                n_chatarbihari: "Chatar Bihari",
+                n_bankarai: "Banka Rai",
+                n_dhamirsingh: "Dhamir Singh",
+                n_todarmal: "Todar Mal",
+                n_govardhanlal: "Govardhan Lal",
+                n_baghelmal: "Baghel Mal",
+                n_paharmal: "Pahar Mal",
+                n_jatmal: "Jat Mal",
+                n_kahansingh: "Kahan Singh",
+                n_heerasingh: "Heera Singh",
+                n_nihalsingh: "Nihal Singh",
+                n_ratta: "Ratta",
+                n_palamal: "Pala Mal",
+                n_polomal: "Polo Mal",
+                n_basawamal: "Basawa Mal",
+                n_gujarmal: "Gujar Mal",
+                n_gobindyash: "Gobind Yash",
+                n_kirparam: "Kirpa Ram",
+                n_shankardas: "Shankar Das",
+                n_dropadideva: "Dropadi Deva",
+                "n_mohanlal-sub": "Mohan Lal",
+                n_shivdas: "Shiv Das",
+                n_bugradas: "Bagra Das",
+                n_takhatram: "Takhat Ram",
+                n_khushiram: "Khushi Ram",
+                n_jagannath: "Jagannath",
+                n_harkishanlal: "Harkishan Lal",
+                n_thanduram: "Thandu Ram",
+                n_gyanchand: "Gyan Chand",
+                n_jagdishlal1: "Jagdish Lal",
+                n_bhromprakash: "Om Prakash",
+                n_dhamvir: "Dharamveer",
+                n_nandalal: "Nandalal",
+                n_devraj: "Devraj",
+                n_vipanchand: "Vipanchand",
+                n_vijay: "Vijay",
+                "n_mohanlal-main": "Mohan Lal",
+                n_kalyanchand: "Kalyan Chand",
+                "n_purnchand-main": "Purn Chand",
+                n_rudamal: "Ruda Mal",
+                n_gulabchand: "Gulab Chand",
+                n_meghraj: "Megh Raj",
+                n_jeetmal: "Jeet Mal",
+                n_fatehchand: "Fatehchand",
+                n_bhagwandas: "Bhagwan Das",
+                n_patarsingh: "Patar Singh",
+                n_kotumal: "Kotu Mal",
+                n_mathradas: "Mathra Das",
+                n_jamnadas: "Jamnadas",
+                n_chunilal: "Chuni Lal",
+                n_somdat: "Somdat",
+                n_vedvyas: "Vedvyas",
+                n_krishnakumar: "Krishna Kumar",
+                n_charanjit: "Charanjit",
+                n_jagdishchand: "Jagdish Chand",
+                "n_mohanlal-bottom": "Mohan Lal",
+                n_deepak: "Deepak",
+                n_surya: "Surya Kumar",
+                n_kuldeep: "Kuldip Kumar",
+                n_rajiv: "Rajiv",
+                n_moolraj: "Moolraj",
+                n_gokulchand: "Gokul Chand",
+                n_mushtakrai: "Mushtak Rai",
+                n_shankardas2: "Shankardas",
+                n_chetram: "Chet Ram",
+                n_gangaram: "Ganga Ram",
+                n_kesardas: "Kesardas",
+                n_hardarilal: "Hardari Lal",
+                n_rajinderkumar: "Rajinder Kumar",
+                n_balvidr: "Balvidr"
+            }
+        };
+
+        const LANG_STORAGE_KEY = 'trust_site_lang';
+        let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || 'en';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem(LANG_STORAGE_KEY, lang);
+            applyLanguage(lang);
+        }
+
+        function applyLanguage(lang) {
+            activeLang = lang;
+            const dict = translations[lang];
+            document.documentElement.lang = lang;
+
+            document.title = dict.page_title;
+            const titleEl = document.getElementById('page-title');
+            if (titleEl) titleEl.textContent = dict.page_title;
+
+            setElText('nav-back-home', dict.nav_back_home);
+            setElText('nav-sacred-motto', dict.nav_sacred);
+            setElText('page-indicator', dict.page_indicator);
+            setElText('top-nav-home', dict.top_nav_home);
+            setElText('top-nav-prev', dict.top_nav_prev);
+            setElText('top-nav-next', dict.top_nav_next);
+            setElText('btn-back-home', dict.btn_back_home);
+            setElText('btn-prev-page', dict.btn_prev_page);
+            setElText('btn-next-page', dict.btn_next_page);
+            setElText('footer-motto', dict.footer_motto);
+            setElText('footer-copy', dict.footer_copy);
+
+            for (const key in dict) {
+                if (key.startsWith('n_') || key.startsWith('c_')) {
+                    const htmlId = key.replace(/_/g, '-');
+                    setElText(htmlId, dict[key]);
+                }
+            }
+
+            const btnHi = document.getElementById('btn-lang-hi');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (lang === 'hi') {
+                btnHi?.classList.add('lang-pill-active');
+                btnHi?.classList.remove('lang-pill-inactive');
+                btnEn?.classList.add('lang-pill-inactive');
+                btnEn?.classList.remove('lang-pill-active');
+            } else {
+                btnEn?.classList.add('lang-pill-active');
+                btnEn?.classList.remove('lang-pill-inactive');
+                btnHi?.classList.add('lang-pill-inactive');
+                btnHi?.classList.remove('lang-pill-active');
+            }
+            relayout(lang);
+        }
+
+        /* ---- Family-tree layout ----------------------------------------
+           Box widths are measured with the page's own fonts, so spacing and
+           connector routing adapt to Hindi and English alike and to any screen. */
+        const TREE = {"W0": 1464, "H0": 912, "KX": 1.5, "KY": 1.2, "BOX_H": 34, "GAP": 8, "SNAP": 25, "TITLE_Y": 51.5, "XINS0": [[1020, 14], [1150, 14]], "YINS0": [[200, 19], [215, 19]], "H": [[32, 112.8, 340, 112.4], [733, 166.1, 1150, 163.3], [687, 275.0, 880, 274.3], [376, 344.1, 1064, 340.4], [278, 405.5, 523, 407.9], [403, 540.3, 621, 543.4], [890, 540.5, 1377, 540.2], [1153, 600.8, 1437, 603.5], [108, 603.4, 486, 605.3], [680, 644.0, 1040, 642.9], [381, 649.7, 460, 649.0], [1196, 659.2, 1432, 662.7], [243, 667.5, 531, 671.6], [878, 713.3, 1111.5, 715.8], [397, 715.3, 749, 716.3], [317, 773.9, 479, 776.1], [846, 775.2, 966, 775.5], [1004, 776.6, 1234, 779.2], [509, 777.3, 826, 775.0], [420.0, 834.4, 629.5, 833.6], [637.0, 833.6, 712.0, 833.3], [1039, 839.5, 1107, 839.5], [951, 480.11, 1011, 479.71], [1011, 479.71, 1071, 479.14], [1071, 479.14, 1131, 478.55], [1131, 478.55, 1191, 478.1], [1191, 478.1, 1251, 477.92], [1251, 477.92, 1311, 478.17], [1311, 478.17, 1371, 478.99], [1371, 478.99, 1431, 480.53], [1431, 480.53, 1432, 480.56]], "BRIDGE": [[629.5, 833.6, 637.0, 833.6]], "V": [[67.5, 112.8, 135.0], [68.0, 159.0, 178.0], [137.5, 603.5, 625.0], [172.5, 112.6, 135.0], [276.5, 668.0, 685.0], [284.0, 604.3, 625.0], [297.5, 112.5, 134.0], [314.5, 524.0, 539.0], [323.5, 405.9, 424.0], [324.2, 447.0, 463.0], [324.0, 485.0, 501.0], [351.5, 814.0, 830.0], [385.5, 344.0, 367.0], [389.0, 669.6, 687.0], [403.5, 389.0, 406.7], [409.5, 604.9, 626.0], [422.0, 649.3, 670.0], [425.0, 834.4, 852.0], [436.5, 775.5, 794.0], [436.5, 815.0, 834.3], [457.5, 585.0, 605.2], [458.5, 541.1, 562.0], [482.5, 486.0, 502.0], [482.5, 523.0, 541.4], [497.5, 407.7, 426.0], [545.5, 833.9, 852.0], [551.5, 777.0, 794.0], [577.5, 715.8, 733.0], [585.5, 587.0, 605.0], [588.8, 631.0, 649.0], [620.0, 776.5, 794.0], [630.5, 833.6, 849.0], [689.0, 776.0, 793.0], [707.5, 643.9, 662.0], [731.5, 274.8, 296.0], [738.5, 757.0, 775.6], [783.5, 210.0, 230.0], [784.5, 165.8, 187.0], [784.5, 253.0, 274.6], [801.5, 775.2, 793.0], [839.8, 319.0, 341.6], [844.5, 775.2, 792.0], [855.5, 274.4, 296.0], [875.0, 738.0, 775.3], [885.5, 689.0, 713.4], [909.5, 58.0, 74.0], [909.5, 101.0, 120.0], [909.5, 143.0, 164.9], [919.0, 164.9, 187.0], [925.5, 540.5, 566.0], [945.5, 584.0, 600.0], [966.5, 479.0, 500.0], [1003.8, 817.0, 836.0], [1006.5, 776.6, 794.0], [1023.5, 386.0, 401.0], [1023.5, 424.0, 439.0], [1027.2, 340.6, 364.0], [1046.5, 839.5, 857.0], [1086.5, 163.7, 185.0], [1163.5, 820.0, 839.0], [1176.5, 478.7, 499.0], [1188.5, 585.0, 601.1], [1206.5, 601.3, 619.0], [1206.5, 643.0, 659.4], [1234.2, 659.8, 682.0], [1233.5, 782.0, 796.0], [1291.5, 602.1, 619.0], [1366.5, 540.2, 563.0], [1387.5, 478.4, 501.0], [1397.8, 603.1, 622.0], [1405.5, 662.3, 684.0], [999.5, 519.0, 540.0], [1111.5, 715.5, 735.0], [1320.0, 661.0, 684.0], [1235.0, 715.0, 732.0], [1105.0, 757.0, 776.0], [1075.0, 778.0, 790.0], [1145.0, 778.0, 790.0], [1276.0, 821.0, 838.0], [1197.0, 541.0, 561.0], [491.0, 671.5, 688.0], [703.0, 834.0, 850.0], [351.5, 774.4, 792], [423.5, 715.4, 732], [439.0, 758, 775.6], [489.0, 448, 464], [595.0, 543.0, 564], [739.5, 775.6, 792], [748.0, 716.3, 733], [887.5, 713.4, 732], [892.5, 643.4, 660], [943.0, 626, 643.2], [957.5, 775.5, 793], [1023.0, 462, 478.9], [1098.5, 839.5, 857], [702.2, 690.0, 714.5]], "boxes": [{"id": "n-purnchand-1", "key": "n_purnchand_1", "x": 178, "y": 94, "ls": 1.8}, {"id": "n-bharudamal", "key": "n_bharudamal", "x": 76, "y": 147, "ls": 1.8}, {"id": "n-gulabchand-1", "key": "n_gulabchand_1", "x": 188, "y": 146, "ls": 1.8}, {"id": "n-meghraj-1", "key": "n_meghraj_1", "x": 299, "y": 147, "ls": 1.8}, {"id": "n-jeetmal-1", "key": "n_jeetmal_1", "x": 69.01, "y": 189, "ls": 1.8}, {"id": "n-fatehchand-1", "key": "n_fatehchand_1", "x": 73.53, "y": 210, "ls": 1.8}, {"id": "n-bhagwandas-1", "key": "n_bhagwandas_1", "x": 76.84, "y": 231, "ls": 1.8}, {"id": "n-deviditta", "key": "n_deviditta", "x": 911, "y": 45, "ls": 1.8}, {"id": "n-malakkapoor", "key": "n_malakkapoor", "x": 921, "y": 88, "ls": 1.8}, {"id": "n-gobindchand", "key": "n_gobindchand", "x": 923, "y": 132, "ls": 1.8}, {"id": "n-dharjanmal", "key": "n_dharjanmal", "x": 794, "y": 199, "ls": 1.8}, {"id": "n-rajkour", "key": "n_rajkour", "x": 932, "y": 199, "ls": 1.8}, {"id": "n-chatarbihari", "key": "n_chatarbihari", "x": 1090, "y": 198, "ls": 1.8}, {"id": "n-bankarai", "key": "n_bankarai", "x": 790, "y": 242, "ls": 1.8}, {"id": "n-dhamirsingh", "key": "n_dhamirsingh", "x": 734, "y": 309, "ls": 1.8}, {"id": "n-todarmal", "key": "n_todarmal", "x": 846, "y": 308, "ls": 1.8}, {"id": "n-govardhanlal", "key": "n_govardhanlal", "x": 382, "y": 378, "ls": 1.8}, {"id": "n-baghelmal", "key": "n_baghelmal", "x": 328, "y": 435, "ls": 1.8}, {"id": "n-paharmal", "key": "n_paharmal", "x": 489, "y": 437, "ls": 1.8}, {"id": "n-jatmal", "key": "n_jatmal", "x": 320, "y": 474, "ls": 1.8}, {"id": "n-kahansingh", "key": "n_kahansingh", "x": 485, "y": 475, "ls": 1.8}, {"id": "n-heerasingh", "key": "n_heerasingh", "x": 330, "y": 512, "ls": 1.8}, {"id": "n-nihalsingh", "key": "n_nihalsingh", "x": 493, "y": 513, "ls": 1.8}, {"id": "n-ratta", "key": "n_ratta", "x": 308, "y": 551, "ls": 1.8}, {"id": "n-palamal", "key": "n_palamal", "x": 459, "y": 574, "ls": 1.8}, {"id": "n-polomal", "key": "n_polomal", "x": 595, "y": 575, "ls": 1.8}, {"id": "n-basawamal", "key": "n_basawamal", "x": 590, "y": 616, "ls": 1.8}, {"id": "n-gujarmal", "key": "n_gujarmal", "x": 594, "y": 661, "ls": 1.8}, {"id": "n-gobindyash", "key": "n_gobindyash", "x": 169, "y": 637, "ls": 1.8}, {"id": "n-kirparam", "key": "n_kirparam", "x": 288, "y": 637, "ls": 1.8}, {"id": "n-shankardas", "key": "n_shankardas", "x": 409, "y": 638, "ls": 1.8}, {"id": "n-dropadideva", "key": "n_dropadideva", "x": 494, "y": 639, "ls": 1.8}, {"id": "n-mohanlal-sub", "key": "n_mohanlal-sub", "x": 305, "y": 698, "ls": 1.8}, {"id": "n-shivdas", "key": "n_shivdas", "x": 398, "y": 699, "ls": 1.8}, {"id": "n-bugradas", "key": "n_bugradas", "x": 480, "y": 700, "ls": 1.8}, {"id": "n-takhatram", "key": "n_takhatram", "x": 433, "y": 744, "ls": 1.8}, {"id": "n-khushiram", "key": "n_khushiram", "x": 582, "y": 746, "ls": 1.8}, {"id": "n-jagannath", "key": "n_jagannath", "x": 749, "y": 744, "ls": 1.8}, {"id": "n-harkishanlal", "key": "n_harkishanlal", "x": 703, "y": 674, "ls": 1.8}, {"id": "n-thanduram", "key": "n_thanduram", "x": 346, "y": 804, "ls": 1.8}, {"id": "n-gyanchand", "key": "n_gyanchand", "x": 428, "y": 805, "ls": 1.8}, {"id": "n-jagdishlal1", "key": "n_jagdishlal1", "x": 344, "y": 841, "ls": 1.8}, {"id": "n-bhromprakash", "key": "n_bhromprakash", "x": 550, "y": 806, "ls": 1.8}, {"id": "n-dhamvir", "key": "n_dhamvir", "x": 617, "y": 806, "ls": 1.8}, {"id": "n-nandalal", "key": "n_nandalal", "x": 676, "y": 805, "ls": 1.8}, {"id": "n-devraj", "key": "n_devraj", "x": 735, "y": 804, "ls": 1.8}, {"id": "n-vipanchand", "key": "n_vipanchand", "x": 797, "y": 804, "ls": 1.8}, {"id": "n-vijay", "key": "n_vijay", "x": 699, "y": 862, "ls": 1.8}, {"id": "n-mohanlal-main", "key": "n_mohanlal-main", "x": 1023, "y": 375, "ls": 1.8}, {"id": "n-kalyanchand", "key": "n_kalyanchand", "x": 1031, "y": 413, "ls": 1.8}, {"id": "n-purnchand-main", "key": "n_purnchand-main", "x": 1030, "y": 451, "ls": 1.8}, {"id": "n-rudamal", "key": "n_rudamal", "x": 985, "y": 512, "ls": 1.8}, {"id": "n-gulabchand", "key": "n_gulabchand", "x": 1195, "y": 510, "ls": 1.8}, {"id": "n-meghraj", "key": "n_meghraj", "x": 1390, "y": 513, "ls": 1.8}, {"id": "n-jeetmal", "key": "n_jeetmal", "x": 946, "y": 573, "ls": 1.8}, {"id": "n-fatehchand", "key": "n_fatehchand", "x": 1194, "y": 573, "ls": 1.8}, {"id": "n-bhagwandas", "key": "n_bhagwandas", "x": 1378, "y": 574, "ls": 1.8}, {"id": "n-patarsingh", "key": "n_patarsingh", "x": 945, "y": 615, "ls": 1.8}, {"id": "n-kotumal", "key": "n_kotumal", "x": 906, "y": 672, "ls": 1.8}, {"id": "n-mathradas", "key": "n_mathradas", "x": 875, "y": 744, "ls": 1.8}, {"id": "n-jamnadas", "key": "n_jamnadas", "x": 1093, "y": 746, "ls": 1.8}, {"id": "n-chunilal", "key": "n_chunilal", "x": 871, "y": 804, "ls": 1.8}, {"id": "n-somdat", "key": "n_somdat", "x": 943, "y": 805, "ls": 1.8}, {"id": "n-vedvyas", "key": "n_vedvyas", "x": 1006, "y": 806, "ls": 1.8}, {"id": "n-krishnakumar", "key": "n_krishnakumar", "x": 1080.0, "y": 807.0, "ls": 0.0}, {"id": "n-charanjit", "key": "n_charanjit", "x": 1155.0, "y": 808.0, "ls": 0.4}, {"id": "n-jagdishchand", "key": "n_jagdishchand", "x": 1251, "y": 809, "ls": 1.8}, {"id": "n-mohanlal-bottom", "key": "n_mohanlal-bottom", "x": 993, "y": 847, "ls": 1.8}, {"id": "n-deepak", "key": "n_deepak", "x": 1047, "y": 869, "ls": 1.8}, {"id": "n-surya", "key": "n_surya", "x": 1117, "y": 870, "ls": 1.8}, {"id": "n-kuldeep", "key": "n_kuldeep", "x": 1186, "y": 850, "ls": 0.19999999999999984}, {"id": "n-rajiv", "key": "n_rajiv", "x": 1282.0, "y": 851.0, "ls": 0.8}, {"id": "n-moolraj", "key": "n_moolraj", "x": 1207, "y": 631, "ls": 1.8}, {"id": "n-gokulchand", "key": "n_gokulchand", "x": 1296, "y": 631, "ls": 1.8}, {"id": "n-mushtakrai", "key": "n_mushtakrai", "x": 1398, "y": 634, "ls": 1.8}, {"id": "n-shankardas2", "key": "n_shankardas2", "x": 1243, "y": 700, "ls": 1.8}, {"id": "n-chetram", "key": "n_chetram", "x": 1326, "y": 701, "ls": 1.8}, {"id": "n-gangaram", "key": "n_gangaram", "x": 1412, "y": 703, "ls": 1.8}, {"id": "n-kesardas", "key": "n_kesardas", "x": 1246, "y": 746, "ls": 1.8}, {"id": "n-hardarilal", "key": "n_hardarilal", "x": 447.625, "y": 863, "ls": 1.8}, {"id": "n-rajinderkumar", "key": "n_rajinderkumar", "x": 551.1640625, "y": 863, "ls": 1.8}, {"id": "n-balvidr", "key": "n_balvidr", "x": 636.5390625, "y": 863, "ls": 1.8}], "titles": [{"id": "c-katra-purian", "key": "c_katra_purian", "x": 688.5, "ls": 1.49}, {"id": "c-thamma-malkana", "key": "c_thamma_malkana", "x": 1123.0, "ls": 2.67}]};
+        const TREE_MIN_SCALE = 0.5;
+        const trackFor = (lang, ls) => (lang === 'en' ? 0.3 : ls);   // Latin text reads better with light tracking
+        const LAYOUTS = {};
+        let activeLang = 'en';
+        const $ = id => document.getElementById(id);
+
+        function computeLayout(lang) {
+            const dict = translations[lang] || {};
+            TREE.boxes.forEach(b => {
+                const el = $(b.id);
+                if (!el) return;
+                if (dict[b.key] !== undefined) el.textContent = dict[b.key];
+                el.style.letterSpacing = trackFor(lang, b.ls).toFixed(2) + 'px';
+            });
+            TREE.titles.forEach(t => {
+                const el = $(t.id);
+                if (!el) return;
+                if (dict[t.key] !== undefined) el.textContent = dict[t.key];
+                el.style.letterSpacing = trackFor(lang, t.ls).toFixed(2) + 'px';
+            });
+
+            const cv = $('canvas');
+            const savedTransform = cv.style.transform;
+            cv.style.transform = 'none';
+            const widths = TREE.boxes.map(b => $(b.id).getBoundingClientRect().width);
+            cv.style.transform = savedTransform;
+
+            const { BOX_H, GAP, SNAP } = TREE;
+            const XINS = TREE.XINS0.map(a => a.slice());
+            const YINS = TREE.YINS0.map(a => a.slice());
+            const X = x => x * TREE.KX + XINS.reduce((s, [x0, d]) => s + (x > x0 ? d : 0), 0);
+            const Y = y => y * TREE.KY + YINS.reduce((s, [y0, d]) => s + (y > y0 ? d : 0), 0);
+
+            // 1) open up spacing wherever two boxes would collide
+            for (let it = 0; it < 120; it++) {
+                const pos = TREE.boxes.map((b, i) => ({ xi: X(b.x), yi: Y(b.y), wi: widths[i] }));
+                let changed = false;
+                outer:
+                for (let i = 0; i < pos.length; i++) {
+                    for (let j = i + 1; j < pos.length; j++) {
+                        const p = pos[i], q = pos[j], a = TREE.boxes[i], c = TREE.boxes[j];
+                        const needX = (p.wi + q.wi) / 2 + GAP, needY = BOX_H + GAP;
+                        if (Math.abs(p.xi - q.xi) < needX && Math.abs(p.yi - q.yi) < needY) {
+                            const oxLo = Math.min(a.x, c.x), oxHi = Math.max(a.x, c.x);
+                            const oyLo = Math.min(a.y, c.y), oyHi = Math.max(a.y, c.y);
+                            if (Math.abs(p.yi - q.yi) < needY && oxHi - oxLo > 1) {
+                                XINS.push([(oxLo + oxHi) / 2, needX - Math.abs(p.xi - q.xi) + 3]);
+                                changed = true;
+                            } else if (oyHi - oyLo > 1) {
+                                YINS.push([(oyLo + oyHi) / 2, needY - Math.abs(p.yi - q.yi) + 3]);
+                                changed = true;
+                            }
+                            if (changed) break outer;
+                        }
+                    }
+                }
+                if (!changed) break;
+            }
+
+            const H = TREE.H.map(([a, b, c, d]) => [X(a), Y(b), X(c), Y(d)]);
+            const V = TREE.V.map(([x, y1, y2]) => [X(x), Y(y1), Y(y2)]);
+            const boxes = TREE.boxes.map((b, i) => ({ id: b.id, cx: X(b.x), cy: Y(b.y), w: widths[i], h: BOX_H }));
+            const byId = id => boxes.find(b => b.id === id);
+            const edges = b => [b.cx - b.w / 2, b.cx + b.w / 2, b.cy - b.h / 2, b.cy + b.h / 2];
+            const barY = (s, x) => Math.abs(s[2] - s[0]) < 1e-9 ? s[1] : s[1] + (s[3] - s[1]) * (x - s[0]) / (s[2] - s[0]);
+            const barHitsBox = (s, b) => {
+                const [l, r, t, bt] = edges(b);
+                const lo = Math.max(Math.min(s[0], s[2]), l), hi = Math.min(Math.max(s[0], s[2]), r);
+                if (lo > hi) return null;
+                const ys = [barY(s, lo), barY(s, hi)];
+                if (Math.max(...ys) >= t - 2 && Math.min(...ys) <= bt + 2) return (ys[0] + ys[1]) / 2;
+                return null;
+            };
+
+            // 2) lift any box that sits on a bar
+            for (let k = 0; k < 60; k++) {
+                let moved = false;
+                for (const b of boxes) for (const s of H) {
+                    const yy = barHitsBox(s, b);
+                    if (yy === null) continue;
+                    b.cy = yy < b.cy ? yy + 6 + BOX_H / 2 : yy - 6 - BOX_H / 2;
+                    moved = true;
+                }
+                if (!moved) break;
+            }
+
+            // 3) placement details
+            const shankar = byId('n-shankardas'), dropadi = byId('n-dropadideva');
+            if (shankar && dropadi) dropadi.cy = shankar.cy;
+            const gobind = byId('n-gobindyash');
+            if (gobind) {
+                const [gl, gr, gt] = edges(gobind);
+                const drops = V.filter(v => gl + 2 < v[0] && v[0] < gr - 2 &&
+                    Math.min(v[1], v[2]) < gt - 10 && gt - 2 <= Math.max(v[1], v[2]) && Math.max(v[1], v[2]) <= gt + 10);
+                if (drops.length === 1) gobind.cx = drops[0][0];
+            }
+            const krishna = byId('n-krishnakumar');
+            if (krishna) {
+                const kb = krishna.cy + BOX_H / 2;
+                let hit = null;
+                for (const s of H) {
+                    const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                    if (lo <= krishna.cx && krishna.cx <= hi) {
+                        const by = barY(s, krishna.cx);
+                        if (kb + 4 <= by && by <= kb + 60 && (hit === null || by < hit)) hit = by;
+                    }
+                }
+                if (hit !== null) V.push([krishna.cx, kb, hit]);
+            }
+            TREE.BRIDGE.forEach(([a, b, c, d]) => H.push([X(a), Y(b), X(c), Y(d)]));
+
+            // 4) connector ends: join bars, or stop at the nearest box edge
+            const insideAny = (x, y) => boxes.some(b => { const [l, r, t, bt] = edges(b); return l <= x && x <= r && t <= y && y <= bt; });
+            const onBar = (x, y) => H.some(s => {
+                const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                return lo - 3 <= x && x <= hi + 3 && Math.abs(y - barY(s, Math.min(Math.max(x, lo), hi))) <= 3;
+            });
+            const snapEnd = (x, y) => {
+                for (const s of H) {
+                    const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                    if (lo - 3 <= x && x <= hi + 3) {
+                        const by = barY(s, Math.min(Math.max(x, lo), hi));
+                        if (Math.abs(y - by) <= 4 && !insideAny(x, by)) return by;
+                    }
+                }
+                if (onBar(x, y) || insideAny(x, y)) return y;
+                let best = null;
+                for (const b of boxes) {
+                    const [l, r, t, bt] = edges(b);
+                    if (!(l - 1 <= x && x <= r + 1)) continue;
+                    for (const e of [t, bt]) {
+                        const d = Math.abs(y - e);
+                        if (d <= SNAP && (best === null || d < best[0])) best = [d, e];
+                    }
+                }
+                return best ? best[1] : y;
+            };
+            V.forEach(v => { v[1] = snapEnd(v[0], v[1]); v[2] = snapEnd(v[0], v[2]); });
+
+            // 5) a drop that stops just short of a bar end: extend that bar end onto the drop
+            const barAtPt = (x, y) => H.some(s => {
+                const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                return x >= lo - 1.5 && x <= hi + 1.5 && Math.abs(barY(s, x) - y) <= 1.6;
+            });
+            const boxAtPt = (x, y) => boxes.some(b => {
+                const [l, r, t, bt] = edges(b);
+                return x >= l - 1.5 && x <= r + 1.5 && y >= t - 1.5 && y <= bt + 1.5;
+            });
+            V.forEach(v => {
+                [1, 2].forEach(k => {
+                    const x = v[0], y = v[k];
+                    if (barAtPt(x, y) || boxAtPt(x, y)) return;
+                    let best = null;
+                    H.forEach((s, si) => [[0, 1], [2, 3]].forEach(([ix, iy]) => {
+                        const dx = Math.abs(s[ix] - x);
+                        if (dx <= 6 && Math.abs(s[iy] - y) <= 4 && (best === null || dx < best.dx)) best = { si, ix, dx };
+                    }));
+                    if (best === null) return;
+                    const s = H[best.si];
+                    const yAtX = barY(s, x);
+                    s[best.ix] = x;
+                    s[best.ix + 1] = yAtX;
+                    v[k] = yAtX;
+                });
+            });
+
+            // 6) a drop that lands just outside a box corner: slide it onto the box and re-attach both ends
+            V.forEach(v => {
+                [1, 2].forEach(k => {
+                    const x = v[0], y = v[k];
+                    if (barAtPt(x, y) || boxAtPt(x, y)) return;
+                    const nb = boxes.find(b => {
+                        const [l, r, t, bt] = edges(b);
+                        return x >= l - 6 && x <= r + 6 && (Math.abs(y - t) <= 6 || Math.abs(y - bt) <= 6);
+                    });
+                    if (!nb) return;
+                    const [l, r, t, bt] = edges(nb);
+                    const nx = Math.min(Math.max(x, l + 8), r - 8);
+                    const other = k === 1 ? 2 : 1;
+                    const oy = v[other];
+                    v[0] = nx;
+                    v[k] = Math.abs(y - t) <= Math.abs(y - bt) ? t : bt;
+                    const bar = H.find(s => {
+                        const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                        return nx >= lo - 3 && nx <= hi + 3 && Math.abs(barY(s, nx) - oy) <= 6;
+                    });
+                    if (bar) v[other] = barY(bar, nx);
+                });
+            });
+
+            const seg = (x1, y1, x2, y2) =>
+                `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+            return {
+                W: Math.round(X(TREE.W0)),
+                H: Math.round(Y(TREE.H0)),
+                lines: H.map(s => seg(s[0], s[1], s[2], s[3])).concat(V.map(v => seg(v[0], v[1], v[0], v[2]))),
+                boxes: boxes.map(b => ({ id: b.id, left: b.cx, top: b.cy })),
+                titles: TREE.titles.map(t => ({ id: t.id, left: X(t.x), top: Y(TREE.TITLE_Y) })),
+            };
+        }
+
+        function fitCanvas() {
+            const L = LAYOUTS[activeLang];
+            if (!L) return;
+            const stage = document.querySelector('.stage');
+            const s = Math.min(1, Math.max(TREE_MIN_SCALE, stage.clientWidth / L.W));
+            $('canvas').style.transform = `scale(${s})`;
+            $('canvas-wrap').style.width = (L.W * s) + 'px';
+            $('canvas-wrap').style.height = (L.H * s) + 'px';
+        }
+
+        function drawLayout(lang, L) {
+            LAYOUTS[lang] = L;
+            if (lang !== activeLang) return;
+            const cv = $('canvas');
+            cv.style.width = L.W + 'px';
+            cv.style.height = L.H + 'px';
+            const svg = cv.querySelector('svg.lines');
+            svg.setAttribute('viewBox', `0 0 ${L.W} ${L.H}`);
+            svg.innerHTML = L.lines.join('');
+            L.boxes.concat(L.titles).forEach(p => {
+                const el = $(p.id);
+                if (el) { el.style.left = p.left.toFixed(1) + 'px'; el.style.top = p.top.toFixed(1) + 'px'; }
+            });
+            fitCanvas();
+            $('canvas-wrap').classList.add('is-ready');
+        }
+
+        function relayout(lang) {
+            drawLayout(lang, computeLayout(lang));
+        }
+
+        if (document.fonts) {
+            document.fonts.addEventListener('loadingdone', () => relayout(activeLang));
+            document.fonts.ready.then(() => relayout(activeLang));
+        }
+        let resizeFrame = 0;
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeFrame);
+            resizeFrame = requestAnimationFrame(fitCanvas);
+        });
+
+
+        function setElText(id, text) {
+            const el = document.getElementById(id);
+            if (el && text !== undefined) el.textContent = text;
+        }
+    </script>
+</body>
+</html>

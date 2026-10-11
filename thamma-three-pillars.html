@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <meta name="google" content="notranslate">
+
+    <!-- Browser Tab Icon (Favicon) -->
+    <link rel="icon" type="image/jpeg" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
+    <link rel="apple-touch-icon" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
+
+    <title id="page-title">Three Thammas of the Puri Clan | Ladi Satyoti Trust</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Roboto:wght@300;400;500;700&family=Rozha+One&family=Tiro+Devanagari+Hindi:ital@0;1&family=Mukta:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        imperial: '#7A280E',
+                        maroonDark: '#521A07',
+                        gold: '#D4AF37',
+                        goldLight: '#F3E5AB',
+                        goldDark: '#996515',
+                        saffron: '#FF9933',
+                        saffronDark: '#D84315',
+                        cream: '#FAF7F2',
+                        creamCard: '#FFFDF9',
+                        charcoal: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        hindiTitle: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
+                        heroTitle: ['"Rozha One"', 'serif'],
+                        hindiBody: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
+                        englishTitle: ['"Roboto"', 'sans-serif'],
+                        sans: ['"Roboto"', '"Mukta"', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 25px rgba(212, 175, 55, 0.4)',
+                        'gold-deep': '0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(212, 175, 55, 0.3)',
+                        'card-soft': '0 4px 20px -2px rgba(59, 2, 11, 0.08)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --base-font-size: 16px;
+        }
+        html {
+            font-size: var(--base-font-size);
+            background-color: #FAF7F2;
+            zoom: 0.85;
+        }
+        @supports not (zoom: 1) {
+            html {
+                transform: scale(0.85);
+                transform-origin: top center;
+                width: 117.65%;
+            }
+        }
+        html[lang="en"] .font-hindiBody {
+            font-family: "Roboto", sans-serif !important;
+        }
+        .lang-pill-active {
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%) !important;
+            color: #3B020B !important;
+            font-weight: 900 !important;
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.9), inset 0 0 2px #521A07 !important;
+            border: 2px solid #F3E5AB !important;
+        }
+        .lang-pill-inactive {
+            color: #F3E5AB !important;
+            opacity: 1 !important;
+            font-weight: 800 !important;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9) !important;
+        }
+    </style>
+</head>
+<body class="bg-cream text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-saffron selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-imperial/95 backdrop-blur-md border-b-2 border-gold/40 text-cream shadow-xl">
+        <div class="w-full px-4 sm:px-6 lg:px-8 py-2.5 flex items-center justify-between gap-4">
+            
+            <!-- Back to Home Button -->
+            <a href="index.html" class="flex items-center gap-2.5 bg-maroonDark hover:bg-saffronDark text-goldLight hover:text-white border-2 border-gold/70 px-4 py-2 rounded-full text-base font-black transition duration-200 shadow-lg">
+                <i class="fa-solid fa-arrow-left text-saffron"></i>
+                <span id="nav-back-home">मुख्य पृष्ठ पर जाएं</span>
+            </a>
+
+            <!-- Center Sacred Title -->
+            <div class="hidden lg:flex items-center gap-3 text-gold text-2xl font-hindiTitle font-black tracking-widest">
+                <span class="text-saffron text-3xl">ॐ</span>
+                <span id="nav-sacred-motto" class="text-xl font-black tracking-normal text-goldLight">॥ श्री लाडी सत्योति देव्यै नमः ॥</span>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="flex items-center bg-[#280802] p-1.5 rounded-full border-2 border-[#FFD700] text-base font-black shadow-2xl">
+                <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-4 py-1.5 rounded-full transition-all duration-200">हिंदी</button>
+                <button id="btn-lang-en" onclick="setLanguage('en')" class="px-4 py-1.5 rounded-full transition-all duration-200">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+        
+        <!-- Breadcrumb / Page Indicator -->
+        <div class="flex items-center justify-between bg-creamCard border-2 border-gold/50 px-6 py-4 rounded-2xl shadow-sm">
+            <span class="text-imperial font-extrabold text-lg sm:text-xl flex items-center gap-2">
+                <i class="fa-solid fa-book-open text-saffron"></i> <span id="page-indicator">पृष्ठ 1 - वंशावली रिकॉर्ड</span>
+            </span>
+            <a href="thamma-malkana-katra.html" class="bg-imperial hover:bg-maroonDark text-goldLight font-bold px-4 py-2 rounded-xl border border-gold/60 text-sm sm:text-base transition flex items-center gap-2 shadow">
+                <span id="next-page-btn">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें</span> <i class="fa-solid fa-arrow-right text-saffron"></i>
+            </a>
+        </div>
+
+        <!-- Three Thammas Family Tree Graph Section -->
+        <div class="bg-white/90 border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft space-y-6 w-full">
+            <h4 class="font-extrabold text-imperial text-2xl sm:text-3xl flex items-center gap-2 border-b-2 border-gold/30 pb-4">
+                <i class="fa-solid fa-sitemap text-saffron"></i> 
+                <span id="three-pillars-title-text">पूरी कौम के तीन थम्मे</span>
+            </h4>
+
+            <!-- Family Tree Diagram -->
+            <div class="relative w-full max-w-full overflow-x-auto p-4 sm:p-8 bg-[#FAF7F2] border-2 border-gold/60 rounded-3xl shadow-md font-hindiBody select-none">
+                <div class="w-full min-w-[700px] max-w-6xl mx-auto flex flex-col items-center relative z-10 py-2">
+                    
+                    <!-- ANCESTRAL ROOT TRUNK -->
+                    <div class="flex flex-col items-center space-y-3 w-full max-w-md">
+                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
+                            <span id="node-ishar">ईशर राय</span>
+                        </div>
+                        <div class="w-1.5 h-5 bg-goldDark"></div>
+
+                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
+                            <span id="node-siddh">सिद्ध गढ़ी</span>
+                        </div>
+                        <div class="w-1.5 h-5 bg-goldDark"></div>
+
+                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
+                            <span id="node-kamal">कमल नारायण</span>
+                        </div>
+                        <div class="w-1.5 h-5 bg-goldDark"></div>
+
+                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
+                            <span id="node-khil">खील नारायण</span>
+                        </div>
+                        <div class="w-1.5 h-5 bg-goldDark"></div>
+
+                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
+                            <span id="node-dayal">दयाल चन्द</span>
+                        </div>
+                        <div class="w-1.5 h-5 bg-goldDark"></div>
+
+                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
+                            <span id="node-devi">देवी दिता</span>
+                        </div>
+                    </div>
+
+                    <!-- SVG CONNECTOR -->
+                    <div class="w-full h-14 relative my-2">
+                        <svg class="w-full h-full" viewBox="0 0 600 40" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M300 0 V15" stroke="#996515" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M300 15 C300 30, 100 15, 100 40" stroke="#996515" stroke-width="3" fill="none"/>
+                            <path d="M300 15 V40" stroke="#996515" stroke-width="3" fill="none"/>
+                            <path d="M300 15 C300 30, 500 15, 500 40" stroke="#996515" stroke-width="3" fill="none"/>
+                            <circle cx="300" cy="15" r="5" fill="#996515" />
+                            <circle cx="100" cy="38" r="4" fill="#996515" />
+                            <circle cx="300" cy="38" r="4" fill="#996515" />
+                            <circle cx="500" cy="38" r="4" fill="#996515" />
+                        </svg>
+                    </div>
+
+                    <!-- THREE PILLARS -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full pt-2">
+                        
+                        <!-- PILLAR 1 -->
+                        <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
+                            <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
+                                <span id="pillar-1" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा मलकाना</span>
+                            </div>
+                            <div class="w-1.5 h-4 bg-goldDark"></div>
+                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
+                                <span id="p1-node1">मलक कपूर</span>
+                            </div>
+                            <div class="w-1.5 h-4 bg-goldDark"></div>
+                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
+                                <span id="p1-node2">गोविंद चंद</span>
+                            </div>
+                            <div class="w-full h-4 my-1">
+                                <svg class="w-full h-full" viewBox="0 0 150 12" fill="none" preserveAspectRatio="none">
+                                    <path d="M75 0 V6 M25 6 H125 M25 6 V12 M75 6 V12 M125 6 V12" stroke="#996515" stroke-width="2.5" />
+                                </svg>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full min-w-0">
+                                <span id="p1-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">राजकौर</span>
+                                <span id="p1-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">चतरबिहारी</span>
+                                <span id="p1-leaf-3" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">अर्जुन मल</span>
+                            </div>
+                        </div>
+
+                        <!-- PILLAR 2 -->
+                        <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
+                            <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
+                                <span id="pillar-2" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा राय</span>
+                            </div>
+                            <div class="w-1.5 h-4 bg-goldDark"></div>
+                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
+                                <span id="p2-node1">राय बुखार चन्द</span>
+                            </div>
+                            <div class="w-full h-4 my-1">
+                                <svg class="w-full h-full" viewBox="0 0 150 12" fill="none" preserveAspectRatio="none">
+                                    <path d="M75 0 V6 M25 6 H125 M25 6 V12 M75 6 V12 M125 6 V12" stroke="#996515" stroke-width="2.5" />
+                                </svg>
+                            </div>
+                            <div class="grid grid-cols-3 gap-2 w-full min-w-0">
+                                <span id="p2-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">बाबा गंगा राम</span>
+                                <span id="p2-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">राय महेश दास</span>
+                                <span id="p2-leaf-3" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">अंचल दास</span>
+                            </div>
+                        </div>
+
+                        <!-- PILLAR 3 -->
+                        <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
+                            <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
+                                <span id="pillar-3" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा महतका</span>
+                            </div>
+                            <div class="w-1.5 h-4 bg-goldDark"></div>
+                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
+                                <span id="p3-node1">महता दनी चन्द</span>
+                            </div>
+                            <div class="w-full h-4 my-1">
+                                <svg class="w-full h-full" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
+                                    <path d="M50 0 V6 M25 6 H75 M25 6 V12 M75 6 V12" stroke="#996515" stroke-width="2.5" />
+                                </svg>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 w-full min-w-0">
+                                <span id="p3-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">केसरी दास</span>
+                                <span id="p3-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">बटठूमल</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+            <a href="index.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-maroonDark hover:bg-imperial text-goldLight font-bold px-6 py-3 rounded-2xl border border-gold/60 shadow transition text-base">
+                <i class="fa-solid fa-house text-saffron"></i> <span id="btn-back-home">मुख्य पृष्ठ (Home) पर वापस जाएं</span>
+            </a>
+            <a href="thamma-malkana-katra.html" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-saffron to-saffronDark text-white font-black px-6 py-3 rounded-2xl shadow-lg hover:opacity-95 transition text-base">
+                <span id="btn-next-page">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें</span> <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-8 px-6 mt-12">
+        <div class="w-full text-center space-y-2 font-hindiBody">
+            <div class="flex items-center justify-center gap-2 text-saffron text-xl font-bold">
+                <span>ॐ</span>
+                <span id="footer-motto">देवी लाडी सत्योति की जय</span>
+                <span>ॐ</span>
+            </div>
+            <p id="footer-copy" class="text-base font-bold text-goldLight">
+                लाडी सत्योति ट्रस्ट रजिस्टर्ड | पूरी परिवार डिजिटल अभिलेखागार
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            hi: {
+                sacred_motto: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
+                page_title: "पूरी कौम के तीन थम्मे - पृष्ठ 1 | लाडी सत्योति ट्रस्ट",
+                nav_back_home: "मुख्य पृष्ठ पर जाएं",
+                page_indicator: "पृष्ठ 1 - वंशावली रिकॉर्ड (Three Thammas of the Puri Clan)",
+                next_page_btn: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें",
+                three_pillars_title: "पूरी कौम के तीन थम्मे",
+                node_ishar: "ईशर राय",
+                node_siddh: "सिद्ध गढ़ी",
+                node_kamal: "कमल नारायण",
+                node_khil: "खील नारायण",
+                node_dayal: "दयाल चन्द",
+                node_devi: "देवी दिता",
+                pillar_1: "थम्मा मलकाना",
+                pillar_2: "थम्मा राय",
+                pillar_3: "थम्मा महतका",
+                p1_node1: "मलक कपूर",
+                p1_node2: "गोविंद चंद",
+                p1_leaf_1: "राजकौर",
+                p1_leaf_2: "चतरबिहारी",
+                p1_leaf_3: "अर्जुन मल",
+                p2_node1: "राय बुखार चन्द",
+                p2_leaf_1: "बाबा गंगा राम",
+                p2_leaf_2: "राय महेश दास",
+                p2_leaf_3: "अंचल दास",
+                p3_node1: "महता दनी चन्द",
+                p3_leaf_1: "केसरी दास",
+                p3_leaf_2: "बटठूमल",
+                btn_back_home: "मुख्य पृष्ठ (Home) पर वापस जाएं",
+                btn_next_page: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना) देखें",
+                footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
+                footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार"
+            },
+            en: {
+                sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
+                page_title: "Three Thammas of the Puri Clan - Page 1 | Ladi Satyoti Trust",
+                nav_back_home: "Back to Home",
+                page_indicator: "Page 1 - Genealogy Record (Three Thammas of the Puri Clan)",
+                next_page_btn: "View Next Page (Page 2 - Thamma Malkana)",
+                three_pillars_title: "Three Thammas of the Puri Clan",
+                node_ishar: "Ishar Rai",
+                node_siddh: "Siddh Garhi",
+                node_kamal: "Kamal Narayan",
+                node_khil: "Khil Narayan",
+                node_dayal: "Dayal Chand",
+                node_devi: "Devi Dita",
+                pillar_1: "Thamma Malkana",
+                pillar_2: "Thamma Rai",
+                pillar_3: "Thamma Mahatka",
+                p1_node1: "Malak Kapoor",
+                p1_node2: "Govind Chand",
+                p1_leaf_1: "Raj Kaur",
+                p1_leaf_2: "Chatar Bihari",
+                p1_leaf_3: "Arjun Mal",
+                p2_node1: "Rai Bukhar Chand",
+                p2_leaf_1: "Baba Ganga Ram",
+                p2_leaf_2: "Rai Mahesh Das",
+                p2_leaf_3: "Anchal Das",
+                p3_node1: "Mehta Dani Chand",
+                p3_leaf_1: "Kesari Das",
+                p3_leaf_2: "Batthumal",
+                btn_back_home: "Back to Home Page",
+                btn_next_page: "View Next Page (Page 2 - Thamma Malkana)",
+                footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
+                footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive"
+            }
+        };
+
+        const LANG_STORAGE_KEY = 'trust_site_lang';
+        let currentLang = localStorage.getItem(LANG_STORAGE_KEY) || 'en';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage(currentLang);
+        });
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem(LANG_STORAGE_KEY, lang);
+            applyLanguage(lang);
+        }
+
+        function applyLanguage(lang) {
+            const dict = translations[lang];
+            document.documentElement.lang = lang;
+
+            const btnHi = document.getElementById('btn-lang-hi');
+            const btnEn = document.getElementById('btn-lang-en');
+            if (lang === 'hi') {
+                btnHi?.classList.add('lang-pill-active');
+                btnHi?.classList.remove('lang-pill-inactive');
+                btnEn?.classList.add('lang-pill-inactive');
+                btnEn?.classList.remove('lang-pill-active');
+            } else {
+                btnEn?.classList.add('lang-pill-active');
+                btnEn?.classList.remove('lang-pill-inactive');
+                btnHi?.classList.add('lang-pill-inactive');
+                btnHi?.classList.remove('lang-pill-active');
+            }
+
+            document.title = dict.page_title;
+            setElText('page-title', dict.page_title);
+            setElText('nav-back-home', dict.nav_back_home);
+            setElText('nav-sacred-motto', dict.sacred_motto);
+            setElText('page-indicator', dict.page_indicator);
+            setElText('next-page-btn', dict.next_page_btn);
+            setElText('three-pillars-title-text', dict.three_pillars_title);
+
+            setElText('node-ishar', dict.node_ishar);
+            setElText('node-siddh', dict.node_siddh);
+            setElText('node-kamal', dict.node_kamal);
+            setElText('node-khil', dict.node_khil);
+            setElText('node-dayal', dict.node_dayal);
+            setElText('node-devi', dict.node_devi);
+
+            setElText('pillar-1', dict.pillar_1);
+            setElText('p1-node1', dict.p1_node1);
+            setElText('p1-node2', dict.p1_node2);
+            setElText('p1-leaf-1', dict.p1_leaf_1);
+            setElText('p1-leaf-2', dict.p1_leaf_2);
+            setElText('p1-leaf-3', dict.p1_leaf_3);
+
+            setElText('pillar-2', dict.pillar_2);
+            setElText('p2-node1', dict.p2_node1);
+            setElText('p2-leaf-1', dict.p2_leaf_1);
+            setElText('p2-leaf-2', dict.p2_leaf_2);
+            setElText('p2-leaf-3', dict.p2_leaf_3);
+
+            setElText('pillar-3', dict.pillar_3);
+            setElText('p3-node1', dict.p3_node1);
+            setElText('p3-leaf-1', dict.p3_leaf_1);
+            setElText('p3-leaf-2', dict.p3_leaf_2);
+
+            setElText('btn-back-home', dict.btn_back_home);
+            setElText('btn-next-page', dict.btn_next_page);
+            setElText('footer-motto', dict.footer_motto);
+            setElText('footer-copy', dict.footer_copy);
+        }
+
+        function setElText(id, text) {
+            const el = document.getElementById(id);
+            if (el && text !== undefined) el.textContent = text;
+        }
+    </script>
+</body>
+</html>
