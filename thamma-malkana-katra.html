@@ -155,19 +155,19 @@
         /* ===== Thick scrollbars (easier for senior users) – bottom bar + mirrored top bar ===== */
         .stage::-webkit-scrollbar,
         .stage-top-scroll::-webkit-scrollbar {
-            height: 28px;
-            width: 28px;
+            height: 18px;
+            width: 18px;
         }
         .stage::-webkit-scrollbar-track,
         .stage-top-scroll::-webkit-scrollbar-track {
             background: #FFF8E6;
-            border-radius: 14px;
+            border-radius: 9px;
         }
         .stage::-webkit-scrollbar-thumb,
         .stage-top-scroll::-webkit-scrollbar-thumb {
             background-color: #D4AF37;
-            border-radius: 14px;
-            border: 4px solid #FFF8E6;
+            border-radius: 9px;
+            border: 3px solid #FFF8E6;
             min-width: 60px;
         }
         .stage::-webkit-scrollbar-thumb:hover,
@@ -198,29 +198,29 @@
            All sizes use vmin (a % of the phone's short side), so the buttons look identical
            in normal mode and in "Desktop site" mode. */
         #fs-open-row { display: none; }
-        html.is-phone #fs-open-row { display: block; }
+        html.is-phone #fs-open-row { display: flex; justify-content: center; }
         #fs-open-btn {
-            width: 100%;
-            display: flex; align-items: center; justify-content: center; gap: 3vmin;
-            padding: 3.6vmin 4vmin;
-            font-size: 5.4vmin; font-weight: 900; line-height: 1.2;
+            width: auto;
+            display: flex; align-items: center; justify-content: center; gap: 2vmin;
+            padding: 2vmin 4.5vmin;
+            font-size: 3.8vmin; font-weight: 900; line-height: 1.2;
             color: #3B020B;
             background: linear-gradient(135deg, #FFD700 0%, #F4D03F 50%, #D4AF37 100%);
-            border: 0.8vmin solid #4A1203;
-            border-radius: 4vmin;
-            box-shadow: 0 1.2vmin 3vmin rgba(74, 18, 3, 0.35);
+            border: 0.5vmin solid #4A1203;
+            border-radius: 3vmin;
+            box-shadow: 0 0.8vmin 2vmin rgba(74, 18, 3, 0.35);
             animation: fsPulse 1.8s ease-in-out infinite;
         }
-        #fs-open-btn i { font-size: 6.4vmin; color: #7A280E; }
+        #fs-open-btn i { font-size: 4.4vmin; color: #7A280E; }
         @keyframes fsPulse {
-            0%, 100% { box-shadow: 0 1.2vmin 3vmin rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.75); }
-            50%      { box-shadow: 0 1.2vmin 3vmin rgba(74,18,3,.35), 0 0 0 2.6vmin rgba(212,175,55,0); }
+            0%, 100% { box-shadow: 0 0.8vmin 2vmin rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.75); }
+            50%      { box-shadow: 0 0.8vmin 2vmin rgba(74,18,3,.35), 0 0 0 1.8vmin rgba(212,175,55,0); }
         }
         @media (prefers-reduced-motion: reduce) { #fs-open-btn { animation: none; } }
 
         /* Thick scrollbars on phones, same on-screen size in normal and Desktop-site mode */
         html.is-phone .stage::-webkit-scrollbar,
-        html.is-phone .stage-top-scroll::-webkit-scrollbar { height: 5vmin; width: 5vmin; }
+        html.is-phone .stage-top-scroll::-webkit-scrollbar { height: 3.2vmin; width: 3.2vmin; }
 
         #fs-bar { display: none; }
         body.tree-fs { overflow: hidden; }
