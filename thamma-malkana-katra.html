@@ -58,6 +58,12 @@
         if (window.screen.width < 768) {
             document.documentElement.classList.add('is-mobile');
         }
+        // Real phone detection: based on the physical screen, so it works in portrait, landscape,
+        // and in Chrome's "Desktop site" mode alike
+        if (Math.min(window.screen.width, window.screen.height) < 768 &&
+            (navigator.maxTouchPoints > 0 || 'ontouchstart' in window)) {
+            document.documentElement.classList.add('is-phone');
+        }
     </script>
 
     <style>
@@ -188,39 +194,72 @@
         }
         .stage-top-scroll > div { height: 1px; }
 
-        /* ===== Mobile-only full screen mode ===== */
+        /* ===== Mobile-only full screen mode =====
+           All sizes use vmin (a % of the phone's short side), so the buttons look identical
+           in normal mode and in "Desktop site" mode. */
         #fs-open-row { display: none; }
-        html.is-mobile #fs-open-row { display: flex; justify-content: center; }
-        #fs-close-btn { display: none; }
+        html.is-phone #fs-open-row { display: block; }
+        #fs-open-btn {
+            width: 100%;
+            display: flex; align-items: center; justify-content: center; gap: 3vmin;
+            padding: 3.6vmin 4vmin;
+            font-size: 5.4vmin; font-weight: 900; line-height: 1.2;
+            color: #3B020B;
+            background: linear-gradient(135deg, #FFD700 0%, #F4D03F 50%, #D4AF37 100%);
+            border: 0.8vmin solid #4A1203;
+            border-radius: 4vmin;
+            box-shadow: 0 1.2vmin 3vmin rgba(74, 18, 3, 0.35);
+            animation: fsPulse 1.8s ease-in-out infinite;
+        }
+        #fs-open-btn i { font-size: 6.4vmin; color: #7A280E; }
+        @keyframes fsPulse {
+            0%, 100% { box-shadow: 0 1.2vmin 3vmin rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.75); }
+            50%      { box-shadow: 0 1.2vmin 3vmin rgba(74,18,3,.35), 0 0 0 2.6vmin rgba(212,175,55,0); }
+        }
+        @media (prefers-reduced-motion: reduce) { #fs-open-btn { animation: none; } }
 
+        /* Thick scrollbars on phones, same on-screen size in normal and Desktop-site mode */
+        html.is-phone .stage::-webkit-scrollbar,
+        html.is-phone .stage-top-scroll::-webkit-scrollbar { height: 5vmin; width: 5vmin; }
+
+        #fs-bar { display: none; }
         body.tree-fs { overflow: hidden; }
         body.tree-fs #stage-shell {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 9999;
+            z-index: 2147483647;
             background: var(--bg);
         }
-        body.tree-fs .stage-top-scroll { display: none; }
-        body.tree-fs .stage {
-            height: 100%;
-            border: 0;
-            border-radius: 0;
-            padding: 0;
-            overflow: auto;
+        body.tree-fs #fs-inner {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column;
         }
-        body.tree-fs .canvas-wrap { margin: auto; }
-        body.tree-fs #fs-close-btn {
-            display: flex; align-items: center; gap: 10px;
-            position: absolute; top: 10px; right: 10px; z-index: 10;
-            background: rgba(74, 18, 3, 0.92); color: #F4D03F;
-            border: 2px solid #D4AF37; border-radius: 12px;
-            padding: 12px 22px; font-size: 28px; font-weight: 800;
-        }
-        /* Fallback when the phone is upright and the browser can't lock landscape: turn the view sideways */
-        body.tree-fs #stage-shell.fs-rotated {
-            right: auto; bottom: auto;
+        /* Fallback when the phone is upright and the browser can't lock landscape (width/height set by script) */
+        body.tree-fs #fs-inner.fs-rotated {
             transform-origin: top left;
             transform: rotate(90deg) translateY(-100%);
         }
+        /* Slim top bar that holds the Close button, so it never covers the tree */
+        body.tree-fs #fs-bar {
+            display: flex; align-items: center; justify-content: flex-end;
+            flex: 0 0 auto;
+            padding: 1.2vmin 2vmin;
+            background: #4A1203;
+            border-bottom: 0.5vmin solid #D4AF37;
+        }
+        body.tree-fs #fs-close-btn {
+            display: flex; align-items: center; gap: 1.6vmin;
+            background: #D4AF37; color: #3B020B;
+            border: 0.5vmin solid #F4D03F; border-radius: 2.4vmin;
+            padding: 1.2vmin 3.6vmin;
+            font-size: 4.2vmin; font-weight: 900;
+        }
+        body.tree-fs .stage-top-scroll { display: none; }
+        body.tree-fs .stage {
+            flex: 1 1 auto; min-height: 0;
+            border: 0; border-radius: 0; padding: 0;
+            overflow: auto;
+        }
+        body.tree-fs .canvas-wrap { margin: auto; }
         .canvas-wrap { position: relative; flex: 0 0 auto; margin: 0 auto; visibility: hidden; }
         .canvas-wrap.is-ready { visibility: visible; }
         .canvas {
@@ -329,19 +368,22 @@
 
         <!-- Mobile-only: View Full Screen button (hidden on desktop) -->
         <div id="fs-open-row">
-            <button id="fs-open-btn" onclick="enterTreeFullscreen()" class="bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-8 py-4 rounded-2xl border-2 border-gold/70 text-xl shadow-lg flex items-center gap-3 active:scale-95 transition">
-                <i class="fa-solid fa-expand text-saffron"></i> <span id="fs-open-text">पूरी स्क्रीन पर देखें</span>
+            <button id="fs-open-btn" onclick="enterTreeFullscreen()">
+                <i class="fa-solid fa-expand"></i> <span id="fs-open-text">पूरी स्क्रीन पर देखें</span>
             </button>
         </div>
 
         <div id="stage-shell">
+        <div id="fs-inner">
+            <!-- Close bar, visible only in full screen mode -->
+            <div id="fs-bar">
+                <button id="fs-close-btn" onclick="exitTreeFullscreen()">
+                    <i class="fa-solid fa-xmark"></i> <span id="fs-close-text">बंद करें</span>
+                </button>
+            </div>
+
             <!-- Top scrollbar (mirrors the bottom one) -->
             <div id="stage-top-scroll" class="stage-top-scroll" aria-hidden="true"><div></div></div>
-
-            <!-- Close button, visible only in full screen mode -->
-            <button id="fs-close-btn" onclick="exitTreeFullscreen()">
-                <i class="fa-solid fa-xmark"></i> <span id="fs-close-text">बंद करें</span>
-            </button>
 
             <!-- Scrollable Lineage Canvas Diagram (fits the screen, positions set per language) -->
             <div class="stage">
@@ -434,6 +476,7 @@
                     <span id="n-balvidr" class="n" style="left:954.8px;top:1073.6px;letter-spacing:1.80px">बलविद्र</span>
                 </div>
             </div>
+        </div>
         </div>
         </div>
 
@@ -1028,20 +1071,23 @@
         let fsLockOk = false;      // true if the browser agreed to lock landscape
         let fsApiActive = false;   // true if real browser fullscreen is on
 
+        const shellEl = document.getElementById('stage-shell');
+        const fsInnerEl = document.getElementById('fs-inner');
+
         function isTreeFs() { return document.body.classList.contains('tree-fs'); }
 
         function layoutFsShell() {
-            const shell = document.getElementById('stage-shell');
-            const portrait = window.innerHeight > window.innerWidth;
-            if (portrait && !fsLockOk) {
-                // Phone is upright and landscape can't be locked: turn the view sideways ourselves
-                shell.classList.add('fs-rotated');
-                shell.style.width = window.innerHeight + 'px';
-                shell.style.height = window.innerWidth + 'px';
+            const w = shellEl.clientWidth;
+            const h = shellEl.clientHeight;
+            if (h > w && !fsLockOk) {
+                // Phone is upright and landscape can't be locked: turn the content sideways ourselves
+                fsInnerEl.classList.add('fs-rotated');
+                fsInnerEl.style.width = h + 'px';
+                fsInnerEl.style.height = w + 'px';
             } else {
-                shell.classList.remove('fs-rotated');
-                shell.style.width = '';
-                shell.style.height = '';
+                fsInnerEl.classList.remove('fs-rotated');
+                fsInnerEl.style.width = '';
+                fsInnerEl.style.height = '';
             }
         }
 
@@ -1051,11 +1097,12 @@
             stageEl.scrollLeft = 0;
             fitCanvas();
             try {
-                if (document.documentElement.requestFullscreen) {
-                    await document.documentElement.requestFullscreen();
+                // Fullscreen the tree container itself (not the whole page), so nothing else can show around it
+                if (shellEl.requestFullscreen) {
+                    await shellEl.requestFullscreen();
                     fsApiActive = true;
                 }
-            } catch (e) { /* not supported (e.g. iPhone) – the overlay still works */ }
+            } catch (e) { /* e.g. iPhone: no fullscreen API – the full-window overlay is used instead */ }
             try {
                 if (screen.orientation && screen.orientation.lock) {
                     await screen.orientation.lock('landscape');
@@ -1071,16 +1118,18 @@
             fsLockOk = false;
             try { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); } catch (e) {}
             try { if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch (e) {}
-            const shell = document.getElementById('stage-shell');
-            shell.classList.remove('fs-rotated');
-            shell.style.width = '';
-            shell.style.height = '';
+            fsInnerEl.classList.remove('fs-rotated');
+            fsInnerEl.style.width = '';
+            fsInnerEl.style.height = '';
             fitCanvas();
         }
 
-        // If the user leaves browser fullscreen with the phone's back gesture, close our overlay too
         document.addEventListener('fullscreenchange', () => {
-            if (fsApiActive && !document.fullscreenElement && isTreeFs()) exitTreeFullscreen();
+            if (fsApiActive && !document.fullscreenElement && isTreeFs()) {
+                exitTreeFullscreen();   // user left fullscreen with the back gesture
+            } else if (isTreeFs()) {
+                fitCanvas();            // size changed – refit the whole tree
+            }
         });
 
         let currentFontSize = 16;
