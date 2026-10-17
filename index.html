@@ -438,14 +438,14 @@
 
                             <!-- Action Buttons Row -->
                             <div class="pt-3 flex flex-wrap justify-center gap-3">
+                                <button onclick="playPrayer()" class="flex items-center gap-2.5 bg-maroonDark hover:bg-gold/20 border-2 border-gold text-goldLight px-5 py-3 rounded-2xl text-sm sm:text-base font-black transition duration-200 active:scale-95 shadow-lg">
+                                    <i class="fa-solid fa-hands-praying text-saffron text-base"></i>
+                                    <span id="btn-bell-text">प्रार्थना सुनें</span>
+                                </button>
+
                                 <button onclick="openLightbox()" class="flex items-center gap-2.5 bg-gradient-to-r from-gold via-goldLight to-gold text-maroonDark hover:text-white hover:bg-saffronDark font-black px-5 py-3 rounded-2xl text-sm sm:text-base transition duration-200 shadow-xl active:scale-95 border-2 border-goldLight">
                                     <i class="fa-solid fa-expand text-maroonDark text-base"></i>
                                     <span id="btn-zoom-text">पूर्ण चित्र देखें</span>
-                                </button>
-
-                                <button onclick="playTempleBell()" class="flex items-center gap-2.5 bg-maroonDark hover:bg-gold/20 border-2 border-gold text-goldLight px-5 py-3 rounded-2xl text-sm sm:text-base font-black transition duration-200 active:scale-95 shadow-lg">
-                                    <i class="fa-solid fa-bell text-saffron text-base"></i>
-                                    <span id="btn-bell-text">जयकारा एवं घंटी</span>
                                 </button>
                             </div>
                         </div>
@@ -553,27 +553,27 @@
                     <div class="flex-grow grid grid-cols-1 sm:grid-cols-2 gap-4 [align-content:space-evenly] font-hindiBody">
                         <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
                             <span id="lbl-gen-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">जनरल सेक्रेटरी</span>
-                            <span id="val-gen-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">रघबीर चन्द पुरी</span>
+                            <span id="val-gen-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">अशोक पुरी</span>
                         </div>
                         <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
-                            <span id="lbl-pres" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">प्रधान</span>
-                            <span id="val-pres" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">बुद्ध देव पुरी</span>
+                            <span id="lbl-pres" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">कार्यवाहक प्रधान</span>
+                            <span id="val-pres" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">राकेश पुरी</span>
                         </div>
                         <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
                             <span id="lbl-fin-sec" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">फाईनेंस सेक्रेटरी</span>
-                            <span id="val-fin-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">दलीप राज पुरी</span>
+                            <span id="val-fin-sec" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">रमनीक राज पुरी</span>
                         </div>
                         <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
                             <span id="lbl-auditor" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">आडीटर</span>
-                            <span id="val-auditor" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">कुलभूषण पुरी</span>
+                            <span id="val-auditor" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">राजिंदर पुरी</span>
                         </div>
                         <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
                             <span id="lbl-trustee-1" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
-                            <span id="val-trustee-1" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">जुगल किशोर पुरी</span>
+                            <span id="val-trustee-1" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">राजेश पुरी</span>
                         </div>
                         <div class="p-3 bg-gradient-to-br from-maroonDark to-imperial rounded-xl border border-gold/50 shadow-md flex flex-col justify-center">
                             <span id="lbl-trustee-2" class="block text-xs sm:text-sm text-saffron font-black uppercase tracking-wider mb-0.5">मैंबर ट्रस्ट</span>
-                            <span id="val-trustee-2" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">हंस राज पुरी</span>
+                            <span id="val-trustee-2" class="font-extrabold text-lg sm:text-xl text-goldLight drop-shadow-sm">राजीव पुरी</span>
                         </div>
                     </div>
                 </div>
@@ -1031,7 +1031,7 @@
                 portrait_subcaption: "बटाला स्थित पावन मुख्य मंदिर स्वरूप",
                 hover_zoom: "बड़ा करके देखें",
                 btn_zoom: "पूर्ण चित्र देखें",
-                btn_bell: "जयकारा एवं घंटी",
+                btn_bell: "प्रार्थना सुनें",
 
                 gen_title: "वंशावली संरक्षण",
                 gen_badge: "प्रामाणिक शोध रिकॉर्ड",
@@ -1123,17 +1123,17 @@
                 col_name: "नाम खानदान व पता",
 
                 lbl_gen_sec: "जनरल सेक्रेटरी",
-                val_gen_sec: "रघबीर चन्द पुरी",
-                lbl_pres: "प्रधान",
-                val_pres: "बुद्ध देव पुरी",
+                val_gen_sec: "अशोक पुरी",
+                lbl_pres: "कार्यवाहक प्रधान",
+                val_pres: "राकेश पुरी",
                 lbl_fin_sec: "फाईनेंस सेक्रेटरी",
-                val_fin_sec: "दलीप राज पुरी",
+                val_fin_sec: "रमनीक राज पुरी",
                 lbl_auditor: "आडीटर",
-                val_auditor: "कुलभूषण पुरी",
+                val_auditor: "राजिंदर पुरी",
                 lbl_trustee_1: "मैंबर ट्रस्ट",
-                val_trustee_1: "जुगल किशोर पुरी",
+                val_trustee_1: "राजेश पुरी",
                 lbl_trustee_2: "मैंबर ट्रस्ट",
-                val_trustee_2: "हंस राज पुरी",
+                val_trustee_2: "राजीव पुरी",
 
                 idx_row_1: "पुरी खानदान के तीन थम्मे",
                 idx_row_2: "थम्मा मलकाना कटाड़ा पुरीयां",
@@ -1210,7 +1210,7 @@
                 portrait_subcaption: "Sacred Main Temple Portrait located at Batala",
                 hover_zoom: "Click to Enlarge",
                 btn_zoom: "View Full Picture",
-                btn_bell: "Chime & Praise",
+                btn_bell: "Play Prayer",
 
                 gen_title: "Genealogy Preservation",
                 gen_badge: "Authentic Research Records",
@@ -1302,17 +1302,17 @@
                 col_name: "Family Name & Address",
 
                 lbl_gen_sec: "General Secretary",
-                val_gen_sec: "Raghubeer Chand Puri",
-                lbl_pres: "President",
-                val_pres: "Buddh Dev Puri",
+                val_gen_sec: "Ashok Puri",
+                lbl_pres: "Acting President",
+                val_pres: "Rakesh Puri",
                 lbl_fin_sec: "Finance Secretary",
-                val_fin_sec: "Dalip Raj Puri",
+                val_fin_sec: "Ramnik Raj Puri",
                 lbl_auditor: "Auditor",
-                val_auditor: "Kulbhushan Puri",
+                val_auditor: "Rajinder Puri",
                 lbl_trustee_1: "Trustee Member",
-                val_trustee_1: "Jugal Kishore Puri",
+                val_trustee_1: "Rajesh Puri",
                 lbl_trustee_2: "Trustee Member",
-                val_trustee_2: "Hans Raj Puri",
+                val_trustee_2: "Rajeev Puri",
 
                 idx_row_1: "Three Thammas of the Puri Clan",
                 idx_row_2: "Thamma Malkana Katra Purian",
@@ -1576,6 +1576,11 @@
         function setElHtml(id, html) {
             const el = document.getElementById(id);
             if (el && html !== undefined) el.innerHTML = html;
+        }
+
+        function playPrayer() {
+            // TODO: prayer audio will be added here
+            console.log('Prayer audio not added yet');
         }
 
         function playTempleBell() {
