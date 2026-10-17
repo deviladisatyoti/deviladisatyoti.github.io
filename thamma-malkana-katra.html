@@ -51,19 +51,63 @@
                 }
             }
         }
+
+        // Phones: make every Tailwind breakpoint behave exactly as in the normal 1200px phone layout
+        // (sm/md/lg on, xl/2xl off), in normal mode AND in "Desktop site" mode
+        if (Math.min(window.screen.width, window.screen.height) < 768 &&
+            (navigator.maxTouchPoints > 0 || 'ontouchstart' in window)) {
+            tailwind.config.theme.screens = {
+                sm: '1px', md: '1px', lg: '1px', xl: '100000px', '2xl': '100000px'
+            };
+        }
     </script>
 
     <!-- Quick mobile detector script -->
     <script>
-        if (window.screen.width < 768) {
-            document.documentElement.classList.add('is-mobile');
-        }
-        // Real phone detection: based on the physical screen, so it works in portrait, landscape,
-        // and in Chrome's "Desktop site" mode alike
-        if (Math.min(window.screen.width, window.screen.height) < 768 &&
-            (navigator.maxTouchPoints > 0 || 'ontouchstart' in window)) {
-            document.documentElement.classList.add('is-phone');
-        }
+        (function () {
+            var root = document.documentElement;
+
+            // Real phone detection: uses the physical screen, so it gives the same answer in
+            // portrait, landscape, normal mode and the browser's "Desktop site" mode
+            var S = Math.min(window.screen.width, window.screen.height);
+            var L = Math.max(window.screen.width, window.screen.height);
+            var phone = S < 768 && (navigator.maxTouchPoints > 0 || 'ontouchstart' in window);
+            if (!phone) return;
+            root.classList.add('is-mobile', 'is-phone');
+
+            var BASE = 1200;
+            var lastIW = -1;
+
+            function isLandscape() {
+                var o = window.screen.orientation;
+                if (o && typeof o.type === 'string') return o.type.indexOf('landscape') === 0;
+                return window.matchMedia('(orientation: landscape)').matches;
+            }
+
+            // 1) Normal mode lays the page out 1200px wide (viewport tag). "Desktop site" mode ignores
+            //    that tag, so zoom it back to the same 1200px layout.
+            function normalizeWidth() {
+                if (window.innerWidth === lastIW) return;
+                lastIW = window.innerWidth;
+                root.style.zoom = '';
+                var w = root.clientWidth || window.innerWidth;
+                if (w && Math.abs(w - BASE) > 20) root.style.zoom = (w / BASE).toFixed(4);
+            }
+
+            // 2) --u = 1% of the phone's short side, in page pixels. Same value in both modes
+            //    (replaces vmin, which differs between normal and Desktop site mode).
+            function setUnit() {
+                var u = (S / 100) * (BASE / (isLandscape() ? L : S));
+                root.style.setProperty('--u', u.toFixed(3) + 'px');
+            }
+
+            function update() { normalizeWidth(); setUnit(); }
+            update();
+            window.addEventListener('resize', update);
+            window.addEventListener('orientationchange', function () {
+                setTimeout(function () { lastIW = -1; update(); }, 300);
+            });
+        })();
     </script>
 
     <style>
@@ -195,32 +239,32 @@
         .stage-top-scroll > div { height: 1px; }
 
         /* ===== Mobile-only full screen mode =====
-           All sizes use vmin (a % of the phone's short side), so the buttons look identical
-           in normal mode and in "Desktop site" mode. */
+           All sizes use --u (1% of the phone's short side, set by the script in <head>), so the
+           buttons look identical in normal mode and in "Desktop site" mode. */
         #fs-open-row { display: none; }
         html.is-phone #fs-open-row { display: flex; justify-content: center; }
         #fs-open-btn {
             width: auto;
-            display: flex; align-items: center; justify-content: center; gap: 2vmin;
-            padding: 2vmin 4.5vmin;
-            font-size: 3.8vmin; font-weight: 900; line-height: 1.2;
-            color: #3B020B;
-            background: linear-gradient(135deg, #FFD700 0%, #F4D03F 50%, #D4AF37 100%);
-            border: 0.5vmin solid #4A1203;
-            border-radius: 3vmin;
-            box-shadow: 0 0.8vmin 2vmin rgba(74, 18, 3, 0.35);
+            display: flex; align-items: center; justify-content: center; gap: calc(2 * var(--u, 1vmin));
+            padding: calc(2 * var(--u, 1vmin)) calc(4.5 * var(--u, 1vmin));
+            font-size: calc(3.8 * var(--u, 1vmin)); font-weight: 900; line-height: 1.2;
+            color: #F3E5AB;                                   /* soft gold text */
+            background: linear-gradient(135deg, #7A280E 0%, #521A07 100%);   /* theme maroon */
+            border: calc(0.5 * var(--u, 1vmin)) solid #D4AF37;               /* gold edge */
+            border-radius: calc(3 * var(--u, 1vmin));
+            box-shadow: 0 calc(0.8 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin)) rgba(74, 18, 3, 0.35);
             animation: fsPulse 1.8s ease-in-out infinite;
         }
-        #fs-open-btn i { font-size: 4.4vmin; color: #7A280E; }
+        #fs-open-btn i { font-size: calc(4.4 * var(--u, 1vmin)); color: #FFD700; }
         @keyframes fsPulse {
-            0%, 100% { box-shadow: 0 0.8vmin 2vmin rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.75); }
-            50%      { box-shadow: 0 0.8vmin 2vmin rgba(74,18,3,.35), 0 0 0 1.8vmin rgba(212,175,55,0); }
+            0%, 100% { box-shadow: 0 calc(0.8 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin)) rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.75); }
+            50%      { box-shadow: 0 calc(0.8 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin)) rgba(74,18,3,.35), 0 0 0 calc(1.8 * var(--u, 1vmin)) rgba(212,175,55,0); }
         }
         @media (prefers-reduced-motion: reduce) { #fs-open-btn { animation: none; } }
 
         /* Thick scrollbars on phones, same on-screen size in normal and Desktop-site mode */
         html.is-phone .stage::-webkit-scrollbar,
-        html.is-phone .stage-top-scroll::-webkit-scrollbar { height: 3.2vmin; width: 3.2vmin; }
+        html.is-phone .stage-top-scroll::-webkit-scrollbar { height: calc(3.2 * var(--u, 1vmin)); width: calc(3.2 * var(--u, 1vmin)); }
 
         #fs-bar { display: none; }
         body.tree-fs { overflow: hidden; }
@@ -242,16 +286,16 @@
         body.tree-fs #fs-bar {
             display: flex; align-items: center; justify-content: flex-end;
             flex: 0 0 auto;
-            padding: 1.2vmin 2vmin;
+            padding: calc(1.2 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin));
             background: #4A1203;
-            border-bottom: 0.5vmin solid #D4AF37;
+            border-bottom: calc(0.5 * var(--u, 1vmin)) solid #D4AF37;
         }
         body.tree-fs #fs-close-btn {
-            display: flex; align-items: center; gap: 1.6vmin;
+            display: flex; align-items: center; gap: calc(1.6 * var(--u, 1vmin));
             background: #D4AF37; color: #3B020B;
-            border: 0.5vmin solid #F4D03F; border-radius: 2.4vmin;
-            padding: 1.2vmin 3.6vmin;
-            font-size: 4.2vmin; font-weight: 900;
+            border: calc(0.5 * var(--u, 1vmin)) solid #F4D03F; border-radius: calc(2.4 * var(--u, 1vmin));
+            padding: calc(1.2 * var(--u, 1vmin)) calc(3.6 * var(--u, 1vmin));
+            font-size: calc(4.2 * var(--u, 1vmin)); font-weight: 900;
         }
         body.tree-fs .stage-top-scroll { display: none; }
         body.tree-fs .stage {
@@ -1011,7 +1055,11 @@
             } else {
                 // Tablets and phones get a larger tree (names stay readable) and scroll sideways;
                 // desktop fits the tree to the width, never below TREE_MIN_SCALE.
-                s = window.innerWidth < 1024
+                // Use the page's real layout width (undo the phone zoom), so normal mode and
+                // "Desktop site" mode both see 1200 and pick the same tree size.
+                const phoneZoom = parseFloat(document.documentElement.style.zoom) || 1;
+                const layoutWidth = window.innerWidth / phoneZoom;
+                s = layoutWidth < 1024
                     ? TREE_SMALL_SCREEN_SCALE
                     : Math.min(1, Math.max(TREE_MIN_SCALE, stage.clientWidth / L.W));
             }
