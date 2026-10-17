@@ -146,23 +146,80 @@
             padding: 20px 0;
         }
 
-        /* Styled Scrollbar matching theme */
-        .stage::-webkit-scrollbar {
-            height: 12px;
-            width: 12px;
+        /* ===== Thick scrollbars (easier for senior users) – bottom bar + mirrored top bar ===== */
+        .stage::-webkit-scrollbar,
+        .stage-top-scroll::-webkit-scrollbar {
+            height: 28px;
+            width: 28px;
         }
-        .stage::-webkit-scrollbar-track {
+        .stage::-webkit-scrollbar-track,
+        .stage-top-scroll::-webkit-scrollbar-track {
             background: #FFF8E6;
-            border-bottom-left-radius: 1.5rem;
-            border-bottom-right-radius: 1.5rem;
+            border-radius: 14px;
         }
-        .stage::-webkit-scrollbar-thumb {
+        .stage::-webkit-scrollbar-thumb,
+        .stage-top-scroll::-webkit-scrollbar-thumb {
             background-color: #D4AF37;
-            border-radius: 6px;
-            border: 2px solid #FFF8E6;
+            border-radius: 14px;
+            border: 4px solid #FFF8E6;
+            min-width: 60px;
         }
-        .stage::-webkit-scrollbar-thumb:hover {
+        .stage::-webkit-scrollbar-thumb:hover,
+        .stage-top-scroll::-webkit-scrollbar-thumb:hover {
             background-color: #7A280E;
+        }
+        /* Firefox only: newer Chrome/Edge ignore the rules above if these are set, so keep them Firefox-only */
+        @supports (-moz-appearance: none) {
+            .stage, .stage-top-scroll {
+                scrollbar-width: auto;
+                scrollbar-color: #D4AF37 #FFF8E6;
+            }
+        }
+
+        /* Top scrollbar (mirrors the bottom one) */
+        .stage-top-scroll {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            width: 100%;
+            margin-bottom: 10px;
+            background: #FFF8E6;
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            border-radius: 999px;
+        }
+        .stage-top-scroll > div { height: 1px; }
+
+        /* ===== Mobile-only full screen mode ===== */
+        #fs-open-row { display: none; }
+        html.is-mobile #fs-open-row { display: flex; justify-content: center; }
+        #fs-close-btn { display: none; }
+
+        body.tree-fs { overflow: hidden; }
+        body.tree-fs #stage-shell {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 9999;
+            background: var(--bg);
+        }
+        body.tree-fs .stage-top-scroll { display: none; }
+        body.tree-fs .stage {
+            height: 100%;
+            border: 0;
+            border-radius: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        body.tree-fs .canvas-wrap { margin: auto; }
+        body.tree-fs #fs-close-btn {
+            display: flex; align-items: center; gap: 10px;
+            position: absolute; top: 10px; right: 10px; z-index: 10;
+            background: rgba(74, 18, 3, 0.92); color: #F4D03F;
+            border: 2px solid #D4AF37; border-radius: 12px;
+            padding: 12px 22px; font-size: 28px; font-weight: 800;
+        }
+        /* Fallback when the phone is upright and the browser can't lock landscape: turn the view sideways */
+        body.tree-fs #stage-shell.fs-rotated {
+            right: auto; bottom: auto;
+            transform-origin: top left;
+            transform: rotate(90deg) translateY(-100%);
         }
         .canvas-wrap { position: relative; flex: 0 0 auto; margin: 0 auto; visibility: hidden; }
         .canvas-wrap.is-ready { visibility: visible; }
@@ -270,8 +327,24 @@
             </div>
         </div>
 
-        <!-- Scrollable Lineage Canvas Diagram (fits the screen, positions set per language) -->
-        <div class="stage">
+        <!-- Mobile-only: View Full Screen button (hidden on desktop) -->
+        <div id="fs-open-row">
+            <button id="fs-open-btn" onclick="enterTreeFullscreen()" class="bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-8 py-4 rounded-2xl border-2 border-gold/70 text-xl shadow-lg flex items-center gap-3 active:scale-95 transition">
+                <i class="fa-solid fa-expand text-saffron"></i> <span id="fs-open-text">पूरी स्क्रीन पर देखें</span>
+            </button>
+        </div>
+
+        <div id="stage-shell">
+            <!-- Top scrollbar (mirrors the bottom one) -->
+            <div id="stage-top-scroll" class="stage-top-scroll" aria-hidden="true"><div></div></div>
+
+            <!-- Close button, visible only in full screen mode -->
+            <button id="fs-close-btn" onclick="exitTreeFullscreen()">
+                <i class="fa-solid fa-xmark"></i> <span id="fs-close-text">बंद करें</span>
+            </button>
+
+            <!-- Scrollable Lineage Canvas Diagram (fits the screen, positions set per language) -->
+            <div class="stage">
             <div class="canvas-wrap" id="canvas-wrap">
                 <div class="canvas" id="canvas">
                     <svg class="lines" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
@@ -362,6 +435,7 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <!-- Bottom Navigation Buttons with 3 Options -->
         <div class="flex flex-col lg:flex-row items-center justify-between gap-5 pt-6 border-t-2 border-gold/40">
@@ -408,6 +482,8 @@
                 btn_prev_page: "पिछला पृष्ठ (पृष्ठ 1 - तीन थम्मे) देखें",
                 btn_next_page: "अगला पृष्ठ (थम्मा मलकाना कटड़ा पूरीयाँ - जारी) देखें",
                 footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
+                fs_open: "पूरी स्क्रीन पर देखें",
+                fs_close: "बंद करें",
                 footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
 
                 c_katra_purian: "कटड़ा पुरीयाँ",
@@ -507,6 +583,8 @@
                 btn_prev_page: "View Previous Page (Page 1 - Three Thammas)",
                 btn_next_page: "View Next Page (Thamma Malkana Katra Purian - Continued)",
                 footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
+                fs_open: "View Full Screen",
+                fs_close: "Close",
                 footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
 
                 c_katra_purian: "Katra Purian",
@@ -629,6 +707,8 @@
             setElText('btn-next-page', dict.btn_next_page);
             setElText('footer-motto', dict.footer_motto);
             setElText('footer-copy', dict.footer_copy);
+            setElText('fs-open-text', dict.fs_open);
+            setElText('fs-close-text', dict.fs_close);
 
             for (const key in dict) {
                 if (key.startsWith('n_') || key.startsWith('c_')) {
@@ -879,14 +959,23 @@
             const L = LAYOUTS[activeLang];
             if (!L) return;
             const stage = document.querySelector('.stage');
-            // Tablets and phones get a larger tree (names stay readable) and scroll sideways;
-            // desktop fits the tree to the width, never below TREE_MIN_SCALE.
-            const s = window.innerWidth < 1024
-                ? TREE_SMALL_SCREEN_SCALE
-                : Math.min(1, Math.max(TREE_MIN_SCALE, stage.clientWidth / L.W));
+            const fs = isTreeFs();
+            if (fs) layoutFsShell();
+            let s;
+            if (fs) {
+                // Full screen: fit the ENTIRE tree on the screen at once
+                s = Math.min(1.5, (stage.clientWidth - 16) / L.W, (stage.clientHeight - 16) / L.H);
+            } else {
+                // Tablets and phones get a larger tree (names stay readable) and scroll sideways;
+                // desktop fits the tree to the width, never below TREE_MIN_SCALE.
+                s = window.innerWidth < 1024
+                    ? TREE_SMALL_SCREEN_SCALE
+                    : Math.min(1, Math.max(TREE_MIN_SCALE, stage.clientWidth / L.W));
+            }
             $('canvas').style.transform = `scale(${s})`;
             $('canvas-wrap').style.width = (L.W * s) + 'px';
             $('canvas-wrap').style.height = (L.H * s) + 'px';
+            syncTopScrollWidth();
         }
 
         function drawLayout(lang, L) {
@@ -920,6 +1009,79 @@
             resizeFrame = requestAnimationFrame(fitCanvas);
         });
 
+
+        // ---- Top scrollbar: mirrors the tree's horizontal scroll ----
+        const stageEl = document.querySelector('.stage');
+        const topScrollEl = document.getElementById('stage-top-scroll');
+
+        function syncTopScrollWidth() {
+            if (topScrollEl) topScrollEl.firstElementChild.style.width = stageEl.scrollWidth + 'px';
+        }
+        topScrollEl.addEventListener('scroll', () => {
+            if (stageEl.scrollLeft !== topScrollEl.scrollLeft) stageEl.scrollLeft = topScrollEl.scrollLeft;
+        });
+        stageEl.addEventListener('scroll', () => {
+            if (topScrollEl.scrollLeft !== stageEl.scrollLeft) topScrollEl.scrollLeft = stageEl.scrollLeft;
+        });
+
+        // ---- Mobile full screen / landscape view ----
+        let fsLockOk = false;      // true if the browser agreed to lock landscape
+        let fsApiActive = false;   // true if real browser fullscreen is on
+
+        function isTreeFs() { return document.body.classList.contains('tree-fs'); }
+
+        function layoutFsShell() {
+            const shell = document.getElementById('stage-shell');
+            const portrait = window.innerHeight > window.innerWidth;
+            if (portrait && !fsLockOk) {
+                // Phone is upright and landscape can't be locked: turn the view sideways ourselves
+                shell.classList.add('fs-rotated');
+                shell.style.width = window.innerHeight + 'px';
+                shell.style.height = window.innerWidth + 'px';
+            } else {
+                shell.classList.remove('fs-rotated');
+                shell.style.width = '';
+                shell.style.height = '';
+            }
+        }
+
+        async function enterTreeFullscreen() {
+            document.body.classList.add('tree-fs');
+            fsLockOk = false;
+            stageEl.scrollLeft = 0;
+            fitCanvas();
+            try {
+                if (document.documentElement.requestFullscreen) {
+                    await document.documentElement.requestFullscreen();
+                    fsApiActive = true;
+                }
+            } catch (e) { /* not supported (e.g. iPhone) – the overlay still works */ }
+            try {
+                if (screen.orientation && screen.orientation.lock) {
+                    await screen.orientation.lock('landscape');
+                    fsLockOk = true;
+                }
+            } catch (e) { /* can't lock – sideways fallback is used */ }
+            fitCanvas();
+        }
+
+        function exitTreeFullscreen() {
+            document.body.classList.remove('tree-fs');
+            fsApiActive = false;
+            fsLockOk = false;
+            try { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); } catch (e) {}
+            try { if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch (e) {}
+            const shell = document.getElementById('stage-shell');
+            shell.classList.remove('fs-rotated');
+            shell.style.width = '';
+            shell.style.height = '';
+            fitCanvas();
+        }
+
+        // If the user leaves browser fullscreen with the phone's back gesture, close our overlay too
+        document.addEventListener('fullscreenchange', () => {
+            if (fsApiActive && !document.fullscreenElement && isTreeFs()) exitTreeFullscreen();
+        });
 
         let currentFontSize = 16;
 
