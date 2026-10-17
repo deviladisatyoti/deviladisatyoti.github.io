@@ -1049,7 +1049,8 @@
                 footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
                 footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
                 footer_sub: "संरक्षण एवं संकलन: पूरी क्षत्रिय वंश धरोहर समिति (बटाला)",
-                toast_bell: "🔔 पावन मंदिर की घंटी बज रही है...",
+                toast_prayer_play: "🙏 प्रार्थना चल रही है...",
+                toast_prayer_pause: "⏸ प्रार्थना रोकी गई",
                 toast_share: "🔗 वेबसाइट लिंक क्लिपबोर्ड पर कॉपी हो गया!",
                 seva_badge: "पावन दान एवं सहयोग सेवा",
                 seva_title: "ऑनलाइन दान एवं सहयोग",
@@ -1228,7 +1229,8 @@
                 footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
                 footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
                 footer_sub: "Preservation & Compilation: Puri Kshatriya Heritage Board (Batala)",
-                toast_bell: "🔔 Sacred Temple Bell is Chiming...",
+                toast_prayer_play: "🙏 Prayer is playing...",
+                toast_prayer_pause: "⏸ Prayer paused",
                 toast_share: "🔗 Website URL copied to clipboard!",
                 seva_badge: "Sacred Voluntary Offering & Seva",
                 seva_title: "Online Donation",
@@ -1581,9 +1583,27 @@
             if (el && html !== undefined) el.innerHTML = html;
         }
 
+        // One shared audio object, so repeated clicks never overlap the prayer
+        let prayerAudio = null;
+
         function playPrayer() {
-            // TODO: prayer audio will be added here
-            console.log('Prayer audio not added yet');
+            try {
+                if (!prayerAudio) {
+                    prayerAudio = new Audio('./resource/prayer.mp3');
+                }
+
+                if (prayerAudio.paused) {
+                    // Play (or resume) the prayer
+                    prayerAudio.play().catch(err => console.error('Prayer playback error:', err));
+                    showToast(translations[currentLang].toast_prayer_play);
+                } else {
+                    // Clicking again while playing pauses it
+                    prayerAudio.pause();
+                    showToast(translations[currentLang].toast_prayer_pause);
+                }
+            } catch (err) {
+                console.error('Audio playback error:', err);
+            }
         }
 
         function playTempleBell() {
