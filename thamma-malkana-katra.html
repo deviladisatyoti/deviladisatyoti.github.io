@@ -342,13 +342,13 @@
         .stage-box { position: relative; }
         body.tree-fs .stage-box { flex: 1 1 auto; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
 
-        /* Highlighted banner: orange-red + white text + gold edge = strong contrast on the cream page */
+        /* Banner: cream with dark maroon text and a maroon edge */
         #scroll-hint {
             display: none; align-items: center; justify-content: center; gap: 10px;
             width: fit-content; max-width: 100%; margin: 0 auto 10px; padding: 9px 20px;
-            background: linear-gradient(135deg, #E65100 0%, #BF360C 100%);
-            color: #FFFFFF; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-            border: 2px solid #FFD700; border-radius: 16px;
+            background: #FFF8E6;
+            color: #521A07;
+            border: 2px solid #7A280E; border-radius: 16px;
             font-size: 17px; font-weight: 800; line-height: 1.25; text-align: center;
             animation: hintGlow 2s ease-in-out infinite;
         }
@@ -358,7 +358,7 @@
             cursor: grab; user-select: none; -webkit-user-select: none;
             -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
         }
-        #scroll-hint i { color: #FFD700; }
+        #scroll-hint i { color: #D84315; }
         #scroll-hint .hint-arrow { --n: 6px; animation: hintNudge 1.2s ease-in-out infinite; }
         #scroll-hint[data-dir="left"] .hint-arrow { --n: -6px; order: -1; }   /* left arrow goes before the text */
         #scroll-hint[data-dir="both"] .hint-arrow { animation: none; }
@@ -366,8 +366,8 @@
         #scroll-hint.learned .hint-arrow { animation: none; }
         @keyframes hintNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(var(--n, 6px)); } }
         @keyframes hintGlow {
-            0%, 100% { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 0 rgba(230,81,0,.55); }
-            50%      { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 8px rgba(230,81,0,0); }
+            0%, 100% { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 0 rgba(122,40,14,.45); }
+            50%      { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 8px rgba(122,40,14,0); }
         }
         body.tree-fs #scroll-hint { display: none; }
 
@@ -428,6 +428,54 @@
             width: calc(10 * var(--u, 1vmin)); height: calc(10 * var(--u, 1vmin));
             font-size: calc(4.4 * var(--u, 1vmin)); border-width: calc(0.5 * var(--u, 1vmin));
         }
+
+        /* ===== Previous / Next page buttons (top and bottom of the page) ===== */
+        .page-nav {
+            display: flex; flex-direction: column; gap: 12px;
+            width: 100%; max-width: 640px; margin: 0 auto;
+        }
+        .nav-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 12px 22px; border-radius: 16px;
+            font-size: 18px; font-weight: 800; line-height: 1.25; text-align: center; text-decoration: none;
+            border: 2px solid #D4AF37;
+            box-shadow: 0 4px 12px rgba(74, 18, 3, 0.30);
+            transition: filter .15s ease, transform .1s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .nav-btn:hover { filter: brightness(1.1); }
+        .nav-btn:active { transform: scale(.97); }
+        .nav-btn i { font-size: 1.15em; flex: 0 0 auto; }
+
+        /* Previous and Next: orange-red, white text, gold edge, soft glow */
+        .nav-btn-prev, .nav-btn-next {
+            background: linear-gradient(135deg, #E65100 0%, #BF360C 100%);
+            color: #FFFFFF; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            border-color: #FFD700;
+            animation: navGlow 2s ease-in-out infinite;
+        }
+        .nav-btn-prev i, .nav-btn-next i { color: #FFD700; }
+        @keyframes navGlow {
+            0%, 100% { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 0 rgba(230,81,0,.55); }
+            50%      { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 8px rgba(230,81,0,0); }
+        }
+        @media (prefers-reduced-motion: reduce) { .nav-btn-prev, .nav-btn-next { animation: none; } }
+
+        /* Wide screens: Previous on the left edge, Next on the right edge.
+           Narrow screens and phones: one below the other. */
+        .page-nav-box { container-type: inline-size; width: 100%; }
+        @container (min-width: 1000px) {
+            html:not(.is-phone) .page-nav { flex-direction: row; justify-content: space-between; max-width: none; }
+            html:not(.is-phone) .nav-btn { width: auto; }
+        }
+
+        /* Phones: sizes in --u so they look the same in normal and "Desktop site" mode */
+        html.is-phone .page-nav { gap: calc(2 * var(--u, 1vmin)); max-width: none; }
+        html.is-phone .nav-btn {
+            font-size: calc(3.8 * var(--u, 1vmin)); gap: calc(2 * var(--u, 1vmin));
+            padding: calc(2 * var(--u, 1vmin)) calc(3.4 * var(--u, 1vmin));
+            border-radius: calc(3 * var(--u, 1vmin)); border-width: calc(0.5 * var(--u, 1vmin));
+        }
     </style>
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-saffron selection:text-white">
@@ -486,20 +534,21 @@
     <!-- Main Content Container -->
     <main class="flex-grow w-full px-2 sm:px-4 lg:px-6 py-10 space-y-8">
         
-        <!-- Breadcrumb / Page Indicator Bar with 3 Navigation Options -->
-        <div class="flex flex-col lg:flex-row items-center justify-between bg-creamCard border-2 border-gold/50 px-5 sm:px-8 py-4 sm:py-5 rounded-2xl shadow-md gap-4">
+        <!-- Page heading (full width) -->
+        <div class="flex items-center justify-center lg:justify-start bg-creamCard border-2 border-gold/50 px-5 sm:px-8 py-4 sm:py-5 rounded-2xl shadow-md">
             <span class="text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-2.5 sm:gap-3 text-center lg:text-left leading-tight">
                 <i class="fa-solid fa-book-open text-saffronDark text-xl sm:text-3xl flex-shrink-0"></i> <span id="page-indicator">पृष्ठ 2 - थम्मा मलकाना (कटड़ा पूरीयाँ)</span>
             </span>
-            <div class="flex flex-wrap items-center justify-center lg:justify-end gap-2.5 sm:gap-3 w-full lg:w-auto">
-                <a href="index.html" class="bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl border-2 border-gold/70 text-sm sm:text-lg transition flex items-center gap-2 shadow-md active:scale-95">
-                    <i class="fa-solid fa-house text-saffron text-base sm:text-xl"></i> <span id="top-nav-home">मुख्य पृष्ठ</span>
+        </div>
+
+        <!-- Previous / Next page buttons: left and right edge on wide screens, one below the other on narrow ones -->
+        <div class="page-nav-box">
+            <div class="page-nav">
+                <a href="thamma-three-pillars.html" class="nav-btn nav-btn-prev">
+                    <i class="fa-solid fa-arrow-left"></i> <span id="top-nav-prev">पृष्ठ 1 - पूरी वंश के तीन थम्मे</span>
                 </a>
-                <a href="thamma-three-pillars.html" class="bg-imperial hover:bg-maroonDark text-goldLight font-extrabold px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl border-2 border-gold/70 text-sm sm:text-lg transition flex items-center gap-2 shadow-md active:scale-95">
-                    <i class="fa-solid fa-arrow-left text-saffron text-base sm:text-xl"></i> <span id="top-nav-prev">पिछला पृष्ठ (पृष्ठ 1)</span>
-                </a>
-                <a href="#" onclick="event.preventDefault();" class="bg-[#D84315] hover:bg-[#B71C1C] text-white font-black px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-xl border-2 border-gold/70 text-sm sm:text-lg transition flex items-center gap-2 shadow-md active:scale-95">
-                    <span id="top-nav-next">अगला पृष्ठ (थम्मा मलकाना - जारी)</span> <i class="fa-solid fa-arrow-right text-base sm:text-xl"></i>
+                <a href="#" onclick="event.preventDefault();" class="nav-btn nav-btn-next">
+                    <span id="top-nav-next">पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
@@ -634,18 +683,17 @@
             </button>
         </div>
 
-        <!-- Bottom Navigation Buttons with 3 Options -->
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 pt-6 border-t-2 border-gold/40">
-            <a href="index.html" class="w-full lg:w-auto flex items-center justify-center gap-3 bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-lg transition text-lg sm:text-xl active:scale-95">
-                <i class="fa-solid fa-house text-saffron text-xl sm:text-2xl"></i> <span id="btn-back-home">मुख्य पृष्ठ (Home) पर वापस जाएं</span>
-            </a>
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-                <a href="thamma-three-pillars.html" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-imperial hover:bg-maroonDark text-goldLight font-extrabold px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-lg transition text-lg sm:text-xl active:scale-95">
-                    <i class="fa-solid fa-arrow-left text-saffron text-xl sm:text-2xl"></i> <span id="btn-prev-page">पिछला पृष्ठ (पृष्ठ 1 - तीन थम्मे) देखें</span>
-                </a>
-                <a href="#" onclick="event.preventDefault();" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#D84315] hover:bg-[#B71C1C] text-white font-black px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-xl transition text-lg sm:text-xl active:scale-95">
-                    <span id="btn-next-page">अगला पृष्ठ (थम्मा मलकाना - जारी) देखें</span> <i class="fa-solid fa-arrow-right text-xl sm:text-2xl"></i>
-                </a>
+        <!-- Bottom: Previous / Next page buttons (same behaviour and style as the top) -->
+        <div class="pt-6 border-t-2 border-gold/40">
+            <div class="page-nav-box">
+                <div class="page-nav">
+                    <a href="thamma-three-pillars.html" class="nav-btn nav-btn-prev">
+                        <i class="fa-solid fa-arrow-left"></i> <span id="btn-prev-page">पृष्ठ 1 - पूरी वंश के तीन थम्मे</span>
+                    </a>
+                    <a href="#" onclick="event.preventDefault();" class="nav-btn nav-btn-next">
+                        <span id="btn-next-page">पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </main>
@@ -673,11 +721,11 @@
                 nav_sacred: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
                 page_indicator: "पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ",
                 top_nav_home: "मुख्य पृष्ठ",
-                top_nav_prev: "पिछला पृष्ठ (पृष्ठ 1)",
-                top_nav_next: "अगला पृष्ठ (थम्मा मलकाना कटड़ा पूरीयाँ - जारी)",
+                top_nav_prev: "पृष्ठ 1 - पूरी वंश के तीन थम्मे",
+                top_nav_next: "पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी",
                 btn_back_home: "मुख्य पृष्ठ (Home) पर वापस जाएं",
-                btn_prev_page: "पिछला पृष्ठ (पृष्ठ 1 - तीन थम्मे) देखें",
-                btn_next_page: "अगला पृष्ठ (थम्मा मलकाना कटड़ा पूरीयाँ - जारी) देखें",
+                btn_prev_page: "पृष्ठ 1 - पूरी वंश के तीन थम्मे",
+                btn_next_page: "पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी",
                 footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
                 fs_open: "पूरी स्क्रीन पर देखें",
                 fs_close: "बंद करें",
@@ -774,11 +822,11 @@
                 nav_sacred: "॥ Shri Ladi Satyoti Devyai Namah ॥",
                 page_indicator: "Page 2 - Thamma Malkana Katra Purian",
                 top_nav_home: "Home",
-                top_nav_prev: "Previous Page (Page 1)",
-                top_nav_next: "Next Page (Thamma Malkana Katra Purian - Continued)",
+                top_nav_prev: "Page 1 - Three Thammas of the Puri Clan",
+                top_nav_next: "Page 3 - Thamma Malkana Katra Purian - Continued",
                 btn_back_home: "Back to Home Page",
-                btn_prev_page: "View Previous Page (Page 1 - Three Thammas)",
-                btn_next_page: "View Next Page (Thamma Malkana Katra Purian - Continued)",
+                btn_prev_page: "Page 1 - Three Thammas of the Puri Clan",
+                btn_next_page: "Page 3 - Thamma Malkana Katra Purian - Continued",
                 footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
                 fs_open: "View Full Screen",
                 fs_close: "Close",
