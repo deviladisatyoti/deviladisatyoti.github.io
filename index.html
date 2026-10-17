@@ -1006,6 +1006,9 @@
     </footer>
 
     <script>
+        // Single source of truth for the General Secretary's name
+        const GEN_SEC = { hi: "अशोक पुरी", en: "Ashok Puri" };
+
         // Comprehensive Translation Dictionary preserving ALL text accurately based on original document
         const translations = {
             hi: {
@@ -1039,7 +1042,7 @@
                 gen_box1_head: "सेवादार कौम पूरीयां",
                 gen_box1_body: "हकीम कर्म चन्द पूरी (बटाला 28-9-1954)",
                 gen_box2_head: "वंशावली प्राप्ति हेतु",
-                gen_box2_body: "जिस किसी को वंशावली की जरूरत हो । वो श्री रघुबीर चन्द पुरी सैक्रेटरी ट्रस्ट से प्राप्त कर सकते हैं ।",
+                gen_box2_body: `जिस किसी को वंशावली की जरूरत हो, वो श्री ${GEN_SEC.hi} (जनरल सेक्रेटरी, ट्रस्ट) से प्राप्त कर सकते हैं।`,
                 contact_head: "पंजीकरण एवं सूचना",
                 contact_body: "पूरी परिवार के सदस्य अपनी वंशावली प्रविष्टियों एवं विवरण हेतु ट्रस्ट कार्यालय बटाला से संपर्क कर सकते हैं।",
 
@@ -1123,7 +1126,7 @@
                 col_name: "नाम खानदान व पता",
 
                 lbl_gen_sec: "जनरल सेक्रेटरी",
-                val_gen_sec: "अशोक पुरी",
+                val_gen_sec: GEN_SEC.hi,
                 lbl_pres: "कार्यवाहक प्रधान",
                 val_pres: "राकेश पुरी",
                 lbl_fin_sec: "फाईनेंस सेक्रेटरी",
@@ -1185,7 +1188,7 @@
                 merged_sec_sub: "प्रामाणिक शोध रिकॉर्ड, मूल अभिलेख और सूचकांक",
                 vakt_title: "वक्त की पुकार एवं ऐतिहासिक शोध",
                 gen_box2_head: "वंशावली प्राप्ति हेतु",
-                gen_box2_body: "जिस किसी को वंशावली की जरूरत हो, वो श्री रघुबीर चन्द पुरी (सैक्रेटरी ट्रस्ट) से प्राप्त कर सकते हैं।"
+                gen_box2_body: `जिस किसी को वंशावली की जरूरत हो, वो श्री ${GEN_SEC.hi} (जनरल सेक्रेटरी, ट्रस्ट) से प्राप्त कर सकते हैं।`,
             },
             en: {
                 sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
@@ -1218,7 +1221,7 @@
                 gen_box1_head: "Servant of the Puri Clan",
                 gen_box1_body: "Hakim Karam Chand Puri (Batala, 28-09-1954)",
                 gen_box2_head: "Obtaining Genealogy Records",
-                gen_box2_body: "Anyone in need of genealogy records may obtain them from Shri Raghubeer Chand Puri (Secretary, Trust).",
+                gen_box2_body: `Anyone in need of genealogy records may obtain them from Shri ${GEN_SEC.en} (General Secretary, Trust).`,
                 contact_head: "Registration & Contact",
                 contact_body: "Members of the Puri family may contact the Trust Office at Batala for lineage additions and record verification.",
 
@@ -1302,7 +1305,7 @@
                 col_name: "Family Name & Address",
 
                 lbl_gen_sec: "General Secretary",
-                val_gen_sec: "Ashok Puri",
+                val_gen_sec: GEN_SEC.en,
                 lbl_pres: "Acting President",
                 val_pres: "Rakesh Puri",
                 lbl_fin_sec: "Finance Secretary",
@@ -1364,7 +1367,7 @@
                 merged_sec_sub: "Authentic Research Records, Original Records and Index",
                 vakt_title: "Call of the Times & Historical Research",
                 gen_box2_head: "Obtaining Genealogy Records",
-                gen_box2_body: "Anyone in need of genealogy records may obtain them from Shri Raghubeer Chand Puri (Secretary, Trust)."
+                gen_box2_body: `Anyone in need of genealogy records may obtain them from Shri ${GEN_SEC.en} (General Secretary, Trust).`,
             }
         };
 
