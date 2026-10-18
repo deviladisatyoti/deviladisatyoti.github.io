@@ -470,11 +470,20 @@
         }
 
         /* Phones: sizes in --u so they look the same in normal and "Desktop site" mode */
-        html.is-phone .page-nav { gap: calc(2 * var(--u, 1vmin)); max-width: none; }
+        html.is-phone .page-heading-bar {
+            padding: calc(2.8 * var(--u, 1vmin)) calc(3 * var(--u, 1vmin));
+            border-radius: calc(3 * var(--u, 1vmin)); border-width: calc(0.4 * var(--u, 1vmin));
+        }
+        html.is-phone .page-heading {
+            font-size: calc(5.2 * var(--u, 1vmin)); line-height: 1.2; gap: calc(2.4 * var(--u, 1vmin));
+        }
+        html.is-phone .page-heading i { font-size: 1em; }
+
+        html.is-phone .page-nav { gap: calc(1.6 * var(--u, 1vmin)); max-width: none; }
         html.is-phone .nav-btn {
-            font-size: calc(3.8 * var(--u, 1vmin)); gap: calc(2 * var(--u, 1vmin));
-            padding: calc(2 * var(--u, 1vmin)) calc(3.4 * var(--u, 1vmin));
-            border-radius: calc(3 * var(--u, 1vmin)); border-width: calc(0.5 * var(--u, 1vmin));
+            font-size: calc(3.3 * var(--u, 1vmin)); gap: calc(1.6 * var(--u, 1vmin));
+            padding: calc(1.7 * var(--u, 1vmin)) calc(2.8 * var(--u, 1vmin));
+            border-radius: calc(2.6 * var(--u, 1vmin)); border-width: calc(0.4 * var(--u, 1vmin));
         }
     </style>
 </head>
@@ -535,8 +544,8 @@
     <main class="flex-grow w-full px-2 sm:px-4 lg:px-6 py-10 space-y-8">
         
         <!-- Page heading (full width) -->
-        <div class="flex items-center justify-center lg:justify-start bg-creamCard border-2 border-gold/50 px-5 sm:px-8 py-4 sm:py-5 rounded-2xl shadow-md">
-            <span class="text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-2.5 sm:gap-3 text-center lg:text-left leading-tight">
+        <div class="page-heading-bar flex items-center justify-center lg:justify-start bg-creamCard border-2 border-gold/50 px-5 sm:px-8 py-4 sm:py-5 rounded-2xl shadow-md">
+            <span class="page-heading text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-2.5 sm:gap-3 text-center lg:text-left leading-tight">
                 <i class="fa-solid fa-book-open text-saffronDark text-xl sm:text-3xl flex-shrink-0"></i> <span id="page-indicator">पृष्ठ 2 - थम्मा मलकाना (कटड़ा पूरीयाँ)</span>
             </span>
         </div>
