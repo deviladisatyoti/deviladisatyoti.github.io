@@ -1460,7 +1460,13 @@
             bar.addEventListener('pointerup', finish);
             bar.addEventListener('pointercancel', finish);
         })();
+        // Phones: only let the top bar drive the tree while the finger is on the top bar itself
+        // (otherwise its delayed echo fights the tree's own swipe and makes it jitter)
+        let topBarTouched = false;
+        ['touchstart', 'pointerdown'].forEach(ev => topScrollEl.addEventListener(ev, () => { topBarTouched = true; }, { passive: true }));
+        ['touchend', 'touchcancel', 'pointerup', 'pointercancel'].forEach(ev => topScrollEl.addEventListener(ev, () => { setTimeout(() => { topBarTouched = false; }, 400); }, { passive: true }));
         topScrollEl.addEventListener('scroll', () => {
+            if (document.documentElement.classList.contains('is-phone') && !topBarTouched) return;
             if (stageEl.scrollLeft !== topScrollEl.scrollLeft) stageEl.scrollLeft = topScrollEl.scrollLeft;
         });
         stageEl.addEventListener('scroll', () => {
