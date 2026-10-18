@@ -8,7 +8,7 @@
     <link rel="icon" type="image/jpeg" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
     <link rel="apple-touch-icon" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
 
-    <title id="page-title">थम्मा मलकाना कटड़ा पूरीयाँ | Ladi Satyoti Trust</title>
+    <title id="page-title">थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: गंगा राम निरंतरता | Ladi Satyoti Trust</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -311,7 +311,7 @@
         .canvas-wrap.is-ready { visibility: visible; }
         .canvas {
             position: absolute; left: 0; top: 0;
-            width: 2231px; height: 1132px;
+            width: 1640px; height: 840px;
             transform-origin: 0 0;
             background: var(--bg);
             font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
@@ -337,6 +337,11 @@
         }
         .n:hover { background:#FFF2CC; box-shadow:0 6px 16px rgba(201,166,60,.5), 0 2px 5px rgba(74,18,3,.22); }
         .t { font-size:34px; font-weight:700; }
+        .t-main { font-size:42px; white-space:pre-line; text-align:center; line-height:1.25; }
+        .t-sub  { font-size:28px; }
+
+        /* Page 1 has only a "Next" button: keep it on the right edge on wide screens */
+        html:not(.is-phone) .page-nav.only-next { justify-content: flex-end; }
 
         /* ===== Scroll hint (all screens, shown only when the tree is wider than its box) ===== */
         .stage-box { position: relative; }
@@ -559,18 +564,18 @@
         <!-- Page heading (full width) -->
         <div class="page-heading-bar flex items-center justify-center lg:justify-start bg-creamCard border-2 border-gold/50 px-5 sm:px-8 py-4 sm:py-5 rounded-2xl shadow-md">
             <span class="page-heading text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-2.5 sm:gap-3 text-center lg:text-left leading-tight">
-                <i class="fa-solid fa-book-open text-saffronDark text-xl sm:text-3xl flex-shrink-0"></i> <span id="page-indicator">पृष्ठ 2 - थम्मा मलकाना (कटड़ा पूरीयाँ)</span>
+                <i class="fa-solid fa-book-open text-saffronDark text-xl sm:text-3xl flex-shrink-0"></i> <span id="page-indicator">पृष्ठ 3 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: गंगा राम निरंतरता</span>
             </span>
         </div>
 
-        <!-- Previous / Next page buttons: left and right edge on wide screens, one below the other on narrow ones -->
+        <!-- Next page button (this is Page 1, so there is no Previous button) -->
         <div class="page-nav-box">
             <div class="page-nav">
-                <a href="thamma-three-pillars.html" class="nav-btn nav-btn-prev">
-                    <i class="fa-solid fa-arrow-left"></i> <span id="top-nav-prev">पृष्ठ 1 - पूरी वंश के तीन थम्मे</span>
+                <a href="page_2.html" class="nav-btn nav-btn-prev">
+                    <i class="fa-solid fa-arrow-left"></i> <span id="top-nav-prev">पृष्ठ 2 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: अरूड़ा मल शाखा</span>
                 </a>
-                <a href="#" onclick="event.preventDefault();" class="nav-btn nav-btn-next">
-                    <span id="top-nav-next">पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी</span> <i class="fa-solid fa-arrow-right"></i>
+                <a href="page_4.html" class="nav-btn nav-btn-next">
+                    <span id="top-nav-next">पृष्ठ 4 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - सैन दास व लभू राम शाखाएं</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
@@ -599,90 +604,116 @@
             <div class="canvas-wrap" id="canvas-wrap">
                 <div class="canvas" id="canvas">
                     <svg class="lines" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
-                    <span id="c-katra-purian" class="t" style="left:1032.8px;top:61.8px;letter-spacing:1.49px">कटड़ा पुरीयाँ</span>
-                    <span id="c-thamma-malkana" class="t" style="left:1705.1px;top:61.8px;letter-spacing:2.67px">थम्मा मलकाना</span>
-                    <span id="n-purnchand-1" class="n" style="left:267.0px;top:112.8px;letter-spacing:1.80px">पूर्ण चन्द</span>
-                    <span id="n-bharudamal" class="n" style="left:114.0px;top:176.4px;letter-spacing:1.80px">भरूड़ा मल</span>
-                    <span id="n-gulabchand-1" class="n" style="left:282.0px;top:175.2px;letter-spacing:1.80px">गुलाब चन्द</span>
-                    <span id="n-meghraj-1" class="n" style="left:448.5px;top:176.4px;letter-spacing:1.80px">मेघ राज</span>
-                    <span id="n-jeetmal-1" class="n" style="left:103.5px;top:226.8px;letter-spacing:1.80px">जीत मल</span>
-                    <span id="n-fatehchand-1" class="n" style="left:110.3px;top:271.0px;letter-spacing:1.80px">फतेह चन्द</span>
-                    <span id="n-bhagwandas-1" class="n" style="left:115.3px;top:315.2px;letter-spacing:1.80px">भगवान दास</span>
-                    <span id="n-deviditta" class="n" style="left:1369.9px;top:54.0px;letter-spacing:1.80px">देवी दित्ता</span>
-                    <span id="n-malakkapoor" class="n" style="left:1384.9px;top:105.6px;letter-spacing:1.80px">मलक कपूर</span>
-                    <span id="n-gobindchand" class="n" style="left:1387.9px;top:158.4px;letter-spacing:1.80px">गोबिद चन्द</span>
-                    <span id="n-dharjanmal" class="n" style="left:1194.4px;top:238.8px;letter-spacing:1.80px">भरजन मल</span>
-                    <span id="n-rajkour" class="n" style="left:1401.4px;top:238.8px;letter-spacing:1.80px">राज कौर</span>
-                    <span id="n-chatarbihari" class="n" style="left:1655.6px;top:237.6px;letter-spacing:1.80px">चतर बिहारी</span>
-                    <span id="n-bankarai" class="n" style="left:1188.4px;top:328.4px;letter-spacing:1.80px">बांका राय</span>
-                    <span id="n-dhamirsingh" class="n" style="left:1104.4px;top:408.8px;letter-spacing:1.80px">भ्रमीर सिंह</span>
-                    <span id="n-todarmal" class="n" style="left:1272.4px;top:407.6px;letter-spacing:1.80px">टोडर मल</span>
-                    <span id="n-govardhanlal" class="n" style="left:573.0px;top:491.6px;letter-spacing:1.80px">गोवर्धन लाल</span>
-                    <span id="n-baghelmal" class="n" style="left:492.0px;top:560.0px;letter-spacing:1.80px">बघेल मल</span>
-                    <span id="n-paharmal" class="n" style="left:733.5px;top:562.4px;letter-spacing:1.80px">पहाड़ मल</span>
-                    <span id="n-jatmal" class="n" style="left:480.0px;top:606.8px;letter-spacing:1.80px">जट मल</span>
-                    <span id="n-kahansingh" class="n" style="left:727.5px;top:608.0px;letter-spacing:1.80px">काहन सिंह</span>
-                    <span id="n-heerasingh" class="n" style="left:495.0px;top:652.4px;letter-spacing:1.80px">हीरा सिंह</span>
-                    <span id="n-nihalsingh" class="n" style="left:739.5px;top:653.6px;letter-spacing:1.80px">निहाल सिंह</span>
-                    <span id="n-ratta" class="n" style="left:462.0px;top:699.2px;letter-spacing:1.80px">रत्ता</span>
-                    <span id="n-palamal" class="n" style="left:688.5px;top:726.8px;letter-spacing:1.80px">पाला मल</span>
-                    <span id="n-polomal" class="n" style="left:892.5px;top:728.0px;letter-spacing:1.80px">पोलो मल</span>
-                    <span id="n-basawamal" class="n" style="left:885.0px;top:777.2px;letter-spacing:1.80px">वसावा मल</span>
-                    <span id="n-gujarmal" class="n" style="left:891.0px;top:831.2px;letter-spacing:1.80px">गुजर मल</span>
-                    <span id="n-gobindyash" class="n" style="left:206.2px;top:802.4px;letter-spacing:1.80px">गोबिद यश</span>
-                    <span id="n-kirparam" class="n" style="left:432.0px;top:802.4px;letter-spacing:1.80px">किरपा राम</span>
-                    <span id="n-shankardas" class="n" style="left:613.5px;top:794.3px;letter-spacing:1.80px">शंकर दास</span>
-                    <span id="n-dropadideva" class="n" style="left:741.0px;top:794.3px;letter-spacing:1.80px">द्रोपदी देवा</span>
-                    <span id="n-mohanlal-sub" class="n" style="left:457.5px;top:875.6px;letter-spacing:1.80px">मोहन लाल</span>
-                    <span id="n-shivdas" class="n" style="left:597.0px;top:876.8px;letter-spacing:1.80px">शिव दास</span>
-                    <span id="n-bugradas" class="n" style="left:720.0px;top:873.6px;letter-spacing:1.80px">बग्रा दास</span>
-                    <span id="n-takhatram" class="n" style="left:649.5px;top:930.8px;letter-spacing:1.80px">तख्त राम</span>
-                    <span id="n-khushiram" class="n" style="left:873.0px;top:933.2px;letter-spacing:1.80px">खुशी राम</span>
-                    <span id="n-jagannath" class="n" style="left:1126.9px;top:930.8px;letter-spacing:1.80px">जगननाथ</span>
-                    <span id="n-harkishanlal" class="n" style="left:1054.5px;top:846.8px;letter-spacing:1.80px">हरकिशन लाल</span>
-                    <span id="n-thanduram" class="n" style="left:519.0px;top:1002.8px;letter-spacing:1.80px">ठंडू राम</span>
-                    <span id="n-gyanchand" class="n" style="left:642.0px;top:1004.0px;letter-spacing:1.80px">ज्ञान चन्द</span>
-                    <span id="n-jagdishlal1" class="n" style="left:516.0px;top:1047.2px;letter-spacing:1.80px">जगदीश लाल</span>
-                    <span id="n-bhromprakash" class="n" style="left:825.0px;top:1005.2px;letter-spacing:1.80px">भ्रोमप्रकाश</span>
-                    <span id="n-dhamvir" class="n" style="left:925.5px;top:1005.2px;letter-spacing:1.80px">धर्मवीर</span>
-                    <span id="n-nandalal" class="n" style="left:1014.0px;top:1004.0px;letter-spacing:1.80px">नंदलाल</span>
-                    <span id="n-devraj" class="n" style="left:1105.9px;top:1002.8px;letter-spacing:1.80px">देवराज</span>
-                    <span id="n-vipanchand" class="n" style="left:1198.9px;top:1002.8px;letter-spacing:1.80px">विपनचंद</span>
-                    <span id="n-vijay" class="n" style="left:1048.5px;top:1072.4px;letter-spacing:1.80px">विजय</span>
-                    <span id="n-mohanlal-main" class="n" style="left:1555.1px;top:488.0px;letter-spacing:1.80px">मोहन लाल</span>
-                    <span id="n-kalyanchand" class="n" style="left:1567.1px;top:533.6px;letter-spacing:1.80px">कल्याण चन्द</span>
-                    <span id="n-purnchand-main" class="n" style="left:1565.6px;top:579.2px;letter-spacing:1.80px">पूर्ण चन्द</span>
-                    <span id="n-rudamal" class="n" style="left:1480.9px;top:652.4px;letter-spacing:1.80px">रुड़ा मल</span>
-                    <span id="n-gulabchand" class="n" style="left:1827.1px;top:650.0px;letter-spacing:1.80px">गुलाब चन्द</span>
-                    <span id="n-meghraj" class="n" style="left:2119.6px;top:653.6px;letter-spacing:1.80px">मेघ राज</span>
-                    <span id="n-jeetmal" class="n" style="left:1422.4px;top:725.6px;letter-spacing:1.80px">जीत मल</span>
-                    <span id="n-fatehchand" class="n" style="left:1825.6px;top:725.6px;letter-spacing:1.80px">फतेहचंद</span>
-                    <span id="n-bhagwandas" class="n" style="left:2101.6px;top:726.8px;letter-spacing:1.80px">भगवान दास</span>
-                    <span id="n-patarsingh" class="n" style="left:1420.9px;top:776.0px;letter-spacing:1.80px">पतर सिंह</span>
-                    <span id="n-kotumal" class="n" style="left:1362.4px;top:844.4px;letter-spacing:1.80px">कोटू मल</span>
-                    <span id="n-mathradas" class="n" style="left:1315.9px;top:930.8px;letter-spacing:1.80px">मथरा दास</span>
-                    <span id="n-jamnadas" class="n" style="left:1660.1px;top:933.2px;letter-spacing:1.80px">जमनादास</span>
-                    <span id="n-chunilal" class="n" style="left:1309.9px;top:1002.8px;letter-spacing:1.80px">चुनी लाल</span>
-                    <span id="n-somdat" class="n" style="left:1417.9px;top:1004.0px;letter-spacing:1.80px">सोमदत</span>
-                    <span id="n-vedvyas" class="n" style="left:1512.4px;top:1005.2px;letter-spacing:1.80px">वेदव्यास</span>
-                    <span id="n-krishnakumar" class="n" style="left:1640.6px;top:1006.4px;letter-spacing:0.00px">कृष्ण कुमार</span>
-                    <span id="n-charanjit" class="n" style="left:1767.1px;top:1007.6px;letter-spacing:0.40px">चरणजीत</span>
-                    <span id="n-jagdishchand" class="n" style="left:1911.1px;top:1008.8px;letter-spacing:1.80px">जगदीश चंद</span>
-                    <span id="n-mohanlal-bottom" class="n" style="left:1492.9px;top:1054.4px;letter-spacing:1.80px">मोहन लाल</span>
-                    <span id="n-deepak" class="n" style="left:1591.1px;top:1080.8px;letter-spacing:1.80px">दीपक</span>
-                    <span id="n-surya" class="n" style="left:1696.1px;top:1082.0px;letter-spacing:1.80px">सुर्यं कुमार</span>
-                    <span id="n-kuldeep" class="n" style="left:1813.6px;top:1058.0px;letter-spacing:0.20px">कुलदीप कुमार</span>
-                    <span id="n-rajiv" class="n" style="left:1957.6px;top:1059.2px;letter-spacing:0.80px">राजीव</span>
-                    <span id="n-moolraj" class="n" style="left:1845.1px;top:795.2px;letter-spacing:1.80px">मूलराज</span>
-                    <span id="n-gokulchand" class="n" style="left:1978.6px;top:795.2px;letter-spacing:1.80px">गोकुल चंद</span>
-                    <span id="n-mushtakrai" class="n" style="left:2131.6px;top:798.8px;letter-spacing:1.80px">मुश्ताक राय</span>
-                    <span id="n-shankardas2" class="n" style="left:1899.1px;top:878.0px;letter-spacing:1.80px">शंकरदास</span>
-                    <span id="n-chetram" class="n" style="left:2023.6px;top:879.2px;letter-spacing:1.80px">चेत राम</span>
-                    <span id="n-gangaram" class="n" style="left:2152.6px;top:881.6px;letter-spacing:1.80px">गंगा राम</span>
-                    <span id="n-kesardas" class="n" style="left:1903.6px;top:933.2px;letter-spacing:1.80px">केसरदास</span>
-                    <span id="n-hardarilal" class="n" style="left:671.4px;top:1073.6px;letter-spacing:1.80px">हरद्वारी लाल</span>
-                    <span id="n-rajinderkumar" class="n" style="left:826.7px;top:1073.6px;letter-spacing:1.80px">राजिन्द्र कुमार</span>
-                    <span id="n-balvidr" class="n" style="left:954.8px;top:1073.6px;letter-spacing:1.80px">बलविद्र</span>
+                    <span id="c-thamma-malkana" class="t t-sub" style="left:2333px;top:60px">थम्मा मलकाना</span>
+                    <span id="c-katra-purian" class="t t-sub" style="left:2993px;top:60px">कटड़ा पुरीयां</span>
+                    <span id="n-1" class="n" style="left:204px;top:492px">विनोद</span>
+                    <span id="n-2" class="n" style="left:295px;top:492px">विजय</span>
+                    <span id="n-3" class="n" style="left:386px;top:492px">विवेक</span>
+                    <span id="n-4" class="n" style="left:295px;top:420px">प्राणनाथ</span>
+                    <span id="n-5" class="n" style="left:422px;top:420px">प्रेमचन्द</span>
+                    <span id="n-6" class="n" style="left:359px;top:348px">गोपाल दास</span>
+                    <span id="n-7" class="n" style="left:534px;top:420px">पवन</span>
+                    <span id="n-8" class="n" style="left:645px;top:420px">राज कुमार</span>
+                    <span id="n-9" class="n" style="left:756px;top:420px">विपन</span>
+                    <span id="n-10" class="n" style="left:847px;top:420px">विनय</span>
+                    <span id="n-11" class="n" style="left:690px;top:348px">मदन लाल</span>
+                    <span id="n-12" class="n" style="left:525px;top:276px">रोडा मल</span>
+                    <span id="n-13" class="n" style="left:297px;top:636px">राजन</span>
+                    <span id="n-14" class="n" style="left:297px;top:564px">विजय कुमार</span>
+                    <span id="n-15" class="n" style="left:411px;top:636px">नवीन</span>
+                    <span id="n-16" class="n" style="left:507px;top:636px">विपन</span>
+                    <span id="n-17" class="n" style="left:459px;top:564px">प्रशोतमलाल</span>
+                    <span id="n-18" class="n" style="left:608px;top:636px">संजीव</span>
+                    <span id="n-19" class="n" style="left:704px;top:636px">कोनी</span>
+                    <span id="n-20" class="n" style="left:790px;top:636px">सुनील</span>
+                    <span id="n-21" class="n" style="left:699px;top:564px">सुदेश कुमार</span>
+                    <span id="n-22" class="n" style="left:886px;top:636px">रजेश</span>
+                    <span id="n-23" class="n" style="left:993px;top:636px">संजीव</span>
+                    <span id="n-24" class="n" style="left:939px;top:564px">मनोहर लाल</span>
+                    <span id="n-25" class="n" style="left:1092px;top:564px">विपन कुमार</span>
+                    <span id="n-26" class="n" style="left:694px;top:492px">भगवत सरूप</span>
+                    <span id="n-27" class="n" style="left:867px;top:492px">केवल कृष्ण</span>
+                    <span id="n-28" class="n" style="left:1213px;top:564px">रमन</span>
+                    <span id="n-29" class="n" style="left:1213px;top:492px">जगदीश चंद्र</span>
+                    <span id="n-30" class="n" style="left:954px;top:420px">रोलू मल</span>
+                    <span id="n-31" class="n" style="left:1386px;top:492px">मोहन लाल ×</span>
+                    <span id="n-32" class="n" style="left:1396px;top:564px">कृष्ण कुमार</span>
+                    <span id="n-33" class="n" style="left:1538px;top:564px">शिवराज</span>
+                    <span id="n-34" class="n" style="left:1670px;top:564px">अशोक कुमार</span>
+                    <span id="n-35" class="n" style="left:1533px;top:492px">रोशन लाल</span>
+                    <span id="n-36" class="n" style="left:1680px;top:492px">चरणदास ×</span>
+                    <span id="n-37" class="n" style="left:1832px;top:492px">चूनी लाल ×</span>
+                    <span id="n-38" class="n" style="left:1969px;top:492px">देवराज ×</span>
+                    <span id="n-39" class="n" style="left:1788px;top:636px">विक्रांत</span>
+                    <span id="n-40" class="n" style="left:1887px;top:636px">अनित</span>
+                    <span id="n-41" class="n" style="left:1837px;top:564px">नरिन्दर कुमार</span>
+                    <span id="n-42" class="n" style="left:1972px;top:636px">ऋषि</span>
+                    <span id="n-43" class="n" style="left:2069px;top:636px">पंकज</span>
+                    <span id="n-44" class="n" style="left:2021px;top:564px">अशोक कुमार</span>
+                    <span id="n-45" class="n" style="left:2188px;top:564px">सुरिन्दर कुमार</span>
+                    <span id="n-46" class="n" style="left:2335px;top:564px">सुभाष</span>
+                    <span id="n-47" class="n" style="left:2086px;top:492px">सतपाल</span>
+                    <span id="n-48" class="n" style="left:2452px;top:564px">जतिन्द्र</span>
+                    <span id="n-49" class="n" style="left:2452px;top:492px">कृष्ण चन्द</span>
+                    <span id="n-50" class="n" style="left:1919px;top:420px">खुशी राम</span>
+                    <span id="n-51" class="n" style="left:1436px;top:348px">शाम लाल</span>
+                    <span id="n-52" class="n" style="left:121px;top:924px">जोगिदर नाथ</span>
+                    <span id="n-53" class="n" style="left:280px;top:924px">द्वारका दास</span>
+                    <span id="n-54" class="n" style="left:201px;top:852px">तीर्थ राम</span>
+                    <span id="n-55" class="n" style="left:201px;top:780px">गुजरमल</span>
+                    <span id="n-56" class="n" style="left:327px;top:780px">बेजनाथ ×</span>
+                    <span id="n-57" class="n" style="left:469px;top:924px">राजकुमार</span>
+                    <span id="n-58" class="n" style="left:469px;top:852px">मंगत राम</span>
+                    <span id="n-59" class="n" style="left:469px;top:780px">दीवान चंद</span>
+                    <span id="n-60" class="n" style="left:616px;top:924px">कमल नारायण</span>
+                    <span id="n-61" class="n" style="left:616px;top:852px">सतपाल</span>
+                    <span id="n-62" class="n" style="left:723px;top:996px">मिटू</span>
+                    <span id="n-63" class="n" style="left:824px;top:996px">भूषण</span>
+                    <span id="n-64" class="n" style="left:774px;top:924px">संत कुमार</span>
+                    <span id="n-65" class="n" style="left:956px;top:1068px">रोहित</span>
+                    <span id="n-66" class="n" style="left:956px;top:996px">राम कृष्ण</span>
+                    <span id="n-67" class="n" style="left:956px;top:924px">राज कुमार</span>
+                    <span id="n-68" class="n" style="left:865px;top:852px">मोहन लाल</span>
+                    <span id="n-69" class="n" style="left:1057px;top:1068px">अश्वनी</span>
+                    <span id="n-70" class="n" style="left:1164px;top:1068px">शांती</span>
+                    <span id="n-71" class="n" style="left:1110px;top:996px">रवि</span>
+                    <span id="n-72" class="n" style="left:1110px;top:924px">शिव कुमार</span>
+                    <span id="n-73" class="n" style="left:1196px;top:996px">विपन</span>
+                    <span id="n-74" class="n" style="left:1287px;top:996px">विकास</span>
+                    <span id="n-75" class="n" style="left:1389px;top:996px">अश्वनी</span>
+                    <span id="n-76" class="n" style="left:1292px;top:924px">रमेश</span>
+                    <span id="n-77" class="n" style="left:1495px;top:996px">रजेश</span>
+                    <span id="n-78" class="n" style="left:1495px;top:924px">सुभाष</span>
+                    <span id="n-79" class="n" style="left:1596px;top:996px">रजेश</span>
+                    <span id="n-80" class="n" style="left:1697px;top:996px">रकेश</span>
+                    <span id="n-81" class="n" style="left:1647px;top:924px">सुरेन्द्र</span>
+                    <span id="n-82" class="n" style="left:1809px;top:996px">रजेन्द्र</span>
+                    <span id="n-83" class="n" style="left:1925px;top:996px">अश्वनी</span>
+                    <span id="n-84" class="n" style="left:2031px;top:996px">सतीश</span>
+                    <span id="n-85" class="n" style="left:2128px;top:996px">रिकू</span>
+                    <span id="n-86" class="n" style="left:1968px;top:924px">नंदकिशोर</span>
+                    <span id="n-87" class="n" style="left:2213px;top:996px">अजय</span>
+                    <span id="n-88" class="n" style="left:2299px;top:996px">विनोद</span>
+                    <span id="n-89" class="n" style="left:2256px;top:924px">सुरेश</span>
+                    <span id="n-90" class="n" style="left:2395px;top:996px">चिंटू</span>
+                    <span id="n-91" class="n" style="left:2395px;top:924px">विश्वानाथ</span>
+                    <span id="n-92" class="n" style="left:1753px;top:852px">सोहन लाल</span>
+                    <span id="n-93" class="n" style="left:2558px;top:996px">सुनीत कुमार</span>
+                    <span id="n-94" class="n" style="left:2558px;top:924px">रविन्द्र कुमार</span>
+                    <span id="n-95" class="n" style="left:2558px;top:852px">राम लाल</span>
+                    <span id="n-96" class="n" style="left:2725px;top:996px">अतुल</span>
+                    <span id="n-97" class="n" style="left:2725px;top:924px">अशोक कुमार</span>
+                    <span id="n-98" class="n" style="left:2847px;top:996px">गौरव</span>
+                    <span id="n-99" class="n" style="left:2847px;top:924px">विमल</span>
+                    <span id="n-100" class="n" style="left:2786px;top:852px">राम प्रकाश</span>
+                    <span id="n-101" class="n" style="left:1701px;top:780px">काहन चन्द</span>
+                    <span id="n-102" class="n" style="left:2551px;top:348px">गंगा राम</span>
+                    <span id="n-103" class="n" style="left:2698px;top:348px">मुकंद लाल ↓</span>
+                    <span id="n-104" class="n" style="left:2067px;top:276px">हीरा नन्द</span>
+                    <span id="n-105" class="n" style="left:2209px;top:276px">साईं दास ↓</span>
+                    <span id="n-106" class="n" style="left:1367px;top:204px">भगवान दास</span>
+                    <span id="n-107" class="n" style="left:1367px;top:132px">अरुड़ा मल</span>
+                    <span id="n-108" class="n" style="left:1367px;top:60px">पूर्ण चन्द</span>
                 </div>
             </div>
             </div>
@@ -705,16 +736,16 @@
             </button>
         </div>
 
-        <!-- Bottom: Previous / Next page buttons (same behaviour and style as the top) -->
+        <!-- Bottom: Next page button (same behaviour and style as the top) -->
         <div class="pt-6 border-t-2 border-gold/40">
             <div class="page-nav-box">
                 <div class="page-nav">
-                    <a href="thamma-three-pillars.html" class="nav-btn nav-btn-prev">
-                        <i class="fa-solid fa-arrow-left"></i> <span id="btn-prev-page">पृष्ठ 1 - पूरी वंश के तीन थम्मे</span>
-                    </a>
-                    <a href="#" onclick="event.preventDefault();" class="nav-btn nav-btn-next">
-                        <span id="btn-next-page">पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी</span> <i class="fa-solid fa-arrow-right"></i>
-                    </a>
+                    <a href="page_2.html" class="nav-btn nav-btn-prev">
+                    <i class="fa-solid fa-arrow-left"></i> <span id="btn-prev-page">पृष्ठ 2 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: अरूड़ा मल शाखा</span>
+                </a>
+                <a href="page_4.html" class="nav-btn nav-btn-next">
+                    <span id="btn-next-page">पृष्ठ 4 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - सैन दास व लभू राम शाखाएं</span> <i class="fa-solid fa-arrow-right"></i>
+                </a>
                 </div>
             </div>
         </div>
@@ -738,206 +769,256 @@
     <script>
         const translations = {
             hi: {
-                page_title: "थम्मा मलकाना कटड़ा पूरीयाँ | Ladi Satyoti Trust",
+                page_title: "थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: गंगा राम निरंतरता | Ladi Satyoti Trust",
                 nav_back_home: "मुख्य पृष्ठ पर जाएं",
                 nav_sacred: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
-                page_indicator: "पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ",
+                page_indicator: "पृष्ठ 3 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: गंगा राम निरंतरता",
                 top_nav_home: "मुख्य पृष्ठ",
-                top_nav_prev: "पृष्ठ 1 - पूरी वंश के तीन थम्मे",
-                top_nav_next: "पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी",
+                top_nav_prev: "पृष्ठ 2 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: अरूड़ा मल शाखा",
+                top_nav_next: "पृष्ठ 4 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - सैन दास व लभू राम शाखाएं",
                 btn_back_home: "मुख्य पृष्ठ (Home) पर वापस जाएं",
-                btn_prev_page: "पृष्ठ 1 - पूरी वंश के तीन थम्मे",
-                btn_next_page: "पृष्ठ 3 - थम्मा मलकाना कटड़ा पूरीयाँ - जारी",
+                btn_prev_page: "पृष्ठ 2 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - पूर्ण चन्द: अरूड़ा मल शाखा",
+                btn_next_page: "पृष्ठ 4 - थम्मा मलकाना – कटाड़ा पुरीयां, बटाला - सैन दास व लभू राम शाखाएं",
                 footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
                 fs_open: "पूरी स्क्रीन पर देखें",
                 fs_close: "बंद करें",
                 footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
-
-                c_katra_purian: "कटड़ा पुरीयाँ",
                 c_thamma_malkana: "थम्मा मलकाना",
-                n_purnchand_1: "पूर्ण चन्द",
-                n_bharudamal: "भरूड़ा मल",
-                n_gulabchand_1: "गुलाब चन्द",
-                n_meghraj_1: "मेघ राज",
-                n_jeetmal_1: "जीत मल",
-                n_fatehchand_1: "फतेह चन्द",
-                n_bhagwandas_1: "भगवान दास",
-                n_deviditta: "देवी दित्ता",
-                n_malakkapoor: "मलक कपूर",
-                n_gobindchand: "गोबिद चन्द",
-                n_dharjanmal: "भरजन मल",
-                n_rajkour: "राज कौर",
-                n_chatarbihari: "चतर बिहारी",
-                n_bankarai: "बांका राय",
-                n_dhamirsingh: "भ्रमीर सिंह",
-                n_todarmal: "टोडर मल",
-                n_govardhanlal: "गोवर्धन लाल",
-                n_baghelmal: "बघेल मल",
-                n_paharmal: "पहाड़ मल",
-                n_jatmal: "जट मल",
-                n_kahansingh: "काहन सिंह",
-                n_heerasingh: "हीरा सिंह",
-                n_nihalsingh: "निहाल सिंह",
-                n_ratta: "रत्ता",
-                n_palamal: "पाला मल",
-                n_polomal: "पोलो मल",
-                n_basawamal: "वसावा मल",
-                n_gujarmal: "गुजर मल",
-                n_gobindyash: "गोबिद यश",
-                n_kirparam: "किरपा राम",
-                n_shankardas: "शंकर दास",
-                n_dropadideva: "द्रोपदी देवा",
-                "n_mohanlal-sub": "मोहन लाल",
-                n_shivdas: "शिव दास",
-                n_bugradas: "बग्रा दास",
-                n_takhatram: "तख्त राम",
-                n_khushiram: "खुशी राम",
-                n_jagannath: "जगननाथ",
-                n_harkishanlal: "हरकिशन लाल",
-                n_thanduram: "ठंडू राम",
-                n_gyanchand: "ज्ञान चन्द",
-                n_jagdishlal1: "जगदीश लाल",
-                n_bhromprakash: "भ्रोमप्रकाश",
-                n_dhamvir: "धर्मवीर",
-                n_nandalal: "नंदलाल",
-                n_devraj: "देवराज",
-                n_vipanchand: "विपनचंद",
-                n_vijay: "विजय",
-                "n_mohanlal-main": "मोहन लाल",
-                n_kalyanchand: "कल्याण चन्द",
-                "n_purnchand-main": "पूर्ण चन्द",
-                n_rudamal: "रुड़ा मल",
-                n_gulabchand: "गुलाब चन्द",
-                n_meghraj: "मेघ राज",
-                n_jeetmal: "जीत मल",
-                n_fatehchand: "फतेहचंद",
-                n_bhagwandas: "भगवान दास",
-                n_patarsingh: "पतर सिंह",
-                n_kotumal: "कोटू मल",
-                n_mathradas: "मथरा दास",
-                n_jamnadas: "जमनादास",
-                n_chunilal: "चुनी लाल",
-                n_somdat: "सोमदत",
-                n_vedvyas: "वेदव्यास",
-                n_krishnakumar: "कृष्ण कुमार",
-                n_charanjit: "चरणजीत",
-                n_jagdishchand: "जगदीश चंद",
-                "n_mohanlal-bottom": "मोहन लाल",
-                n_deepak: "दीपक",
-                n_surya: "सुर्यं कुमार",
-                n_kuldeep: "कुलदीप कुमार",
-                n_rajiv: "राजीव",
-                n_moolraj: "मूलराज",
-                n_gokulchand: "गोकुल चंद",
-                n_mushtakrai: "मुश्ताक राय",
-                n_shankardas2: "शंकरदास",
-                n_chetram: "चेत राम",
-                n_gangaram: "गंगा राम",
-                n_kesardas: "केसरदास",
-                n_hardarilal: "हरद्वारी लाल",
-                n_rajinderkumar: "राजिन्द्र कुमार",
-                n_balvidr: "बलविद्र"
+                c_katra_purian: "कटड़ा पुरीयां",
+                n_1: "विनोद",
+                n_2: "विजय",
+                n_3: "विवेक",
+                n_4: "प्राणनाथ",
+                n_5: "प्रेमचन्द",
+                n_6: "गोपाल दास",
+                n_7: "पवन",
+                n_8: "राज कुमार",
+                n_9: "विपन",
+                n_10: "विनय",
+                n_11: "मदन लाल",
+                n_12: "रोडा मल",
+                n_13: "राजन",
+                n_14: "विजय कुमार",
+                n_15: "नवीन",
+                n_16: "विपन",
+                n_17: "प्रशोतमलाल",
+                n_18: "संजीव",
+                n_19: "कोनी",
+                n_20: "सुनील",
+                n_21: "सुदेश कुमार",
+                n_22: "रजेश",
+                n_23: "संजीव",
+                n_24: "मनोहर लाल",
+                n_25: "विपन कुमार",
+                n_26: "भगवत सरूप",
+                n_27: "केवल कृष्ण",
+                n_28: "रमन",
+                n_29: "जगदीश चंद्र",
+                n_30: "रोलू मल",
+                n_31: "मोहन लाल ×",
+                n_32: "कृष्ण कुमार",
+                n_33: "शिवराज",
+                n_34: "अशोक कुमार",
+                n_35: "रोशन लाल",
+                n_36: "चरणदास ×",
+                n_37: "चूनी लाल ×",
+                n_38: "देवराज ×",
+                n_39: "विक्रांत",
+                n_40: "अनित",
+                n_41: "नरिन्दर कुमार",
+                n_42: "ऋषि",
+                n_43: "पंकज",
+                n_44: "अशोक कुमार",
+                n_45: "सुरिन्दर कुमार",
+                n_46: "सुभाष",
+                n_47: "सतपाल",
+                n_48: "जतिन्द्र",
+                n_49: "कृष्ण चन्द",
+                n_50: "खुशी राम",
+                n_51: "शाम लाल",
+                n_52: "जोगिदर नाथ",
+                n_53: "द्वारका दास",
+                n_54: "तीर्थ राम",
+                n_55: "गुजरमल",
+                n_56: "बेजनाथ ×",
+                n_57: "राजकुमार",
+                n_58: "मंगत राम",
+                n_59: "दीवान चंद",
+                n_60: "कमल नारायण",
+                n_61: "सतपाल",
+                n_62: "मिटू",
+                n_63: "भूषण",
+                n_64: "संत कुमार",
+                n_65: "रोहित",
+                n_66: "राम कृष्ण",
+                n_67: "राज कुमार",
+                n_68: "मोहन लाल",
+                n_69: "अश्वनी",
+                n_70: "शांती",
+                n_71: "रवि",
+                n_72: "शिव कुमार",
+                n_73: "विपन",
+                n_74: "विकास",
+                n_75: "अश्वनी",
+                n_76: "रमेश",
+                n_77: "रजेश",
+                n_78: "सुभाष",
+                n_79: "रजेश",
+                n_80: "रकेश",
+                n_81: "सुरेन्द्र",
+                n_82: "रजेन्द्र",
+                n_83: "अश्वनी",
+                n_84: "सतीश",
+                n_85: "रिकू",
+                n_86: "नंदकिशोर",
+                n_87: "अजय",
+                n_88: "विनोद",
+                n_89: "सुरेश",
+                n_90: "चिंटू",
+                n_91: "विश्वानाथ",
+                n_92: "सोहन लाल",
+                n_93: "सुनीत कुमार",
+                n_94: "रविन्द्र कुमार",
+                n_95: "राम लाल",
+                n_96: "अतुल",
+                n_97: "अशोक कुमार",
+                n_98: "गौरव",
+                n_99: "विमल",
+                n_100: "राम प्रकाश",
+                n_101: "काहन चन्द",
+                n_102: "गंगा राम",
+                n_103: "मुकंद लाल ↓",
+                n_104: "हीरा नन्द",
+                n_105: "साईं दास ↓",
+                n_106: "भगवान दास",
+                n_107: "अरुड़ा मल",
+                n_108: "पूर्ण चन्द"
             },
             en: {
-                page_title: "Thamma Malkana Katra Purian | Ladi Satyoti Trust",
+                page_title: "Thamma Malkana – Katra Purian, Batala - Purn Chand: Ganga Ram Continuation | Ladi Satyoti Trust",
                 nav_back_home: "Back to Home",
                 nav_sacred: "॥ Shri Ladi Satyoti Devyai Namah ॥",
-                page_indicator: "Page 2 - Thamma Malkana Katra Purian",
+                page_indicator: "Page 3 - Thamma Malkana – Katra Purian, Batala - Purn Chand: Ganga Ram Continuation",
                 top_nav_home: "Home",
-                top_nav_prev: "Page 1 - Three Thammas of the Puri Clan",
-                top_nav_next: "Page 3 - Thamma Malkana Katra Purian - Continued",
+                top_nav_prev: "Page 2 - Thamma Malkana – Katra Purian, Batala - Purn Chand: Arura Mal Branch",
+                top_nav_next: "Page 4 - Thamma Malkana – Katra Purian, Batala - Sain Das & Labhu Ram Branches",
                 btn_back_home: "Back to Home Page",
-                btn_prev_page: "Page 1 - Three Thammas of the Puri Clan",
-                btn_next_page: "Page 3 - Thamma Malkana Katra Purian - Continued",
+                btn_prev_page: "Page 2 - Thamma Malkana – Katra Purian, Batala - Purn Chand: Arura Mal Branch",
+                btn_next_page: "Page 4 - Thamma Malkana – Katra Purian, Batala - Sain Das & Labhu Ram Branches",
                 footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
                 fs_open: "View Full Screen",
                 fs_close: "Close",
                 footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
-
-                c_katra_purian: "Katra Purian",
                 c_thamma_malkana: "Thamma Malkana",
-                n_purnchand_1: "Purn Chand",
-                n_bharudamal: "Bharuda Mal",
-                n_gulabchand_1: "Gulab Chand",
-                n_meghraj_1: "Megh Raj",
-                n_jeetmal_1: "Jeet Mal",
-                n_fatehchand_1: "Fateh Chand",
-                n_bhagwandas_1: "Bhagwan Das",
-                n_deviditta: "Devi Ditta",
-                n_malakkapoor: "Malak Kapoor",
-                n_gobindchand: "Gobind Chand",
-                n_dharjanmal: "Dharjan Mal",
-                n_rajkour: "Raj Kaur",
-                n_chatarbihari: "Chatar Bihari",
-                n_bankarai: "Banka Rai",
-                n_dhamirsingh: "Dhamir Singh",
-                n_todarmal: "Todar Mal",
-                n_govardhanlal: "Govardhan Lal",
-                n_baghelmal: "Baghel Mal",
-                n_paharmal: "Pahar Mal",
-                n_jatmal: "Jat Mal",
-                n_kahansingh: "Kahan Singh",
-                n_heerasingh: "Heera Singh",
-                n_nihalsingh: "Nihal Singh",
-                n_ratta: "Ratta",
-                n_palamal: "Pala Mal",
-                n_polomal: "Polo Mal",
-                n_basawamal: "Basawa Mal",
-                n_gujarmal: "Gujar Mal",
-                n_gobindyash: "Gobind Yash",
-                n_kirparam: "Kirpa Ram",
-                n_shankardas: "Shankar Das",
-                n_dropadideva: "Dropadi Deva",
-                "n_mohanlal-sub": "Mohan Lal",
-                n_shivdas: "Shiv Das",
-                n_bugradas: "Bagra Das",
-                n_takhatram: "Takhat Ram",
-                n_khushiram: "Khushi Ram",
-                n_jagannath: "Jagannath",
-                n_harkishanlal: "Harkishan Lal",
-                n_thanduram: "Thandu Ram",
-                n_gyanchand: "Gyan Chand",
-                n_jagdishlal1: "Jagdish Lal",
-                n_bhromprakash: "Om Prakash",
-                n_dhamvir: "Dharamveer",
-                n_nandalal: "Nandalal",
-                n_devraj: "Devraj",
-                n_vipanchand: "Vipanchand",
-                n_vijay: "Vijay",
-                "n_mohanlal-main": "Mohan Lal",
-                n_kalyanchand: "Kalyan Chand",
-                "n_purnchand-main": "Purn Chand",
-                n_rudamal: "Ruda Mal",
-                n_gulabchand: "Gulab Chand",
-                n_meghraj: "Megh Raj",
-                n_jeetmal: "Jeet Mal",
-                n_fatehchand: "Fatehchand",
-                n_bhagwandas: "Bhagwan Das",
-                n_patarsingh: "Patar Singh",
-                n_kotumal: "Kotu Mal",
-                n_mathradas: "Mathra Das",
-                n_jamnadas: "Jamnadas",
-                n_chunilal: "Chuni Lal",
-                n_somdat: "Somdat",
-                n_vedvyas: "Vedvyas",
-                n_krishnakumar: "Krishna Kumar",
-                n_charanjit: "Charanjit",
-                n_jagdishchand: "Jagdish Chand",
-                "n_mohanlal-bottom": "Mohan Lal",
-                n_deepak: "Deepak",
-                n_surya: "Surya Kumar",
-                n_kuldeep: "Kuldip Kumar",
-                n_rajiv: "Rajiv",
-                n_moolraj: "Moolraj",
-                n_gokulchand: "Gokul Chand",
-                n_mushtakrai: "Mushtak Rai",
-                n_shankardas2: "Shankardas",
-                n_chetram: "Chet Ram",
-                n_gangaram: "Ganga Ram",
-                n_kesardas: "Kesardas",
-                n_hardarilal: "Hardari Lal",
-                n_rajinderkumar: "Rajinder Kumar",
-                n_balvidr: "Balvidr"
+                c_katra_purian: "Katra Purian",
+                n_1: "Vinod",
+                n_2: "Vijay",
+                n_3: "Vivek",
+                n_4: "Prannath",
+                n_5: "Premchand",
+                n_6: "Gopal Das",
+                n_7: "Pawan",
+                n_8: "Raj Kumar",
+                n_9: "Vipan",
+                n_10: "Vinay",
+                n_11: "Madan Lal",
+                n_12: "Roda Mal",
+                n_13: "Rajan",
+                n_14: "Vijay Kumar",
+                n_15: "Naveen",
+                n_16: "Vipan",
+                n_17: "Prashotam Lal",
+                n_18: "Sanjeev",
+                n_19: "Koni",
+                n_20: "Sunil",
+                n_21: "Sudesh Kumar",
+                n_22: "Rajesh",
+                n_23: "Sanjeev",
+                n_24: "Manohar Lal",
+                n_25: "Vipan Kumar",
+                n_26: "Bhagwat Sarup",
+                n_27: "Keval Krishan",
+                n_28: "Raman",
+                n_29: "Jagdish Chandra",
+                n_30: "Rolu Mal",
+                n_31: "Mohan Lal ×",
+                n_32: "Krishan Kumar",
+                n_33: "Shivraj",
+                n_34: "Ashok Kumar",
+                n_35: "Roshan Lal",
+                n_36: "Charandas ×",
+                n_37: "Chuni Lal ×",
+                n_38: "Devraj ×",
+                n_39: "Vikrant",
+                n_40: "Anit",
+                n_41: "Narinder Kumar",
+                n_42: "Rishi",
+                n_43: "Pankaj",
+                n_44: "Ashok Kumar",
+                n_45: "Surinder Kumar",
+                n_46: "Subhash",
+                n_47: "Satpal",
+                n_48: "Jatinder",
+                n_49: "Krishan Chand",
+                n_50: "Khushi Ram",
+                n_51: "Shyam Lal",
+                n_52: "Joginder Nath",
+                n_53: "Dwarka Das",
+                n_54: "Tirath Ram",
+                n_55: "Gujarmal",
+                n_56: "Bijnath ×",
+                n_57: "Rajkumar",
+                n_58: "Mangat Ram",
+                n_59: "Diwan Chand",
+                n_60: "Kamal Narayan",
+                n_61: "Satpal",
+                n_62: "Mittu",
+                n_63: "Bhushan",
+                n_64: "Sant Kumar",
+                n_65: "Rohit",
+                n_66: "Ram Krishan",
+                n_67: "Raj Kumar",
+                n_68: "Mohan Lal",
+                n_69: "Ashwani",
+                n_70: "Shanti",
+                n_71: "Ravi",
+                n_72: "Shiv Kumar",
+                n_73: "Vipan",
+                n_74: "Vikas",
+                n_75: "Ashwani",
+                n_76: "Ramesh",
+                n_77: "Rajesh",
+                n_78: "Subhash",
+                n_79: "Rajesh",
+                n_80: "Rakesh",
+                n_81: "Surendra",
+                n_82: "Rajendra",
+                n_83: "Ashwani",
+                n_84: "Satish",
+                n_85: "Rinku",
+                n_86: "Nand Kishore",
+                n_87: "Ajay",
+                n_88: "Vinod",
+                n_89: "Suresh",
+                n_90: "Chintu",
+                n_91: "Vishwanath",
+                n_92: "Sohan Lal",
+                n_93: "Sunit Kumar",
+                n_94: "Ravinder Kumar",
+                n_95: "Ram Lal",
+                n_96: "Atul",
+                n_97: "Ashok Kumar",
+                n_98: "Gaurav",
+                n_99: "Vimal",
+                n_100: "Ram Parkash",
+                n_101: "Kahan Chand",
+                n_102: "Ganga Ram",
+                n_103: "Mukand Lal ↓",
+                n_104: "Heera Nand",
+                n_105: "Sain Das ↓",
+                n_106: "Bhagwan Das",
+                n_107: "Arura Mal",
+                n_108: "Purn Chand"
             }
         };
 
@@ -1003,8 +1084,8 @@
         /* ---- Family-tree layout ----------------------------------------
            Box widths are measured with the page's own fonts, so spacing and
            connector routing adapt to Hindi and English alike and to any screen. */
-        const TREE = {"W0": 1464, "H0": 912, "KX": 1.5, "KY": 1.2, "BOX_H": 34, "GAP": 8, "SNAP": 25, "TITLE_Y": 51.5, "XINS0": [[1020, 14], [1150, 14]], "YINS0": [[200, 19], [215, 19]], "H": [[32, 112.8, 340, 112.4], [733, 166.1, 1150, 163.3], [687, 275.0, 880, 274.3], [376, 344.1, 1064, 340.4], [278, 405.5, 523, 407.9], [403, 540.3, 621, 543.4], [890, 540.5, 1377, 540.2], [1153, 600.8, 1437, 603.5], [108, 603.4, 486, 605.3], [680, 644.0, 1040, 642.9], [381, 649.7, 460, 649.0], [1196, 659.2, 1432, 662.7], [243, 667.5, 531, 671.6], [878, 713.3, 1111.5, 715.8], [397, 715.3, 749, 716.3], [317, 773.9, 479, 776.1], [846, 775.2, 966, 775.5], [1004, 776.6, 1234, 779.2], [509, 777.3, 826, 775.0], [420.0, 834.4, 629.5, 833.6], [637.0, 833.6, 712.0, 833.3], [1039, 839.5, 1107, 839.5], [951, 480.11, 1011, 479.71], [1011, 479.71, 1071, 479.14], [1071, 479.14, 1131, 478.55], [1131, 478.55, 1191, 478.1], [1191, 478.1, 1251, 477.92], [1251, 477.92, 1311, 478.17], [1311, 478.17, 1371, 478.99], [1371, 478.99, 1431, 480.53], [1431, 480.53, 1432, 480.56]], "BRIDGE": [[629.5, 833.6, 637.0, 833.6]], "V": [[67.5, 112.8, 135.0], [68.0, 159.0, 178.0], [137.5, 603.5, 625.0], [172.5, 112.6, 135.0], [276.5, 668.0, 685.0], [284.0, 604.3, 625.0], [297.5, 112.5, 134.0], [314.5, 524.0, 539.0], [323.5, 405.9, 424.0], [324.2, 447.0, 463.0], [324.0, 485.0, 501.0], [351.5, 814.0, 830.0], [385.5, 344.0, 367.0], [389.0, 669.6, 687.0], [403.5, 389.0, 406.7], [409.5, 604.9, 626.0], [422.0, 649.3, 670.0], [425.0, 834.4, 852.0], [436.5, 775.5, 794.0], [436.5, 815.0, 834.3], [457.5, 585.0, 605.2], [458.5, 541.1, 562.0], [482.5, 486.0, 502.0], [482.5, 523.0, 541.4], [497.5, 407.7, 426.0], [545.5, 833.9, 852.0], [551.5, 777.0, 794.0], [577.5, 715.8, 733.0], [585.5, 587.0, 605.0], [588.8, 631.0, 649.0], [620.0, 776.5, 794.0], [630.5, 833.6, 849.0], [689.0, 776.0, 793.0], [707.5, 643.9, 662.0], [731.5, 274.8, 296.0], [738.5, 757.0, 775.6], [783.5, 210.0, 230.0], [784.5, 165.8, 187.0], [784.5, 253.0, 274.6], [801.5, 775.2, 793.0], [839.8, 319.0, 341.6], [844.5, 775.2, 792.0], [855.5, 274.4, 296.0], [875.0, 738.0, 775.3], [885.5, 689.0, 713.4], [909.5, 58.0, 74.0], [909.5, 101.0, 120.0], [909.5, 143.0, 164.9], [919.0, 164.9, 187.0], [925.5, 540.5, 566.0], [945.5, 584.0, 600.0], [966.5, 479.0, 500.0], [1003.8, 817.0, 836.0], [1006.5, 776.6, 794.0], [1023.5, 386.0, 401.0], [1023.5, 424.0, 439.0], [1027.2, 340.6, 364.0], [1046.5, 839.5, 857.0], [1086.5, 163.7, 185.0], [1163.5, 820.0, 839.0], [1176.5, 478.7, 499.0], [1188.5, 585.0, 601.1], [1206.5, 601.3, 619.0], [1206.5, 643.0, 659.4], [1234.2, 659.8, 682.0], [1233.5, 782.0, 796.0], [1291.5, 602.1, 619.0], [1366.5, 540.2, 563.0], [1387.5, 478.4, 501.0], [1397.8, 603.1, 622.0], [1405.5, 662.3, 684.0], [999.5, 519.0, 540.0], [1111.5, 715.5, 735.0], [1320.0, 661.0, 684.0], [1235.0, 715.0, 732.0], [1105.0, 757.0, 776.0], [1075.0, 778.0, 790.0], [1145.0, 778.0, 790.0], [1276.0, 821.0, 838.0], [1197.0, 541.0, 561.0], [491.0, 671.5, 688.0], [703.0, 834.0, 850.0], [351.5, 774.4, 792], [423.5, 715.4, 732], [439.0, 758, 775.6], [489.0, 448, 464], [595.0, 543.0, 564], [739.5, 775.6, 792], [748.0, 716.3, 733], [887.5, 713.4, 732], [892.5, 643.4, 660], [943.0, 626, 643.2], [957.5, 775.5, 793], [1023.0, 462, 478.9], [1098.5, 839.5, 857], [702.2, 690.0, 714.5]], "boxes": [{"id": "n-purnchand-1", "key": "n_purnchand_1", "x": 178, "y": 94, "ls": 1.8}, {"id": "n-bharudamal", "key": "n_bharudamal", "x": 76, "y": 147, "ls": 1.8}, {"id": "n-gulabchand-1", "key": "n_gulabchand_1", "x": 188, "y": 146, "ls": 1.8}, {"id": "n-meghraj-1", "key": "n_meghraj_1", "x": 299, "y": 147, "ls": 1.8}, {"id": "n-jeetmal-1", "key": "n_jeetmal_1", "x": 69.01, "y": 189, "ls": 1.8}, {"id": "n-fatehchand-1", "key": "n_fatehchand_1", "x": 73.53, "y": 210, "ls": 1.8}, {"id": "n-bhagwandas-1", "key": "n_bhagwandas_1", "x": 76.84, "y": 231, "ls": 1.8}, {"id": "n-deviditta", "key": "n_deviditta", "x": 911, "y": 45, "ls": 1.8}, {"id": "n-malakkapoor", "key": "n_malakkapoor", "x": 921, "y": 88, "ls": 1.8}, {"id": "n-gobindchand", "key": "n_gobindchand", "x": 923, "y": 132, "ls": 1.8}, {"id": "n-dharjanmal", "key": "n_dharjanmal", "x": 794, "y": 199, "ls": 1.8}, {"id": "n-rajkour", "key": "n_rajkour", "x": 932, "y": 199, "ls": 1.8}, {"id": "n-chatarbihari", "key": "n_chatarbihari", "x": 1090, "y": 198, "ls": 1.8}, {"id": "n-bankarai", "key": "n_bankarai", "x": 790, "y": 242, "ls": 1.8}, {"id": "n-dhamirsingh", "key": "n_dhamirsingh", "x": 734, "y": 309, "ls": 1.8}, {"id": "n-todarmal", "key": "n_todarmal", "x": 846, "y": 308, "ls": 1.8}, {"id": "n-govardhanlal", "key": "n_govardhanlal", "x": 382, "y": 378, "ls": 1.8}, {"id": "n-baghelmal", "key": "n_baghelmal", "x": 328, "y": 435, "ls": 1.8}, {"id": "n-paharmal", "key": "n_paharmal", "x": 489, "y": 437, "ls": 1.8}, {"id": "n-jatmal", "key": "n_jatmal", "x": 320, "y": 474, "ls": 1.8}, {"id": "n-kahansingh", "key": "n_kahansingh", "x": 485, "y": 475, "ls": 1.8}, {"id": "n-heerasingh", "key": "n_heerasingh", "x": 330, "y": 512, "ls": 1.8}, {"id": "n-nihalsingh", "key": "n_nihalsingh", "x": 493, "y": 513, "ls": 1.8}, {"id": "n-ratta", "key": "n_ratta", "x": 308, "y": 551, "ls": 1.8}, {"id": "n-palamal", "key": "n_palamal", "x": 459, "y": 574, "ls": 1.8}, {"id": "n-polomal", "key": "n_polomal", "x": 595, "y": 575, "ls": 1.8}, {"id": "n-basawamal", "key": "n_basawamal", "x": 590, "y": 616, "ls": 1.8}, {"id": "n-gujarmal", "key": "n_gujarmal", "x": 594, "y": 661, "ls": 1.8}, {"id": "n-gobindyash", "key": "n_gobindyash", "x": 169, "y": 637, "ls": 1.8}, {"id": "n-kirparam", "key": "n_kirparam", "x": 288, "y": 637, "ls": 1.8}, {"id": "n-shankardas", "key": "n_shankardas", "x": 409, "y": 638, "ls": 1.8}, {"id": "n-dropadideva", "key": "n_dropadideva", "x": 494, "y": 639, "ls": 1.8}, {"id": "n-mohanlal-sub", "key": "n_mohanlal-sub", "x": 305, "y": 698, "ls": 1.8}, {"id": "n-shivdas", "key": "n_shivdas", "x": 398, "y": 699, "ls": 1.8}, {"id": "n-bugradas", "key": "n_bugradas", "x": 480, "y": 700, "ls": 1.8}, {"id": "n-takhatram", "key": "n_takhatram", "x": 433, "y": 744, "ls": 1.8}, {"id": "n-khushiram", "key": "n_khushiram", "x": 582, "y": 746, "ls": 1.8}, {"id": "n-jagannath", "key": "n_jagannath", "x": 749, "y": 744, "ls": 1.8}, {"id": "n-harkishanlal", "key": "n_harkishanlal", "x": 703, "y": 674, "ls": 1.8}, {"id": "n-thanduram", "key": "n_thanduram", "x": 346, "y": 804, "ls": 1.8}, {"id": "n-gyanchand", "key": "n_gyanchand", "x": 428, "y": 805, "ls": 1.8}, {"id": "n-jagdishlal1", "key": "n_jagdishlal1", "x": 344, "y": 841, "ls": 1.8}, {"id": "n-bhromprakash", "key": "n_bhromprakash", "x": 550, "y": 806, "ls": 1.8}, {"id": "n-dhamvir", "key": "n_dhamvir", "x": 617, "y": 806, "ls": 1.8}, {"id": "n-nandalal", "key": "n_nandalal", "x": 676, "y": 805, "ls": 1.8}, {"id": "n-devraj", "key": "n_devraj", "x": 735, "y": 804, "ls": 1.8}, {"id": "n-vipanchand", "key": "n_vipanchand", "x": 797, "y": 804, "ls": 1.8}, {"id": "n-vijay", "key": "n_vijay", "x": 699, "y": 862, "ls": 1.8}, {"id": "n-mohanlal-main", "key": "n_mohanlal-main", "x": 1023, "y": 375, "ls": 1.8}, {"id": "n-kalyanchand", "key": "n_kalyanchand", "x": 1031, "y": 413, "ls": 1.8}, {"id": "n-purnchand-main", "key": "n_purnchand-main", "x": 1030, "y": 451, "ls": 1.8}, {"id": "n-rudamal", "key": "n_rudamal", "x": 985, "y": 512, "ls": 1.8}, {"id": "n-gulabchand", "key": "n_gulabchand", "x": 1195, "y": 510, "ls": 1.8}, {"id": "n-meghraj", "key": "n_meghraj", "x": 1390, "y": 513, "ls": 1.8}, {"id": "n-jeetmal", "key": "n_jeetmal", "x": 946, "y": 573, "ls": 1.8}, {"id": "n-fatehchand", "key": "n_fatehchand", "x": 1194, "y": 573, "ls": 1.8}, {"id": "n-bhagwandas", "key": "n_bhagwandas", "x": 1378, "y": 574, "ls": 1.8}, {"id": "n-patarsingh", "key": "n_patarsingh", "x": 945, "y": 615, "ls": 1.8}, {"id": "n-kotumal", "key": "n_kotumal", "x": 906, "y": 672, "ls": 1.8}, {"id": "n-mathradas", "key": "n_mathradas", "x": 875, "y": 744, "ls": 1.8}, {"id": "n-jamnadas", "key": "n_jamnadas", "x": 1093, "y": 746, "ls": 1.8}, {"id": "n-chunilal", "key": "n_chunilal", "x": 871, "y": 804, "ls": 1.8}, {"id": "n-somdat", "key": "n_somdat", "x": 943, "y": 805, "ls": 1.8}, {"id": "n-vedvyas", "key": "n_vedvyas", "x": 1006, "y": 806, "ls": 1.8}, {"id": "n-krishnakumar", "key": "n_krishnakumar", "x": 1080.0, "y": 807.0, "ls": 0.0}, {"id": "n-charanjit", "key": "n_charanjit", "x": 1155.0, "y": 808.0, "ls": 0.4}, {"id": "n-jagdishchand", "key": "n_jagdishchand", "x": 1251, "y": 809, "ls": 1.8}, {"id": "n-mohanlal-bottom", "key": "n_mohanlal-bottom", "x": 993, "y": 847, "ls": 1.8}, {"id": "n-deepak", "key": "n_deepak", "x": 1047, "y": 869, "ls": 1.8}, {"id": "n-surya", "key": "n_surya", "x": 1117, "y": 870, "ls": 1.8}, {"id": "n-kuldeep", "key": "n_kuldeep", "x": 1186, "y": 850, "ls": 0.19999999999999984}, {"id": "n-rajiv", "key": "n_rajiv", "x": 1282.0, "y": 851.0, "ls": 0.8}, {"id": "n-moolraj", "key": "n_moolraj", "x": 1207, "y": 631, "ls": 1.8}, {"id": "n-gokulchand", "key": "n_gokulchand", "x": 1296, "y": 631, "ls": 1.8}, {"id": "n-mushtakrai", "key": "n_mushtakrai", "x": 1398, "y": 634, "ls": 1.8}, {"id": "n-shankardas2", "key": "n_shankardas2", "x": 1243, "y": 700, "ls": 1.8}, {"id": "n-chetram", "key": "n_chetram", "x": 1326, "y": 701, "ls": 1.8}, {"id": "n-gangaram", "key": "n_gangaram", "x": 1412, "y": 703, "ls": 1.8}, {"id": "n-kesardas", "key": "n_kesardas", "x": 1246, "y": 746, "ls": 1.8}, {"id": "n-hardarilal", "key": "n_hardarilal", "x": 447.625, "y": 863, "ls": 1.8}, {"id": "n-rajinderkumar", "key": "n_rajinderkumar", "x": 551.1640625, "y": 863, "ls": 1.8}, {"id": "n-balvidr", "key": "n_balvidr", "x": 636.5390625, "y": 863, "ls": 1.8}], "titles": [{"id": "c-katra-purian", "key": "c_katra_purian", "x": 688.5, "ls": 1.49}, {"id": "c-thamma-malkana", "key": "c_thamma_malkana", "x": 1123.0, "ls": 2.67}]};
-        const TREE_MIN_SCALE = 0.6;
+        const TREE = {"W0": 2933, "H0": 1145, "KX": 1, "KY": 1, "BOX_H": 34, "GAP": 8, "SNAP": 25, "TITLE_Y": 60, "XINS0": [], "YINS0": [], "H": [[204, 456, 386, 456], [295, 384, 422, 384], [534, 384, 847, 384], [359, 312, 690, 312], [411, 600, 507, 600], [608, 600, 790, 600], [886, 600, 993, 600], [297, 528, 1092, 528], [694, 456, 1213, 456], [1396, 528, 1670, 528], [1788, 600, 1887, 600], [1972, 600, 2069, 600], [1837, 528, 2335, 528], [1386, 456, 2452, 456], [954, 384, 1919, 384], [121, 888, 280, 888], [723, 960, 824, 960], [774, 888, 956, 888], [1057, 1032, 1164, 1032], [1196, 960, 1389, 960], [1596, 960, 1697, 960], [1809, 960, 2128, 960], [2213, 960, 2299, 960], [1110, 888, 2395, 888], [2725, 888, 2847, 888], [616, 816, 2786, 816], [201, 744, 2551, 744], [1436, 312, 2698, 312], [525, 240, 2209, 240]], "BRIDGE": [], "V": [[295, 437, 456], [204, 456, 475], [295, 456, 475], [386, 456, 475], [359, 365, 384], [295, 384, 403], [422, 384, 403], [690, 365, 384], [534, 384, 403], [645, 384, 403], [756, 384, 403], [847, 384, 403], [525, 293, 312], [359, 312, 331], [690, 312, 331], [297, 581, 619], [459, 581, 600], [411, 600, 619], [507, 600, 619], [699, 581, 600], [608, 600, 619], [704, 600, 619], [790, 600, 619], [939, 581, 600], [886, 600, 619], [993, 600, 619], [694, 509, 528], [297, 528, 547], [459, 528, 547], [699, 528, 547], [939, 528, 547], [1092, 528, 547], [1213, 509, 547], [954, 437, 456], [694, 456, 475], [867, 456, 475], [1213, 456, 475], [1533, 509, 528], [1396, 528, 547], [1538, 528, 547], [1670, 528, 547], [1837, 581, 600], [1788, 600, 619], [1887, 600, 619], [2021, 581, 600], [1972, 600, 619], [2069, 600, 619], [2086, 509, 528], [1837, 528, 547], [2021, 528, 547], [2188, 528, 547], [2335, 528, 547], [2452, 509, 547], [1919, 437, 456], [1386, 456, 475], [1533, 456, 475], [1680, 456, 475], [1832, 456, 475], [1969, 456, 475], [2086, 456, 475], [2452, 456, 475], [1436, 365, 384], [954, 384, 403], [1919, 384, 403], [201, 869, 888], [121, 888, 907], [280, 888, 907], [201, 797, 835], [469, 869, 907], [469, 797, 835], [616, 869, 907], [774, 941, 960], [723, 960, 979], [824, 960, 979], [956, 1013, 1051], [956, 941, 979], [865, 869, 888], [774, 888, 907], [956, 888, 907], [1110, 1013, 1032], [1057, 1032, 1051], [1164, 1032, 1051], [1110, 941, 979], [1292, 941, 960], [1196, 960, 979], [1287, 960, 979], [1389, 960, 979], [1495, 941, 979], [1647, 941, 960], [1596, 960, 979], [1697, 960, 979], [1968, 941, 960], [1809, 960, 979], [1925, 960, 979], [2031, 960, 979], [2128, 960, 979], [2256, 941, 960], [2213, 960, 979], [2299, 960, 979], [2395, 941, 979], [1753, 869, 888], [1110, 888, 907], [1292, 888, 907], [1495, 888, 907], [1647, 888, 907], [1968, 888, 907], [2256, 888, 907], [2395, 888, 907], [2558, 941, 979], [2558, 869, 907], [2725, 941, 979], [2847, 941, 979], [2786, 869, 888], [2725, 888, 907], [2847, 888, 907], [1701, 797, 816], [616, 816, 835], [865, 816, 835], [1753, 816, 835], [2558, 816, 835], [2786, 816, 835], [2551, 365, 744], [201, 744, 763], [327, 744, 763], [469, 744, 763], [1701, 744, 763], [2067, 293, 312], [1436, 312, 331], [2551, 312, 331], [2698, 312, 331], [1367, 221, 240], [525, 240, 259], [2067, 240, 259], [2209, 240, 259], [1367, 149, 187], [1367, 77, 115]], "boxes": [{"id": "n-1", "key": "n_1", "x": 204, "y": 492, "ls": 1.8}, {"id": "n-2", "key": "n_2", "x": 295, "y": 492, "ls": 1.8}, {"id": "n-3", "key": "n_3", "x": 386, "y": 492, "ls": 1.8}, {"id": "n-4", "key": "n_4", "x": 295, "y": 420, "ls": 1.8}, {"id": "n-5", "key": "n_5", "x": 422, "y": 420, "ls": 1.8}, {"id": "n-6", "key": "n_6", "x": 359, "y": 348, "ls": 1.8}, {"id": "n-7", "key": "n_7", "x": 534, "y": 420, "ls": 1.8}, {"id": "n-8", "key": "n_8", "x": 645, "y": 420, "ls": 1.8}, {"id": "n-9", "key": "n_9", "x": 756, "y": 420, "ls": 1.8}, {"id": "n-10", "key": "n_10", "x": 847, "y": 420, "ls": 1.8}, {"id": "n-11", "key": "n_11", "x": 690, "y": 348, "ls": 1.8}, {"id": "n-12", "key": "n_12", "x": 525, "y": 276, "ls": 1.8}, {"id": "n-13", "key": "n_13", "x": 297, "y": 636, "ls": 1.8}, {"id": "n-14", "key": "n_14", "x": 297, "y": 564, "ls": 1.8}, {"id": "n-15", "key": "n_15", "x": 411, "y": 636, "ls": 1.8}, {"id": "n-16", "key": "n_16", "x": 507, "y": 636, "ls": 1.8}, {"id": "n-17", "key": "n_17", "x": 459, "y": 564, "ls": 1.8}, {"id": "n-18", "key": "n_18", "x": 608, "y": 636, "ls": 1.8}, {"id": "n-19", "key": "n_19", "x": 704, "y": 636, "ls": 1.8}, {"id": "n-20", "key": "n_20", "x": 790, "y": 636, "ls": 1.8}, {"id": "n-21", "key": "n_21", "x": 699, "y": 564, "ls": 1.8}, {"id": "n-22", "key": "n_22", "x": 886, "y": 636, "ls": 1.8}, {"id": "n-23", "key": "n_23", "x": 993, "y": 636, "ls": 1.8}, {"id": "n-24", "key": "n_24", "x": 939, "y": 564, "ls": 1.8}, {"id": "n-25", "key": "n_25", "x": 1092, "y": 564, "ls": 1.8}, {"id": "n-26", "key": "n_26", "x": 694, "y": 492, "ls": 1.8}, {"id": "n-27", "key": "n_27", "x": 867, "y": 492, "ls": 1.8}, {"id": "n-28", "key": "n_28", "x": 1213, "y": 564, "ls": 1.8}, {"id": "n-29", "key": "n_29", "x": 1213, "y": 492, "ls": 1.8}, {"id": "n-30", "key": "n_30", "x": 954, "y": 420, "ls": 1.8}, {"id": "n-31", "key": "n_31", "x": 1386, "y": 492, "ls": 1.8}, {"id": "n-32", "key": "n_32", "x": 1396, "y": 564, "ls": 1.8}, {"id": "n-33", "key": "n_33", "x": 1538, "y": 564, "ls": 1.8}, {"id": "n-34", "key": "n_34", "x": 1670, "y": 564, "ls": 1.8}, {"id": "n-35", "key": "n_35", "x": 1533, "y": 492, "ls": 1.8}, {"id": "n-36", "key": "n_36", "x": 1680, "y": 492, "ls": 1.8}, {"id": "n-37", "key": "n_37", "x": 1832, "y": 492, "ls": 1.8}, {"id": "n-38", "key": "n_38", "x": 1969, "y": 492, "ls": 1.8}, {"id": "n-39", "key": "n_39", "x": 1788, "y": 636, "ls": 1.8}, {"id": "n-40", "key": "n_40", "x": 1887, "y": 636, "ls": 1.8}, {"id": "n-41", "key": "n_41", "x": 1837, "y": 564, "ls": 1.8}, {"id": "n-42", "key": "n_42", "x": 1972, "y": 636, "ls": 1.8}, {"id": "n-43", "key": "n_43", "x": 2069, "y": 636, "ls": 1.8}, {"id": "n-44", "key": "n_44", "x": 2021, "y": 564, "ls": 1.8}, {"id": "n-45", "key": "n_45", "x": 2188, "y": 564, "ls": 1.8}, {"id": "n-46", "key": "n_46", "x": 2335, "y": 564, "ls": 1.8}, {"id": "n-47", "key": "n_47", "x": 2086, "y": 492, "ls": 1.8}, {"id": "n-48", "key": "n_48", "x": 2452, "y": 564, "ls": 1.8}, {"id": "n-49", "key": "n_49", "x": 2452, "y": 492, "ls": 1.8}, {"id": "n-50", "key": "n_50", "x": 1919, "y": 420, "ls": 1.8}, {"id": "n-51", "key": "n_51", "x": 1436, "y": 348, "ls": 1.8}, {"id": "n-52", "key": "n_52", "x": 121, "y": 924, "ls": 1.8}, {"id": "n-53", "key": "n_53", "x": 280, "y": 924, "ls": 1.8}, {"id": "n-54", "key": "n_54", "x": 201, "y": 852, "ls": 1.8}, {"id": "n-55", "key": "n_55", "x": 201, "y": 780, "ls": 1.8}, {"id": "n-56", "key": "n_56", "x": 327, "y": 780, "ls": 1.8}, {"id": "n-57", "key": "n_57", "x": 469, "y": 924, "ls": 1.8}, {"id": "n-58", "key": "n_58", "x": 469, "y": 852, "ls": 1.8}, {"id": "n-59", "key": "n_59", "x": 469, "y": 780, "ls": 1.8}, {"id": "n-60", "key": "n_60", "x": 616, "y": 924, "ls": 1.8}, {"id": "n-61", "key": "n_61", "x": 616, "y": 852, "ls": 1.8}, {"id": "n-62", "key": "n_62", "x": 723, "y": 996, "ls": 1.8}, {"id": "n-63", "key": "n_63", "x": 824, "y": 996, "ls": 1.8}, {"id": "n-64", "key": "n_64", "x": 774, "y": 924, "ls": 1.8}, {"id": "n-65", "key": "n_65", "x": 956, "y": 1068, "ls": 1.8}, {"id": "n-66", "key": "n_66", "x": 956, "y": 996, "ls": 1.8}, {"id": "n-67", "key": "n_67", "x": 956, "y": 924, "ls": 1.8}, {"id": "n-68", "key": "n_68", "x": 865, "y": 852, "ls": 1.8}, {"id": "n-69", "key": "n_69", "x": 1057, "y": 1068, "ls": 1.8}, {"id": "n-70", "key": "n_70", "x": 1164, "y": 1068, "ls": 1.8}, {"id": "n-71", "key": "n_71", "x": 1110, "y": 996, "ls": 1.8}, {"id": "n-72", "key": "n_72", "x": 1110, "y": 924, "ls": 1.8}, {"id": "n-73", "key": "n_73", "x": 1196, "y": 996, "ls": 1.8}, {"id": "n-74", "key": "n_74", "x": 1287, "y": 996, "ls": 1.8}, {"id": "n-75", "key": "n_75", "x": 1389, "y": 996, "ls": 1.8}, {"id": "n-76", "key": "n_76", "x": 1292, "y": 924, "ls": 1.8}, {"id": "n-77", "key": "n_77", "x": 1495, "y": 996, "ls": 1.8}, {"id": "n-78", "key": "n_78", "x": 1495, "y": 924, "ls": 1.8}, {"id": "n-79", "key": "n_79", "x": 1596, "y": 996, "ls": 1.8}, {"id": "n-80", "key": "n_80", "x": 1697, "y": 996, "ls": 1.8}, {"id": "n-81", "key": "n_81", "x": 1647, "y": 924, "ls": 1.8}, {"id": "n-82", "key": "n_82", "x": 1809, "y": 996, "ls": 1.8}, {"id": "n-83", "key": "n_83", "x": 1925, "y": 996, "ls": 1.8}, {"id": "n-84", "key": "n_84", "x": 2031, "y": 996, "ls": 1.8}, {"id": "n-85", "key": "n_85", "x": 2128, "y": 996, "ls": 1.8}, {"id": "n-86", "key": "n_86", "x": 1968, "y": 924, "ls": 1.8}, {"id": "n-87", "key": "n_87", "x": 2213, "y": 996, "ls": 1.8}, {"id": "n-88", "key": "n_88", "x": 2299, "y": 996, "ls": 1.8}, {"id": "n-89", "key": "n_89", "x": 2256, "y": 924, "ls": 1.8}, {"id": "n-90", "key": "n_90", "x": 2395, "y": 996, "ls": 1.8}, {"id": "n-91", "key": "n_91", "x": 2395, "y": 924, "ls": 1.8}, {"id": "n-92", "key": "n_92", "x": 1753, "y": 852, "ls": 1.8}, {"id": "n-93", "key": "n_93", "x": 2558, "y": 996, "ls": 1.8}, {"id": "n-94", "key": "n_94", "x": 2558, "y": 924, "ls": 1.8}, {"id": "n-95", "key": "n_95", "x": 2558, "y": 852, "ls": 1.8}, {"id": "n-96", "key": "n_96", "x": 2725, "y": 996, "ls": 1.8}, {"id": "n-97", "key": "n_97", "x": 2725, "y": 924, "ls": 1.8}, {"id": "n-98", "key": "n_98", "x": 2847, "y": 996, "ls": 1.8}, {"id": "n-99", "key": "n_99", "x": 2847, "y": 924, "ls": 1.8}, {"id": "n-100", "key": "n_100", "x": 2786, "y": 852, "ls": 1.8}, {"id": "n-101", "key": "n_101", "x": 1701, "y": 780, "ls": 1.8}, {"id": "n-102", "key": "n_102", "x": 2551, "y": 348, "ls": 1.8}, {"id": "n-103", "key": "n_103", "x": 2698, "y": 348, "ls": 1.8}, {"id": "n-104", "key": "n_104", "x": 2067, "y": 276, "ls": 1.8}, {"id": "n-105", "key": "n_105", "x": 2209, "y": 276, "ls": 1.8}, {"id": "n-106", "key": "n_106", "x": 1367, "y": 204, "ls": 1.8}, {"id": "n-107", "key": "n_107", "x": 1367, "y": 132, "ls": 1.8}, {"id": "n-108", "key": "n_108", "x": 1367, "y": 60, "ls": 1.8}], "titles": [{"id": "c-thamma-malkana", "key": "c_thamma_malkana", "x": 1037, "y": 60, "ls": 1.5}, {"id": "c-katra-purian", "key": "c_katra_purian", "x": 1697, "y": 60, "ls": 1.5}]};
+        const TREE_MIN_SCALE = 0.8;
         const TREE_SMALL_SCREEN_SCALE = 1.2;   // tablets: larger tree, scrolls sideways
         const TREE_PHONE_SCALE = 1.1;          // phones only: bigger tree, names easy to read. Try 1.6 (smaller) to 2.4 (bigger)
         const trackFor = (lang, ls) => (lang === 'en' ? 0.3 : ls);   // Latin text reads better with light tracking
@@ -1093,29 +1174,7 @@
                 if (!moved) break;
             }
 
-            // 3) placement details
-            const shankar = byId('n-shankardas'), dropadi = byId('n-dropadideva');
-            if (shankar && dropadi) dropadi.cy = shankar.cy;
-            const gobind = byId('n-gobindyash');
-            if (gobind) {
-                const [gl, gr, gt] = edges(gobind);
-                const drops = V.filter(v => gl + 2 < v[0] && v[0] < gr - 2 &&
-                    Math.min(v[1], v[2]) < gt - 10 && gt - 2 <= Math.max(v[1], v[2]) && Math.max(v[1], v[2]) <= gt + 10);
-                if (drops.length === 1) gobind.cx = drops[0][0];
-            }
-            const krishna = byId('n-krishnakumar');
-            if (krishna) {
-                const kb = krishna.cy + BOX_H / 2;
-                let hit = null;
-                for (const s of H) {
-                    const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
-                    if (lo <= krishna.cx && krishna.cx <= hi) {
-                        const by = barY(s, krishna.cx);
-                        if (kb + 4 <= by && by <= kb + 60 && (hit === null || by < hit)) hit = by;
-                    }
-                }
-                if (hit !== null) V.push([krishna.cx, kb, hit]);
-            }
+            // 3) (no page-specific placement tweaks on this page)
             TREE.BRIDGE.forEach(([a, b, c, d]) => H.push([X(a), Y(b), X(c), Y(d)]));
 
             // 4) connector ends: join bars, or stop at the nearest box edge
@@ -1204,7 +1263,7 @@
                 H: Math.round(Y(TREE.H0)),
                 lines: H.map(s => seg(s[0], s[1], s[2], s[3])).concat(V.map(v => seg(v[0], v[1], v[0], v[2]))),
                 boxes: boxes.map(b => ({ id: b.id, left: b.cx, top: b.cy })),
-                titles: TREE.titles.map(t => ({ id: t.id, left: X(t.x), top: Y(TREE.TITLE_Y) })),
+                titles: TREE.titles.map(t => ({ id: t.id, left: X(t.x), top: Y(t.y != null ? t.y : TREE.TITLE_Y) })),
             };
         }
 
