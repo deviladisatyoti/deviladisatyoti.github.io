@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=1200">
     <meta name="google" content="notranslate">
 
-    <!-- Browser Tab Icon (Favicon) -->
     <link rel="icon" type="image/jpeg" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
     <link rel="apple-touch-icon" href="https://deviladisatyoti.github.io/resource/image_200kb.jpeg">
 
-    <title id="page-title">Three Thammas of the Puri Clan | Ladi Satyoti Trust</title>
+    <title id="page-title">पुरी कौम के तीन थम्मे | Ladi Satyoti Trust</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -21,13 +20,6 @@
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Quick mobile detector script -->
-    <script>
-        if (window.screen.width < 768) {
-            document.documentElement.classList.add('is-mobile');
-        }
-    </script>
 
     <script>
         tailwind.config = {
@@ -49,7 +41,6 @@
                         hindiTitle: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
                         heroTitle: ['"Rozha One"', 'serif'],
                         hindiBody: ['"Tiro Devanagari Hindi"', '"Mukta"', 'serif'],
-                        englishTitle: ['"Roboto"', 'sans-serif'],
                         sans: ['"Roboto"', '"Mukta"', 'sans-serif']
                     },
                     boxShadow: {
@@ -60,11 +51,73 @@
                 }
             }
         }
+
+        // Phones: make every Tailwind breakpoint behave exactly as in the normal 1200px phone layout
+        // (sm/md/lg on, xl/2xl off), in normal mode AND in "Desktop site" mode
+        if (Math.min(window.screen.width, window.screen.height) < 768 &&
+            (navigator.maxTouchPoints > 0 || 'ontouchstart' in window)) {
+            tailwind.config.theme.screens = {
+                sm: '1px', md: '1px', lg: '1px', xl: '100000px', '2xl': '100000px'
+            };
+        }
+    </script>
+
+    <!-- Quick mobile detector script -->
+    <script>
+        (function () {
+            var root = document.documentElement;
+
+            // Real phone detection: uses the physical screen, so it gives the same answer in
+            // portrait, landscape, normal mode and the browser's "Desktop site" mode
+            var S = Math.min(window.screen.width, window.screen.height);
+            var L = Math.max(window.screen.width, window.screen.height);
+            var phone = S < 768 && (navigator.maxTouchPoints > 0 || 'ontouchstart' in window);
+            if (!phone) return;
+            root.classList.add('is-mobile', 'is-phone');
+
+            var BASE = 1200;
+            var lastIW = -1;
+
+            function isLandscape() {
+                var o = window.screen.orientation;
+                if (o && typeof o.type === 'string') return o.type.indexOf('landscape') === 0;
+                return window.matchMedia('(orientation: landscape)').matches;
+            }
+
+            // 1) Normal mode lays the page out 1200px wide (viewport tag). "Desktop site" mode ignores
+            //    that tag, so zoom it back to the same 1200px layout.
+            function normalizeWidth() {
+                if (window.innerWidth === lastIW) return;
+                lastIW = window.innerWidth;
+                root.style.zoom = '';
+                var w = root.clientWidth || window.innerWidth;
+                if (w && Math.abs(w - BASE) > 20) root.style.zoom = (w / BASE).toFixed(4);
+            }
+
+            // 2) --u = 1% of the phone's short side, in page pixels. Same value in both modes
+            //    (replaces vmin, which differs between normal and Desktop site mode).
+            function setUnit() {
+                var u = (S / 100) * (BASE / (isLandscape() ? L : S));
+                root.style.setProperty('--u', u.toFixed(3) + 'px');
+            }
+
+            function update() { normalizeWidth(); setUnit(); }
+            update();
+            window.addEventListener('resize', update);
+            window.addEventListener('orientationchange', function () {
+                setTimeout(function () { lastIW = -1; update(); }, 300);
+            });
+        })();
     </script>
 
     <style>
         :root {
             --base-font-size: 16px;
+            --bg: #F9F7F2;
+            --ink: #4A1203;
+            --line: #3b2a22;
+            --box: #FFF8E6;
+            --box-edge: #C9A63C;
         }
 
         html {
@@ -100,6 +153,18 @@
             text-shadow: 0 1px 2px rgba(20, 2, 4, 0.85);
         }
 
+        .gold-text-gradient {
+            color: #F4D03F;
+            text-shadow: 0 1px 2px rgba(20, 2, 4, 0.85);
+        }
+
+        .royal-pattern {
+            background-color: #7A280E;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.30) 0.9px, transparent 0.9px), radial-gradient(rgba(212, 175, 55, 0.30) 0.9px, #7A280E 0.9px);
+            background-size: 26px 26px;
+            background-position: 0 0, 13px 13px;
+        }
+
         .lang-pill-active {
             background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%) !important;
             color: #3B020B !important;
@@ -118,6 +183,326 @@
             color: #FFD700 !important;
             background-color: rgba(212, 175, 55, 0.25) !important;
         }
+
+        /* Canvas Lineage Tree Styles */
+        .stage {
+            display: flex;
+            width: 100%;
+            overflow-x: auto;   /* scrollbar appears only when the tree is wider than the box */
+            overflow-y: auto;
+            background: var(--bg);
+            border-radius: 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            padding: 20px 0;
+        }
+
+        /* ===== Thick scrollbars (easier for senior users) – bottom bar + mirrored top bar ===== */
+        .stage::-webkit-scrollbar,
+        .stage-top-scroll::-webkit-scrollbar {
+            height: 18px;
+            width: 18px;
+        }
+        .stage::-webkit-scrollbar-track,
+        .stage-top-scroll::-webkit-scrollbar-track {
+            background: #FFF8E6;
+            border-radius: 9px;
+        }
+        .stage::-webkit-scrollbar-thumb,
+        .stage-top-scroll::-webkit-scrollbar-thumb {
+            background-color: #D4AF37;
+            border-radius: 9px;
+            border: 3px solid #FFF8E6;
+            min-width: 60px;
+        }
+        .stage::-webkit-scrollbar-thumb:hover,
+        .stage-top-scroll::-webkit-scrollbar-thumb:hover {
+            background-color: #7A280E;
+        }
+        /* Firefox only: newer Chrome/Edge ignore the rules above if these are set, so keep them Firefox-only */
+        @supports (-moz-appearance: none) {
+            .stage, .stage-top-scroll {
+                scrollbar-width: auto;
+                scrollbar-color: #D4AF37 #FFF8E6;
+            }
+        }
+
+        /* Top scrollbar (mirrors the bottom one) */
+        .stage-top-scroll {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            width: 100%;
+            margin-bottom: 10px;
+            background: #FFF8E6;
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            border-radius: 999px;
+        }
+        .stage-top-scroll > div { height: 1px; }
+
+        /* ===== Mobile-only full screen mode =====
+           All sizes use --u (1% of the phone's short side, set by the script in <head>), so the
+           buttons look identical in normal mode and in "Desktop site" mode. */
+        #fs-open-row { display: none; }
+        html.is-phone #fs-open-row { display: flex; justify-content: center; }
+        #fs-open-btn {
+            width: auto;
+            display: flex; align-items: center; justify-content: center; gap: calc(2 * var(--u, 1vmin));
+            padding: calc(2 * var(--u, 1vmin)) calc(4.5 * var(--u, 1vmin));
+            font-size: calc(3.8 * var(--u, 1vmin)); font-weight: 900; line-height: 1.2;
+            color: #F3E5AB;                                   /* soft gold text */
+            background: linear-gradient(135deg, #7A280E 0%, #521A07 100%);   /* theme maroon */
+            border: calc(0.5 * var(--u, 1vmin)) solid #D4AF37;               /* gold edge */
+            border-radius: calc(3 * var(--u, 1vmin));
+            box-shadow: 0 calc(0.8 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin)) rgba(74, 18, 3, 0.35);
+            animation: fsPulse 1.8s ease-in-out infinite;
+        }
+        #fs-open-btn i { font-size: calc(4.4 * var(--u, 1vmin)); color: #FFD700; }
+        @keyframes fsPulse {
+            0%, 100% { box-shadow: 0 calc(0.8 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin)) rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.75); }
+            50%      { box-shadow: 0 calc(0.8 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin)) rgba(74,18,3,.35), 0 0 0 calc(1.8 * var(--u, 1vmin)) rgba(212,175,55,0); }
+        }
+        @media (prefers-reduced-motion: reduce) { #fs-open-btn { animation: none; } }
+
+        /* Thick scrollbars on phones, same on-screen size in normal and Desktop-site mode */
+        html.is-phone .stage::-webkit-scrollbar,
+        html.is-phone .stage-top-scroll::-webkit-scrollbar { height: calc(3.2 * var(--u, 1vmin)); width: calc(3.2 * var(--u, 1vmin)); }
+
+        #fs-bar { display: none; }
+        body.tree-fs { overflow: hidden; }
+        body.tree-fs #stage-shell {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2147483647;
+            background: var(--bg);
+        }
+        body.tree-fs #fs-inner {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column;
+        }
+        /* Fallback when the phone is upright and the browser can't lock landscape (width/height set by script) */
+        body.tree-fs #fs-inner.fs-rotated {
+            transform-origin: top left;
+            transform: rotate(90deg) translateY(-100%);
+        }
+        /* Slim top bar that holds the Close button, so it never covers the tree */
+        body.tree-fs #fs-bar {
+            display: flex; align-items: center; justify-content: flex-end;
+            flex: 0 0 auto;
+            padding: calc(1.2 * var(--u, 1vmin)) calc(2 * var(--u, 1vmin));
+            background: #4A1203;
+            border-bottom: calc(0.5 * var(--u, 1vmin)) solid #D4AF37;
+        }
+        body.tree-fs #fs-close-btn {
+            display: flex; align-items: center; gap: calc(1.6 * var(--u, 1vmin));
+            background: #D4AF37; color: #3B020B;
+            border: calc(0.5 * var(--u, 1vmin)) solid #F4D03F; border-radius: calc(2.4 * var(--u, 1vmin));
+            padding: calc(1.2 * var(--u, 1vmin)) calc(3.6 * var(--u, 1vmin));
+            font-size: calc(4.2 * var(--u, 1vmin)); font-weight: 900;
+        }
+        body.tree-fs .stage-top-scroll {
+            flex: 0 0 auto; margin: 0; border-radius: 0;
+            border-width: 0 0 2px 0;
+        }
+        body.tree-fs .stage {
+            flex: 1 1 auto; min-height: 0;
+            border: 0; border-radius: 0; padding: 0;
+            overflow: auto;
+        }
+        body.tree-fs .canvas-wrap { margin: auto; }
+        .canvas-wrap { position: relative; flex: 0 0 auto; margin: 0 auto; visibility: hidden; }
+        .canvas-wrap.is-ready { visibility: visible; }
+        .canvas {
+            position: absolute; left: 0; top: 0;
+            width: 1640px; height: 840px;
+            transform-origin: 0 0;
+            background: var(--bg);
+            font-family: 'Noto Sans Devanagari', 'Mangal', sans-serif;
+            color: var(--ink);
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(74,18,3,.06), 0 14px 40px rgba(74,18,3,.10);
+        }
+        @keyframes fadein { from { opacity:0; } to { opacity:1; } }
+        .canvas { animation: fadein .7s ease both; }
+        @media (prefers-reduced-motion: reduce) { .canvas { animation:none; } }
+        svg.lines { position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; overflow:visible; }
+        svg.lines line { stroke:var(--line); stroke-width:1.6; stroke-linecap:round; }
+        .t, .n {
+            position:absolute; transform:translate(-50%,-50%); white-space:nowrap; line-height:1;
+            color:var(--ink); user-select:none;
+        }
+        .n {
+            height:34px; box-sizing:border-box; display:flex; align-items:center; justify-content:center;
+            padding:0 13px; border:1.5px solid var(--box-edge); border-radius:9px;
+            background:var(--box); font-size:18px; font-weight:600;
+            box-shadow:0 4px 12px rgba(201,166,60,.38), 0 1px 3px rgba(74,18,3,.16);
+            transition:box-shadow .18s ease, background .18s ease;
+        }
+        .n:hover { background:#FFF2CC; box-shadow:0 6px 16px rgba(201,166,60,.5), 0 2px 5px rgba(74,18,3,.22); }
+        .t { font-size:34px; font-weight:700; }
+        .t-main { font-size:42px; white-space:pre-line; text-align:center; line-height:1.25; }
+        .t-sub  { font-size:28px; }
+
+        /* Page 1 has only a "Next" button: keep it on the right edge on wide screens */
+        html:not(.is-phone) .page-nav.only-next { justify-content: flex-end; }
+
+        /* ===== Scroll hint (all screens, shown only when the tree is wider than its box) ===== */
+        .stage-box { position: relative; }
+        body.tree-fs .stage-box { flex: 1 1 auto; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
+
+        /* Banner: cream with dark maroon text and a maroon edge */
+        #scroll-hint {
+            display: none; align-items: center; justify-content: center; gap: 10px;
+            width: fit-content; max-width: 100%; margin: 0 auto 10px; padding: 9px 20px;
+            background: #FFF8E6;
+            color: #521A07;
+            border: 2px solid #7A280E; border-radius: 16px;
+            font-size: 17px; font-weight: 800; line-height: 1.25; text-align: center;
+            animation: hintGlow 2s ease-in-out infinite;
+        }
+        #scroll-hint.show { display: flex; }
+        #scroll-hint {
+            touch-action: pan-y;                 /* sideways swipes go to us; up/down still scrolls the page */
+            cursor: grab; user-select: none; -webkit-user-select: none;
+            -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+        }
+        #scroll-hint i { color: #D84315; }
+        #scroll-hint .hint-arrow { --n: 6px; animation: hintNudge 1.2s ease-in-out infinite; }
+        #scroll-hint[data-dir="left"] .hint-arrow { --n: -6px; order: -1; }   /* left arrow goes before the text */
+        #scroll-hint[data-dir="both"] .hint-arrow { animation: none; }
+        #scroll-hint.learned { animation: none; box-shadow: 0 3px 10px rgba(122, 40, 14, 0.35); }
+        #scroll-hint.learned .hint-arrow { animation: none; }
+        @keyframes hintNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(var(--n, 6px)); } }
+        @keyframes hintGlow {
+            0%, 100% { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 0 rgba(122,40,14,.45); }
+            50%      { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 8px rgba(122,40,14,0); }
+        }
+        body.tree-fs #scroll-hint { display: none; }
+
+        /* Edge fades + round arrow buttons (left and right) */
+        .scroll-edge {
+            --sb: 18px;                                   /* thickness of the bottom scrollbar */
+            display: none; position: absolute; top: 2px; bottom: calc(var(--sb) + 2px); width: 110px;
+            align-items: center; padding: 0 10px; pointer-events: none;
+        }
+        .scroll-edge.show { display: flex; }
+        .scroll-edge-r {
+            right: 2px; justify-content: flex-end;
+            background: linear-gradient(to right, rgba(249, 247, 242, 0), rgba(249, 247, 242, .95) 70%);
+            border-radius: 0 1.4rem 1.4rem 0;
+        }
+        .scroll-edge-l {
+            left: 2px; justify-content: flex-start;
+            background: linear-gradient(to left, rgba(249, 247, 242, 0), rgba(249, 247, 242, .95) 70%);
+            border-radius: 1.4rem 0 0 1.4rem;
+        }
+        .scroll-edge-btn {
+            pointer-events: auto; cursor: pointer;
+            touch-action: none; user-select: none; -webkit-user-select: none;
+            -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent;
+            width: 46px; height: 46px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px; color: #FFD700;
+            background: linear-gradient(135deg, #7A280E 0%, #521A07 100%);
+            border: 2px solid #D4AF37;
+        }
+        .scroll-edge-r .scroll-edge-btn { animation: edgePulseR 1.6s ease-in-out infinite; }
+        .scroll-edge-l .scroll-edge-btn { animation: edgePulseL 1.6s ease-in-out infinite; }
+        .scroll-edge-btn:active { animation: none; transform: scale(.92); }
+        @keyframes edgePulseR {
+            0%, 100% { transform: translateX(0);   box-shadow: 0 4px 12px rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.7); }
+            50%      { transform: translateX(5px); box-shadow: 0 4px 12px rgba(74,18,3,.35), 0 0 0 10px rgba(212,175,55,0); }
+        }
+        @keyframes edgePulseL {
+            0%, 100% { transform: translateX(0);    box-shadow: 0 4px 12px rgba(74,18,3,.35), 0 0 0 0 rgba(212,175,55,.7); }
+            50%      { transform: translateX(-5px); box-shadow: 0 4px 12px rgba(74,18,3,.35), 0 0 0 10px rgba(212,175,55,0); }
+        }
+        body.tree-fs .scroll-edge { top: 0; bottom: var(--sb); border-radius: 0; }
+        body.tree-fs .scroll-edge-r { right: 0; }
+        body.tree-fs .scroll-edge-l { left: 0; }
+        @media (prefers-reduced-motion: reduce) {
+            #scroll-hint, #scroll-hint .hint-arrow, .scroll-edge-btn { animation: none; }
+        }
+
+        /* Phones: sizes in --u so they look the same in normal and "Desktop site" mode */
+        html.is-phone #scroll-hint {
+            font-size: calc(3.6 * var(--u, 1vmin)); gap: calc(2 * var(--u, 1vmin));
+            padding: calc(1.6 * var(--u, 1vmin)) calc(3.4 * var(--u, 1vmin));
+            margin-bottom: calc(1.6 * var(--u, 1vmin));
+            border-width: calc(0.5 * var(--u, 1vmin)); border-radius: calc(3 * var(--u, 1vmin));
+        }
+        html.is-phone .scroll-edge { --sb: calc(3.2 * var(--u, 1vmin)); width: calc(20 * var(--u, 1vmin)); padding: 0 calc(1.6 * var(--u, 1vmin)); }
+        html.is-phone .scroll-edge-btn {
+            width: calc(10 * var(--u, 1vmin)); height: calc(10 * var(--u, 1vmin));
+            font-size: calc(4.4 * var(--u, 1vmin)); border-width: calc(0.5 * var(--u, 1vmin));
+        }
+
+        /* ===== Previous / Next page buttons (top and bottom of the page) ===== */
+        .page-nav {
+            display: flex; flex-direction: column; gap: 12px;
+            width: 100%; max-width: 640px; margin: 0 auto;
+        }
+        .nav-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 12px 22px; border-radius: 16px;
+            font-size: 18px; font-weight: 800; line-height: 1.25; text-align: center; text-decoration: none;
+            border: 2px solid #D4AF37;
+            box-shadow: 0 4px 12px rgba(74, 18, 3, 0.30);
+            transition: filter .15s ease, transform .1s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .nav-btn:hover { filter: brightness(1.1); }
+        .nav-btn:active { transform: scale(.97); }
+        .nav-btn i { font-size: 1.15em; flex: 0 0 auto; }
+
+        /* Next: orange-red, white text, gold edge, soft glow */
+        .nav-btn-next {
+            background: linear-gradient(135deg, #E65100 0%, #BF360C 100%);
+            color: #FFFFFF; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+            border-color: #FFD700;
+            animation: navGlow 2s ease-in-out infinite;
+        }
+        .nav-btn-next i { color: #FFD700; }
+        @keyframes navGlow {
+            0%, 100% { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 0 rgba(230,81,0,.55); }
+            50%      { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 8px rgba(230,81,0,0); }
+        }
+
+        /* Previous: deep maroon (same as the page header), gold text and gold edge, same soft glow */
+        .nav-btn-prev {
+            background: linear-gradient(135deg, #7A280E 0%, #4A1203 100%);
+            color: #FFE9A8; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+            border-color: #D4AF37;
+            animation: navGlowPrev 2s ease-in-out infinite;
+        }
+        .nav-btn-prev i { color: #FFD700; }
+        @keyframes navGlowPrev {
+            0%, 100% { box-shadow: 0 3px 10px rgba(74,18,3,.40), 0 0 0 0 rgba(212,175,55,.60); }
+            50%      { box-shadow: 0 3px 10px rgba(74,18,3,.40), 0 0 0 8px rgba(212,175,55,0); }
+        }
+        @media (prefers-reduced-motion: reduce) { .nav-btn-prev, .nav-btn-next { animation: none; } }
+
+        /* Wide screens: Previous on the left edge, Next on the right edge.
+           Narrow screens and phones: one below the other. */
+        .page-nav-box { container-type: inline-size; width: 100%; }
+        @container (min-width: 1000px) {
+            html:not(.is-phone) .page-nav { flex-direction: row; justify-content: space-between; max-width: none; }
+            html:not(.is-phone) .nav-btn { width: auto; }
+        }
+
+        /* Phones: sizes in --u so they look the same in normal and "Desktop site" mode */
+        html.is-phone .page-heading-bar {
+            padding: calc(2.8 * var(--u, 1vmin)) calc(3 * var(--u, 1vmin));
+            border-radius: calc(3 * var(--u, 1vmin)); border-width: calc(0.4 * var(--u, 1vmin));
+        }
+        html.is-phone .page-heading {
+            font-size: calc(5.2 * var(--u, 1vmin)); line-height: 1.2; gap: calc(2.4 * var(--u, 1vmin));
+        }
+        html.is-phone .page-heading i { font-size: 1em; }
+
+        html.is-phone .page-nav { gap: calc(1.6 * var(--u, 1vmin)); max-width: none; }
+        html.is-phone .nav-btn {
+            font-size: calc(3.3 * var(--u, 1vmin)); gap: calc(1.6 * var(--u, 1vmin));
+            padding: calc(1.7 * var(--u, 1vmin)) calc(2.8 * var(--u, 1vmin));
+            border-radius: calc(2.6 * var(--u, 1vmin)); border-width: calc(0.4 * var(--u, 1vmin));
+        }
     </style>
 </head>
 <body class="bg-cream text-charcoal font-sans antialiased min-h-screen flex flex-col selection:bg-saffron selection:text-white">
@@ -133,7 +518,7 @@
                 <span class="sm:hidden">मुख्य</span>
             </a>
 
-           <!-- Center: Sacred Title Badge (Enlarged Text) -->
+            <!-- Center: Sacred Title Badge (Enlarged Text) -->
             <div class="hidden lg:flex items-center gap-3 text-gold text-2xl sm:text-3xl font-hindiTitle font-black tracking-widest">
                 <span class="text-saffron text-3xl sm:text-4xl">ॐ</span>
                 <span id="nav-sacred-motto" class="text-xl sm:text-2xl font-black tracking-normal text-goldLight">॥ श्री लाडी सत्योति देव्यै नमः ॥</span>
@@ -172,165 +557,106 @@
         </div>
     </header>
 
-    <!-- Main Content -->
+    
+    <!-- Main Content Container -->
     <main class="flex-grow w-full px-2 sm:px-4 lg:px-6 py-10 space-y-8">
         
-        <!-- Breadcrumb / Page Indicator Bar with Navigation Options -->
-        <div class="flex flex-col md:flex-row items-center justify-between bg-creamCard border-2 border-gold/50 px-6 sm:px-8 py-5 rounded-2xl shadow-md gap-4">
-            <span class="text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-3">
-                <i class="fa-solid fa-book-open text-saffronDark text-2xl sm:text-3xl"></i> <span id="page-indicator">पृष्ठ 1 - Three Thammas of the Puri Clan</span>
+        <!-- Page heading (full width) -->
+        <div class="page-heading-bar flex items-center justify-center lg:justify-start bg-creamCard border-2 border-gold/50 px-5 sm:px-8 py-4 sm:py-5 rounded-2xl shadow-md">
+            <span class="page-heading text-imperial font-black text-xl sm:text-2xl md:text-3xl flex items-center gap-2.5 sm:gap-3 text-center lg:text-left leading-tight">
+                <i class="fa-solid fa-book-open text-saffronDark text-xl sm:text-3xl flex-shrink-0"></i> <span id="page-indicator">पृष्ठ 1 - पुरी कौम के तीन थम्मे</span>
             </span>
-            <div class="flex flex-wrap items-center gap-3 sm:gap-4">
-                <a href="index.html" class="bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-5 py-3 rounded-xl border-2 border-gold/70 text-base sm:text-lg transition flex items-center gap-2.5 shadow-md active:scale-95">
-                    <i class="fa-solid fa-house text-saffron text-lg sm:text-xl"></i> <span id="top-nav-home">मुख्य पृष्ठ</span>
-                </a>
-                <a href="thamma-malkana-katra.html" class="bg-[#D84315] hover:bg-[#B71C1C] text-white font-black px-5 py-3 rounded-xl border-2 border-gold/70 text-base sm:text-lg transition flex items-center gap-2.5 shadow-md active:scale-95">
-                    <span id="top-nav-next">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ) देखें</span> <i class="fa-solid fa-arrow-right text-lg sm:text-xl"></i>
+        </div>
+
+        <!-- Next page button (this is Page 1, so there is no Previous button) -->
+        <div class="page-nav-box">
+            <div class="page-nav only-next">
+                <a href="thamma-malkana-katra.html" class="nav-btn nav-btn-next">
+                    <span id="top-nav-next">पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ</span> <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Three Thammas Family Tree Graph Section -->
-        <div class="bg-white/90 border-2 border-gold/40 rounded-3xl p-6 sm:p-8 shadow-card-soft space-y-6 w-full">
+        <div id="stage-shell">
+        <div id="fs-inner">
+            <!-- Close bar, visible only in full screen mode -->
+            <div id="fs-bar">
+                <button id="fs-close-btn" onclick="exitTreeFullscreen()">
+                    <i class="fa-solid fa-xmark"></i> <span id="fs-close-text">बंद करें</span>
+                </button>
+            </div>
 
-            <!-- Family Tree Diagram -->
-            <div class="relative w-full max-w-full overflow-x-auto p-4 sm:p-8 bg-[#FAF7F2] border-2 border-gold/60 rounded-3xl shadow-md font-hindiBody select-none">
-                <div class="w-full min-w-[700px] flex flex-col items-center relative z-10 py-2">
-                    
-                    <!-- ANCESTRAL ROOT TRUNK -->
-                    <div class="flex flex-col items-center space-y-3 w-full max-w-md">
-                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                            <span id="node-ishar">ईशर राय</span>
-                        </div>
-                        <div class="w-1.5 h-5 bg-goldDark"></div>
+            <!-- "Scroll right" hint line (shown only when the tree is wider than the screen) -->
+            <div id="scroll-hint" role="note">
+                <span id="scroll-hint-text"></span>
+                <i class="fa-solid fa-arrow-right hint-arrow"></i>
+            </div>
 
-                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                            <span id="node-siddh">सिद्ध गढ़ी</span>
-                        </div>
-                        <div class="w-1.5 h-5 bg-goldDark"></div>
+            <!-- Top scrollbar (mirrors the bottom one) -->
+            <div id="stage-top-scroll" class="stage-top-scroll" aria-hidden="true"><div></div></div>
 
-                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                            <span id="node-kamal">कमल नारायण</span>
-                        </div>
-                        <div class="w-1.5 h-5 bg-goldDark"></div>
+            <!-- Scrollable Lineage Canvas Diagram (fits the screen, positions set per language) -->
+            <div class="stage-box">
+            <div class="stage">
+            <div class="canvas-wrap" id="canvas-wrap">
+                <div class="canvas" id="canvas">
+                    <svg class="lines" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"></svg>
+                    <span id="c-main-title" class="t t-main" style="left:290px;top:190px;letter-spacing:1.00px">पुरी कौम के तीन थम्मे</span>
+                    <span id="c-thamma-malkana" class="t t-sub" style="left:350px;top:455px;letter-spacing:1.50px">थम्मा मलकाना</span>
+                    <span id="c-thamma-rai" class="t t-sub" style="left:790px;top:455px;letter-spacing:1.50px">थम्मा राय</span>
+                    <span id="c-thamma-mahatka" class="t t-sub" style="left:1420px;top:455px;letter-spacing:1.50px">थम्मा महतका</span>
+                    <span id="n-ishar" class="n" style="left:970px;top:40px;letter-spacing:1.80px">ईशर राय</span>
+                    <span id="n-siddh" class="n" style="left:970px;top:105px;letter-spacing:1.80px">सिद्ध गड़ी</span>
+                    <span id="n-kamal" class="n" style="left:970px;top:170px;letter-spacing:1.80px">कमल नरायण</span>
+                    <span id="n-khil" class="n" style="left:970px;top:235px;letter-spacing:1.80px">खील नरायण</span>
+                    <span id="n-dayal" class="n" style="left:970px;top:300px;letter-spacing:1.80px">दयाल चन्द</span>
+                    <span id="n-devi" class="n" style="left:970px;top:365px;letter-spacing:1.80px">देवी दिता</span>
+                    <span id="n-malak" class="n" style="left:350px;top:560px;letter-spacing:1.80px">मलक कपूर</span>
+                    <span id="n-gobind" class="n" style="left:350px;top:635px;letter-spacing:1.80px">गोबिद चंद</span>
+                    <span id="n-rajkaur" class="n" style="left:170px;top:775px;letter-spacing:1.80px">राजकौर</span>
+                    <span id="n-chatar" class="n" style="left:350px;top:775px;letter-spacing:1.80px">चतरबिहारी</span>
+                    <span id="n-arjan" class="n" style="left:530px;top:775px;letter-spacing:1.80px">अर्जन मल</span>
+                    <span id="n-raibakhar" class="n" style="left:850px;top:560px;letter-spacing:1.80px">राय बखार चन्द</span>
+                    <span id="n-baba" class="n" style="left:760px;top:710px;letter-spacing:1.80px">बाबा गंगा राम</span>
+                    <span id="n-mahesh" class="n" style="left:940px;top:710px;letter-spacing:1.80px">राय महेश दास</span>
+                    <span id="n-anchal" class="n" style="left:1120px;top:710px;letter-spacing:1.80px">अंचल दास</span>
+                    <span id="n-mahata" class="n" style="left:1420px;top:560px;letter-spacing:1.80px">महता दनी चन्द</span>
+                    <span id="n-kesari" class="n" style="left:1320px;top:710px;letter-spacing:1.80px">केसरी दास</span>
+                    <span id="n-batthu" class="n" style="left:1520px;top:710px;letter-spacing:1.80px">बटठूमल</span>
+                </div>
+            </div>
+            </div>
 
-                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                            <span id="node-khil">खील नारायण</span>
-                        </div>
-                        <div class="w-1.5 h-5 bg-goldDark"></div>
+            <!-- Edge fades + arrow buttons (tap = glide, press and hold = keep scrolling) -->
+            <div class="scroll-edge scroll-edge-l" id="scroll-edge-l">
+                <button type="button" class="scroll-edge-btn" data-dir="-1"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+            <div class="scroll-edge scroll-edge-r" id="scroll-edge-r">
+                <button type="button" class="scroll-edge-btn" data-dir="1"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            </div>
+        </div>
+        </div>
 
-                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                            <span id="node-dayal">दयाल चन्द</span>
-                        </div>
-                        <div class="w-1.5 h-5 bg-goldDark"></div>
+        <!-- Mobile-only: View Full Screen button (hidden on desktop) -->
+        <div id="fs-open-row">
+            <button id="fs-open-btn" onclick="enterTreeFullscreen()">
+                <i class="fa-solid fa-expand"></i> <span id="fs-open-text">पूरी स्क्रीन पर देखें</span>
+            </button>
+        </div>
 
-                        <div class="w-full max-w-[280px] py-3.5 px-6 bg-[#FFF9E6] border-2 border-gold text-[#4A1203] font-black text-center text-xl sm:text-2xl rounded-2xl shadow-gold-glow break-words">
-                            <span id="node-devi">देवी दिता</span>
-                        </div>
-                    </div>
-
-                    <!-- SVG CONNECTOR -->
-                    <div class="w-full h-14 relative my-2">
-                        <svg class="w-full h-full" viewBox="0 0 600 40" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M300 0 V15" stroke="#996515" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M300 15 C300 30, 100 15, 100 40" stroke="#996515" stroke-width="3" fill="none"/>
-                            <path d="M300 15 V40" stroke="#996515" stroke-width="3" fill="none"/>
-                            <path d="M300 15 C300 30, 500 15, 500 40" stroke="#996515" stroke-width="3" fill="none"/>
-                            <circle cx="300" cy="15" r="5" fill="#996515" />
-                            <circle cx="100" cy="38" r="4" fill="#996515" />
-                            <circle cx="300" cy="38" r="4" fill="#996515" />
-                            <circle cx="500" cy="38" r="4" fill="#996515" />
-                        </svg>
-                    </div>
-
-                    <!-- THREE PILLARS -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full pt-2">
-                        
-                        <!-- PILLAR 1 -->
-                        <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
-                            <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
-                                <span id="pillar-1" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा मलकाना</span>
-                            </div>
-                            <div class="w-1.5 h-4 bg-goldDark"></div>
-                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                <span id="p1-node1">मलक कपूर</span>
-                            </div>
-                            <div class="w-1.5 h-4 bg-goldDark"></div>
-                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                <span id="p1-node2">गोविंद चंद</span>
-                            </div>
-                            <div class="w-full h-4 my-1">
-                                <svg class="w-full h-full" viewBox="0 0 150 12" fill="none" preserveAspectRatio="none">
-                                    <path d="M75 0 V6 M25 6 H125 M25 6 V12 M75 6 V12 M125 6 V12" stroke="#996515" stroke-width="2.5" />
-                                </svg>
-                            </div>
-                            <div class="grid grid-cols-3 gap-2 w-full min-w-0">
-                                <span id="p1-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">राजकौर</span>
-                                <span id="p1-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">चतरबिहारी</span>
-                                <span id="p1-leaf-3" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">अर्जुन मल</span>
-                            </div>
-                        </div>
-
-                        <!-- PILLAR 2 -->
-                        <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
-                            <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
-                                <span id="pillar-2" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा राय</span>
-                            </div>
-                            <div class="w-1.5 h-4 bg-goldDark"></div>
-                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                <span id="p2-node1">राय बुखार चन्द</span>
-                            </div>
-                            <div class="w-full h-4 my-1">
-                                <svg class="w-full h-full" viewBox="0 0 150 12" fill="none" preserveAspectRatio="none">
-                                    <path d="M75 0 V6 M25 6 H125 M25 6 V12 M75 6 V12 M125 6 V12" stroke="#996515" stroke-width="2.5" />
-                                </svg>
-                            </div>
-                            <div class="grid grid-cols-3 gap-2 w-full min-w-0">
-                                <span id="p2-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">बाबा गंगा राम</span>
-                                <span id="p2-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">राय महेश दास</span>
-                                <span id="p2-leaf-3" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">अंचल दास</span>
-                            </div>
-                        </div>
-
-                        <!-- PILLAR 3 -->
-                        <div class="bg-[#FFFDF9] p-4 sm:p-5 rounded-3xl border-2 border-gold/50 shadow-md flex flex-col items-center space-y-3.5 min-w-0">
-                            <div class="px-3 py-3.5 bg-gradient-to-r from-[#D84315] to-[#E65100] text-white border-2 border-saffronDark rounded-2xl text-center w-full shadow-gold-glow">
-                                <span id="pillar-3" class="font-black text-lg sm:text-2xl tracking-wider block leading-snug break-words">थम्मा महतका</span>
-                            </div>
-                            <div class="w-1.5 h-4 bg-goldDark"></div>
-                            <div class="px-3 py-3 bg-[#FFF3CD] rounded-2xl border-2 border-gold text-base sm:text-xl font-black text-[#4A1203] text-center w-full shadow-gold-glow break-words leading-tight">
-                                <span id="p3-node1">महता दनी चन्द</span>
-                            </div>
-                            <div class="w-full h-4 my-1">
-                                <svg class="w-full h-full" viewBox="0 0 100 12" fill="none" preserveAspectRatio="none">
-                                    <path d="M50 0 V6 M25 6 H75 M25 6 V12 M75 6 V12" stroke="#996515" stroke-width="2.5" />
-                                </svg>
-                            </div>
-                            <div class="grid grid-cols-2 gap-2 w-full min-w-0">
-                                <span id="p3-leaf-1" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">केसरी दास</span>
-                                <span id="p3-leaf-2" class="text-xs sm:text-base font-black text-[#4A1203] bg-[#FFFBF0] py-2.5 px-1 rounded-xl border border-gold text-center flex items-center justify-center min-h-[50px] shadow-gold-glow break-words">बटठूमल</span>
-                            </div>
-                        </div>
-
-                    </div>
-
+        <!-- Bottom: Next page button (same behaviour and style as the top) -->
+        <div class="pt-6 border-t-2 border-gold/40">
+            <div class="page-nav-box">
+                <div class="page-nav only-next">
+                    <a href="thamma-malkana-katra.html" class="nav-btn nav-btn-next">
+                        <span id="btn-next-page">पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ</span> <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Navigation Buttons -->
-        <div class="flex flex-col lg:flex-row items-center justify-between gap-5 pt-6 border-t-2 border-gold/40">
-            <a href="index.html" class="w-full lg:w-auto flex items-center justify-center gap-3 bg-maroonDark hover:bg-imperial text-goldLight font-extrabold px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-lg transition text-lg sm:text-xl active:scale-95">
-                <i class="fa-solid fa-house text-saffron text-xl sm:text-2xl"></i> <span id="btn-back-home">मुख्य पृष्ठ (Home) पर वापस जाएं</span>
-            </a>
-            <div class="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
-                <a href="thamma-malkana-katra.html" class="w-full sm:w-auto flex items-center justify-center gap-3 bg-[#D84315] hover:bg-[#B71C1C] text-white font-black px-8 py-4 rounded-2xl border-2 border-gold/70 shadow-xl transition text-lg sm:text-xl active:scale-95">
-                    <span id="btn-next-page">अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ) देखें</span> <i class="fa-solid fa-arrow-right text-xl sm:text-2xl"></i>
-                </a>
-            </div>
-        </div>
-
     </main>
+    
 
     <!-- Footer -->
     <footer class="bg-maroonDark border-t-2 border-gold text-goldLight py-10 sm:py-12 px-6 mt-auto">
@@ -349,72 +675,76 @@
     <script>
         const translations = {
             hi: {
-                sacred_motto: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
-                page_title: "पूरी कौम के तीन थम्मे - पृष्ठ 1 | लाडी सत्योति ट्रस्ट",
+                page_title: "पुरी कौम के तीन थम्मे | Ladi Satyoti Trust",
                 nav_back_home: "मुख्य पृष्ठ पर जाएं",
-                page_indicator: "पृष्ठ 1 - Three Thammas of the Puri Clan",
+                nav_sacred: "॥ श्री लाडी सत्योति देव्यै नमः ॥",
+                page_indicator: "पृष्ठ 1 - पुरी कौम के तीन थम्मे",
                 top_nav_home: "मुख्य पृष्ठ",
-                top_nav_next: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ)",
-                three_pillars_title: "पूरी कौम के तीन थम्मे",
-                node_ishar: "ईशर राय",
-                node_siddh: "सिद्ध गढ़ी",
-                node_kamal: "कमल नारायण",
-                node_khil: "खील नारायण",
-                node_dayal: "दयाल चन्द",
-                node_devi: "देवी दिता",
-                pillar_1: "थम्मा मलकाना",
-                pillar_2: "थम्मा राय",
-                pillar_3: "थम्मा महतका",
-                p1_node1: "मलक कपूर",
-                p1_node2: "गोविंद चंद",
-                p1_leaf_1: "राजकौर",
-                p1_leaf_2: "चतरबिहारी",
-                p1_leaf_3: "अर्जुन मल",
-                p2_node1: "राय बुखार चन्द",
-                p2_leaf_1: "बाबा गंगा राम",
-                p2_leaf_2: "राय महेश दास",
-                p2_leaf_3: "अंचल दास",
-                p3_node1: "महता दनी चन्द",
-                p3_leaf_1: "केसरी दास",
-                p3_leaf_2: "बटठूमल",
+                top_nav_next: "पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ",
                 btn_back_home: "मुख्य पृष्ठ (Home) पर वापस जाएं",
-                btn_next_page: "अगला पृष्ठ (पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ) देखें",
+                btn_next_page: "पृष्ठ 2 - थम्मा मलकाना कटड़ा पूरीयाँ",
                 footer_motto: "🙏 देवी लाडी सत्योति की जय 🙏",
-                footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार"
+                fs_open: "पूरी स्क्रीन पर देखें",
+                fs_close: "बंद करें",
+                footer_copy: "लाडी सत्योति ट्रस्ट (रजिस्टर्ड) | पूरी परिवार डिजिटल अभिलेखागार",
+                c_main_title: "पुरी कौम के तीन थम्मे",
+                c_thamma_malkana: "थम्मा मलकाना",
+                c_thamma_rai: "थम्मा राय",
+                c_thamma_mahatka: "थम्मा महतका",
+                n_ishar: "ईशर राय",
+                n_siddh: "सिद्ध गड़ी",
+                n_kamal: "कमल नरायण",
+                n_khil: "खील नरायण",
+                n_dayal: "दयाल चन्द",
+                n_devi: "देवी दिता",
+                n_malak: "मलक कपूर",
+                n_gobind: "गोबिद चंद",
+                n_rajkaur: "राजकौर",
+                n_chatar: "चतरबिहारी",
+                n_arjan: "अर्जन मल",
+                n_raibakhar: "राय बखार चन्द",
+                n_baba: "बाबा गंगा राम",
+                n_mahesh: "राय महेश दास",
+                n_anchal: "अंचल दास",
+                n_mahata: "महता दनी चन्द",
+                n_kesari: "केसरी दास",
+                n_batthu: "बटठूमल"
             },
             en: {
-                sacred_motto: "॥ Shri Ladi Satyoti Devyai Namah ॥",
-                page_title: "Three Thammas of the Puri Clan - Page 1 | Ladi Satyoti Trust",
+                page_title: "Three Thammas of the Puri Clan | Ladi Satyoti Trust",
                 nav_back_home: "Back to Home",
+                nav_sacred: "॥ Shri Ladi Satyoti Devyai Namah ॥",
                 page_indicator: "Page 1 - Three Thammas of the Puri Clan",
                 top_nav_home: "Home",
-                top_nav_next: "View Next Page (Page 2 - Thamma Malkana Katra Purian)",
-                three_pillars_title: "Three Thammas of the Puri Clan",
-                node_ishar: "Ishar Rai",
-                node_siddh: "Siddh Garhi",
-                node_kamal: "Kamal Narayan",
-                node_khil: "Khil Narayan",
-                node_dayal: "Dayal Chand",
-                node_devi: "Devi Dita",
-                pillar_1: "Thamma Malkana",
-                pillar_2: "Thamma Rai",
-                pillar_3: "Thamma Mahatka",
-                p1_node1: "Malak Kapoor",
-                p1_node2: "Govind Chand",
-                p1_leaf_1: "Raj Kaur",
-                p1_leaf_2: "Chatar Bihari",
-                p1_leaf_3: "Arjun Mal",
-                p2_node1: "Rai Bukhar Chand",
-                p2_leaf_1: "Baba Ganga Ram",
-                p2_leaf_2: "Rai Mahesh Das",
-                p2_leaf_3: "Anchal Das",
-                p3_node1: "Mehta Dani Chand",
-                p3_leaf_1: "Kesari Das",
-                p3_leaf_2: "Batthumal",
+                top_nav_next: "Page 2 - Thamma Malkana Katra Purian",
                 btn_back_home: "Back to Home Page",
-                btn_next_page: "View Next Page (Page 2 - Thamma Malkana Katra Purian)",
+                btn_next_page: "Page 2 - Thamma Malkana Katra Purian",
                 footer_motto: "🙏 Devi Ladi Satyoti Ki Jai 🙏",
-                footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive"
+                fs_open: "View Full Screen",
+                fs_close: "Close",
+                footer_copy: "Ladi Satyoti Trust (Regd.) | Puri Family Digital Archive",
+                c_main_title: "Three Thammas\nof the Puri Clan",
+                c_thamma_malkana: "Thamma Malkana",
+                c_thamma_rai: "Thamma Rai",
+                c_thamma_mahatka: "Thamma Mahatka",
+                n_ishar: "Ishar Rai",
+                n_siddh: "Siddh Garhi",
+                n_kamal: "Kamal Narayan",
+                n_khil: "Khil Narayan",
+                n_dayal: "Dayal Chand",
+                n_devi: "Devi Dita",
+                n_malak: "Malak Kapoor",
+                n_gobind: "Gobind Chand",
+                n_rajkaur: "Raj Kaur",
+                n_chatar: "Chatar Bihari",
+                n_arjan: "Arjan Mal",
+                n_raibakhar: "Rai Bakhar Chand",
+                n_baba: "Baba Ganga Ram",
+                n_mahesh: "Rai Mahesh Das",
+                n_anchal: "Anchal Das",
+                n_mahata: "Mehta Dani Chand",
+                n_kesari: "Kesari Das",
+                n_batthu: "Batthumal"
             }
         };
 
@@ -432,8 +762,34 @@
         }
 
         function applyLanguage(lang) {
+            activeLang = lang;
             const dict = translations[lang];
             document.documentElement.lang = lang;
+
+            document.title = dict.page_title;
+            const titleEl = document.getElementById('page-title');
+            if (titleEl) titleEl.textContent = dict.page_title;
+
+            setElText('nav-back-home', dict.nav_back_home);
+            setElText('nav-sacred-motto', dict.nav_sacred);
+            setElText('page-indicator', dict.page_indicator);
+            setElText('top-nav-home', dict.top_nav_home);
+            setElText('top-nav-prev', dict.top_nav_prev);
+            setElText('top-nav-next', dict.top_nav_next);
+            setElText('btn-back-home', dict.btn_back_home);
+            setElText('btn-prev-page', dict.btn_prev_page);
+            setElText('btn-next-page', dict.btn_next_page);
+            setElText('footer-motto', dict.footer_motto);
+            setElText('footer-copy', dict.footer_copy);
+            setElText('fs-open-text', dict.fs_open);
+            setElText('fs-close-text', dict.fs_close);
+
+            for (const key in dict) {
+                if (key.startsWith('n_') || key.startsWith('c_')) {
+                    const htmlId = key.replace(/_/g, '-');
+                    setElText(htmlId, dict[key]);
+                }
+            }
 
             const btnHi = document.getElementById('btn-lang-hi');
             const btnEn = document.getElementById('btn-lang-en');
@@ -448,48 +804,518 @@
                 btnHi?.classList.add('lang-pill-inactive');
                 btnHi?.classList.remove('lang-pill-active');
             }
-
-            document.title = dict.page_title;
-            setElText('page-title', dict.page_title);
-            setElText('nav-back-home', dict.nav_back_home);
-            setElText('nav-sacred-motto', dict.sacred_motto);
-            setElText('page-indicator', dict.page_indicator);
-            setElText('next-page-btn', dict.next_page_btn);
-            setElText('three-pillars-title-text', dict.three_pillars_title);
-
-            setElText('node-ishar', dict.node_ishar);
-            setElText('node-siddh', dict.node_siddh);
-            setElText('node-kamal', dict.node_kamal);
-            setElText('node-khil', dict.node_khil);
-            setElText('node-dayal', dict.node_dayal);
-            setElText('node-devi', dict.node_devi);
-
-            setElText('pillar-1', dict.pillar_1);
-            setElText('p1-node1', dict.p1_node1);
-            setElText('p1-node2', dict.p1_node2);
-            setElText('p1-leaf-1', dict.p1_leaf_1);
-            setElText('p1-leaf-2', dict.p1_leaf_2);
-            setElText('p1-leaf-3', dict.p1_leaf_3);
-
-            setElText('pillar-2', dict.pillar_2);
-            setElText('p2-node1', dict.p2_node1);
-            setElText('p2-leaf-1', dict.p2_leaf_1);
-            setElText('p2-leaf-2', dict.p2_leaf_2);
-            setElText('p2-leaf-3', dict.p2_leaf_3);
-
-            setElText('pillar-3', dict.pillar_3);
-            setElText('p3-node1', dict.p3_node1);
-            setElText('p3-leaf-1', dict.p3_leaf_1);
-            setElText('p3-leaf-2', dict.p3_leaf_2);
-
-            setElText('btn-back-home', dict.btn_back_home);
-            setElText('btn-next-page', dict.btn_next_page);
-            setElText('footer-motto', dict.footer_motto);
-            setElText('footer-copy', dict.footer_copy);
-
-            setElText('top-nav-home', dict.top_nav_home);
-            setElText('top-nav-next', dict.top_nav_next);
+            relayout(lang);
         }
+
+        /* ---- Family-tree layout ----------------------------------------
+           Box widths are measured with the page's own fonts, so spacing and
+           connector routing adapt to Hindi and English alike and to any screen. */
+        const TREE = {"W0": 1640, "H0": 840, "KX": 1, "KY": 1, "BOX_H": 34, "GAP": 8, "SNAP": 25, "TITLE_Y": 455, "XINS0": [], "YINS0": [], "H": [[40, 490, 1600, 490], [125, 700, 575, 700], [715, 632, 1165, 632], [1275, 632, 1565, 632]], "BRIDGE": [], "V": [[970, 57, 88], [970, 122, 153], [970, 187, 218], [970, 252, 283], [970, 317, 348], [970, 382, 490], [350, 490, 543], [350, 577, 618], [350, 652, 700], [170, 700, 758], [350, 700, 758], [530, 700, 758], [850, 490, 543], [850, 577, 632], [760, 632, 693], [940, 632, 693], [1120, 632, 693], [1420, 490, 543], [1420, 577, 632], [1320, 632, 693], [1520, 632, 693]], "boxes": [{"id": "n-ishar", "key": "n_ishar", "x": 970, "y": 40, "ls": 1.8}, {"id": "n-siddh", "key": "n_siddh", "x": 970, "y": 105, "ls": 1.8}, {"id": "n-kamal", "key": "n_kamal", "x": 970, "y": 170, "ls": 1.8}, {"id": "n-khil", "key": "n_khil", "x": 970, "y": 235, "ls": 1.8}, {"id": "n-dayal", "key": "n_dayal", "x": 970, "y": 300, "ls": 1.8}, {"id": "n-devi", "key": "n_devi", "x": 970, "y": 365, "ls": 1.8}, {"id": "n-malak", "key": "n_malak", "x": 350, "y": 560, "ls": 1.8}, {"id": "n-gobind", "key": "n_gobind", "x": 350, "y": 635, "ls": 1.8}, {"id": "n-rajkaur", "key": "n_rajkaur", "x": 170, "y": 775, "ls": 1.8}, {"id": "n-chatar", "key": "n_chatar", "x": 350, "y": 775, "ls": 1.8}, {"id": "n-arjan", "key": "n_arjan", "x": 530, "y": 775, "ls": 1.8}, {"id": "n-raibakhar", "key": "n_raibakhar", "x": 850, "y": 560, "ls": 1.8}, {"id": "n-baba", "key": "n_baba", "x": 760, "y": 710, "ls": 1.8}, {"id": "n-mahesh", "key": "n_mahesh", "x": 940, "y": 710, "ls": 1.8}, {"id": "n-anchal", "key": "n_anchal", "x": 1120, "y": 710, "ls": 1.8}, {"id": "n-mahata", "key": "n_mahata", "x": 1420, "y": 560, "ls": 1.8}, {"id": "n-kesari", "key": "n_kesari", "x": 1320, "y": 710, "ls": 1.8}, {"id": "n-batthu", "key": "n_batthu", "x": 1520, "y": 710, "ls": 1.8}], "titles": [{"id": "c-main-title", "key": "c_main_title", "x": 290, "y": 190, "ls": 1.0}, {"id": "c-thamma-malkana", "key": "c_thamma_malkana", "x": 350, "y": 455, "ls": 1.5}, {"id": "c-thamma-rai", "key": "c_thamma_rai", "x": 790, "y": 455, "ls": 1.5}, {"id": "c-thamma-mahatka", "key": "c_thamma_mahatka", "x": 1420, "y": 455, "ls": 1.5}]};
+        const TREE_MIN_SCALE = 0.6;
+        const TREE_SMALL_SCREEN_SCALE = 1.2;   // tablets: larger tree, scrolls sideways
+        const TREE_PHONE_SCALE = 1.1;          // phones only: bigger tree, names easy to read. Try 1.6 (smaller) to 2.4 (bigger)
+        const trackFor = (lang, ls) => (lang === 'en' ? 0.3 : ls);   // Latin text reads better with light tracking
+        const LAYOUTS = {};
+        let activeLang = 'en';
+        const $ = id => document.getElementById(id);
+
+        function computeLayout(lang) {
+            const dict = translations[lang] || {};
+            TREE.boxes.forEach(b => {
+                const el = $(b.id);
+                if (!el) return;
+                if (dict[b.key] !== undefined) el.textContent = dict[b.key];
+                el.style.letterSpacing = trackFor(lang, b.ls).toFixed(2) + 'px';
+            });
+            TREE.titles.forEach(t => {
+                const el = $(t.id);
+                if (!el) return;
+                if (dict[t.key] !== undefined) el.textContent = dict[t.key];
+                el.style.letterSpacing = trackFor(lang, t.ls).toFixed(2) + 'px';
+            });
+
+            const cv = $('canvas');
+            const savedTransform = cv.style.transform;
+            cv.style.transform = 'none';
+            const zoom = pageZoom();
+            const widths = TREE.boxes.map(b => $(b.id).getBoundingClientRect().width / zoom);
+            cv.style.transform = savedTransform;
+
+            const { BOX_H, GAP, SNAP } = TREE;
+            const XINS = TREE.XINS0.map(a => a.slice());
+            const YINS = TREE.YINS0.map(a => a.slice());
+            const X = x => x * TREE.KX + XINS.reduce((s, [x0, d]) => s + (x > x0 ? d : 0), 0);
+            const Y = y => y * TREE.KY + YINS.reduce((s, [y0, d]) => s + (y > y0 ? d : 0), 0);
+
+            // 1) open up spacing wherever two boxes would collide
+            for (let it = 0; it < 120; it++) {
+                const pos = TREE.boxes.map((b, i) => ({ xi: X(b.x), yi: Y(b.y), wi: widths[i] }));
+                let changed = false;
+                outer:
+                for (let i = 0; i < pos.length; i++) {
+                    for (let j = i + 1; j < pos.length; j++) {
+                        const p = pos[i], q = pos[j], a = TREE.boxes[i], c = TREE.boxes[j];
+                        const needX = (p.wi + q.wi) / 2 + GAP, needY = BOX_H + GAP;
+                        if (Math.abs(p.xi - q.xi) < needX && Math.abs(p.yi - q.yi) < needY) {
+                            const oxLo = Math.min(a.x, c.x), oxHi = Math.max(a.x, c.x);
+                            const oyLo = Math.min(a.y, c.y), oyHi = Math.max(a.y, c.y);
+                            if (Math.abs(p.yi - q.yi) < needY && oxHi - oxLo > 1) {
+                                XINS.push([(oxLo + oxHi) / 2, needX - Math.abs(p.xi - q.xi) + 3]);
+                                changed = true;
+                            } else if (oyHi - oyLo > 1) {
+                                YINS.push([(oyLo + oyHi) / 2, needY - Math.abs(p.yi - q.yi) + 3]);
+                                changed = true;
+                            }
+                            if (changed) break outer;
+                        }
+                    }
+                }
+                if (!changed) break;
+            }
+
+            const H = TREE.H.map(([a, b, c, d]) => [X(a), Y(b), X(c), Y(d)]);
+            const V = TREE.V.map(([x, y1, y2]) => [X(x), Y(y1), Y(y2)]);
+            const boxes = TREE.boxes.map((b, i) => ({ id: b.id, cx: X(b.x), cy: Y(b.y), w: widths[i], h: BOX_H }));
+            const byId = id => boxes.find(b => b.id === id);
+            const edges = b => [b.cx - b.w / 2, b.cx + b.w / 2, b.cy - b.h / 2, b.cy + b.h / 2];
+            const barY = (s, x) => Math.abs(s[2] - s[0]) < 1e-9 ? s[1] : s[1] + (s[3] - s[1]) * (x - s[0]) / (s[2] - s[0]);
+            const barHitsBox = (s, b) => {
+                const [l, r, t, bt] = edges(b);
+                const lo = Math.max(Math.min(s[0], s[2]), l), hi = Math.min(Math.max(s[0], s[2]), r);
+                if (lo > hi) return null;
+                const ys = [barY(s, lo), barY(s, hi)];
+                if (Math.max(...ys) >= t - 2 && Math.min(...ys) <= bt + 2) return (ys[0] + ys[1]) / 2;
+                return null;
+            };
+
+            // 2) lift any box that sits on a bar
+            for (let k = 0; k < 60; k++) {
+                let moved = false;
+                for (const b of boxes) for (const s of H) {
+                    const yy = barHitsBox(s, b);
+                    if (yy === null) continue;
+                    b.cy = yy < b.cy ? yy + 6 + BOX_H / 2 : yy - 6 - BOX_H / 2;
+                    moved = true;
+                }
+                if (!moved) break;
+            }
+
+            // 3) (no page-specific placement tweaks on this page)
+            TREE.BRIDGE.forEach(([a, b, c, d]) => H.push([X(a), Y(b), X(c), Y(d)]));
+
+            // 4) connector ends: join bars, or stop at the nearest box edge
+            const insideAny = (x, y) => boxes.some(b => { const [l, r, t, bt] = edges(b); return l <= x && x <= r && t <= y && y <= bt; });
+            const onBar = (x, y) => H.some(s => {
+                const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                return lo - 3 <= x && x <= hi + 3 && Math.abs(y - barY(s, Math.min(Math.max(x, lo), hi))) <= 3;
+            });
+            const snapEnd = (x, y) => {
+                for (const s of H) {
+                    const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                    if (lo - 3 <= x && x <= hi + 3) {
+                        const by = barY(s, Math.min(Math.max(x, lo), hi));
+                        if (Math.abs(y - by) <= 4 && !insideAny(x, by)) return by;
+                    }
+                }
+                if (onBar(x, y) || insideAny(x, y)) return y;
+                let best = null;
+                for (const b of boxes) {
+                    const [l, r, t, bt] = edges(b);
+                    if (!(l - 1 <= x && x <= r + 1)) continue;
+                    for (const e of [t, bt]) {
+                        const d = Math.abs(y - e);
+                        if (d <= SNAP && (best === null || d < best[0])) best = [d, e];
+                    }
+                }
+                return best ? best[1] : y;
+            };
+            V.forEach(v => { v[1] = snapEnd(v[0], v[1]); v[2] = snapEnd(v[0], v[2]); });
+
+            // 5) a drop that stops just short of a bar end: extend that bar end onto the drop
+            const barAtPt = (x, y) => H.some(s => {
+                const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                return x >= lo - 1.5 && x <= hi + 1.5 && Math.abs(barY(s, x) - y) <= 1.6;
+            });
+            const boxAtPt = (x, y) => boxes.some(b => {
+                const [l, r, t, bt] = edges(b);
+                return x >= l - 1.5 && x <= r + 1.5 && y >= t - 1.5 && y <= bt + 1.5;
+            });
+            V.forEach(v => {
+                [1, 2].forEach(k => {
+                    const x = v[0], y = v[k];
+                    if (barAtPt(x, y) || boxAtPt(x, y)) return;
+                    let best = null;
+                    H.forEach((s, si) => [[0, 1], [2, 3]].forEach(([ix, iy]) => {
+                        const dx = Math.abs(s[ix] - x);
+                        if (dx <= 6 && Math.abs(s[iy] - y) <= 4 && (best === null || dx < best.dx)) best = { si, ix, dx };
+                    }));
+                    if (best === null) return;
+                    const s = H[best.si];
+                    const yAtX = barY(s, x);
+                    s[best.ix] = x;
+                    s[best.ix + 1] = yAtX;
+                    v[k] = yAtX;
+                });
+            });
+
+            // 6) a drop that lands just outside a box corner: slide it onto the box and re-attach both ends
+            V.forEach(v => {
+                [1, 2].forEach(k => {
+                    const x = v[0], y = v[k];
+                    if (barAtPt(x, y) || boxAtPt(x, y)) return;
+                    const nb = boxes.find(b => {
+                        const [l, r, t, bt] = edges(b);
+                        return x >= l - 6 && x <= r + 6 && (Math.abs(y - t) <= 6 || Math.abs(y - bt) <= 6);
+                    });
+                    if (!nb) return;
+                    const [l, r, t, bt] = edges(nb);
+                    const nx = Math.min(Math.max(x, l + 8), r - 8);
+                    const other = k === 1 ? 2 : 1;
+                    const oy = v[other];
+                    v[0] = nx;
+                    v[k] = Math.abs(y - t) <= Math.abs(y - bt) ? t : bt;
+                    const bar = H.find(s => {
+                        const lo = Math.min(s[0], s[2]), hi = Math.max(s[0], s[2]);
+                        return nx >= lo - 3 && nx <= hi + 3 && Math.abs(barY(s, nx) - oy) <= 6;
+                    });
+                    if (bar) v[other] = barY(bar, nx);
+                });
+            });
+
+            const seg = (x1, y1, x2, y2) =>
+                `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}"/>`;
+            return {
+                W: Math.round(X(TREE.W0)),
+                H: Math.round(Y(TREE.H0)),
+                lines: H.map(s => seg(s[0], s[1], s[2], s[3])).concat(V.map(v => seg(v[0], v[1], v[0], v[2]))),
+                boxes: boxes.map(b => ({ id: b.id, left: b.cx, top: b.cy })),
+                titles: TREE.titles.map(t => ({ id: t.id, left: X(t.x), top: Y(t.y != null ? t.y : TREE.TITLE_Y) })),
+            };
+        }
+
+        // Screen pixels per layout pixel: 0.85 on desktop (page zoom), 1 on phones.
+        // Box widths are measured on screen, so they must be converted back to layout pixels.
+        function pageZoom() {
+            const cv = $('canvas');
+            const saved = cv.style.transform;
+            cv.style.transform = 'none';
+            const probe = document.createElement('div');
+            probe.style.cssText = 'position:absolute;left:0;top:0;width:1000px;height:1px;visibility:hidden';
+            cv.appendChild(probe);
+            const z = probe.getBoundingClientRect().width / 1000;
+            probe.remove();
+            cv.style.transform = saved;
+            return z || 1;
+        }
+
+        function fitCanvas() {
+            const L = LAYOUTS[activeLang];
+            if (!L) return;
+            const stage = document.querySelector('.stage');
+            const fs = isTreeFs();
+            if (fs) layoutFsShell();
+            let s;
+            if (fs) {
+                // Full screen: fit the ENTIRE tree on the screen at once
+                s = Math.min(1.5, (stage.clientWidth - 16) / L.W, (stage.clientHeight - 16) / L.H);
+            } else {
+                // Tablets and phones get a larger tree (names stay readable) and scroll sideways;
+                // desktop fits the tree to the width, never below TREE_MIN_SCALE.
+                // Use the page's real layout width (undo the phone zoom), so normal mode and
+                // "Desktop site" mode both see 1200 and pick the same tree size.
+                const phoneZoom = parseFloat(document.documentElement.style.zoom) || 1;
+                const layoutWidth = window.innerWidth / phoneZoom;
+                if (document.documentElement.classList.contains('is-phone')) {
+                    s = TREE_PHONE_SCALE;   // same in normal and "Desktop site" mode
+                } else {
+                    s = layoutWidth < 1024
+                        ? TREE_SMALL_SCREEN_SCALE
+                        : Math.min(1, Math.max(TREE_MIN_SCALE, stage.clientWidth / L.W));
+                }
+            }
+            $('canvas').style.transform = `scale(${s})`;
+            $('canvas-wrap').style.width = (L.W * s) + 'px';
+            $('canvas-wrap').style.height = (L.H * s) + 'px';
+            syncTopScrollWidth();
+        }
+
+        function drawLayout(lang, L) {
+            LAYOUTS[lang] = L;
+            if (lang !== activeLang) return;
+            const cv = $('canvas');
+            cv.style.width = L.W + 'px';
+            cv.style.height = L.H + 'px';
+            const svg = cv.querySelector('svg.lines');
+            svg.setAttribute('viewBox', `0 0 ${L.W} ${L.H}`);
+            svg.innerHTML = L.lines.join('');
+            L.boxes.concat(L.titles).forEach(p => {
+                const el = $(p.id);
+                if (el) { el.style.left = p.left.toFixed(1) + 'px'; el.style.top = p.top.toFixed(1) + 'px'; }
+            });
+            fitCanvas();
+            $('canvas-wrap').classList.add('is-ready');
+        }
+
+        function relayout(lang) {
+            drawLayout(lang, computeLayout(lang));
+        }
+
+        if (document.fonts) {
+            document.fonts.addEventListener('loadingdone', () => relayout(activeLang));
+            document.fonts.ready.then(() => relayout(activeLang));
+        }
+        let resizeFrame = 0;
+        window.addEventListener('resize', () => {
+            cancelAnimationFrame(resizeFrame);
+            resizeFrame = requestAnimationFrame(fitCanvas);
+        });
+
+
+        // ---- Top scrollbar: mirrors the tree's horizontal scroll ----
+        const stageEl = document.querySelector('.stage');
+        const topScrollEl = document.getElementById('stage-top-scroll');
+
+        function syncTopScrollWidth() {
+            if (!topScrollEl) return;
+            topScrollEl.firstElementChild.style.width = stageEl.scrollWidth + 'px';
+            // Show the top bar only when the tree spills sideways (the bottom bar appears by itself)
+            topScrollEl.style.display = stageEl.scrollWidth > stageEl.clientWidth + 1 ? '' : 'none';
+            updateScrollHint();
+        }
+
+                // ---- Scroll hint: text line above the tree + arrow buttons on its left/right edges ----
+        let scrollHintLearned = false;   // becomes true once the visitor has scrolled the tree
+        const SCROLL_HINT_TEXT = {
+            hi: {
+                right: { touch: 'पूरा वंश वृक्ष देखने के लिए यहीं दाईं ओर स्वाइप करें',
+                         mouse: 'पूरा वंश वृक्ष देखने के लिए दाईं ओर स्क्रॉल करें' },
+                left:  { touch: 'पूरा वंश वृक्ष देखने के लिए यहीं बाईं ओर स्वाइप करें',
+                         mouse: 'पूरा वंश वृक्ष देखने के लिए बाईं ओर स्क्रॉल करें' },
+                both:  { touch: 'पूरा वंश वृक्ष देखने के लिए यहीं बाईं या दाईं ओर स्वाइप करें',
+                         mouse: 'पूरा वंश वृक्ष देखने के लिए बाईं या दाईं ओर स्क्रॉल करें' },
+                btnL: 'बाईं ओर देखें', btnR: 'दाईं ओर देखें'
+            },
+            en: {
+                right: { touch: 'Swipe right here to see the full family tree',
+                         mouse: 'Scroll right to see the full family tree' },
+                left:  { touch: 'Swipe left here to see the full family tree',
+                         mouse: 'Scroll left to see the full family tree' },
+                both:  { touch: 'Swipe left or right here to see the full family tree',
+                         mouse: 'Scroll left or right to see the full family tree' },
+                btnL: 'Scroll left', btnR: 'Scroll right'
+            }
+        };
+
+        function updateScrollHint() {
+            const bar   = document.getElementById('scroll-hint');
+            const text  = document.getElementById('scroll-hint-text');
+            const arrow = bar && bar.querySelector('.hint-arrow');
+            const edgeL = document.getElementById('scroll-edge-l');
+            const edgeR = document.getElementById('scroll-edge-r');
+            if (!bar || !text || !arrow || !edgeL || !edgeR) return;
+
+            const maxScroll = stageEl.scrollWidth - stageEl.clientWidth;
+            const overflow  = maxScroll > 8;
+            const atStart   = stageEl.scrollLeft <= 8;
+            const atEnd     = stageEl.scrollLeft >= maxScroll - 8;
+            const dir   = atStart ? 'right' : (atEnd ? 'left' : 'both');   // which way is there more to see?
+            const touch = document.documentElement.classList.contains('is-phone') ||
+                          window.matchMedia('(pointer: coarse)').matches;
+            const t = SCROLL_HINT_TEXT[activeLang] || SCROLL_HINT_TEXT.en;
+
+            const msg = touch ? t[dir].touch : t[dir].mouse;
+            if (text.textContent !== msg) text.textContent = msg;
+            if (bar.dataset.dir !== dir) {
+                bar.dataset.dir = dir;
+                arrow.className = 'fa-solid hint-arrow ' +
+                    (dir === 'right' ? 'fa-arrow-right' : dir === 'left' ? 'fa-arrow-left' : 'fa-arrows-left-right');
+            }
+            [[edgeL, t.btnL], [edgeR, t.btnR]].forEach(([edge, label]) => {
+                const b = edge.querySelector('button');
+                if (b.title !== label) { b.title = label; b.setAttribute('aria-label', label); }
+            });
+
+            bar.classList.toggle('show', overflow);
+            bar.classList.toggle('learned', scrollHintLearned);
+            edgeL.classList.toggle('show', overflow && !atStart);
+            edgeR.classList.toggle('show', overflow && !atEnd);
+        }
+
+        stageEl.addEventListener('scroll', () => {
+            if (stageEl.scrollLeft > 40) scrollHintLearned = true;
+            updateScrollHint();
+        }, { passive: true });
+
+        // ---- Arrow buttons: tap = glide, press and hold = keep scrolling ----
+        // We move the tree ourselves, frame by frame, and set the top and bottom bars together.
+        // (The browser's built-in smooth scroll fights with the mirrored top scrollbar and stops almost at once.)
+        let stageAnim = 0;
+        function stopStageAnim() {
+            if (stageAnim) { cancelAnimationFrame(stageAnim); stageAnim = 0; }
+        }
+        function setStageScroll(x) {
+            stageEl.scrollLeft = x;
+            topScrollEl.scrollLeft = stageEl.scrollLeft;   // keep the mirrored top bar exactly in step
+        }
+        function glideStage(dx, ms) {
+            stopStageAnim();
+            const from = stageEl.scrollLeft;
+            const max  = stageEl.scrollWidth - stageEl.clientWidth;
+            const to   = Math.max(0, Math.min(max, from + dx));
+            const t0   = performance.now();
+            (function step(now) {
+                const p = Math.min(1, (now - t0) / ms);
+                setStageScroll(from + (to - from) * (1 - Math.pow(1 - p, 3)));   // ease-out
+                stageAnim = p < 1 ? requestAnimationFrame(step) : 0;
+            })(t0);
+        }
+        function holdStage(dir) {
+            stopStageAnim();
+            let last = performance.now();
+            (function step(now) {
+                const dt = Math.min(50, now - last); last = now;
+                const before = stageEl.scrollLeft;
+                setStageScroll(before + dir * stageEl.clientWidth * 0.9 * dt / 1000);   // about one screen per second
+                stageAnim = (stageEl.scrollLeft !== before) ? requestAnimationFrame(step) : 0;   // stops at the end
+            })(last);
+        }
+
+        document.querySelectorAll('.scroll-edge-btn').forEach(btn => {
+            const dir = Number(btn.dataset.dir);
+            let down = false, holding = false, holdTimer = 0;
+
+            btn.addEventListener('pointerdown', e => {
+                if (e.button > 0) return;                    // mouse: left button only
+                e.preventDefault();
+                try { btn.setPointerCapture(e.pointerId); } catch (_) {}
+                down = true; holding = false;
+                clearTimeout(holdTimer);
+                holdTimer = setTimeout(() => { holding = true; holdStage(dir); }, 300);
+            });
+            btn.addEventListener('pointerup', () => {
+                if (!down) return;
+                down = false;
+                clearTimeout(holdTimer);
+                if (holding) { holding = false; stopStageAnim(); }                    // released after a hold: stop
+                else glideStage(dir * stageEl.clientWidth * 0.7, 450);                // quick tap: glide
+            });
+            btn.addEventListener('pointercancel', () => {
+                down = false; holding = false;
+                clearTimeout(holdTimer); stopStageAnim();
+            });
+            btn.addEventListener('contextmenu', e => e.preventDefault());              // no long-press menu on phones
+            btn.addEventListener('click', e => {                                       // keyboard (Enter / Space)
+                if (e.detail === 0) glideStage(dir * stageEl.clientWidth * 0.7, 450);
+            });
+        });
+
+        // If the visitor grabs the tree themselves, stop any glide in progress
+        ['wheel', 'touchstart', 'pointerdown'].forEach(ev =>
+            stageEl.addEventListener(ev, stopStageAnim, { passive: true }));
+
+        // ---- Swipe (or tap) the hint banner itself: finger direction = direction the tree moves ----
+        (function () {
+            const bar = document.getElementById('scroll-hint');
+            if (!bar) return;
+            const SWIPE_GAIN = 1.5;    // swiping across the whole banner moves the tree 1.5 screens
+            let activeId = null, startX = 0, startScroll = 0, moved = false;
+
+            bar.addEventListener('pointerdown', e => {
+                if (e.button > 0) return;                         // mouse: left button only
+                stopStageAnim();
+                activeId = e.pointerId; startX = e.clientX; startScroll = stageEl.scrollLeft; moved = false;
+                try { bar.setPointerCapture(activeId); } catch (_) {}
+            });
+            bar.addEventListener('pointermove', e => {
+                if (e.pointerId !== activeId) return;
+                const dx = e.clientX - startX;
+                if (Math.abs(dx) > 10) moved = true;              // small jitter still counts as a tap
+                if (moved) {
+                    const fraction = dx / Math.max(bar.getBoundingClientRect().width, 200);
+                    setStageScroll(startScroll + fraction * stageEl.clientWidth * SWIPE_GAIN);   // finger right = tree goes right
+                }
+            });
+            const finish = e => {
+                if (e.pointerId !== activeId) return;
+                activeId = null;
+                if (!moved && e.type === 'pointerup') {           // plain tap: glide the way the arrow points
+                    glideStage((bar.dataset.dir === 'left' ? -1 : 1) * stageEl.clientWidth * 0.7, 450);
+                }
+            };
+            bar.addEventListener('pointerup', finish);
+            bar.addEventListener('pointercancel', finish);
+        })();
+        topScrollEl.addEventListener('scroll', () => {
+            if (stageEl.scrollLeft !== topScrollEl.scrollLeft) stageEl.scrollLeft = topScrollEl.scrollLeft;
+        });
+        stageEl.addEventListener('scroll', () => {
+            if (topScrollEl.scrollLeft !== stageEl.scrollLeft) topScrollEl.scrollLeft = stageEl.scrollLeft;
+        });
+
+        // ---- Mobile full screen / landscape view ----
+        let fsLockOk = false;      // true if the browser agreed to lock landscape
+        let fsApiActive = false;   // true if real browser fullscreen is on
+
+        const shellEl = document.getElementById('stage-shell');
+        const fsInnerEl = document.getElementById('fs-inner');
+
+        function isTreeFs() { return document.body.classList.contains('tree-fs'); }
+
+        function layoutFsShell() {
+            const w = shellEl.clientWidth;
+            const h = shellEl.clientHeight;
+            if (h > w && !fsLockOk) {
+                // Phone is upright and landscape can't be locked: turn the content sideways ourselves
+                fsInnerEl.classList.add('fs-rotated');
+                fsInnerEl.style.width = h + 'px';
+                fsInnerEl.style.height = w + 'px';
+            } else {
+                fsInnerEl.classList.remove('fs-rotated');
+                fsInnerEl.style.width = '';
+                fsInnerEl.style.height = '';
+            }
+        }
+
+        async function enterTreeFullscreen() {
+            document.body.classList.add('tree-fs');
+            fsLockOk = false;
+            stageEl.scrollLeft = 0;
+            fitCanvas();
+            try {
+                // Fullscreen the tree container itself (not the whole page), so nothing else can show around it
+                if (shellEl.requestFullscreen) {
+                    await shellEl.requestFullscreen();
+                    fsApiActive = true;
+                }
+            } catch (e) { /* e.g. iPhone: no fullscreen API – the full-window overlay is used instead */ }
+            try {
+                if (screen.orientation && screen.orientation.lock) {
+                    await screen.orientation.lock('landscape');
+                    fsLockOk = true;
+                }
+            } catch (e) { /* can't lock – sideways fallback is used */ }
+            fitCanvas();
+        }
+
+        function exitTreeFullscreen() {
+            document.body.classList.remove('tree-fs');
+            fsApiActive = false;
+            fsLockOk = false;
+            try { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); } catch (e) {}
+            try { if (screen.orientation && screen.orientation.unlock) screen.orientation.unlock(); } catch (e) {}
+            fsInnerEl.classList.remove('fs-rotated');
+            fsInnerEl.style.width = '';
+            fsInnerEl.style.height = '';
+            fitCanvas();
+        }
+
+        document.addEventListener('fullscreenchange', () => {
+            if (fsApiActive && !document.fullscreenElement && isTreeFs()) {
+                exitTreeFullscreen();   // user left fullscreen with the back gesture
+            } else if (isTreeFs()) {
+                fitCanvas();            // size changed – refit the whole tree
+            }
+        });
 
         let currentFontSize = 16;
 
