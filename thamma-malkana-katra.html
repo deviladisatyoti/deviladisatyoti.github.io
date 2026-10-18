@@ -188,7 +188,7 @@
         .stage {
             display: flex;
             width: 100%;
-            overflow-x: scroll; /* Forces horizontal scrollbar to remain visible */
+            overflow-x: auto;   /* scrollbar appears only when the tree is wider than the box */
             overflow-y: auto;
             background: var(--bg);
             border-radius: 1.5rem;
@@ -447,17 +447,30 @@
         .nav-btn:active { transform: scale(.97); }
         .nav-btn i { font-size: 1.15em; flex: 0 0 auto; }
 
-        /* Previous and Next: orange-red, white text, gold edge, soft glow */
-        .nav-btn-prev, .nav-btn-next {
+        /* Next: orange-red, white text, gold edge, soft glow */
+        .nav-btn-next {
             background: linear-gradient(135deg, #E65100 0%, #BF360C 100%);
             color: #FFFFFF; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
             border-color: #FFD700;
             animation: navGlow 2s ease-in-out infinite;
         }
-        .nav-btn-prev i, .nav-btn-next i { color: #FFD700; }
+        .nav-btn-next i { color: #FFD700; }
         @keyframes navGlow {
             0%, 100% { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 0 rgba(230,81,0,.55); }
             50%      { box-shadow: 0 3px 10px rgba(122,40,14,.35), 0 0 0 8px rgba(230,81,0,0); }
+        }
+
+        /* Previous: deep maroon (same as the page header), gold text and gold edge, same soft glow */
+        .nav-btn-prev {
+            background: linear-gradient(135deg, #7A280E 0%, #4A1203 100%);
+            color: #FFE9A8; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+            border-color: #D4AF37;
+            animation: navGlowPrev 2s ease-in-out infinite;
+        }
+        .nav-btn-prev i { color: #FFD700; }
+        @keyframes navGlowPrev {
+            0%, 100% { box-shadow: 0 3px 10px rgba(74,18,3,.40), 0 0 0 0 rgba(212,175,55,.60); }
+            50%      { box-shadow: 0 3px 10px rgba(74,18,3,.40), 0 0 0 8px rgba(212,175,55,0); }
         }
         @media (prefers-reduced-motion: reduce) { .nav-btn-prev, .nav-btn-next { animation: none; } }
 
@@ -1280,12 +1293,8 @@
         function syncTopScrollWidth() {
             if (!topScrollEl) return;
             topScrollEl.firstElementChild.style.width = stageEl.scrollWidth + 'px';
-            // In full screen, show the top bar only if the tree spills sideways (the bottom bar appears by itself)
-            if (document.body.classList.contains('tree-fs')) {
-                topScrollEl.style.display = stageEl.scrollWidth > stageEl.clientWidth + 1 ? '' : 'none';
-            } else {
-                topScrollEl.style.display = '';
-            }
+            // Show the top bar only when the tree spills sideways (the bottom bar appears by itself)
+            topScrollEl.style.display = stageEl.scrollWidth > stageEl.clientWidth + 1 ? '' : 'none';
             updateScrollHint();
         }
 
